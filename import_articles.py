@@ -7,6 +7,7 @@ import xmlrpclib
 
 logger = logging.getLogger(__name__)
 
+# working with names is better than working with random integers
 names_to_ints = {
     'code': 0,
     'famille': 1,
@@ -51,8 +52,28 @@ except Exception as e:
 
 def create_record(model_name, data_dict):
 
-    res = models.execute_kw(server_dbname, server_uid, server_pwd,
-        model_name, 'create', data_dict)
+    try:
+        res = models.execute_kw(server_dbname, server_uid, server_pwd,
+            model_name, 'create', [data_dict])
+
+    except Exception as e:
+        print "erreur lors de la creation de %s" % model_name
+        print "avec les valeurs : %s" % data_dict
+        raise
+
+    return res
+
+def update_record(model_name, rec_id, data_dict):
+
+    try:
+        res = models.execute_kw(server_dbname, server_uid, server_pwd,
+            model_name, 'write', [[rec_id], data_dict])
+
+    except Exception as e:
+        print "erreur lors de la l'update de %s" % model_name
+        print "id : %s" % id
+        print "avec les valeurs : %s" % data_dict
+        raise
 
     return res
 
@@ -61,7 +82,7 @@ def get_record_id(model_name, domain):
     res = models.execute_kw(server_dbname, server_uid, server_pwd,
         model_name, 'search', [domain])
 
-    return res
+    return res[0] if res else False
 
 def record_with_name_exists(model_name, name):
 
@@ -180,6 +201,135 @@ class Article(object):
         # return str(li)
         return str(self.__dict__)
 
+    def to_dict(self):
+        """
+        returns the article as a dict, ready to be given to Odoo,
+        with the right field names
+        """
+        pass
+
+class ArticleImporter(object):
+
+    def __init__(self):
+        pass
+
+    def figure_uom_id(self, uname):
+
+        if ("unit" in uname) or ("Unit" in uname) or (uname == "U"):
+            return 1
+
+        unit_units = {
+            'KIT': 'KIT',
+            '1CART': '1CART',
+        }
+
+        volume_units = {
+            '0.100': '0.100L',
+            '0.150': '0.150L',
+            '0.200': '0.200L',
+            '0.250': '0.250L',
+            '0.300': '0.300L',
+            '0.310': '0.310L',
+            '0.500': '0.500L',
+            '1L': '1L',
+            '2.5': '2.5L',
+            '5': '5L',
+            '2.5L': '2.5L',
+            '5L': '5L',
+            '10L': '10L',
+            '30L': '30L',
+        }
+
+        uom_categ_id = None
+        if uname in unit_units:
+            uom_categ_id = 1
+            uname = unit_units[uname]
+        elif uname in volume_units:
+            uom_categ_id = 5
+            uname = volume_units[uname]
+
+        if not uom_categ_id:
+            import pudb; pudb.set_trace()
+            raise Exception("Could not figure out uom_categ_id")
+
+        uom_id = get_record_id('product.uom', [
+            ['name', '=', uname],
+        ])
+
+        if not uom_id:
+            uom_id = create_record(
+                'product.uom', {
+                    'name': uname,
+                    'category_id': uom_categ_id,
+                }
+            )
+
+        return uom_id
+
+    def import_article(self, article):
+
+        # category
+        categ_id = get_record_id('product.category', [
+            ['name', '=', article.categ],
+        ])
+
+        # import pudb; pudb.set_trace()
+
+        if not categ_id:
+            categ_id = create_record(
+                'product.category', {
+                    'name': article.categ,
+                }
+            )
+
+        # uom
+        uom_id = self.figure_uom_id(article.unite)
+
+        # product template
+        product_tmpl_id = get_record_id('product.template', [
+            ['name', '=', article.lib],
+        ])
+
+        vals = {
+            'type': 'product',
+
+            'uom_id': uom_id,
+            'uom_po_id': uom_id,
+
+            'sale_ok': True,
+            'website_published': False,
+            'taxes_id': [(6, 0, [1])],
+
+            'name': article.lib,
+            'default_code': article.code,
+            'price': article.prix_base_ht,
+
+            'standard_price': article.dernier_prix,
+            'categ_id': categ_id,
+            # 'qty_available': article.stock_phy,
+        }
+
+        if not product_tmpl_id:
+            product_tmpl_id = create_record('product.template', vals)
+        else:
+            update_record('product.template', product_tmpl_id, vals)
+
+        # product product
+        product_id = get_record_id('product.product', [
+            #['name', '=', article.lib],
+            ['barcode', '=', article.code_barre],
+        ])
+
+        vals = {
+            'product_tmpl_id': product_tmpl_id,
+            'barcode': article.code_barre,
+            # 'qty_available': article.stock_phy,
+        }
+        if not product_id:
+            product_id = create_record('product.product', vals)
+        else:
+            update_record('product.product', product_id, vals)
+
 
 # xlrd.xldate.xldate_as_tuple(date_modif, workbook.datemode)
 workbook = xlrd.open_workbook('BD_ARTICLES_API.xls')
@@ -188,16 +338,18 @@ sheet = workbook.sheet_by_index(0)
 curr_row = 2
 num_rows = sheet.nrows
 
-while curr_row < num_rows:
+importer = ArticleImporter()
 
-    # line = CsvLine(sheet.row(curr_row))
+while curr_row < num_rows:
 
     vals = sheet.row_values(curr_row)
     article = Article.from_xls_line(vals)
-    # print line.get('code')
-    # print line.get('dernier prix')
-    # print line.get('prix base ht')
 
-    print "row_no : %s " % curr_row, article, article.dernier_prix
+    print "row_no : %s " % curr_row, article
+
+    importer.import_article(article)
+
+    #if curr_row > 10:
+        #break
 
     curr_row += 1
