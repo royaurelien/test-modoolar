@@ -4,20 +4,26 @@
 
     'summary': """ Modification des Produits """,
 
-    'description': """ """,
+    'description': """ desc""",
 
     'author': "G. Santos",
-    'website': "http://www.yziact.fr",
 
     'version': '0.1',
+
+    'category': 'Sales',
 
     # any module necessary for this one to work correctly
     'depends': [
         'product',
+        'stock'
     ],
 
     # always loaded
     'data': [
+        'views/product_template.xml',
+        'views/product_dang.xml',
+        'views/product_family.xml',
     ],
-}
 
+    # 'installable': True,
+}

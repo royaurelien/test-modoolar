@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- family view -->
+    <record id="family_tree_view" model="ir.ui.view">
+        <field name="name">Dangs Tree View</field>
+        <field name="model">product.family</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="libelle" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- actions -->
+    <record id="action_family_tree" model="ir.actions.act_window">
+        <field name="name">Famille</field>
+        <field name="res_model">product.family</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="family_tree_view" />
+    </record>
+
+    <menuitem id="menu_product_family" name="Familles Produits"
+        parent="stock.menu_stock_config_settings"
+        action="action_family_tree" />
+
+</odoo>

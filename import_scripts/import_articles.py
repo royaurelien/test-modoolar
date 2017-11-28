@@ -32,9 +32,16 @@ names_to_ints = {
 }
 
 # {{{ odoo xmlrpc stuff
-server_host = "localhost"
-server_port = 8071
-server_dbname = "domitec_db_one"
+
+# server_host = "localhost"
+server_host = "odoo-domitec.yziact.net"
+
+# server_port = 8071
+server_port = 8069
+
+# server_dbname = "domitec_db_one"
+server_dbname = "test_one"
+
 server_username = 'admin'
 server_pwd = 'X200yziact'
 
@@ -59,6 +66,7 @@ def create_record(model_name, data_dict):
     except Exception as e:
         print "erreur lors de la creation de %s" % model_name
         print "avec les valeurs : %s" % data_dict
+        import pudb; pudb.set_trace()
         raise
 
     return res
@@ -73,14 +81,20 @@ def update_record(model_name, rec_id, data_dict):
         print "erreur lors de la l'update de %s" % model_name
         print "id : %s" % id
         print "avec les valeurs : %s" % data_dict
+        import pudb; pudb.set_trace()
         raise
 
     return res
 
 def get_record_id(model_name, domain):
 
-    res = models.execute_kw(server_dbname, server_uid, server_pwd,
-        model_name, 'search', [domain])
+
+    try:
+        res = models.execute_kw(server_dbname, server_uid, server_pwd,
+            model_name, 'search', [domain])
+    except Exception as e:
+        print "le model %s n'existe pas" % model_name
+        raise
 
     return res[0] if res else False
 
@@ -142,6 +156,7 @@ class Article(object):
         self.num_onu = num_onu
         self.categ = categ
         self.design = design
+        self.pg = pg
         self.classe = classe
         self.num_danger = num_danger
         self.code_barre = code_barre
@@ -211,14 +226,25 @@ class Article(object):
 class ArticleImporter(object):
 
     def __init__(self):
-        pass
+
+        self.uom_categ_id_unit = get_record_id('product.uom.categ', [
+            ['name', 'ilike', 'Unit'],
+        ])
+
+        self.uom_categ_id_volume = get_record_id('product.uom.categ', [
+            ['name', 'ilike', 'Volume'],
+        ])
+
+        if (not self.uom_categ_id_unit) or (not self.uom_categ_id_volume):
+            raise Exception(u"Pas de catégorie d'unité Unité ou Volume")
 
     def figure_uom_id(self, uname):
 
-        if ("unit" in uname) or ("Unit" in uname) or (uname == "U"):
-            return 1
-
         unit_units = {
+            'Unit': 'Unit',
+            'unit': 'unit',
+            u'Unité': u'Unité',
+            'U': 'U',
             'KIT': 'KIT',
             '1CART': '1CART',
         }
@@ -242,10 +268,10 @@ class ArticleImporter(object):
 
         uom_categ_id = None
         if uname in unit_units:
-            uom_categ_id = 1
+            uom_categ_id = self.uom_categ_id_unit
             uname = unit_units[uname]
         elif uname in volume_units:
-            uom_categ_id = 5
+            uom_categ_id = self.uom_categ_id_volume
             uname = volume_units[uname]
 
         if not uom_categ_id:
@@ -266,14 +292,76 @@ class ArticleImporter(object):
 
         return uom_id
 
+    def figure_fam_id(self, article):
+
+        # don't create if family name is empty
+        if article.fam == "":
+            return 0
+
+        fam_id = get_record_id('product.family', [
+            ['name', '=', article.fam],
+        ])
+
+        if not fam_id:
+            fam_id = create_record(
+                'product.family', {
+                    'name': article.fam,
+                    'libelle': article.lib_fam,
+                }
+            )
+
+        return fam_id
+
+    def figure_stuff_out(self, model_name, article, name_value, data_dict):
+
+        # don't create if family name is empty
+        if name_value == "":
+            return 0
+
+        record_id = get_record_id(model_name, [
+            ['name', '=', name_value],
+        ])
+
+        if not record_id:
+            record_id = create_record(model_name, data_dict)
+
+        return record_id
+
     def import_article(self, article):
+
+        # dangerosity
+        """
+        dang_id = get_record_id('product.dang', [
+            # ['pg', '=', article.pg],
+            # ['classe', '=', article.classe],
+            # ['num_danger', '=', article.num_danger]
+            ['name', '=', article.design]
+        ])
+
+        if not dang_id:
+            dang_id = create_record(
+                'product.dang', {
+                    'pg': article.pg,
+                    'classe': article.classe,
+                    'num_danger': article.num_danger,
+                    # 'description': article.design,
+                    'name': article.design,
+                }
+            )
+
+        """
+        dang_id = self.figure_stuff_out('product.dang', article,
+        article.design, {
+            'pg': article.pg,
+            'classe': article.classe,
+            'num_danger': article.num_danger,
+            'name': article.design,
+        })
 
         # category
         categ_id = get_record_id('product.category', [
             ['name', '=', article.categ],
         ])
-
-        # import pudb; pudb.set_trace()
 
         if not categ_id:
             categ_id = create_record(
@@ -281,6 +369,23 @@ class ArticleImporter(object):
                     'name': article.categ,
                 }
             )
+
+        # family
+        fam_id = self.figure_fam_id(article)
+
+        """
+        fam_id = get_record_id('product.family', [
+            ['name', '=', article.fam],
+        ])
+
+        if not fam_id:
+            fam_id = create_record(
+                'product.family', {
+                    'name': article.fam,
+                    'libelle': article.lib_fam,
+                }
+            )
+        """
 
         # uom
         uom_id = self.figure_uom_id(article.unite)
@@ -306,6 +411,9 @@ class ArticleImporter(object):
 
             'standard_price': article.dernier_prix,
             'categ_id': categ_id,
+
+            'family': fam_id,
+            'dang': dang_id,
             # 'qty_available': article.stock_phy,
         }
 

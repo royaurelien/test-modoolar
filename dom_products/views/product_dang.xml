@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- dangs view -->
+    <record id="dangs_tree_view" model="ir.ui.view">
+        <field name="name">Dangs Tree View</field>
+        <field name="model">product.dang</field>
+        <field name="arch" type="xml">
+            <tree string="Dangs">
+                <field name="name" />
+                <field name="pg" />
+                <field name="classe" />
+                <field name="num_danger" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- actions -->
+    <record id="action_dangs_tree" model="ir.actions.act_window">
+        <field name="name">Dangerosité</field>
+        <field name="res_model">product.dang</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="dangs_tree_view" />
+    </record>
+
+    <menuitem id="menu_product_dang" name="Dangerosité Produits"
+        parent="stock.menu_stock_config_settings"
+        action="action_dangs_tree" />
+
+</odoo>
