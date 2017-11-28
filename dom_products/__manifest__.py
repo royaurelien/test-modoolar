@@ -20,6 +20,7 @@
 
     # always loaded
     'data': [
+        'security/ir.model.access.csv',
         'views/product_template.xml',
         'views/product_dang.xml',
         'views/product_family.xml',
