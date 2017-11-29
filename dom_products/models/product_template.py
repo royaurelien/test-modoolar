@@ -60,6 +60,9 @@ libelle_famille = fields.Selection([
 ], string=u'Libellé (Famille Article)')
 """
 
+import logging
+logger = logging.getLogger(__name__)
+
 class ProductTemplate(models.Model):
 
     _inherit = 'product.template'
