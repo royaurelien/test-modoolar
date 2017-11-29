@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="dom_partner_form" model="ir.ui.view">
+        <field name="name">Contacts</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet/group" position="after">
+                <group>
+                    <group>
+                        <field name="famille" />
+                        <field name="contact1" />
+                        <field name="contact2" />
+                        <field name="contact3" />
+                    </group>
+                    <group>
+                        <field name="ca_12" />
+                        <field name="plv" />
+                        <field name="presentoir" />
+                    </group>
+                </group>
+            </xpath>
+
+            <xpath expr="//notebook/page[@name='internal_notes']/field[@name='comment']" position="before">
+                <field name="taux_commission"/>
+            </xpath>
+
+            <xpath expr="//notebook/page[@name='sales_purchases']/group[@name='container_row_2']" position="inside">
+                <group>
+                    <field name="code_api" />
+                    <field name="horaires_livraison" />
+                    <field name="url_bfa" />
+                    <field name="bfa" />
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="dom_partner_account_form" model="ir.ui.view">
+        <field name="name">Contacts</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook/page[@name='accounting']/group" position="inside">
+                <group>
+                    <field name="paie_livraison"/>
+                    <field name="fac_mail"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+
+</odoo>
