@@ -25,7 +25,9 @@
             </xpath>
 
             <xpath expr="//notebook/page[@name='internal_notes']/field[@name='comment']" position="before">
-                <field name="taux_commission"/>
+                <group>
+                    <field name="taux_commission"/>
+                </group>
             </xpath>
 
             <xpath expr="//notebook/page[@name='sales_purchases']/group[@name='container_row_2']" position="inside">
