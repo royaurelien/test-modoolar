@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="dom_transporteur_form" model="ir.ui.view">
+        <field name="name">Transporteur</field>
+        <field name="model">dom.transporteur</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>"
+</odoo>

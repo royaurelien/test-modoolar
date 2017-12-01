@@ -9,6 +9,7 @@ class ResPartner(models.Model):
     contact1 = fields.Many2one(comodel_name='res.partner', string='Contact 1')
     contact2 = fields.Many2one(comodel_name='res.partner', string='Contact 2')
     contact3 = fields.Many2one(comodel_name='res.partner', string='Contact 3')
+    transporteur = fields.Many2one(comodel_name='dom.transporteur', string='Transporteur')
 
     #### TEXT ####
     code_api = fields.Char(string='Code API')
@@ -26,6 +27,15 @@ class ResPartner(models.Model):
     bfa = fields.Boolean(string="BFA")
     plv = fields.Boolean(string=u"Publicité sur lieu de vente")
     presentoir = fields.Boolean(string=u"Présentoir")
+
+
+    #### SELECTION ####
+    freq_contact = fields.Selection([
+        ('1','1 mois'),
+        ('3','3 mois'),
+        ('6','6 mois'),
+        ('12','12 mois')
+    ], string=u"Fréquence de contact")
 
     #### ONCHANGE ####
     @api.onchange('famille')

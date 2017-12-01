@@ -24,6 +24,8 @@
         'security/ir.model.access.csv',
 
         'views/res_partner.xml',
+        'views/transporteur.xml',
+        'views/famille_client.xml',
     ],
 
     # 'installable': True,
