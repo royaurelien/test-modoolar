@@ -105,33 +105,32 @@ for row in csvreader:
     print 'MUUUUUUU', existe
     parent_id = recherche_parent(parent, False)
 
-    if existe:
-        i += 1
-        continue
-
-    tot += 1
-
     partner_dict = {
-            'company_type': company_type,
-            'trust': trust,
-            'parent_id': parent_id,
-            'customer ': customer,
-            'supplier ': supplier,
-            'is_company': is_company,
-            'name': name,
-            'parent': parent_id,
-            'city': city,
-            'country': country,
-            'zip': zip,
-            'phone': phone,
-            'mobile': mobile,
-            'email': email,
-            'comment': comment,
-        }
+        'company_type': company_type,
+        'trust': trust,
+        'parent_id': parent_id,
+        'customer ': customer,
+        'supplier ': supplier,
+        'is_company': is_company,
+        'title': title,
+        'name': name,
+        'function': function,
+        'mobile': mobile,
+        'phone': phone,
+        'street': street,
+        'city': city,
+        'zip': zip,
+        'country': country,
+        'email': email,
+    }
 
-    compte = sock.execute(dbname, uid, pwd, 'res.partner', 'create', partner_dict)
+    if existe:
+        compte = sock.execute(dbname, uid, pwd, 'res.partner', 'write',[existe], partner_dict)
+        tot += 1
 
-
+    else:
+        compte = sock.execute(dbname, uid, pwd, 'res.partner', 'create', partner_dict)
+        tot += 1
 
     i += 1
 
