@@ -354,13 +354,13 @@
 
                 </div>
 
-                <!-- debug row -->
+                <!-- debug row
                 <div class="row">
                     <p> facture : <span t-if="facture"> <t t-esc="facture" /> </span> </p>
                     <p> devis : <span t-if="devis"> <t t-esc="devis" /> </span> </p>
                     <p> bdc : <span t-if="bdc"> <t t-esc="bdc" /> </span> </p>
                     <p> bl : <span t-if="bl"> <t t-esc="bl" /> </span> </p>
-                </div>
+                </div> -->
 
                 <!-- bl warning row -->
                 <div t-if="bl" class="row">
