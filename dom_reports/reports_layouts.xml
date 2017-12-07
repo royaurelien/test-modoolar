@@ -1,0 +1,442 @@
+<odoo>
+
+    <!-- <template id="assets_backend" name="yz_widgets_assets" inherit_id="web.assets_backend"> -->
+    <template id="assets_backend" name="yz_widgets_assets" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/dom_reports/static/src/css/reports.css"/>
+        </xpath>
+    </template>
+
+    <!-- layout -->
+    <template id="dom_reports.external_layout_background">
+        <div class="header">
+
+            <!--
+            <style>
+                .header-table {
+
+                border-radius: 10px;
+                -moz-border-radius: 10px;
+                -webkit-border-radius: 10px;
+                border-color: 1px solid black;
+
+                table-layout: fixed;
+                word-break: break;
+                width: 100%;
+                }
+
+                .header-table td, th {
+                border: 1px solid black;
+
+                border-radius: 10px;
+                -moz-border-radius: 10px;
+                -webkit-border-radius: 10px;
+
+                padding: 10px;
+                text-align: center;
+                }
+
+
+                    /*
+                    .container {
+                        margin: 0; padding: 0;
+                    }*/
+
+                    .rounded-table {
+
+                        border-radius: 10px;
+                        -moz-border-radius: 10px;
+                        -webkit-border-radius: 10px;
+                        border-color: 1px solid black;
+
+                        width: 100%;
+                    }
+
+                    .rounded-table td, th {
+                        border: 1px solid black;
+                        /* border-right: 1px solid black; */
+
+                        border-radius: 10px;
+                        -moz-border-radius: 10px;
+                        -webkit-border-radius: 10px;
+
+                        padding: 10px;
+                        text-align: center;
+                    }
+
+                    .cadre-titre {
+                        // display: flex;
+                        // flex-direction: column;
+                        border: 1px solid black;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100%;
+                    }
+
+                    .cadre-titre h3 {
+                        font-size: 100%;
+                        border-bottom: 1px solid black;
+                        background-color: cyan;
+                        display: block;
+                        width: 100%;
+                        margin: 0px;
+                        padding: 10px;
+                        text-align: center;
+                    }
+
+                    .cadre-titre h3:nth-child(2) {
+                        border-bottom: none;
+                    }
+
+                    .cadre-titre p {
+                        display: flex;
+                        flex-direction: column;
+                        vertical-align: middle;
+                        border-bottom: none;
+                        align-items: center;
+                        align-content: center;
+                        justify-content: center;
+                        margin: 10px;
+                    }
+
+                    .lines-table {
+
+                        border: 1px solid black;
+                        border-bottom: 1px solid black;
+                        border-radius: 10px;
+                        -moz-border-radius: 10px;
+                        -webkit-border-radius: 10px;
+                        border-color: 1px solid black;
+
+                        width: 100%;
+                        margin-bottom: 15px;
+                    }
+
+                    .lines-table td, th {
+                        /* border: 1px solid black; */
+                        border-right: 1px solid black;
+
+                        border-radius: 10px;
+                        -moz-border-radius: 10px;
+                        -webkit-border-radius: 10px;
+
+                        padding: 10px;
+                        text-align: center;
+                    }
+
+                    .lines-table th {
+                        white-space: nowrap;
+                    }
+
+                    .lines-table td {
+                        padding-top: 3px;
+                        padding-bottom: 3px;
+                    }
+
+                    .vatnums-table th {
+                        font-weight: normal;
+                    }
+
+            </style>
+        -->
+
+            <t t-if="not bl">
+                <div class="row">
+                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" class="pull-left" width="410"/>
+                </div>
+            </t>
+            <t t-else="">
+            <!-- ghetto vertical spacing : nbsps or spacer div
+                more than 50 px we'll HAVE to use another paperformat though,
+                cause we don't want to carry spacer divs in the body of the reports, that's ugly -->
+            <!--
+                <p> &amp;nbsp; </p>
+                <p> &amp;nbsp; </p>
+                <p> &amp;nbsp; </p>
+            -->
+                <div class="spacer-div"></div>
+            </t>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="table-responsive">
+                        <table class="header-table">
+                            <thead>
+                                <tr>
+                                    <th>date</th>
+                                    <th>client</th>
+                                    <th>page</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span t-if="devis"> <span t-field="doc.date_order" /> </span>
+                                        <span t-elif="facture"> <span t-field="doc.date_invoice" /> </span>
+                                        <span t-elif="bdc"> <span t-field="doc.confirmation_date" /> </span>
+                                        <span t-elif="bl" t-field="doc.scheduled_date" />
+                                        <!-- <span t-else=""> <span t-field="doc.name" /> </span> -->
+                                    </td>
+                                    <td> <span t-field="doc.partner_id.ref" /> </td>
+                                    <td> <span class="page" /> / <span class="topage" /> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-xs-6">
+                    <table class="header-table">
+                        <tr>
+                            <td>
+                                <span t-if="devis"> Devis </span>
+                                <span t-elif="bdc"> Bon de commande </span>
+                                <span t-elif="facture"> Facture </span>
+                                <span t-elif="bl"> Bon de livraison </span>
+                                N° :
+                                <t t-if="devis or bdc or bl">
+                                    <span t-esc="doc.name" />
+                                </t>
+                                <t t-elif="facture">
+                                    <t t-if="doc.state in ['draft']">
+                                        facture en brouillon
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="doc.number" />
+                                    </t>
+                                </t>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+        </div> <!-- end of header div -->
+
+        <div class="article">
+            <t t-raw="0"/>
+        </div>
+
+        <div t-if="not bl" class="footer">
+            <div class="text-center" style="font-size:12px;">
+                    <br/>
+                    <!-- address -->
+                    <!-- 92 Impasse du Terraillet 73190 ST BALDOPH - Tél : +33 4 79 25 04 80 - Fax : +334 79 25 07 10 - info@domitec.net - www.domitec.net -->
+                    <!-- SARL au capital de 200 200 - N° Siret 42995752500042 - Code APE 4619B - N° TVA Intracom. FR 52 429 957 525 - RCS CHAMBERY 429 957 525 -->
+                    <span>
+                    <t t-if="company.street"> <span t-field="company.street" /> </t>
+                    <t t-if="company.zip"> <span t-field="company.zip" /> </t>
+                    <t t-if="company.city"> <span t-field="company.city" /> </t>
+                    -
+                    </span>
+
+                    <t t-if="company.phone"> <span> Tél : <span t-field="company.phone" /> - </span> </t>
+
+                    <!-- odoo ont supprimé le champ fax de res.company... parce que le fax en 2017 c'est trop has been tavu lol -->
+                    <span> Fax : +334 79 25 07 10 - </span>
+
+                    <t t-if="company.email"> <span> <span t-field="company.email" /> - </span> </t>
+                    <t t-if="company.website"> <span> <span t-field="company.website" /> </span> </t>
+
+                    <br/>
+
+                    <t t-if="company.report_footer"> <span> <span t-field="company.report_footer" /> - </span> </t>
+                    <t t-if="company.siret"> <span> N° Siret <span t-field="company.siret" /> - </span> </t>
+                    <t t-if="company.ape"> <span> Code APE <span t-field="company.ape" /> - </span> </t>
+                    <t t-if="company.vat"> <span> N° TVA Intracom. <span t-field="company.vat" /> - </span> </t>
+                    <span> RCS CHAMBERY 429 957 525 </span>
+                    <!--
+                    <li t-if="company.email"><i class="fa fa-at"/> <span t-field="company.email"/></li>
+                    <li t-if="company.website"><i class="fa fa-globe"/> <span t-field="company.website"/></li>
+                    <li t-if="company.vat"><i class="fa fa-building-o"/><t t-esc="company.country_id.vat_label or 'TIN'"/>: <span t-field="company.vat"/></li>
+                    -->
+
+                    <!-- images part -->
+                    <div class="row">
+                        <div class="col-xs-3 footer_logo">
+                            <img src="/dom_reports/static/imgs/lithofin_logo.png" />
+                        </div>
+                        <div class="col-xs-3 footer_logo">
+                            <img src="/dom_reports/static/imgs/propad_logo.png" />
+                        </div>
+                        <div class="col-xs-3 footer_logo">
+                            <img src="/dom_reports/static/imgs/procover_logo.png" />
+                        </div>
+                        <div class="col-xs-3 footer_logo">
+                            <img src="/dom_reports/static/imgs/ottochemie_logo.png" />
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </template>
+
+
+
+    <template id="dom_reports.external_layout">
+
+        <!-- in case of multicompany -->
+        <t t-if="not o and doc">
+            <t t-set="o" t-value="doc"/>
+        </t>
+
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id.sudo()"/>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"/>
+        </t>
+
+        <t t-call="dom_reports.external_layout_background">
+            <t t-raw="0"/>
+        </t>
+
+    </template>
+
+    <!-- sale order report
+    attachment_use, etc
+    1 seule action pour devis & bon de commande
+    -->
+    <report
+        id="dom_sale_order_report"
+        model="sale.order"
+        string="Dom Devis / Bon de commande"
+        name="dom_reports.dom_report_saleorder"
+        file="dom_reports.dom_report_saleorder"
+        report_type="qweb-pdf"
+        paperformat="dom_reports.paperformat_dom_a4"
+        />
+
+    <record id="dom_reports.dom_sale_order_report" model="ir.actions.report">
+
+        <field name="paperformat_id" ref="dom_reports.paperformat_dom_a4"/>
+
+    </record>
+
+    <!-- other templates -->
+
+    <template id="dom_reports.upper_part">
+
+                <!-- pub / address -->
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-xs-3" style="padding: 20px;">
+                        <table class="rounded-table">
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:left; border:none;">
+                                        IMAGE PROMOTIONNELLE
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-3">
+                        <p style="text-align: left; padding: 20px;">
+                            MESSAGE PROMOTIONNEL
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <table class="rounded-table">
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:left; border:none;">
+                                        <span t-field="doc.partner_id" /> <br/>
+                                        <t t-if="doc.partner_id.street"> <span> <span t-field="doc.partner_id.street" /> </span> </t> <br/>
+                                        <t t-if="doc.partner_id.street2"> <span> <span t-field="doc.partner_id.street2" /> </span> </t> <br/>
+                                        <t t-if="doc.partner_id.city"> <span> <span t-field="doc.partner_id.city" /> </span> </t>
+                                        <t t-if="doc.partner_id.zip"> <span> <span t-field="doc.partner_id.zip" /> </span> </t>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- debug row
+                <div class="row">
+                    <p> facture : <span t-if="facture"> <t t-esc="facture" /> </span> </p>
+                    <p> devis : <span t-if="devis"> <t t-esc="devis" /> </span> </p>
+                    <p> bdc : <span t-if="bdc"> <t t-esc="bdc" /> </span> </p>
+                    <p> bl : <span t-if="bl"> <t t-esc="bl" /> </span> </p>
+                </div> -->
+
+                <!-- bl warning row -->
+                <div t-if="bl" class="row">
+                    <div class="col-xs-12">
+                        <p class="bl-warning">** Attention ! Merci de refuser toute marchandise abimée
+                            et d'émettre les réserves sur le bordereau de transport. ** </p>
+                    </div>
+                </div>
+
+                <!-- mode de reglement / echeance / n/id cee -->
+                <div class="row">
+                    <div class="col-xs-4">
+                        <table class="rounded-table">
+                            <thead>
+                                <tr>
+                                    <th> MODE DE REGLEMENT </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span t-if="not bl" t-field="doc.payment_term_id" />
+                                        <span t-elif="bl" t-field="doc.partner_id.property_payment_term_id" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-4" id="durp">
+                        <div class="table-responsive">
+                            <table class="rounded-table">
+                                <thead>
+                                    <tr>
+                                        <th t-if="bl"> Départ prévu le </th>
+                                        <th t-elif="bdc"> CONFIRMATION </th>
+                                        <th t-else=""> ECHEANCE </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <!-- <td> <span t-field="doc.date_order" /> </td> -->
+                                            <!-- <p> echeance / depart val </p> -->
+                                            <span t-if="bl" t-esc="doc.scheduled_date" />
+                                            <span t-elif="devis"> <span t-esc="doc.validity_date" /> </span>
+                                            <span t-elif="bdc"> <span t-esc="doc.confirmation_date" /> </span>
+                                            <span t-elif="facture"> <span t-esc="doc.date_due" /> </span>
+                                            <span t-else=""> date de départ val </span>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="table-responsive">
+                            <table class="rounded-table vatnums-table">
+                                <thead>
+                                    <tr>
+                                        <th> N/Id CEE :
+                                            <span t-field="doc.company_id.vat" />
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> V/Id CEE :
+                                            <span t-field="doc.partner_id.vat" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+    </template>
+
+</odoo>
