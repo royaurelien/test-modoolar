@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="dom_tarif_sale_form" model="ir.ui.view">
+        <field name="name">Tarif Domitec Sale</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref=""/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="remise" options="{'no_create':True}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='amount_untaxed']" position="before">
+                <field name="amount_ht_net"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
