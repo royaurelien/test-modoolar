@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- LEAD -->
+    <record id="crm_crm_lead_inherit" model="ir.ui.view">
+        <field name="name">Piste</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="string">Intérêts</attribute>
+            </xpath>
+
+            <xpath expr="//sheet/group" position="after">
+                <group>
+                    <group>
+                        <field name='effectif' attrs="{'invisible':[('type','=', 'opportunity')]}"/>
+                        <field name='annee_effectif' attrs="{'invisible':[('type','=', 'opportunity')]}"/>
+                        <field name='chiffre_affaire' attrs="{'invisible':[('type','=', 'opportunity')]}"/>
+                        <field name='annee_chiffre_affaire' attrs="{'invisible':[('type','=', 'opportunity')]}"/>
+
+                    </group>
+                    <group>
+                        <field name='service_informatique' attrs="{'invisible':[('type','=', 'opportunity')]}"/>
+                        <field name='ape_id' attrs="{'invisible':[('type','=', 'opportunity')]}"/>
+                        <field name="periode"/>
+                        <field name="date_neglected"/>
+
+                    </group>
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Commercial</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="on_change">1</attribute>
+            </xpath>
+
+            <xpath expr="//group[@name='categorization']" position="attributes">
+                <attribute name="groups"></attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='referred']" position="attributes">
+                <attribute name="groups"></attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='campaign_id']" position="attributes">
+                <attribute name="groups"></attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='medium_id']" position="attributes">
+                <attribute name="groups"></attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='source_id']" position="attributes">
+                <attribute name="groups"></attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- OPPOR -->
+    <record id="crm_crm_oppor_inherit" model="ir.ui.view">
+        <field name="name">Opportunité</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Commercial</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="attrs">{'required':[('hidden_stage', '=','opp.detected')]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='source_id']" position="attributes">
+                <attribute name="attrs">{'required':[('hidden_stage', '=','opp.detected')]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='planned_revenue']" position="attributes">
+                <attribute name="attrs">{'required':[('hidden_stage', '=','opp.qualified')]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='date_deadline']" position="attributes">
+                <attribute name="attrs">{'required':[('hidden_stage', '=','opp.qualified')]}</attribute>
+            </xpath>
+
+            <xpath expr="//div[@class='o_row'][1]" position="after">
+                <div>
+                    <label for="revenu_mensuel"/>
+                    <field name="revenu_mensuel" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                    <span>€</span>
+                </div>
+            </xpath>
+
+            <xpath expr="//h2/div[2]/div[@class='o_row']" position="after">
+                <div>
+                    <label for="marge_estimee" attrs="{'required':[('hidden_stage', '=','opp.qualified')]}"/>
+                    <field name="marge_estimee" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                    <span>€</span>
+                </div>
+            </xpath>
+
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name='dernier_devis' attrs="{'required':[('hidden_stage', '=','offer.send')]}"/>
+                <field name="hidden_stage" invisible="1"/>
+                <field name="type_rel" attrs="{'required':[('hidden_stage', '=','opp.detected')]}"/>
+                <field name="role_interlocuteur" attrs="{'required':[('hidden_stage', '=','opp.qualified')]}"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- SEARCH -->
+    <!--<record id="crm_crm_lead_search_ihnerit" model="ir.ui.view">
+        <field name="name">Crm search</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='country_id']" position="after">
+                <field name="periode"/>
+
+
+            </xpath>
+
+        </field>
+    </record>-->
+
+    <record id="crm_crm_oppor_search_inherit" model="ir.ui.view">
+        <field name="name">Crm search</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//filter[@name='activities_today']" position="after">
+                <filter string="7 derniers jours (calendaire)" name="seven_days" domain="[('create_date', '&gt;', (context_today()-relativedelta(days=7)).strftime('%Y-%m-%d'))]"/>
+                <filter string="30 derniers jours (calendaire)" name="thrity_days" domain="[('create_date', '&gt;', (context_today()-relativedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="crm_yzi.menu_crm" name="CRM" web_icon="sale,static/description/icon.png" sequence="5"
+              action="sales_team.crm_team_salesteams_act" groups="crm.group_use_lead"/>
+    <menuitem id="crm_yzi_tdb" name="Tableau de bord" parent="crm_yzi.menu_crm" sequence="1"
+              action="sales_team.crm_team_salesteams_act" groups="crm.group_use_lead"/>
+    <menuitem id="crm.menu_crm_leads" name="Pistes" parent="crm_yzi.menu_crm" sequence="2"
+              action="crm.crm_lead_all_leads" groups="crm.group_use_lead"/>
+    <menuitem id="crm.menu_crm_opportunities_crm" action="crm.action_your_pipeline" name="Opportunités" parent="crm_yzi.menu_crm" sequence="5"/>
+    <menuitem id="crm_menu_sale_quotations_crm" name="Devis"
+              action="sale.action_quotations" parent="crm_yzi.menu_crm"
+              sequence="6"/>
+    <menuitem id="crm_menu_action_com" parent="crm_yzi.menu_crm" name="Actions Commerciales" sequence="7" action="module_action.action_list_actions" groups="base.group_user" />
+    <menuitem id="crm_mail_menu_calendar" name="Calendrier"  sequence="99" action="calendar.action_calendar_event" parent="crm_yzi.menu_crm" groups="base.group_user"/>
+
+
+    <menuitem id="yzi_crm_menu_sale_report" name="Rapports" parent="crm_yzi.menu_crm" sequence="99" groups="sales_team.group_sale_manager"/>
+    <menuitem id="yzi_crm_opportunity_report_menu" name="Pipeline"
+              parent="yzi_crm_menu_sale_report" action="crm.crm_opportunity_report_action" sequence="5"/>
+    <menuitem id="yzi_crm_opportunity_report_menu_lead" name="Piste"
+              parent="yzi_crm_menu_sale_report" groups="crm.group_use_lead" action="crm.crm_opportunity_report_action_lead" sequence="6"/>
+    <!--<menuitem id="yzi_crm_phonecall_report_menu" name="Phonecalls"
+              parent="yzi_crm_menu_sale_report" groups="sales_team.group_sale_manager" action="crm_voip.action_report_crm_phonecall" sequence="15"/>-->
+
+
+    <!--<menuitem id="crm.crm_lead_menu_activities" groups="base.group_no_one"/>
+    <menuitem id="crm.crm_activity_report_menu" groups="base.group_no_one"/>-->
+
+    <!-- CONFIGURATION -->
+    <!-- <record id="crm_yzi_configuration" model="ir.ui.view">
+         <field name="name">Crm Yzi configuration</field>
+         <field name="model">crm.config.settings</field>
+         <field name="arch" type="xml">
+             <form string="Your configuration" class="oe_form_configuration">
+                 <header>
+                     <button string="Save" type="object"
+                             name="execute" class="oe_highlight"/>
+                     or
+                     <button string="Cancel" type="object"
+                             name="cancel" class="oe_link"/>
+                 </header>
+                 <group string="Company">
+                     <div>
+                         <div>
+                             <field name="default_periode"/>
+                         </div>
+                         <div>
+                             <field name="default_date_neglected"/>
+                         </div>
+                     </div>
+                 </group>
+             </form>
+         </field>
+     </record>
+
+
+     <record id="crm_yzi_settings_action" model="ir.actions.act_window">
+         <field name="name">CRM YZI</field>
+         <field name="res_model">crm.config.settings</field>
+         <field name="view_id" ref="crm_yzi_configuration"/>
+         <field name="view_mode">form</field>
+         <field name="target">inline</field>
+     </record>
+
+     <menuitem id="crm_yzi_settings_menu" name="Configuration CRM"
+     parent="base.menu_config" action="crm_yzi_settings_action"/>
+
+ -->
+
+
+</odoo>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- FORM -->
+    <record id="crm_res_partner_inherit" model="ir.ui.view">
+        <field name="name">Partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet/group" position="after">
+                <group>
+                    <group>
+                        <field name='effectif' attrs="{'invisible': [('is_company','=', False)]}"/>
+                        <field name='annee_effectif' attrs="{'invisible': [('is_company','=', False)]}"/>
+
+                        <field name='chiffre_affaire' attrs="{'invisible': [('is_company','=', False)]}"/>
+                        <field name='annee_chiffre_affaire' attrs="{'invisible': [('is_company','=', False)]}"/>
+                    </group>
+                    <group>
+                        <field name='dernier_devis' attrs="{'invisible':[('is_company','=', False)]}"/>
+                        <field name='type_rel' attrs="{'invisible': [('is_company','=', False)]}"/>
+                        <field name='service_informatique' attrs="{'invisible': [('is_company','=', False)]}"/>
+                        <field name='tag_ids' attrs="{'invisible': [('is_company','=', False)]}" widget="many2many_tags"/>
+                    </group>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!--SEARCH-->
+    <record id="crm_res_partner_search_inherit" model="ir.ui.view">
+        <field name="name">Partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//filter[@name='customer']" position="after">
+                <filter string="Clients négligés" name="neglected customer" domain="['|',
+                ('last_action', '&lt;', (context_today()-relativedelta(days=60)).strftime('%Y-%m-%d')),('dernier_devis', '&lt;', (context_today()-relativedelta(days=60)).strftime('%Y-%m-%d'))]"/>
+                <filter string="Prospects négligés" name="neglected prospect" domain="[('last_action', '&lt;', (context_today()-relativedelta(days=60)).strftime('%Y-%m-%d'))]"/>
+
+            </xpath>
+        </field>
+    </record>
+
+    <!--Actions des menus-->
+    <record id="crm_action_partner_form" model="ir.actions.act_window">
+        <field name="name">Comptes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">
+            {
+            "search_default_type_company":1
+            }
+        </field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+            </p><p>
+            Odoo helps you easily track all activities related to
+            a customer: discussions, history of business opportunities,
+            documents, etc.
+        </p>
+        </field>
+    </record>
+    <record id="crm_action_partner_form_customer" model="ir.actions.act_window">
+        <field name="name">Clients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">
+            {
+            "search_default_customer":1,
+            "search_default_type_company":1
+            }
+        </field>
+        <field name="domain">[u'|', [u'type_rel', u'=', u'client'], [u'type_rel', u'=', u'client_old']]</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+            </p><p>
+            Odoo helps you easily track all activities related to
+            a customer: discussions, history of business opportunities,
+            documents, etc.
+        </p>
+        </field>
+    </record>
+    <record id="crm_action_partner_form_prospect" model="ir.actions.act_window">
+        <field name="name">Prospects</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">
+            {
+            "search_default_customer":1,
+            "search_default_type_company":1
+            }
+        </field>
+        <field name="domain">[[u'type_rel', u'=', u'prospect']]</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+            </p><p>
+            Odoo helps you easily track all activities related to
+            a customer: discussions, history of business opportunities,
+            documents, etc.
+        </p>
+        </field>
+    </record>
+    <record id="crm_action_partner_form_partner" model="ir.actions.act_window">
+        <field name="name">Partenaires</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">
+            {
+            "search_default_customer":1,
+            "search_default_type_company":1,
+            "search_default_type_rel":"partner"
+            }
+        </field>
+        <field name="domain">[[u'type_rel', u'=', u'partner']]</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+            </p><p>
+            Odoo helps you easily track all activities related to
+            a customer: discussions, history of business opportunities,
+            documents, etc.
+        </p>
+        </field>
+    </record>
+    <record id="crm_action_partner_form_concurrent" model="ir.actions.act_window">
+        <field name="name">Concurrents</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">
+            {
+            "search_default_customer":1,
+            "search_default_type_company":1,
+            "search_default_type_rel":"concurrent"
+            }
+        </field>
+        <field name="domain">[[u'type_rel', u'=', u'concurrent']]</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+            </p><p>
+            Odoo helps you easily track all activities related to
+            a customer: discussions, history of business opportunities,
+            documents, etc.
+        </p>
+        </field>
+    </record>
+    <record id="crm_action_partner_form_contact" model="ir.actions.act_window">
+        <field name="name">Contacts</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{"search_default_customer":1, "search_default_type_person":1}</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+            </p><p>
+            Odoo helps you easily track all activities related to
+            a customer: discussions, history of business opportunities,
+            documents, etc.
+        </p>
+        </field>
+    </record>
+
+    <!-- Menu principaux-->
+    <menuitem id="menu_compte" name="Comptes" parent="crm_yzi.menu_crm" sequence="3"/>
+    <menuitem id="menu_contact" name="Contacts" parent="crm_yzi.menu_crm" action="crm_action_partner_form_contact" sequence="4"/>
+
+    <!--Sous Menu compte-->
+    <menuitem id="sous_menu_prospect" name="Prospects" parent="crm_yzi.menu_compte" action="crm_action_partner_form_prospect" sequence="1"/>
+    <menuitem id="sous_menu_customer" name="Clients" parent="crm_yzi.menu_compte" action="crm_action_partner_form_customer" sequence="2"/>
+    <menuitem id="sous_menu_partnaires" name="Partenaires" parent="crm_yzi.menu_compte" action="crm_action_partner_form_partner" sequence="3"/>
+    <menuitem id="sous_menu_concurrents" name="Concurrents" parent="crm_yzi.menu_compte" action="crm_action_partner_form_concurrent" sequence="4"/>
+    <menuitem id="sous_menu_compte" name="Tous les Comptes" parent="crm_yzi.menu_compte" action="crm_action_partner_form" sequence="5"/>
+
+
+
+</odoo>

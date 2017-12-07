@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="yzi_crm_stage_inherit" model="ir.ui.view">
+        <field name="name">Stage CRM Can</field>
+        <field name="model">crm.stage</field>
+        <field name="inherit_id" ref="crm.crm_stage_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form" position="replace">
+                <form string="Stage">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <!--<field name="type"/>-->
+                                <field name="fold"/>
+                            </group>
+                            <group>
+                                <field name="on_change"/>
+                                <field name="probability" attrs="{'invisible': [('on_change', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <separator string="Requirements"/>
+                        <field name="requirements" nolabel="1"/>
+                        <!--<field name="team_ids" invisible="1"/>-->
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </xpath>
+
+            <xpath expr="//field[@name='fold']" position="after">
+                <field name="jalon" groups="base.group_no_one"/>
+                <field name="hidden_name" groups="base.group_no_one"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
