@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 {
-    'name': "Domitec Tarif",
+    'name': "Domitec Remise",
 
     'summary': """ Modification des Tarifs """,
 

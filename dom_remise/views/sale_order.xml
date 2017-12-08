@@ -2,7 +2,7 @@
 <odoo>
 
     <!-- Inherit Form View to Modify it -->
-    <record id="dom_tarif_sale_form" model="ir.ui.view">
+    <record id="dom_remise_sale_form" model="ir.ui.view">
         <field name="name">Tarif Domitec Sale</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref=""/>
