@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 
 from odoo import models, api, fields
+from odoo.tools import float_is_zero, float_compare, DEFAULT_SERVER_DATETIME_FORMAT
+from odoo.addons import decimal_precision as dp
 
 class SaleTarif(models.Model):
     _inherit = 'sale.order'
@@ -8,10 +10,10 @@ class SaleTarif(models.Model):
     """system de remise globale en pied de page"""
 
     #### RELATIONEL #####
-    remise = fields.Many2one(comodel='dom.remise', string='Remise (%)')
+    remise = fields.Many2one(comodel_name='dom.remise', string='Remise (%)')
 
     #### NUMERIQUE #####
-    amount_ht_net = fields.Float('Total HT net', compute='_amount_all',store=True, track_visibility='onchange')
+    amount_ht_net = fields.Monetary('Total HT net', compute='_compute_remise_amount',store=True, track_visibility='onchange')
 
     @api.multi
     @api.onchange('partner_id')
@@ -44,11 +46,11 @@ class SaleTarif(models.Model):
             amount_tax = self.amount_tax - self.amount_tax * (remise.amount / 100)
             amount_total = self.amount_total - self.amount_total * (remise.amount / 100)
 
-            vals = {
-                'amount_untaxed': self.currency_id.round(amount_untaxed),
-                'amount_tax': self.currency_id.round(amount_tax),
-                'amount_total': self.currency_id.round(amount_total),
-            }
+            vals['amount_untaxed']= self.pricelist_id.currency_id.round(amount_untaxed)
+            vals['amount_tax'] = self.pricelist_id.currency_id.round(amount_tax)
+            vals['amount_total'] = self.pricelist_id.currency_id.round(amount_total)
+
+        print(vals)
 
         self.update(vals)
 

@@ -6,7 +6,7 @@ class InvoiceTarif(models.Model):
     _inherit = 'account.invoice'
 
     #### RELATIONEL #####
-    remise = fields.Many2one(comodel='dom.remise', string='Remise (%)')
+    remise = fields.Many2one(comodel_name='dom.remise', string='Remise (%)')
     
     #### NUMERIQUE #####
     amount_ht_net = fields.Float('Total HT net', compute='_compute_amount',store=True, track_visibility='onchange')
@@ -17,7 +17,7 @@ class InvoiceTarif(models.Model):
     def _compute_amount(self):
         for invoice in self:
             super(InvoiceTarif, invoice)._compute_amount()
-            invoice._compute_remise_amount(invoice)
+            invoice._compute_remise_amount()
 
     def _compute_remise_amount(self):
         vals = {}
@@ -29,11 +29,11 @@ class InvoiceTarif(models.Model):
             amount_tax = self.amount_tax - self.amount_tax * (remise.amount / 100)
             amount_total = self.amount_total - self.amount_total * (remise.amount / 100)
 
-            vals = {
-                'amount_untaxed': self.currency_id.round(amount_untaxed),
-                'amount_tax': self.currency_id.round(amount_tax),
-                'amount_total': self.currency_id.round(amount_total),
-            }
+
+            vals['amount_untaxed'] = self.currency_id.round(amount_untaxed)
+            vals['amount_tax'] = self.currency_id.round(amount_tax)
+            vals['amount_total'] = self.currency_id.round(amount_total)
+
 
         self.update(vals)
 
