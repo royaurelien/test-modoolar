@@ -19,10 +19,11 @@
     # any module necessary for this one to work correctly
     'depends': [
         'base',
+        'sale',
         'crm',
         'l10n_eu_nace',
         'l10n_fr_naf_ape',
-        'sale',
+        'l10n_fr_state',
         'module_action',
         # 'crm_voip',
     ],
