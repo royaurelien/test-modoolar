@@ -17,31 +17,50 @@ class InvoiceTarif(models.Model):
     def _compute_amount(self):
         for invoice in self:
             super(InvoiceTarif, invoice)._compute_amount()
-            invoice._compute_remise_amount()
+            amount_ht_net = 0
+            for line in invoice.invoice_line_ids:
+                amount_ht_net += line.price_subtotal_net
 
-    def _compute_remise_amount(self):
-        vals = {}
-        vals['amount_ht_net'] = self.amount_untaxed
-        remise = self.remise
-
-        if remise:
-            amount_untaxed = self.amount_untaxed - self.amount_untaxed * (remise.amount / 100)
-            amount_tax = self.amount_tax - self.amount_tax * (remise.amount / 100)
-            amount_total = self.amount_total - self.amount_total * (remise.amount / 100)
+            invoice.amount_ht_net = amount_ht_net
 
 
-            vals['amount_untaxed'] = self.currency_id.round(amount_untaxed)
-            vals['amount_tax'] = self.currency_id.round(amount_tax)
-            vals['amount_total'] = self.currency_id.round(amount_total)
+class InvoiceTarifLine(models.Model):
+    _inherit = 'account.invoice.line'
 
+    price_subtotal_net = fields.Monetary(string='Sous-total net', compute='_compute_price', store=True)
 
-        self.update(vals)
+    @api.one
+    @api.depends('price_unit', 'discount', 'invoice_line_tax_ids', 'quantity',
+                 'product_id', 'invoice_id.partner_id', 'invoice_id.currency_id', 'invoice_id.company_id',
+                 'invoice_id.date_invoice')
+    def _compute_price(self):
+        super(InvoiceTarifLine, self)._compute_price()
+        for line in self :
+            currency = line.invoice_id and line.invoice_id.currency_id or None
+            vals = {}
+            if line.invoice_id.remise:
+                remise = line.invoice_id.remise.amount
 
-    @api.onchange('partner_id', 'company_id')
-    def _onchange_partner_id(self):
-        res = super(InvoiceTarif, self)._onchange_partner_id()
+                price_subtotal_net = line.price_subtotal
+                price_subtotal = line.price_subtotal - line.price_subtotal * (remise / 100)
 
-        if self.partner_id:
-            self.remise = self.partner_id.remise and self.partner_id.remise.id or False
+                price_total = line.price_total - line.price_total * (remise / 100)
 
-        return res
+                vals['price_subtotal_net'] = price_subtotal_net
+                vals['price_subtotal'] = price_subtotal
+                vals['price_total'] = price_total
+
+            line.update(vals)
+
+class InvoiceTarifTax(models.Model):
+    _inherit = 'account.invoice.tax'
+
+    @api.depends('amount', 'amount_rounding')
+    def _compute_amount_total(self):
+        super(InvoiceTarifTax, self)._compute_amount_total()
+
+        for tax_line in self:
+            if tax_line.invoice_id.remise:
+                remise = tax_line.invoice_id.remise.amount
+
+                tax_line.amount_total = tax_line.amount_total - tax_line.amount_total * (remise / 100)
