@@ -32,6 +32,9 @@
 
         'bl/bl_action.xml',
         'bl/bl_report.xml',
+
+        # marketing rapports
+        'views/res_config_settings_view.xml',
     ],
 
     # 'installable': True,
