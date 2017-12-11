@@ -20,12 +20,9 @@
                             <th class="text-right">CONDT</th>
                             <th class="text-right">P.U HT</th>
                             <th t-if="display_discount"
-                                class="text-right"
-                                groups="sale.group_discount_per_so_line">% REM</th>
-                            <th class="text-right"
-                                groups="sale.group_show_price_subtotal">P.U HT NET</th>
-                            <th class="text-right price_tax_included"
-                                groups="sale.group_show_price_total">MONTANT HT</th>
+                                class="text-right">% REM</th>
+                            <th class="text-right">P.U HT NET</th>
+                            <th class="text-right" >MONTANT HT</th>
                             <th class="text-right">TVA</th>
                         </tr>
                     </thead>
@@ -57,17 +54,17 @@
                                 <span t-field="l.price_unit"/>
                             </td>
                             <!-- % REM -->
-                            <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+                            <td t-if="display_discount" class="text-right">
                                 <span t-field="l.discount"/>
                             </td>
                             <!-- P.U HT NET = P.U HT __après remise__-->
-                            <td class="text-right" groups="sale.group_show_price_subtotal">
-                                <span t-field="l.price_subtotal"
+                            <td class="text-right">
+                                <span t-field="l.price_reduce"
                                     t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                             </td>
                             <!-- MONTANT HT = MONTANT TOTAL LIGNE HT -->
-                            <td class="text-right" groups="sale.group_show_price_total">
-                                <span t-field="l.price_total"
+                            <td class="text-right">
+                                <span t-field="l.price_subtotal"
                                     t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                             </td>
                             <!-- % TVA (taxes) -->
