@@ -25,7 +25,10 @@
                     <h2>Logos de pied de page</h2>
                     <div class="row mt16 o_settings_container">
                         <div class="col-xs-12 o_setting_box">
-                                <field name="footer_logo_1" widget="image" />
+                            <field name="footer_logo_1" widget="image" />
+                            <field name="footer_logo_2" widget="image" />
+                            <field name="footer_logo_3" widget="image" />
+                            <field name="footer_logo_4" widget="image" />
                         </div>
                     </div>
                     <h2>Preview</h2>

@@ -10,7 +10,10 @@ class DomMarketing(models.TransientModel):
     _inherit = 'res.config.settings'
 
     top_message = fields.Html(string="Message en tête de page")
-    footer_logo_1 = fields.Binary(string="footer logo 1")
+    footer_logo_1 = fields.Binary(string="Image de pied de page n°1")
+    footer_logo_2 = fields.Binary(string="Image de pied de page n°2")
+    footer_logo_3 = fields.Binary(string="Image de pied de page n°3")
+    footer_logo_4 = fields.Binary(string="Image de pied de page n°4")
 
     @api.model
     def get_values(self):
@@ -18,11 +21,15 @@ class DomMarketing(models.TransientModel):
         # use_propagation_minimum_delta=self.env['ir.config_parameter'].sudo().get_param('stock.use_propagation_minimum_delta')
         res.update(
             top_message=self.env['ir.config_parameter'].sudo(
-            ).get_param('dom_reports.top_message')
-        )
-        res.update(
+            ).get_param('dom_reports.top_message'),
             footer_logo_1=self.env['ir.config_parameter'].sudo(
-            ).get_param('dom_reports.footer_logo_1')
+            ).get_param('dom_reports.footer_logo_1'),
+            footer_logo_2=self.env['ir.config_parameter'].sudo(
+            ).get_param('dom_reports.footer_logo_2'),
+            footer_logo_3=self.env['ir.config_parameter'].sudo(
+            ).get_param('dom_reports.footer_logo_3'),
+            footer_logo_4=self.env['ir.config_parameter'].sudo(
+            ).get_param('dom_reports.footer_logo_4')
         )
         return res
 
@@ -40,6 +47,12 @@ class DomMarketing(models.TransientModel):
 
         self.env['ir.config_parameter'].sudo(
         ).set_param('dom_reports.footer_logo_1', self.footer_logo_1)
+        self.env['ir.config_parameter'].sudo(
+        ).set_param('dom_reports.footer_logo_2', self.footer_logo_2)
+        self.env['ir.config_parameter'].sudo(
+        ).set_param('dom_reports.footer_logo_3', self.footer_logo_3)
+        self.env['ir.config_parameter'].sudo(
+        ).set_param('dom_reports.footer_logo_4', self.footer_logo_4)
 
         """
         if self.group_stock_multi_locations:

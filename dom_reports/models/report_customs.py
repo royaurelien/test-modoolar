@@ -3,19 +3,31 @@ from odoo import api, models
 
 class MarketingInfo(object):
 
-    def __init__(self, top_message, footer_logo_1):
+    def __init__(self, top_message, fl1, fl2, fl3, fl4):
         self.top_message = top_message
-        self.footer_logo_1 = footer_logo_1
+        self.fl1 = fl1
+        self.fl2 = fl2
+        self.fl3 = fl3
+        self.fl4 = fl4
 
 def get_marketing_info(record):
 
         top_message = record.env['ir.config_parameter'].sudo(
         ).get_param('dom_reports.top_message')
 
-        footer_logo_1 = record.env['ir.config_parameter'].sudo(
+        fl1 = record.env['ir.config_parameter'].sudo(
         ).get_param('dom_reports.footer_logo_1')
 
-        return MarketingInfo(top_message, footer_logo_1)
+        fl2 = record.env['ir.config_parameter'].sudo(
+        ).get_param('dom_reports.footer_logo_2')
+
+        fl3 = record.env['ir.config_parameter'].sudo(
+        ).get_param('dom_reports.footer_logo_3')
+
+        fl4 = record.env['ir.config_parameter'].sudo(
+        ).get_param('dom_reports.footer_logo_4')
+
+        return MarketingInfo(top_message, fl1, fl2, fl3, fl4)
 
 
 class ReportSaleOrder(models.AbstractModel):

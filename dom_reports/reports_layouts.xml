@@ -89,9 +89,9 @@
             <t t-raw="0"/>
         </div>
 
+        <!-- footer -->
         <div t-if="not bl" class="footer">
             <div class="text-center" style="font-size:12px;">
-                    <br/>
                     <!-- address -->
                     <!-- 92 Impasse du Terraillet 73190 ST BALDOPH - Tél : +33 4 79 25 04 80 - Fax : +334 79 25 07 10 - info@domitec.net - www.domitec.net -->
                     <!-- SARL au capital de 200 200 - N° Siret 42995752500042 - Code APE 4619B - N° TVA Intracom. FR 52 429 957 525 - RCS CHAMBERY 429 957 525 -->
@@ -124,18 +124,23 @@
                     -->
 
                     <!-- images part -->
-                    <div class="row">
+                    <div class="row" style="margin-top:12px;">
                         <div class="col-xs-3 footer_logo">
-                            <img src="/dom_reports/static/imgs/lithofin_logo.png" />
+                        <!-- <img src="/dom_reports/static/imgs/lithofin_logo.png" /> -->
+                            <img t-if="market_info.fl1"
+                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl1)" />
                         </div>
                         <div class="col-xs-3 footer_logo">
-                            <img src="/dom_reports/static/imgs/propad_logo.png" />
+                            <img t-if="market_info.fl2"
+                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl2)" />
                         </div>
                         <div class="col-xs-3 footer_logo">
-                            <img src="/dom_reports/static/imgs/procover_logo.png" />
+                            <img t-if="market_info.fl3"
+                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl3)" />
                         </div>
                         <div class="col-xs-3 footer_logo">
-                            <img src="/dom_reports/static/imgs/ottochemie_logo.png" />
+                            <img t-if="market_info.fl4"
+                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl4)" />
                         </div>
                     </div>
 
@@ -186,7 +191,6 @@
     </record>
 
     <!-- other templates -->
-
     <template id="dom_reports.upper_part">
 
                 <!-- pub / address -->
@@ -229,20 +233,20 @@
                                     <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
                                     &quot;fields&quot;: [&quot;address&quot;],
                                     &quot;no_marker&quot;: True,
-                                    &quot;phone_icons&quot;: True}"/>
+                                    &quot;phone_icons&quot;: False}"/>
                                 </t>
                                 <t t-else="">
                                     <div t-field="doc.partner_shipping_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
                                     &quot;fields&quot;: [&quot;address&quot;],
                                     &quot;no_marker&quot;: True,
-                                    &quot;phone_icons&quot;: True}"/>
+                                    &quot;phone_icons&quot;: False}"/>
                                 </t>
                             </t>
                             <t t-else="">
                                 <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
                                 &quot;fields&quot;: [&quot;address&quot;],
                                 &quot;no_marker&quot;: True,
-                                &quot;phone_icons&quot;: True}"/>
+                                &quot;phone_icons&quot;: False}"/>
                             </t>
 
                         </div>
