@@ -23,6 +23,9 @@ class ResPartner(models.Model):
     child_ids_2 = fields.One2many('res.partner', 'parent_id', string='Filiale',
                                   domain=[('active', '=', True), ('company_type', '=', 'company')],
                                   default=get_child_ids)
+
+    child_ids = fields.One2many(domain=[('active', '=', True), ('company_type', '=', 'person')])
+
     #### TEXT ####
     code_api = fields.Char(string='Code API')
     horaires_livraison = fields.Text(string="Jours et horaires de livraisons")
