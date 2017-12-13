@@ -7,10 +7,25 @@ class InvoiceTarif(models.Model):
 
     #### RELATIONEL #####
     remise = fields.Many2one(comodel_name='dom.remise', string='Remise (%)')
-    
+
     #### NUMERIQUE #####
     amount_ht_net = fields.Float('Total HT net', compute='_compute_amount',store=True, track_visibility='onchange')
-    
+
+    @api.onchange('remise')
+    def onchange_remise(self):
+        vals = self.onchange_remise_values(self.remise)
+        self.update(vals)
+
+        self.invoice_line_ids._compute_price()
+        self.tax_line_ids._compute_amount_total()
+
+    def onchange_remise_values(self, remise):
+        vals = {}
+        if remise:
+            vals['remise'] = remise
+
+        return vals
+
     @api.one
     @api.depends('invoice_line_ids.price_subtotal', 'tax_line_ids.amount', 'tax_line_ids.amount_rounding',
                  'currency_id', 'company_id', 'date_invoice', 'type')

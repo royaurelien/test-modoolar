@@ -9,11 +9,11 @@
         <field name="arch" type="xml">
 
             <xpath expr="//field[@name='payment_term_id']" position="after">
-                <field name="remise" options="{'no_create': True}}"/>
+                <field name="remise" options="{'no_quick_create':True}" />
             </xpath>
 
             <xpath expr="//field[@name='amount_untaxed']" position="before">
-                <field name="amount_ht_net"/>
+                <field name="amount_ht_net" />
             </xpath>
 
         </field>
