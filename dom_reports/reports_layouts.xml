@@ -11,135 +11,6 @@
     <template id="dom_reports.external_layout_background">
         <div class="header">
 
-            <!--
-            <style>
-                .header-table {
-
-                border-radius: 10px;
-                -moz-border-radius: 10px;
-                -webkit-border-radius: 10px;
-                border-color: 1px solid black;
-
-                table-layout: fixed;
-                word-break: break;
-                width: 100%;
-                }
-
-                .header-table td, th {
-                border: 1px solid black;
-
-                border-radius: 10px;
-                -moz-border-radius: 10px;
-                -webkit-border-radius: 10px;
-
-                padding: 10px;
-                text-align: center;
-                }
-
-
-                    /*
-                    .container {
-                        margin: 0; padding: 0;
-                    }*/
-
-                    .rounded-table {
-
-                        border-radius: 10px;
-                        -moz-border-radius: 10px;
-                        -webkit-border-radius: 10px;
-                        border-color: 1px solid black;
-
-                        width: 100%;
-                    }
-
-                    .rounded-table td, th {
-                        border: 1px solid black;
-                        /* border-right: 1px solid black; */
-
-                        border-radius: 10px;
-                        -moz-border-radius: 10px;
-                        -webkit-border-radius: 10px;
-
-                        padding: 10px;
-                        text-align: center;
-                    }
-
-                    .cadre-titre {
-                        // display: flex;
-                        // flex-direction: column;
-                        border: 1px solid black;
-                        align-items: center;
-                        justify-content: center;
-                        height: 100%;
-                    }
-
-                    .cadre-titre h3 {
-                        font-size: 100%;
-                        border-bottom: 1px solid black;
-                        background-color: cyan;
-                        display: block;
-                        width: 100%;
-                        margin: 0px;
-                        padding: 10px;
-                        text-align: center;
-                    }
-
-                    .cadre-titre h3:nth-child(2) {
-                        border-bottom: none;
-                    }
-
-                    .cadre-titre p {
-                        display: flex;
-                        flex-direction: column;
-                        vertical-align: middle;
-                        border-bottom: none;
-                        align-items: center;
-                        align-content: center;
-                        justify-content: center;
-                        margin: 10px;
-                    }
-
-                    .lines-table {
-
-                        border: 1px solid black;
-                        border-bottom: 1px solid black;
-                        border-radius: 10px;
-                        -moz-border-radius: 10px;
-                        -webkit-border-radius: 10px;
-                        border-color: 1px solid black;
-
-                        width: 100%;
-                        margin-bottom: 15px;
-                    }
-
-                    .lines-table td, th {
-                        /* border: 1px solid black; */
-                        border-right: 1px solid black;
-
-                        border-radius: 10px;
-                        -moz-border-radius: 10px;
-                        -webkit-border-radius: 10px;
-
-                        padding: 10px;
-                        text-align: center;
-                    }
-
-                    .lines-table th {
-                        white-space: nowrap;
-                    }
-
-                    .lines-table td {
-                        padding-top: 3px;
-                        padding-bottom: 3px;
-                    }
-
-                    .vatnums-table th {
-                        font-weight: normal;
-                    }
-
-            </style>
-        -->
-
             <t t-if="not bl">
                 <div class="row">
                     <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" class="pull-left" width="410"/>
@@ -218,9 +89,9 @@
             <t t-raw="0"/>
         </div>
 
+        <!-- footer -->
         <div t-if="not bl" class="footer">
             <div class="text-center" style="font-size:12px;">
-                    <br/>
                     <!-- address -->
                     <!-- 92 Impasse du Terraillet 73190 ST BALDOPH - Tél : +33 4 79 25 04 80 - Fax : +334 79 25 07 10 - info@domitec.net - www.domitec.net -->
                     <!-- SARL au capital de 200 200 - N° Siret 42995752500042 - Code APE 4619B - N° TVA Intracom. FR 52 429 957 525 - RCS CHAMBERY 429 957 525 -->
@@ -253,18 +124,23 @@
                     -->
 
                     <!-- images part -->
-                    <div class="row">
+                    <div class="row" style="margin-top:12px;">
                         <div class="col-xs-3 footer_logo">
-                            <img src="/dom_reports/static/imgs/lithofin_logo.png" />
+                        <!-- <img src="/dom_reports/static/imgs/lithofin_logo.png" /> -->
+                            <img t-if="market_info.fl1"
+                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl1)" />
                         </div>
                         <div class="col-xs-3 footer_logo">
-                            <img src="/dom_reports/static/imgs/propad_logo.png" />
+                            <img t-if="market_info.fl2"
+                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl2)" />
                         </div>
                         <div class="col-xs-3 footer_logo">
-                            <img src="/dom_reports/static/imgs/procover_logo.png" />
+                            <img t-if="market_info.fl3"
+                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl3)" />
                         </div>
                         <div class="col-xs-3 footer_logo">
-                            <img src="/dom_reports/static/imgs/ottochemie_logo.png" />
+                            <img t-if="market_info.fl4"
+                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl4)" />
                         </div>
                     </div>
 
@@ -315,11 +191,11 @@
     </record>
 
     <!-- other templates -->
-
     <template id="dom_reports.upper_part">
 
                 <!-- pub / address -->
-                <div class="row" style="margin-bottom: 15px;">
+                <div class="row" style="margin-bottom: 10px;">
+                    <!--
                     <div class="col-xs-3" style="padding: 20px;">
                         <table class="rounded-table">
                             <tbody>
@@ -335,31 +211,68 @@
                         <p style="text-align: left; padding: 20px;">
                             MESSAGE PROMOTIONNEL
                         </p>
-                    </div>
-                    <div class="col-xs-6">
-                        <table class="rounded-table">
-                            <tbody>
-                                <tr>
-                                    <td style="text-align:left; border:none;">
-                                        <span t-field="doc.partner_id" /> <br/>
-                                        <t t-if="doc.partner_id.street"> <span> <span t-field="doc.partner_id.street" /> </span> </t> <br/>
-                                        <t t-if="doc.partner_id.street2"> <span> <span t-field="doc.partner_id.street2" /> </span> </t> <br/>
-                                        <t t-if="doc.partner_id.city"> <span> <span t-field="doc.partner_id.city" /> </span> </t>
-                                        <t t-if="doc.partner_id.zip"> <span> <span t-field="doc.partner_id.zip" /> </span> </t>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    -->
+                    <div class="col-xs-6 pub-div">
+                    <!-- <t t-raw="top_message" /> -->
+                    <t t-raw="market_info.top_message" />
                     </div>
 
-                </div>
+                    <!-- partner address -->
+                    <div class="col-xs-6 address-div">
+                        <div class="row">
+                            <span class="partner-name" t-field="doc.partner_id" /> <br/>
 
-                <!-- debug row
+                            <!-- the address -->
+                            <t t-if="not bl">
+                                <t t-if="not doc.partner_shipping_id">
+                                <!--
+                                    <span t-if="doc.partner_id.street" t-field="doc.partner_id.street" /> <br/>
+                                    <span t-if="doc.partner_id.street2" t-field="doc.partner_id.street2" /> <br/>
+                                    <span t-if="doc.partner_id.city" t-field="doc.partner_id.city" />
+                                    <span t-if="doc.partner_id.zip" t-field="doc.partner_id.zip" /> -->
+                                    <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
+                                    &quot;fields&quot;: [&quot;address&quot;],
+                                    &quot;no_marker&quot;: True,
+                                    &quot;phone_icons&quot;: False}"/>
+                                </t>
+                                <t t-else="">
+                                    <div t-field="doc.partner_shipping_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
+                                    &quot;fields&quot;: [&quot;address&quot;],
+                                    &quot;no_marker&quot;: True,
+                                    &quot;phone_icons&quot;: False}"/>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
+                                &quot;fields&quot;: [&quot;address&quot;],
+                                &quot;no_marker&quot;: True,
+                                &quot;phone_icons&quot;: False}"/>
+                            </t>
+
+                        </div>
+
+                        <!-- Commercial / Vendeur -->
+                        <div t-if="devis or bdc" class="row">
+                            <p style="text-align: right; margin:0px;"> Vendeur : <span t-field="doc.user_id" /> </p>
+                        </div>
+                    </div>
+
+                </div> <!-- end of pub/address row -->
+
+                <!-- debug rows
                 <div class="row">
                     <p> facture : <span t-if="facture"> <t t-esc="facture" /> </span> </p>
                     <p> devis : <span t-if="devis"> <t t-esc="devis" /> </span> </p>
                     <p> bdc : <span t-if="bdc"> <t t-esc="bdc" /> </span> </p>
                     <p> bl : <span t-if="bl"> <t t-esc="bl" /> </span> </p>
+                </div>
+                -->
+
+                <!-- tried this.. not good
+                <div t-if="devis or bdc" class="row" style="border: 1px solid black;">
+                    <div class="col-xs-12">
+                        <p> Commercial : <span t-field="doc.user_id" /> </p>
+                    </div>
                 </div> -->
 
                 <!-- bl warning row -->

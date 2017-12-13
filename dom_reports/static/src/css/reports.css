@@ -52,8 +52,8 @@ margin: 0; padding: 0;
 }
 
 .cadre-titre {
-    // display: flex;
-    // flex-direction: column;
+    /* display: flex;
+     flex-direction: column; */
     border: 1px solid black;
     align-items: center;
     justify-content: center;
@@ -171,4 +171,20 @@ margin: 0; padding: 0;
 .footer_logo img {
     width: 180px;
     height: 60px;
+}
+
+/* header stuff */
+.partner-name {
+    font-weight: bold;
+}
+
+.address-div {
+    /* border: 1px solid black; */
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.pub-div {
+    /* border: 1px solid black;
+    background-color: cyan; */
 }
