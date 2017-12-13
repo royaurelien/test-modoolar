@@ -13,7 +13,7 @@ class SaleTarif(models.Model):
     remise = fields.Many2one(comodel_name='dom.remise', string='Remise (%)')
 
     #### NUMERIQUE #####
-    amount_ht_net = fields.Monetary('Total HT net', compute='_compute_remise_amount',store=True, track_visibility='onchange')
+    amount_ht_net = fields.Monetary('Total HT net', compute='_amount_all',store=True, track_visibility='onchange')
 
     @api.multi
     @api.onchange('partner_id')
@@ -74,15 +74,16 @@ class SaleTarifLine(models.Model):
         super(SaleTarifLine, self)._compute_amount()
         for line in self:
             vals = {}
+            price_subtotal_net = line.price_subtotal
+            vals['price_subtotal_net'] = price_subtotal_net
             if line.order_id.remise:
                 remise = line.order_id.remise.amount
 
-                price_subtotal_net = line.price_subtotal
+
                 price_subtotal = line.price_subtotal - line.price_subtotal * (remise / 100)
                 price_tax = line.price_tax - line.price_tax * (remise / 100)
                 price_total = line.price_total - line.price_total * (remise / 100)
 
-                vals['price_subtotal_net'] = price_subtotal_net
                 vals['price_subtotal'] = price_subtotal
                 vals['price_tax'] = price_tax
                 vals['price_total'] = price_total

@@ -38,15 +38,16 @@ class InvoiceTarifLine(models.Model):
         for line in self :
             currency = line.invoice_id and line.invoice_id.currency_id or None
             vals = {}
+            price_subtotal_net = line.price_subtotal
+            vals['price_subtotal_net'] = price_subtotal_net
+
             if line.invoice_id.remise:
                 remise = line.invoice_id.remise.amount
 
-                price_subtotal_net = line.price_subtotal
                 price_subtotal = line.price_subtotal - line.price_subtotal * (remise / 100)
 
                 price_total = line.price_total - line.price_total * (remise / 100)
 
-                vals['price_subtotal_net'] = price_subtotal_net
                 vals['price_subtotal'] = price_subtotal
                 vals['price_total'] = price_total
 
