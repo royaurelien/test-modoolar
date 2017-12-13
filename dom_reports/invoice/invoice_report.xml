@@ -77,6 +77,7 @@
                             </td>
                         </tr>
 
+<!--
                         <t t-if="(layout_category_size > 1 or page_size > 1) and layout_category['subtotal']" groups="sale.group_sale_layout">
                             <tr class="text-right">
                                 <td colspan="6">
@@ -86,6 +87,7 @@
                                 </td>
                             </tr>
                         </t>
+                            -->
                     </tbody>
                 </table>
 
@@ -97,9 +99,11 @@
                 <p> yi </p>
                 -->
 
+                <!--
                 <t t-if="page_index &lt; page_size - 1" groups="sale.group_sale_layout">
                     <p style="page-break-before:always;"> </p>
                 </t>
+                -->
 
                 <!--
                 <t t-if="page_index == 0">
@@ -134,7 +138,7 @@ En cas de paiement dans les 8 jours date de facture, escompte de 2 %
                     <thead>
                         <tr>
                             <th>BASES HT</th>
-                            <th>REMISE</th>
+                            <th t-if="doc.remise">REMISE</th>
                             <th>PORT HT</th>
                             <th style="white-space: normal;">
                                 DECONDIT IONNEMENT
@@ -170,11 +174,14 @@ En cas de paiement dans les 8 jours date de facture, escompte de 2 %
                                 </t>
                             </td>
 
-                            <td> valeur remise </td>
+                            <!-- remise globale -->
+                            <td t-if="doc.remise">
+                                <span t-esc="str(int(doc.remise.amount)) if doc.remise.amount.is_integer() else str(doc.remise.amount)" />%
+                            </td>
                             <td> valeur port ht </td>
                             <td> valeur decond. </td>
                             <td>
-                                <span t-field="doc.amount_untaxed"
+                                <span t-field="doc.amount_ht_net"
                                     t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                             </td>
                             <td> % tva val </td>

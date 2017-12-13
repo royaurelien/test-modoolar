@@ -145,7 +145,7 @@
                         <thead>
                             <tr>
                                 <th>BASES HT</th>
-                                <th>REMISE</th>
+                                <th t-if="doc.remise.amount">REMISE</th>
                                 <th>PORT HT</th>
                                 <th style="white-space: normal;">
                                     DECONDIT IONNEMENT
@@ -181,11 +181,14 @@
                                     </t>
                                 </td>
 
-                                <td> valeur remise </td>
+                                <!-- remise globale -->
+                                <td t-if="doc.remise">
+                                    <span t-esc="str(int(doc.remise.amount)) if doc.remise.amount.is_integer() else str(doc.remise.amount)" />%
+                                </td>
                                 <td> valeur port ht </td>
                                 <td> valeur decond. </td>
                                 <td>
-                                    <span t-field="doc.amount_untaxed"
+                                    <span t-field="doc.amount_ht_net"
                                         t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                 </td>
                                 <td> % tva val </td>
