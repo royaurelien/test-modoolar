@@ -45,7 +45,7 @@
                             <!-- qte -->
                             <td class="text-right">
                                 <span t-field="l.quantity"/>
-                                <span t-field="l.product_uom" groups="product.group_uom"/>
+                                <span t-field="l.product_id.uom_id" />
                             </td>
                             <!-- condt -->
                             <td><span t-field="l.product_id.uom_id"/></td>
@@ -64,7 +64,8 @@
                             </td>
                             <!-- MONTANT HT = MONTANT TOTAL LIGNE HT -->
                             <td class="text-right">
-                                <span t-field="l.price_subtotal"
+                                <!-- <span t-field="l.price_subtotal" -->
+                                <span t-field="l.price_subtotal_net"
                                     t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                             </td>
                             <!-- % TVA (taxes) -->
