@@ -35,16 +35,36 @@
                         <tbody class="sale_tbody">
                             <t t-foreach="page" t-as="layout_category">
 
+                                <!-- sections -->
                                 <t t-if="layout_category_size > 1 or page_size > 1" groups="sale.group_sale_layout">
                                     <tr class="active">
-                                        <td colspan="7" style="font-weight: bold; border-bottom: 1px solid black;">&amp;bull;
-                                            <t t-esc="layout_category['name']"/>
+                                        <td colspan="16" style="font-weight: bold;
+                                            border-bottom: 1px solid black;
+                                            border-top: 1px solid black;
+                                            padding: 5px;">
+                                            &amp;bull;
+                                            <t t-if="layout_category['name'] == 'Uncategorized'">
+                                                <span>Sans catégorie</span>
+                                            </t>
+                                            <t t-else="" t-esc="layout_category['name']" />
                                         </td>
                                     </tr>
                                 </t>
 
                                 <!-- Lines associated -->
                                 <t t-foreach="layout_category['lines']" t-as="l">
+                                    <!-- commentaires -->
+                                    <tr t-if="l.comment_free and l.comment_position == 'before'" class="line-comment">
+                                        <td colspan="16">
+                                            <t t-raw="l.comment_free" />
+                                        </td>
+                                    </tr>
+                                    <tr t-if="l.comment_predef and l.comment_position == 'before'" class="line-comment">
+                                        <td colspan="16">
+                                            <t t-raw="l.comment_predef.value" />
+                                        </td>
+                                    </tr>
+
                                     <tr>
                                         <!--
                                         <td>
@@ -82,7 +102,8 @@
                                         <!-- MONTANT HT = MONTANT TOTAL LIGNE HT -->
                                         <!-- montant ht avec remise * nbre d'unités -->
                                         <td class="text-right">
-                                            <span t-field="l.price_subtotal"
+                                            <!-- <span t-field="l.price_subtotal" -->
+                                            <span t-field="l.price_subtotal_net"
                                                 t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                         </td>
                                         <!-- % TVA (taxes) -->
@@ -94,8 +115,21 @@
                                                 t-options='{"widget": "float", "precision": 1}'/> % -->
                                         </td>
                                     </tr>
+
+                                    <!-- commentaires -->
+                                    <tr t-if="l.comment_free and l.comment_position == 'after'" class="line-comment">
+                                        <td colspan="16">
+                                            <t t-raw="l.comment_free" />
+                                        </td>
+                                    </tr>
+                                    <tr t-if="l.comment_predef and l.comment_position == 'after'" class="line-comment">
+                                        <td colspan="16">
+                                            <t t-raw="l.comment_predef.value" />
+                                        </td>
+                                    </tr>
                                 </t>
 
+                                <!-- subtotal part
                                 <t t-if="(layout_category_size > 1 or page_size > 1) and layout_category['subtotal']" groups="sale.group_sale_layout">
                                     <tr class="text-right">
                                         <td colspan="6">
@@ -105,6 +139,7 @@
                                         </td>
                                     </tr>
                                 </t>
+                                -->
 
                             </t> <!-- lines foreach end -->
                         </tbody>
