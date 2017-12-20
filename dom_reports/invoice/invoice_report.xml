@@ -23,7 +23,7 @@
                                 class="text-right">% REM</th>
                             <th class="text-right">P.U HT NET</th>
                             <th class="text-right" >MONTANT HT</th>
-                            <th class="text-right">TVA</th>
+                            <!-- <th class="text-right">TVA</th> -->
                         </tr>
                     </thead>
                     <tbody class="invoice_tbody">
@@ -69,13 +69,14 @@
                                     t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                             </td>
                             <!-- % TVA (taxes) -->
+                            <!--
                             <td class="text-right" style="white-space: nowrap;">
-                                <!-- <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.tax_id))"/> -->
                                 <span t-esc="', '.join(map(lambda x: str(int(x.amount)) if x.amount.is_integer() else str(x.amount), l.invoice_line_tax_ids))"/>%
-                                <!--
-                                <span t-field="l.tax_id.amount"
-                                    t-options='{"widget": "float", "precision": 1}'/> % -->
                             </td>
+                            -->
+                            <!--
+                            <span t-field="l.tax_id.amount"
+                                t-options='{"widget": "float", "precision": 1}'/> % -->
                         </tr>
 
 <!--
