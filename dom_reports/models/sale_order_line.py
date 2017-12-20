@@ -9,4 +9,4 @@ class SaleOrderLine(models.Model):
     comment_position = fields.Selection(selection=[
         ('before', 'Avant la ligne'),
         ('after', 'Après la ligne'),
-    ], default='after')
+    ], default='after', string="Position commentaire")
