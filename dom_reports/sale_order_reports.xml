@@ -29,22 +29,42 @@
                                 <th t-if="display_discount" class="text-right">% REM</th>
                                 <th class="text-right">P.U HT NET</th>
                                 <th class="text-right">MONTANT HT</th>
-                                <th class="text-right">TVA</th>
+                                <!-- <th class="text-right">TVA</th> -->
                             </tr>
                         </thead>
                         <tbody class="sale_tbody">
                             <t t-foreach="page" t-as="layout_category">
 
+                                <!-- sections -->
                                 <t t-if="layout_category_size > 1 or page_size > 1" groups="sale.group_sale_layout">
                                     <tr class="active">
-                                        <td colspan="7" style="font-weight: bold; border-bottom: 1px solid black;">&amp;bull;
-                                            <t t-esc="layout_category['name']"/>
+                                        <td colspan="16" style="font-weight: bold;
+                                            border-bottom: 1px solid black;
+                                            border-top: 1px solid black;
+                                            padding: 5px;">
+                                            &amp;bull;
+                                            <t t-if="layout_category['name'] == 'Uncategorized'">
+                                                <span>Sans catégorie</span>
+                                            </t>
+                                            <t t-else="" t-esc="layout_category['name']" />
                                         </td>
                                     </tr>
                                 </t>
 
                                 <!-- Lines associated -->
                                 <t t-foreach="layout_category['lines']" t-as="l">
+                                    <!-- commentaires -->
+                                    <tr t-if="l.comment_free and l.comment_position == 'before'" class="line-comment">
+                                        <td colspan="16">
+                                            <t t-raw="l.comment_free" />
+                                        </td>
+                                    </tr>
+                                    <tr t-if="l.comment_predef and l.comment_position == 'before'" class="line-comment">
+                                        <td colspan="16">
+                                            <t t-raw="l.comment_predef.value" />
+                                        </td>
+                                    </tr>
+
                                     <tr>
                                         <!--
                                         <td>
@@ -82,20 +102,35 @@
                                         <!-- MONTANT HT = MONTANT TOTAL LIGNE HT -->
                                         <!-- montant ht avec remise * nbre d'unités -->
                                         <td class="text-right">
-                                            <span t-field="l.price_subtotal"
+                                            <!-- <span t-field="l.price_subtotal" -->
+                                            <span t-field="l.price_subtotal_net"
                                                 t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                         </td>
                                         <!-- % TVA (taxes) -->
+                                        <!--
                                         <td class="text-right" style="white-space: nowrap;">
-                                            <!-- <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.tax_id))"/> -->
                                             <span t-esc="', '.join(map(lambda x: str(int(x.amount)) if x.amount.is_integer() else str(x.amount), l.tax_id))"/>%
-                                            <!--
-                                            <span t-field="l.tax_id.amount"
-                                                t-options='{"widget": "float", "precision": 1}'/> % -->
+                                        </td>
+                                        -->
+                                        <!--
+                                        <span t-field="l.tax_id.amount"
+                                            t-options='{"widget": "float", "precision": 1}'/> % -->
+                                    </tr>
+
+                                    <!-- commentaires -->
+                                    <tr t-if="l.comment_free and l.comment_position == 'after'" class="line-comment">
+                                        <td colspan="16">
+                                            <t t-raw="l.comment_free" />
+                                        </td>
+                                    </tr>
+                                    <tr t-if="l.comment_predef and l.comment_position == 'after'" class="line-comment">
+                                        <td colspan="16">
+                                            <t t-raw="l.comment_predef.value" />
                                         </td>
                                     </tr>
                                 </t>
 
+                                <!-- subtotal part
                                 <t t-if="(layout_category_size > 1 or page_size > 1) and layout_category['subtotal']" groups="sale.group_sale_layout">
                                     <tr class="text-right">
                                         <td colspan="6">
@@ -105,6 +140,7 @@
                                         </td>
                                     </tr>
                                 </t>
+                                -->
 
                             </t> <!-- lines foreach end -->
                         </tbody>
@@ -159,24 +195,11 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <!-- BASES HT -->
                                 <td style="white-space: nowrap;">
-                                <!-- td -->
                                     <t t-set="tax_groups_length" t-value="len(doc._get_tax_amount_by_group())"/>
                                     <t t-foreach="doc._get_tax_amount_by_group()" t-as="amount_by_group">
-                                        <t t-if="amount_by_group[3] == 1 and doc.amount_untaxed == amount_by_group[2]">
-                                                <span t-esc="amount_by_group[0]"/>
-                                                <!-- montant de la tva ajouté au prix ht remisé
-                                                <span t-esc="amount_by_group[1]"
-                                                    t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
-                                                -->
-                                        </t>
-                                        <t t-else ="">
-                                                <span t-esc="amount_by_group[0]"/><span>&amp;nbsp;<span>sur</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></span>
-                                                <!-- montant de la tva ajouté au prix ht remisé
-                                                <span t-esc="amount_by_group[1]"
-                                                    t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
-                                                -->
-                                         </t>
+                                        <span t-esc="amount_by_group[0]"/><span>&amp;nbsp;<span>sur</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></span>
                                         <br/>
                                     </t>
                                 </td>
@@ -184,15 +207,33 @@
                                 <!-- remise globale -->
                                 <td t-if="doc.remise">
                                     <span t-esc="str(int(doc.remise.amount)) if doc.remise.amount.is_integer() else str(doc.remise.amount)" />%
+                                    <br/>
+                                    <!-- valeur remise globale -->
+                                    <span t-esc="doc.amount_ht_net*(doc.remise.amount/100)"
+                                        t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                                 </td>
+
                                 <td> valeur port ht </td>
                                 <td> valeur decond. </td>
+
+                                <!-- TOTAL HT NET -->
                                 <td>
                                     <span t-field="doc.amount_ht_net"
                                         t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                 </td>
-                                <td> % tva val </td>
-                                <td> mt tva val </td>
+
+                                <!-- taxes.. ??? -->
+                                <td>
+                                    <t t-foreach="doc._get_tax_amount_by_group()" t-as="amount_by_group">
+                                        <span t-esc="amount_by_group[0]" />
+                                    </t>
+                                </td>
+
+                                <!-- montant tva -->
+                                <td>
+                                    <span t-field="doc.amount_tax"
+                                        t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                </td>
                                 <!-- <td style="white-space: nowrap;"> -->
                                 <td>
                                     H.T. :

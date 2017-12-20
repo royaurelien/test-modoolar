@@ -1,46 +1,66 @@
-#!/usr/bin/python2.7
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
 import logging
+import argparse
+
 import xlrd
 import xmlrpclib
 
 logger = logging.getLogger(__name__)
 
+# argparse
+parser = argparse.ArgumentParser(description='Articles Import Script')
+parser.add_argument("-v", "--verbose", help="increase output verbosity",
+                    action="store_true")
+
+args = parser.parse_args()
+if args.verbose:
+    logging.basicConfig(level=logging.DEBUG)
+
 # working with names is better than working with random integers
+# pour NouvelleBaseArticles.xlsx
 names_to_ints = {
-    'code': 0,
-    'famille': 1,
-    'libelle': 2,
-    'unite vente': 3,
-    'nombre par colis': 4,
-    'poids brut': 5,
-    'stock physique': 6,
-    'date modification': 7,
-    'dernier prix': 8,
-    'prix base ht': 9,
-    'libelle (famille article)': 10,
-    'reliquat fournisseur': 11,
-    'reliquat client': 12,
-    'num ONU': 13,
-    'categorie': 14,
-    'designation': 15,
-    'PG': 16,
-    'classe': 17,
-    'num danger': 18,
-    'code barre': 19,
+    'code': 0, # a
+    'famille': 1, # b
+    'libelle': 2, # c
+    'unite vente': 3, # d
+    'nombre par colis': 4, # e
+    'poids brut': 5, # f
+    'stock physique': 6, # g
+    'date modification': 7, # h
+    'dernier prix': 8, # i
+    'prix base ht': 9, # j
+    'libelle (famille article)': 10, # k
+    'num ONU': 11, # L
+    'categorie': 12, # m
+    'designation': 13, # n
+    'PG': 14, # o
+    'classe': 15, # p
+    'num danger': 16, # q
+    'code barre': 17, # r
+
+    # 'reliquat fournisseur': 11, # l
+    # 'reliquat client': 12, #
+    # 'categorie': 14,
+    # 'designation': 15,
+    # 'PG': 16,
+    # 'classe': 17,
+    # 'num danger': 18,
+    # 'code barre': 19,
 }
 
 # {{{ odoo xmlrpc stuff
 
-# server_host = "localhost"
-server_host = "odoo-domitec.yziact.net"
+server_host = "localhost"
+# server_host = "odoo-domitec.yziact.net"
 
-# server_port = 8071
-server_port = 8069
+server_port = 8071
+# server_port = 8069
 
 # server_dbname = "domitec_db_one"
-server_dbname = "test_one"
+# server_dbname = "test_one"
+server_dbname = "based_one"
 
 server_username = 'admin'
 server_pwd = 'X200yziact'
@@ -79,7 +99,7 @@ def update_record(model_name, rec_id, data_dict):
 
     except Exception as e:
         print "erreur lors de la l'update de %s" % model_name
-        print "id : %s" % id
+        print "id : %s" % rec_id
         print "avec les valeurs : %s" % data_dict
         import pudb; pudb.set_trace()
         raise
@@ -145,7 +165,8 @@ class Article(object):
         self.fam = famille
         self.lib = libelle
         self.unite = unite_vente
-        self.nb_par_colis = poids_brut
+        self.nb_par_colis = nb_par_colis
+        self.poids_brut = poids_brut
         self.stock_phy = stock_phy
         self.date_modif = date_modif
         self.dernier_prix = dernier_prix
@@ -169,14 +190,6 @@ class Article(object):
         except IndexError:
             return "no value for %s" % name
 
-    def import_line(self):
-        """ actually send the line to Odoo """
-
-        res = models.execute_kw(server_dbname, server_uid, server_pwd,
-            'product.template', 'create', lines)
-
-        res = create_model('product_template')
-
     @classmethod
     def from_xls_line(cls, xl):
 
@@ -194,8 +207,8 @@ class Article(object):
         dernier_prix = get(xl, 'dernier prix')
         prix_base_ht = get(xl, 'prix base ht')
         lib_fam = get(xl, 'libelle (famille article)')
-        reliq_fourn = get(xl, 'reliquat fournisseur')
-        reliq_client = get(xl, 'reliquat client')
+        reliq_fourn = None # get(xl, 'reliquat fournisseur')
+        reliq_client = None # get(xl, 'reliquat client')
         num_onu = get(xl, 'num ONU')
         categ = get(xl, 'categorie')
         design = get(xl, 'designation')
@@ -223,6 +236,7 @@ class Article(object):
         """
         pass
 
+
 class ArticleImporter(object):
 
     def __init__(self):
@@ -234,6 +248,15 @@ class ArticleImporter(object):
         self.uom_categ_id_volume = get_record_id('product.uom.categ', [
             ['name', 'ilike', 'Volume'],
         ])
+
+        self.uom_id_unit = get_record_id('product.uom', [
+            ['name', 'ilike', 'unit'],
+        ])
+
+        if not self.uom_id_unit:
+            raise Exception("ID of uom_id unit not found")
+
+        logger.debug('self.uom_id_unit : %s' % self.uom_id_unit)
 
         if (not self.uom_categ_id_unit) or (not self.uom_categ_id_volume):
             raise Exception(u"Pas de catégorie d'unité Unité ou Volume")
@@ -265,6 +288,9 @@ class ArticleImporter(object):
             '10L': '10L',
             '30L': '30L',
         }
+
+        # always use unit...
+        return self.uom_id_unit
 
         uom_categ_id = None
         if uname in unit_units:
@@ -314,7 +340,7 @@ class ArticleImporter(object):
 
     def figure_stuff_out(self, model_name, article, name_value, data_dict):
 
-        # don't create if family name is empty
+        # don't create if name is empty
         if name_value == "":
             return 0
 
@@ -330,26 +356,6 @@ class ArticleImporter(object):
     def import_article(self, article):
 
         # dangerosity
-        """
-        dang_id = get_record_id('product.dang', [
-            # ['pg', '=', article.pg],
-            # ['classe', '=', article.classe],
-            # ['num_danger', '=', article.num_danger]
-            ['name', '=', article.design]
-        ])
-
-        if not dang_id:
-            dang_id = create_record(
-                'product.dang', {
-                    'pg': article.pg,
-                    'classe': article.classe,
-                    'num_danger': article.num_danger,
-                    # 'description': article.design,
-                    'name': article.design,
-                }
-            )
-
-        """
         dang_id = self.figure_stuff_out('product.dang', article,
         article.design, {
             'pg': article.pg,
@@ -372,20 +378,6 @@ class ArticleImporter(object):
 
         # family
         fam_id = self.figure_fam_id(article)
-
-        """
-        fam_id = get_record_id('product.family', [
-            ['name', '=', article.fam],
-        ])
-
-        if not fam_id:
-            fam_id = create_record(
-                'product.family', {
-                    'name': article.fam,
-                    'libelle': article.lib_fam,
-                }
-            )
-        """
 
         # uom
         uom_id = self.figure_uom_id(article.unite)
@@ -414,15 +406,42 @@ class ArticleImporter(object):
 
             'family': fam_id,
             'dang': dang_id,
+
+            'nb_par_colis': article.nb_par_colis,
+            'poids_brut': article.poids_brut,
             # 'qty_available': article.stock_phy,
         }
 
-        if not product_tmpl_id:
-            product_tmpl_id = create_record('product.template', vals)
-        else:
+        if product_tmpl_id:
             update_record('product.template', product_tmpl_id, vals)
+        else:
+            product_tmpl_id = create_record('product.template', vals)
 
+        # After the template is created, search the product, affect the barcode, you're done..
+        vals = {
+            'barcode': article.code_barre,
+        }
+
+        product_id = get_record_id('product.product', [
+            ['name', '=', article.lib],
+        ])
+
+        if product_id and article.code_barre:
+            # si le code barre existe déjà en db,
+            # ceci va échouer
+            try:
+                update_record('product.product', product_id, vals)
+            except Exception as e:
+                # osef
+                pass
+        else:
+            print "product_id not found..."
+
+        logger.info("article importé... ref: {}, barcode: {}".format(
+            article.code, article.code_barre
+        ))
         # product product
+        """
         product_id = get_record_id('product.product', [
             #['name', '=', article.lib],
             ['barcode', '=', article.code_barre],
@@ -437,27 +456,49 @@ class ArticleImporter(object):
             product_id = create_record('product.product', vals)
         else:
             update_record('product.product', product_id, vals)
+        """
 
 
 # xlrd.xldate.xldate_as_tuple(date_modif, workbook.datemode)
-workbook = xlrd.open_workbook('BD_ARTICLES_API.xls')
-sheet = workbook.sheet_by_index(0)
 
-curr_row = 2
-num_rows = sheet.nrows
+
+class ArticlesReader(object):
+
+    @staticmethod
+    def read_from_xls(filename):
+        """
+        reads articles from file
+        returns a list of Articles
+        """
+
+        workbook = xlrd.open_workbook(filename)
+        sheet = workbook.sheet_by_index(0)
+
+        curr_row = 2
+        num_rows = sheet.nrows
+
+        art_list = []
+        while curr_row < num_rows:
+
+            vals = sheet.row_values(curr_row)
+            article = Article.from_xls_line(vals)
+
+            art_list.append(article)
+
+            # print "row_no : %s " % curr_row, article
+
+            curr_row += 1
+        return art_list
+
+
+
+# articles = ArticlesReader.read_from_xls('BD_ARTICLES_API.xls')
+articles = ArticlesReader.read_from_xls('NouvelleBaseArticles.xlsx')
+
+# for i, article in enumerate(articles):
+    # print i+1, article
 
 importer = ArticleImporter()
 
-while curr_row < num_rows:
-
-    vals = sheet.row_values(curr_row)
-    article = Article.from_xls_line(vals)
-
-    print "row_no : %s " % curr_row, article
-
+for article in articles:
     importer.import_article(article)
-
-    #if curr_row > 10:
-        #break
-
-    curr_row += 1

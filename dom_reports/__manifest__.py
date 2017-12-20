@@ -22,7 +22,10 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        # access
+        'security/ir.model.access.csv',
+
+        # reports
         'paperformat.xml',
         'reports_layouts.xml',
         'sale_order_reports.xml',
@@ -35,6 +38,12 @@
 
         # marketing rapports
         'views/res_config_settings_view.xml',
+
+        # vue sale.order.line pour commentaires
+        'views/sale_order_line_view.xml',
+
+        # vue et menus dom.comment
+        'views/dom_comment_view.xml',
     ],
 
     # 'installable': True,

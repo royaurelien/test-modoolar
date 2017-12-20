@@ -11,7 +11,8 @@ class TestAccountRemise(TestInvRemise):
     def setUp(self):
         super(TestAccountRemise, self).setUp()
         move_env = self.env['account.move']
-        self.partner = self.env['res.partner'].search([('name', 'ilike', 'test')])
+        # self.partner = self.env['res.partner'].search([('name', 'ilike', 'test')])
+        self.partner = self.test_user
         self.products = [self.product1, self.product2]
 
         #### Creation des S. O. #####
@@ -22,7 +23,7 @@ class TestAccountRemise(TestInvRemise):
         self.debit_clean = self.move_debit_compute(self.move_clean.line_ids)
         self.total_untaxed_clean = self.move_total_untaxed(self.move_clean.line_ids)
         self.total_tax_clean = self.move_total_tax(self.move_clean.line_ids)
-        self.total_clean = self.move_total(self.move_clean.line_ids)        
+        self.total_clean = self.move_total(self.move_clean.line_ids)
 
         #Move avec remise a la ligne
         self.invoice_discount.action_invoice_open()
@@ -78,7 +79,7 @@ class TestAccountRemise(TestInvRemise):
         self.total_untaxed_remise_00 = self.move_total_untaxed(self.move_remise_00.line_ids)
         self.total_tax_remise_00 = self.move_total_tax(self.move_remise_00.line_ids)
         self.total_remise_00 = self.move_total(self.move_remise_00.line_ids)
-        
+
         # Move cumulant les deux
         self.invoice_remise_discount_00.action_invoice_open()
         self.move_remise_discount_00 = self.invoice_remise_discount_00.move_id

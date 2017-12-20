@@ -11,7 +11,8 @@ class TestSoRemise(TestCommon):
     def setUp(self):
         super(TestSoRemise, self).setUp()
 
-        self.partner = self.env['res.partner'].search([('name', 'ilike', 'test')])
+        # self.partner = self.env['res.partner'].search([('name', 'ilike', 'test')])
+        self.partner = self.test_user
         self.products = [self.product1, self.product2]
 
         #### Creation des S. O. #####

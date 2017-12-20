@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+    <record id="dom_reports_so_line_view" model="ir.ui.view">
+        <field name="name">dom_reports Sale Order Line View</field>
+        <field name="model">sale.order.line</field>
+        <field name="arch" type="xml">
+            <form string="Sales Order" class="o_sale_order">
+                <header>
+                </header>
+                <sheet>
+                    <group string="Commenaitres">
+                        <field name="comment_free" />
+                        <field name="comment_position" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    -->
+
+    <!-- inherit so to modif form so lines -->
+    <record id="dom_reports_so_view" model="ir.ui.view">
+        <field name="name">dom_reports Sale Order Form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+           <xpath expr="//field[@name='order_line']/form/group" position="inside">
+                <group string="Commentaires">
+                    <field name="comment_predef" />
+                    <field name="comment_free" />
+                    <field name="comment_position" />
+                </group>
+           </xpath>
+        </field>
+    </record>
+
+</odoo>

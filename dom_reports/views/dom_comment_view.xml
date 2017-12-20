@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- dangs view -->
+    <record id="dom_comments_tree_view" model="ir.ui.view">
+        <field name="name">Dom Comment Tree View</field>
+        <field name="model">dom.comment</field>
+        <field name="arch" type="xml">
+            <tree string="Commentaires Prédéfinis">
+                <field name="code" />
+                <field name="value" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- actions -->
+    <record id="action_dom_comment" model="ir.actions.act_window">
+        <field name="name">Commentaires Prédéfinis</field>
+        <field name="res_model">dom.comment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="dom_comments_tree_view" />
+    </record>
+
+    <menuitem id="menu_dom_comments" name="Commentaires Prédéfinis"
+        parent="sale.menu_sale_config"
+        action="action_dom_comment" />
+
+</odoo>
