@@ -11,7 +11,8 @@ class TestInvRemise(TestSoRemise):
     def setUp(self):
         super(TestInvRemise, self).setUp()
         invoice_env = self.env['account.invoice']
-        self.partner = self.env['res.partner'].search([('name', 'ilike', 'test')])
+        # self.partner = self.env['res.partner'].search([('name', 'ilike', 'test')])
+        self.partner = self.test_user
         self.products = [self.product1, self.product2]
 
         #### Creation des S. O. #####

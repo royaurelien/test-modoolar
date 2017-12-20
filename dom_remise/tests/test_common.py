@@ -17,6 +17,7 @@ class TestCommon(TransactionCase):
         # some users
         group_manager = self.env.ref('sales_team.group_sale_manager')
         group_user = self.env.ref('sales_team.group_sale_salesman')
+        """
         self.manager = self.env['res.users'].create({
             'name': 'Andrew Manager',
             'login': 'manager',
@@ -35,6 +36,18 @@ class TestCommon(TransactionCase):
             'notify_email': 'always',
             'groups_id': [(6, 0, [group_user.id])]
         })
+        """
+        self.test_user = self.env['res.users'].create({
+            'name': 'Test User',
+            'login': 'test_user',
+            'password': 'daezr',
+            # 'email': 'test@test.com',
+            'signature': '--\nTest User',
+            # 'notify_email': 'never',
+            # 'notification_type': 'email',
+            'groups_id': [(6, 0, [group_user.id])]
+        })
+
 
         #Creation des list de prix test
         pricelist_env = self.env['product.pricelist']
@@ -55,21 +68,34 @@ class TestCommon(TransactionCase):
                 'fixed_price': 100000000
             })]
         })
-        self.remise = self.env['dom.remise'].search([('name','ilike','10.0')])
-        self.product1 = self.env['product.product'].search([('name','ilike', 'Lithofin FVE 5 L')])
-        self.product2 = self.env['product.product'].search([('name','ilike','Lithofin MURO 1L')])
+        # self.remise = self.env['dom.remise'].search([('name','ilike','10.0')])
+        # self.product1 = self.env['product.product'].search([('name','ilike', 'Lithofin FVE 5 L')])
+        # self.product2 = self.env['product.product'].search([('name','ilike','Lithofin MURO 1L')])
+        self.remise = self.env['dom.remise'].create({
+            'amount': 10.0,
+        })
 
+        self.product1 = self.env['product.product'].create({
+            'name': 'test prod one',
+            'price': 1.0,
+            'invoice_policy': 'order',
+            'default_code': '888-888-888',
+        })
 
+        self.product2 = self.env['product.product'].create({
+            'name': 'test prod two',
+            'price': 1.0,
+            'invoice_policy': 'order',
+            'default_code': '999-999-999',
+        })
 
 
     def create_remise(self, amount):
         remise_env = self.env['dom.remise']
 
-        remise = remise_env.create(
-            {
-                'amount':amount
-            }
-        )
+        remise = remise_env.create({
+            'amount':amount
+        })
 
         return remise
 
@@ -84,13 +110,12 @@ class TestCommon(TransactionCase):
         if remise :
             remise= remise.id
 
-        order = sale_env.create(
-            {
-                'partner_id': partner.id,
-                'remise':remise,
-                'pricelist_id': pricelist.id,
-            }
-        )
+        order = sale_env.create({
+            'partner_id': partner.id,
+            'remise': remise,
+            'pricelist_id': pricelist.id,
+        })
+
         for product in products:
             order.order_line = [(0,0, {
                 'name': product.name,
