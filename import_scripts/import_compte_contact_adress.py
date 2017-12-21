@@ -20,7 +20,7 @@ def set_connexion_doodoo():
     # Connexion Odoo
     username = "admin"
     pwd = "X200yziact"
-    dbname = "test_one"
+    dbname = "DOM_20_12"
 
     sock_common = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/common")
     uid = sock_common.login(dbname, username, pwd)
@@ -53,7 +53,7 @@ def partner_search(name):
 
 
 set_connexion_doodoo()
-fich_ = open('BD_CLIENTS_API.csv', 'rb')
+fich_ = open('../BD_CLIENTS_API.csv', 'rb')
 
 csvreader = csv.reader(fich_, delimiter=';')
 
@@ -79,6 +79,7 @@ for row in csvreader:
     parent_bis = row[2]
     parent = row[3]
     city = row[5]
+    country_id = row[6]
     blocked = row[18]
     zip = row[4].strip()
     phone = row[9]
@@ -112,6 +113,7 @@ for row in csvreader:
             'parent_bis': parent_bis,
             'parent': parent,
             'city': city,
+            'country_id': country_id,
             'blocked':blocked,
             'zip': zip,
             'phone': phone,
