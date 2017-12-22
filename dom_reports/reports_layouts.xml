@@ -253,7 +253,7 @@
 
                         <!-- Commercial / Vendeur -->
                         <div t-if="devis or bdc" class="row">
-                            <p style="text-align: right; margin:0px;"> Vendeur : <span t-field="doc.user_id" /> </p>
+                            <p style="text-align: right; margin:0px;"> Commercial : <span t-field="doc.user_id" /> </p>
                         </div>
                     </div>
 
