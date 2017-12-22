@@ -19,8 +19,6 @@ class Partner(models.Model):
         """
         partner_env = self.env['res.partner']
 
-        print "OUR ONCHANGE_PARTNER_ID"
-
         if not self.partner_id:
             self.update({
                 'partner_invoice_id': False,
