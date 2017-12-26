@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- preview button for Sale Order -->
+    <record id="dom_reports_so_view_for_preview" model="ir.ui.view">
+        <field name="name">dom_reports Sale Order Form for Preview</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+
+           <xpath expr="//header">
+                <button name="action_preview_report" type="object" string="Aperçu du Devis/BC" help="Aperçu du Rapport"/>
+           </xpath>
+
+        </field>
+    </record>
+
+    <!-- preview button for Invoice -->
+    <record id="dom_reports_invoice_view_for_preview" model="ir.ui.view">
+        <field name="name">dom_reports Invoice Form for Preview</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form" />
+        <field name="arch" type="xml">
+
+           <xpath expr="//header">
+                <button name="action_preview_report" type="object" string="Aperçu de la Facture" help="Aperçu du Rapport"/>
+           </xpath>
+
+        </field>
+    </record>
+
+    <!-- preview button for BL -->
+    <record id="dom_reports_bl_view_for_preview" model="ir.ui.view">
+        <field name="name">dom_reports BL Form for Preview</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+
+           <xpath expr="//header">
+                <button name="action_preview_report" type="object" string="Aperçu du BL" help="Aperçu du Rapport"/>
+           </xpath>
+
+        </field>
+    </record>
+
+</odoo>
