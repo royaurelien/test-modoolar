@@ -19,19 +19,19 @@ def set_connexion_doodoo():
 
 username = "admin"
 pwd = "X200yziact"
-dbname = "test_two"
+dbname = "DOM_20_12"
 
 # Connexion Odoo
-sock_common = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/common")
+sock_common = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/common")
 uid = sock_common.login(dbname, username, pwd)
-sock = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/object")
+sock = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/object")
 
 
 def check_and_update(code, name):
     account_id = False
     if code and name :
-        account = sock.execute(dbname, uid, pwd, 'account.account', 'search_read', ([('code','like', code)]),('id'))
-
+        account = sock.execute(dbname, uid, pwd, 'account.account', 'search_read', ([('code','=', code[:6])]),('id'))
+        print account
         if account :
             account_id = account[0]['id']
 
