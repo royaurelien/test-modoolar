@@ -44,6 +44,8 @@
 
         # vue et menus dom.comment
         'views/dom_comment_view.xml',
+
+        'views/report_preview_views.xml',
     ],
 
     # 'installable': True,

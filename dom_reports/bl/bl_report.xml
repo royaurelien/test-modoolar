@@ -48,16 +48,29 @@
 
                 <!-- summary table -->
                 <div class="row" style="border: 1px solid black; margin: 2px; padding: 5px;">
+                    <t t-set="err_mess">
+                       <p> Odoo n'est pas configuré pour la gestion des colis. </p>
+                    </t>
                     <div class="col-xs-4">
                         <!--<p> Nombre de carton : <span t-field="doc.number_of_packages"/> </p>-->
-                        <p> Nombre de carton : <span t-esc="len(doc.package_ids.ids)"/> </p>
+                        <t t-if=" 'package_ids' in doc.fields_get() ">
+                            <p> Nombre de carton : <span t-esc="len(doc.package_ids.ids)"/> </p>
+                        </t>
+                        <t t-else="">
+                            <t t-raw="err_mess" /> <p>(champ package_ids inexistant)</p>
+                        </t>
                         <!--<p> Nombre de carton : <span t-field="doc.package_ids"/> </p>-->
                     </div>
                     <div class="col-xs-4">
                         <p> Total Quantité : <span t-esc="'%.2f'%(sum([x.quantity_done for x in doc.move_lines]))"/> </p>
                     </div>
                     <div class="col-xs-4">
-                        <p> Total Poids Brut : <span t-field="doc.shipping_weight"/> <span t-field="doc.weight_uom_id"/> </p>
+                        <t t-if=" 'shipping_weight' in doc.fields_get() ">
+                            <p> Total Poids Brut : <span t-field="doc.shipping_weight"/> <span t-field="doc.weight_uom_id"/> </p>
+                        </t>
+                        <t t-else="">
+                            <t t-raw="err_mess" /> <p>(champ shipping_weight inexistant)</p>
+                        </t>
                     </div>
                 </div>
 
