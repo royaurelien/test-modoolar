@@ -34,3 +34,29 @@ class DomRemise(models.Model):
     def _get_amount_name(self):
         for remise in self:
             remise.name = str(remise.amount)
+
+
+    @api.model
+    def create(self, vals):
+        """
+        Le quick_create de odoo remplit le nom or nous souhaitons que ce soit le montant qui soit renseigne
+
+        :param vals: dict de valeurs
+        :return: record
+        """
+
+        if  'amount' not in vals:
+            name = vals.get('name')
+            if not name:
+                raise ValidationError("Saisie incorrecte")
+
+            try :
+                amount = float(name.replace(',', '.'))
+            except:
+                raise ValidationError("Saisie incorrecte")
+
+            vals['amount'] = amount
+
+        res = super(DomRemise, self).create(vals)
+
+        return res
