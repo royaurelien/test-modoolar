@@ -30,8 +30,8 @@
 
             <div class="row">
                 <div class="col-xs-6">
-                    <div class="table-responsive">
-                        <table class="header-table">
+                    <!-- <div class="table-responsive"> -->
+                        <table class="header-table table-curved">
                             <thead>
                                 <tr>
                                     <th>date</th>
@@ -53,32 +53,28 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                    <!-- </div> -->
                 </div>
 
                 <div class="col-xs-6">
-                    <table class="header-table">
-                        <tr>
-                            <td>
-                                <span t-if="devis"> Devis </span>
-                                <span t-elif="bdc"> Bon de commande </span>
-                                <span t-elif="facture"> Facture </span>
-                                <span t-elif="bl"> Bon de livraison </span>
-                                N° :
-                                <t t-if="devis or bdc or bl">
-                                    <span t-esc="doc.name" />
-                                </t>
-                                <t t-elif="facture">
-                                    <t t-if="doc.state in ['draft']">
-                                        facture en brouillon
-                                    </t>
-                                    <t t-else="">
-                                        <span t-esc="doc.number" />
-                                    </t>
-                                </t>
-                            </td>
-                        </tr>
-                    </table>
+                    <div class="header-cartouche">
+                        <span t-if="devis"> Devis </span>
+                        <span t-elif="bdc"> Bon de commande </span>
+                        <span t-elif="facture"> Facture </span>
+                        <span t-elif="bl"> Bon de livraison </span>
+                        N° :
+                        <t t-if="devis or bdc or bl">
+                            <span t-esc="doc.name" />
+                        </t>
+                        <t t-elif="facture">
+                            <t t-if="doc.state in ['draft']">
+                                facture en brouillon
+                            </t>
+                            <t t-else="">
+                                <span t-esc="doc.number" />
+                            </t>
+                        </t>
+                    </div>
                 </div>
 
             </div>
@@ -193,163 +189,143 @@
     <!-- other templates -->
     <template id="dom_reports.upper_part">
 
-                <!-- pub / address -->
-                <div class="row" style="margin-bottom: 10px;">
-                    <!--
-                    <div class="col-xs-3" style="padding: 20px;">
-                        <table class="rounded-table">
-                            <tbody>
-                                <tr>
-                                    <td style="text-align:left; border:none;">
-                                        IMAGE PROMOTIONNELLE
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-xs-3">
-                        <p style="text-align: left; padding: 20px;">
-                            MESSAGE PROMOTIONNEL
-                        </p>
-                    -->
-                    <div class="col-xs-6 pub-div">
-                    <!-- <t t-raw="top_message" /> -->
-                    <t t-raw="market_info.top_message" />
-                    </div>
+        <!-- pub / address -->
+        <div class="row" style="margin-bottom: 10px;">
 
-                    <!-- partner address -->
-                    <div class="col-xs-6 address-div">
-                        <div class="row">
-                            <span class="partner-name" t-field="doc.partner_id" /> <br/>
+            <div class="col-xs-6">
+            <!-- <t t-raw="top_message" /> -->
+            <t t-raw="market_info.top_message" />
+            </div>
 
-                            <!-- the address -->
-                            <t t-if="not bl">
-                                <t t-if="not doc.partner_shipping_id">
-                                <!--
-                                    <span t-if="doc.partner_id.street" t-field="doc.partner_id.street" /> <br/>
-                                    <span t-if="doc.partner_id.street2" t-field="doc.partner_id.street2" /> <br/>
-                                    <span t-if="doc.partner_id.city" t-field="doc.partner_id.city" />
-                                    <span t-if="doc.partner_id.zip" t-field="doc.partner_id.zip" /> -->
-                                    <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
-                                    &quot;fields&quot;: [&quot;address&quot;],
-                                    &quot;no_marker&quot;: True,
-                                    &quot;phone_icons&quot;: False}"/>
-                                </t>
-                                <t t-else="">
-                                    <div t-field="doc.partner_shipping_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
-                                    &quot;fields&quot;: [&quot;address&quot;],
-                                    &quot;no_marker&quot;: True,
-                                    &quot;phone_icons&quot;: False}"/>
-                                </t>
-                            </t>
-                            <t t-else="">
-                                <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
-                                &quot;fields&quot;: [&quot;address&quot;],
-                                &quot;no_marker&quot;: True,
-                                &quot;phone_icons&quot;: False}"/>
-                            </t>
-
-                        </div>
-
-                        <!-- Commercial / Vendeur -->
-                        <div t-if="devis or bdc" class="row">
-                            <p style="text-align: right; margin:0px;"> Commercial : <span t-field="doc.user_id" /> </p>
-                        </div>
-                    </div>
-
-                </div> <!-- end of pub/address row -->
-
-                <!-- debug rows
+            <!-- partner address -->
+            <div class="col-xs-6 address-div">
                 <div class="row">
-                    <p> facture : <span t-if="facture"> <t t-esc="facture" /> </span> </p>
-                    <p> devis : <span t-if="devis"> <t t-esc="devis" /> </span> </p>
-                    <p> bdc : <span t-if="bdc"> <t t-esc="bdc" /> </span> </p>
-                    <p> bl : <span t-if="bl"> <t t-esc="bl" /> </span> </p>
+                    <span class="partner-name" t-field="doc.partner_id" /> <br/>
+
+                    <!-- the address -->
+                    <t t-if="not bl">
+                        <t t-if="not doc.partner_shipping_id">
+                        <!--
+                            <span t-if="doc.partner_id.street" t-field="doc.partner_id.street" /> <br/>
+                            <span t-if="doc.partner_id.street2" t-field="doc.partner_id.street2" /> <br/>
+                            <span t-if="doc.partner_id.city" t-field="doc.partner_id.city" />
+                            <span t-if="doc.partner_id.zip" t-field="doc.partner_id.zip" /> -->
+                            <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
+                            &quot;fields&quot;: [&quot;address&quot;],
+                            &quot;no_marker&quot;: True,
+                            &quot;phone_icons&quot;: False}"/>
+                        </t>
+                        <t t-else="">
+                            <div t-field="doc.partner_shipping_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
+                            &quot;fields&quot;: [&quot;address&quot;],
+                            &quot;no_marker&quot;: True,
+                            &quot;phone_icons&quot;: False}"/>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
+                        &quot;fields&quot;: [&quot;address&quot;],
+                        &quot;no_marker&quot;: True,
+                        &quot;phone_icons&quot;: False}"/>
+                    </t>
+
                 </div>
-                -->
 
-                <!-- tried this.. not good
-                <div t-if="devis or bdc" class="row" style="border: 1px solid black;">
-                    <div class="col-xs-12">
-                        <p> Commercial : <span t-field="doc.user_id" /> </p>
-                    </div>
-                </div> -->
-
-                <!-- bl warning row -->
-                <div t-if="bl" class="row">
-                    <div class="col-xs-12">
-                        <p class="bl-warning">** Attention ! Merci de refuser toute marchandise abimée
-                            et d'émettre les réserves sur le bordereau de transport. ** </p>
-                    </div>
+                <!-- Commercial / Vendeur -->
+                <div t-if="devis or bdc" class="row">
+                    <p style="text-align: right; margin:0px;"> Commercial : <span t-field="doc.user_id" /> </p>
                 </div>
+            </div>
 
-                <!-- mode de reglement / echeance / n/id cee -->
-                <div class="row">
-                    <div class="col-xs-4">
-                        <table class="rounded-table">
-                            <thead>
-                                <tr>
-                                    <th> MODE DE REGLEMENT </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <span t-if="not bl" t-field="doc.payment_term_id" />
-                                        <span t-elif="bl" t-field="doc.partner_id.property_payment_term_id" />
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-xs-4" id="durp">
-                        <div class="table-responsive">
-                            <table class="rounded-table">
-                                <thead>
-                                    <tr>
-                                        <th t-if="bl"> Départ prévu le </th>
-                                        <th t-elif="bdc"> CONFIRMATION </th>
-                                        <th t-else=""> ECHEANCE </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <!-- <td> <span t-field="doc.date_order" /> </td> -->
-                                            <!-- <p> echeance / depart val </p> -->
-                                            <span t-if="bl" t-esc="doc.scheduled_date" />
-                                            <span t-elif="devis"> <span t-esc="doc.validity_date" /> </span>
-                                            <span t-elif="bdc"> <span t-esc="doc.confirmation_date" /> </span>
-                                            <span t-elif="facture"> <span t-esc="doc.date_due" /> </span>
-                                            <span t-else=""> date de départ val </span>
+        </div> <!-- end of pub/address row -->
 
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <div class="table-responsive">
-                            <table class="rounded-table vatnums-table">
-                                <thead>
-                                    <tr>
-                                        <th> N/Id CEE :
-                                            <span t-field="doc.company_id.vat" />
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> V/Id CEE :
-                                            <span t-field="doc.partner_id.vat" />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+        <!-- debug rows
+        <div class="row">
+            <p> facture : <span t-if="facture"> <t t-esc="facture" /> </span> </p>
+            <p> devis : <span t-if="devis"> <t t-esc="devis" /> </span> </p>
+            <p> bdc : <span t-if="bdc"> <t t-esc="bdc" /> </span> </p>
+            <p> bl : <span t-if="bl"> <t t-esc="bl" /> </span> </p>
+        </div>
+        -->
+
+        <!-- tried this.. not good
+        <div t-if="devis or bdc" class="row" style="border: 1px solid black;">
+            <div class="col-xs-12">
+                <p> Commercial : <span t-field="doc.user_id" /> </p>
+            </div>
+        </div> -->
+
+        <!-- bl warning row -->
+        <div t-if="bl" class="row">
+            <div class="col-xs-12">
+                <p class="bl-warning">** Attention ! Merci de refuser toute marchandise abimée
+                    et d'émettre les réserves sur le bordereau de transport. ** </p>
+            </div>
+        </div>
+
+        <!-- mode de reglement / echeance / n/id cee -->
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-xs-4">
+                <table class="rounded-table table-curved">
+                    <thead>
+                        <tr>
+                            <th> MODE DE REGLEMENT </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span t-if="not bl" t-field="doc.payment_term_id" />
+                                <span t-elif="bl" t-field="doc.partner_id.property_payment_term_id" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-4">
+                <table class="rounded-table table-curved">
+                    <thead>
+                        <tr>
+                            <th t-if="bl"> Départ prévu le </th>
+                            <th t-elif="bdc"> CONFIRMATION </th>
+                            <th t-else=""> ECHEANCE </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <!-- <td> <span t-field="doc.date_order" /> </td> -->
+                                <!-- <p> echeance / depart val </p> -->
+                                <span t-if="bl" t-esc="doc.scheduled_date" />
+                                <span t-elif="devis"> <span t-esc="doc.validity_date" /> </span>
+                                <span t-elif="bdc"> <span t-esc="doc.confirmation_date" /> </span>
+                                <span t-elif="facture"> <span t-esc="doc.date_due" /> </span>
+                                <span t-else=""> date de départ val </span>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-4">
+                <table class="rounded-table table-curved vatnums-table">
+                    <thead>
+                        <tr>
+                            <th> N/Id CEE :
+                                <span t-field="doc.company_id.vat" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> V/Id CEE :
+                                <span t-field="doc.partner_id.vat" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> <!-- 3 tableaux row end -->
     </template>
 
 </odoo>

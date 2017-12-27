@@ -4,35 +4,121 @@
 margin: 0; padding: 0;
 }*/
 
+/** rounded table struggle
+https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap-3
+**/
+
+.table-curved {
+    border-collapse: separate;
+}
+.table-curved {
+    border-radius: 8px;
+    border-left: 0px;
+}
+.table-curved td, .table-curved th {
+    /*border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;*/
+}
+.table-curved th {
+    /*border-top: none;*/
+}
+.table-curved th:first-child {
+    border-radius: 8px 0 0 0;
+    border-left: 1px solid black;
+}
+.table-curved th:last-child {
+    border-radius: 0 8px 0 0;
+}
+.table-curved th {
+    border-radius: 0 0px 0 0;
+    border: 1px solid black;
+    border-left: none;
+}
+.table-curved th:only-child{
+    border-radius: 8px 8px 0 0;
+}
+.table-curved tr:only-child{
+    border-radius: 0 0 8px 8px;
+}
+.table-curved tr:only-child td:only-child{
+    border-radius: 0 0 8px 8px !important;
+    /*background-color: red;*/
+}
+.table-curved td {
+    border-radius: 0 0 0 0;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.table-curved tr:last-child td:first-child{
+    border-radius: 0 0 0px 8px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.table-curved tr:last-child td:last-child {
+    border-radius: 0 0 8px 0;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+/** end of rounded table struggle **/
+
+.header-cartouche {
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    word-break: break;
+    width: 100%;
+}
 
 .header-table {
 
+    /*
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    border-color: 1px solid black;
+    border-color: 1px solid black; */
 
     table-layout: fixed;
     word-break: break;
     width: 100%;
 }
 
-.header-table td, th {
-    border: 1px solid black;
+.header-table td {
 
+    /*
+    border: 1px solid black;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    */
 
     padding: 10px;
     text-align: center;
 }
 
+.summary-table {
+    /*position: absolute;
+    bottom: 0px;*/
+    position: absolute;
+    /*top: 800px;
+    bottom: 0;*/
+    page-break-inside: avoid;
+
+    width: 97% !important;
+}
+
 .rounded-table {
 
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+    /*
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    */
+
+    /*border-collapse: separate;*/
+
     border-color: 1px solid black;
 
     width: 100%;
@@ -40,12 +126,13 @@ margin: 0; padding: 0;
 
 .rounded-table td, th {
     /* background-color: red; */
-    border: 1px solid black;
     /* border-right: 1px solid black; */
 
+    /*
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    */
 
     padding: 10px;
     text-align: center;
@@ -88,36 +175,56 @@ margin: 0; padding: 0;
 
 .lines-table {
 
+    /*
     border: 1px solid black;
     border-bottom: 1px solid black;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-color: 1px solid black;
+    */
 
     width: 100%;
     margin-bottom: 15px;
 }
 
-.lines-table td, th {
-    /* border: 1px solid black; */
+.lines-table td {
+    /* border: 1px solid black;
     border-right: 1px solid black;
 
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-
+    */
     padding: 10px;
     text-align: center;
 }
 
 .lines-table th {
     white-space: nowrap;
+    text-align: center;
 }
 
 .lines-table td {
     padding-top: 3px;
     padding-bottom: 3px;
+    border-right:1px solid black;
+    border-left: none;
+    border-bottom: none;
+    text-align: left;
+}
+
+.lines-table td:first-child {
+    /* background-color: red; */
+    border-left: 1px solid black;
+}
+
+.lines-table tr:last-child {
+    border-bottom: 1px solid black;
+}
+
+.lines-table tr:last-child > td {
+    border-bottom: 1px solid black;
 }
 
 .vatnums-table th {
@@ -184,14 +291,17 @@ margin: 0; padding: 0;
     padding-right: 35px;
 }
 
-.pub-div {
-    /* border: 1px solid black;
-    background-color: cyan; */
-}
-
 /* comment stuf */
 
+/*
 tr.line-comment {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    text-align: left;
+}
+*/
+
+tr.line-comment td {
     border-bottom: 1px solid black;
     border-top: 1px solid black;
     text-align: left;
@@ -201,4 +311,16 @@ tr.line-comment p {
     margin:0;
     padding: 5px;
     text-align: left;
+}
+
+/* edge case: comment tr is last line of table */
+/*tr.line-comment:last-child {
+    border-radius: 0 0 8px 8px;
+}*/
+
+tr.line-comment:last-child td:only-child {
+    margin:0;
+    padding: 5px;
+    text-align: left;
+    border-radius: 0 0 8px 8px;
 }
