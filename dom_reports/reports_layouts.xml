@@ -42,10 +42,15 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <span t-if="devis"> <span t-field="doc.date_order" /> </span>
-                                        <span t-elif="facture"> <span t-field="doc.date_invoice" /> </span>
-                                        <span t-elif="bdc"> <span t-field="doc.confirmation_date" /> </span>
-                                        <span t-elif="bl" t-field="doc.scheduled_date" />
+                                        <!-- it's a datetime, so t-field auto formats with the hour. changing this here -->
+                                        <span t-if="devis" t-field="doc.date_order"
+                                            t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
+                                        <span t-elif="bdc" t-field="doc.confirmation_date"
+                                            t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
+                                        <span t-elif="facture" t-field="doc.date_invoice"
+                                            t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
+                                        <span t-elif="bl" t-field="doc.scheduled_date"
+                                            t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
                                         <!-- <span t-else=""> <span t-field="doc.name" /> </span> -->
                                     </td>
                                     <td> <span t-field="doc.partner_id.ref" /> </td>

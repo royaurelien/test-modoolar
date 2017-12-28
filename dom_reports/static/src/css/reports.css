@@ -211,9 +211,13 @@ otherwise border won't align because of left/right border mismatch */
     text-align: center;
 }
 
-/* we could imagine something like this : */
+/* first line and last line of tbody have a bit more padding */
 .lines-table tbody tr:first-child td {
     padding-top: 12px;
+}
+
+.lines-table tbody tr:last-child td {
+    padding-bottom: 10px;
 }
 
 .lines-table td {
@@ -236,7 +240,7 @@ otherwise border won't align because of left/right border mismatch */
     height: 50px;
 }
 
-/* bl stuff */
+/** bl stuff **/
 .bl-warning {
     /* background-color: green; */
     background-color: lightgrey;
@@ -251,6 +255,19 @@ otherwise border won't align because of left/right border mismatch */
 
 .bl-spacer-div {
     height: 70px;
+}
+
+.bl-summary-line {
+    border: 1px solid black;
+    border-radius: 8px;
+
+    padding: 10px 5px 10px 5px;
+    margin: 2px;
+}
+
+.bl-summary-line p {
+    padding: 0;
+    margin: 0;
 }
 
 /* invoice stuff */

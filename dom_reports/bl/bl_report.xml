@@ -9,7 +9,7 @@
 
                 <t t-call="dom_reports.upper_part" />
 
-                <table class="lines-table">
+                <table class="table-curved lines-table">
                     <thead>
                         <tr>
                             <th>REFERENCE</th>
@@ -47,7 +47,7 @@
                 <div class="bl-spacer-div"></div>
 
                 <!-- summary table -->
-                <div class="row" style="border: 1px solid black; margin: 2px; padding: 5px;">
+                <div class="row bl-summary-line">
                     <t t-set="err_mess">
                        <p> Odoo n'est pas configuré pour la gestion des colis. </p>
                     </t>
