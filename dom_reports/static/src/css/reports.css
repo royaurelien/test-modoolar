@@ -10,30 +10,34 @@ https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap
 
 .table-curved {
     border-collapse: separate;
-}
-.table-curved {
     border-radius: 8px;
-    border-left: 0px;
+    /*border: 1px solid red;*/
+    border: 1px solid black;
 }
-.table-curved td, .table-curved th {
-    /*border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;*/
-}
-.table-curved th {
-    /*border-top: none;*/
-}
+
+/* first and last ths */
 .table-curved th:first-child {
-    border-radius: 8px 0 0 0;
-    border-left: 1px solid black;
+    border: 0;
+    border-bottom: 1px solid black;
 }
 .table-curved th:last-child {
-    border-radius: 0 8px 0 0;
+    border: 0;
+    border-bottom: 1px solid black;
 }
+
+/* normal ths */
 .table-curved th {
-    border-radius: 0 0px 0 0;
-    border: 1px solid black;
-    border-left: none;
+    border: 0;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px;
 }
+
+/*.table-curved td {
+    padding-right: 5px;
+    padding-left: 5px;
+}*/
+/*
 .table-curved th:only-child{
     border-radius: 8px 8px 0 0;
 }
@@ -42,23 +46,48 @@ https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap
 }
 .table-curved tr:only-child td:only-child{
     border-radius: 0 0 8px 8px !important;
-    /*background-color: red;*/
 }
+*/
+
+/* normal tds */
 .table-curved td {
-    border-radius: 0 0 0 0;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    /*border-bottom: 1px solid black;*/
+    border-bottom: 0;
+}
+.table-curved td:first-child {
+    border: 0;
+}
+.table-curved tr:last-child{
+    border-top: 0;
 }
 .table-curved tr:last-child td:first-child{
     border-radius: 0 0 0px 8px;
-    border-left: 1px solid black;
+    border: 0;
+    /*border-left: 1px solid black;
     border-bottom: 1px solid black;
+    border-top: none !important;*/
 }
 .table-curved tr:last-child td:last-child {
     border-radius: 0 0 8px 0;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    border: 0;
 }
+
+/* before last have both borders, last have none
+otherwise border won't align because of left/right border mismatch */
+.table-curved th:nth-last-child(2) {
+    border-right: 1px solid black;
+}
+.table-curved td:nth-last-child(2) {
+    border-right: 1px solid black;
+}
+.table-curved td:last-child {
+    border: 0;
+}
+.table-curved tr {
+    border: 1px solid black;
+}
+
 
 /** end of rounded table struggle **/
 
@@ -73,12 +102,6 @@ https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap
 
 .header-table {
 
-    /*
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-color: 1px solid black; */
-
     table-layout: fixed;
     word-break: break;
     width: 100%;
@@ -86,18 +109,17 @@ https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap
 
 .header-table td {
 
-    /*
-    border: 1px solid black;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    */
+    padding: 10px;
+    text-align: center;
+}
+
+.header-table th {
 
     padding: 10px;
     text-align: center;
 }
 
-.summary-table {
+.summary-table-absolute {
     /*position: absolute;
     bottom: 0px;*/
     position: absolute;
@@ -108,16 +130,26 @@ https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap
     width: 97% !important;
 }
 
+.upper-part-table {
+    width: 100%;
+}
+
+.upper-part-table td, .upper-part-table th {
+    text-align: center;
+    padding: 10px;
+}
+
+.summary-table {
+    width: 100%;
+}
+
+.summary-table td, .summary-table th {
+    text-align: center;
+    padding: 10px;
+}
+
+/*
 .rounded-table {
-
-    /*
-    border-radius: 20px;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -khtml-border-radius: 20px;
-    */
-
-    /*border-collapse: separate;*/
 
     border-color: 1px solid black;
 
@@ -125,18 +157,11 @@ https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap
 }
 
 .rounded-table td, th {
-    /* background-color: red; */
-    /* border-right: 1px solid black; */
-
-    /*
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    */
 
     padding: 10px;
     text-align: center;
 }
+*/
 
 .cadre-titre {
     /* display: flex;
@@ -173,31 +198,12 @@ https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap
     margin: 10px;
 }
 
-.lines-table {
+/** lines table **/
 
-    /*
-    border: 1px solid black;
-    border-bottom: 1px solid black;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-color: 1px solid black;
-    */
+.lines-table {
 
     width: 100%;
     margin-bottom: 15px;
-}
-
-.lines-table td {
-    /* border: 1px solid black;
-    border-right: 1px solid black;
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    */
-    padding: 10px;
-    text-align: center;
 }
 
 .lines-table th {
@@ -205,27 +211,21 @@ https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap
     text-align: center;
 }
 
+/* we could imagine something like this : */
+.lines-table tbody tr:first-child td {
+    padding-top: 12px;
+}
+
 .lines-table td {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    border-right:1px solid black;
-    border-left: none;
-    border-bottom: none;
-    text-align: left;
+    padding: 3px 5px 3px 5px;
+    text-align: center;
 }
 
-.lines-table td:first-child {
-    /* background-color: red; */
-    border-left: 1px solid black;
+.lines-table td.right-align {
+    text-align: right;
 }
 
-.lines-table tr:last-child {
-    border-bottom: 1px solid black;
-}
-
-.lines-table tr:last-child > td {
-    border-bottom: 1px solid black;
-}
+/** lines table end **/
 
 .vatnums-table th {
     font-weight: normal;
@@ -293,34 +293,28 @@ https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap
 
 /* comment stuf */
 
-/*
-tr.line-comment {
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    text-align: left;
-}
-*/
-
 tr.line-comment td {
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    text-align: left;
-}
-
-tr.line-comment p {
-    margin:0;
-    padding: 5px;
+    border-bottom: 1px solid black !important;
+    border-top: 1px solid black !important;
     text-align: left;
 }
 
 /* edge case: comment tr is last line of table */
-/*tr.line-comment:last-child {
-    border-radius: 0 0 8px 8px;
-}*/
+/* ugliness to palliate to the wkhtmltopdf bug that causes
+inexistent borders to be drawn when they don't exist when some
+border is set on the last TD of a table */
 
-tr.line-comment:last-child td:only-child {
-    margin:0;
-    padding: 5px;
-    text-align: left;
-    border-radius: 0 0 8px 8px;
+tr.line-comment:last-child {
+    border: 0;
+}
+
+/* idk why we need the !important ...*/
+tr.line-comment:last-child td {
+    border: 0 !important;
+    padding: 0;
+}
+
+tr.line-comment:last-child td p {
+    padding: 3px 5px 3px 5px;
+    border-top: 1px solid black;
 }

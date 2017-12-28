@@ -264,9 +264,9 @@
         </div>
 
         <!-- mode de reglement / echeance / n/id cee -->
-        <div class="row" style="margin-bottom: 10px;">
+        <div class="row" style="margin-bottom: 12px;">
             <div class="col-xs-4">
-                <table class="rounded-table table-curved">
+                <table class="table-curved upper-part-table">
                     <thead>
                         <tr>
                             <th> MODE DE REGLEMENT </th>
@@ -283,7 +283,7 @@
                 </table>
             </div>
             <div class="col-xs-4">
-                <table class="rounded-table table-curved">
+                <table class="table-curved upper-part-table">
                     <thead>
                         <tr>
                             <th t-if="bl"> Départ prévu le </th>
@@ -308,7 +308,7 @@
                 </table>
             </div>
             <div class="col-xs-4">
-                <table class="rounded-table table-curved vatnums-table">
+                <table class="table-curved upper-part-table vatnums-table">
                     <thead>
                         <tr>
                             <th> N/Id CEE :

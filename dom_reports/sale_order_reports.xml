@@ -18,21 +18,21 @@
                 <t t-set="display_discount" t-value="any([l.discount for l in doc.order_line])"/>
 
                 <t t-foreach="doc.order_lines_layouted()" t-as="page">
-                    <table class="lines-table table-curved" id="lt">
+                    <table class="table-curved lines-table">
                         <thead>
                             <tr>
                                 <th>REFERENCE</th>
                                 <th>DESIGNATION</th>
-                                <th class="text-right">QTE</th>
-                                <th class="text-right">CONDT</th>
-                                <th class="text-right">P.U HT</th>
-                                <th t-if="display_discount" class="text-right">% REM</th>
-                                <th class="text-right">P.U HT NET</th>
-                                <th class="text-right">MONTANT HT</th>
+                                <th>QTE</th>
+                                <th>CONDT</th>
+                                <th>P.U HT</th>
+                                <th t-if="display_discount">% REM</th>
+                                <th>P.U HT NET</th>
+                                <th>MONTANT HT</th>
                                 <!-- <th class="text-right">TVA</th> -->
                             </tr>
                         </thead>
-                        <tbody class="sale_tbody">
+                        <tbody>
                             <t t-foreach="page" t-as="layout_category">
 
                                 <!-- sections -->
@@ -51,7 +51,7 @@
                                     </tr>
                                 </t>
 
-                                <!-- Lines associated -->
+                                <!-- Lignes du devis/bc -->
                                 <t t-foreach="layout_category['lines']" t-as="l">
                                     <!-- commentaires -->
                                     <tr t-if="l.comment_free and l.comment_position == 'before'" class="line-comment">
@@ -152,14 +152,6 @@
                         <span t-field="doc.payment_term_id.note"/>
                     </p>
 
-                    <!--
-                    <p> ya </p>
-                    <t t-esc="page_index" />
-                    <p> ye </p>
-                    <t t-esc="page_size" />
-                    <p> yi </p>
-                    -->
-
                     <t t-if="page_index &lt; page_size - 1" groups="sale.group_sale_layout">
                         <p style="page-break-before:always;"> </p>
                     </t>
@@ -181,8 +173,9 @@
 
                 </t> <!-- PAGE foreach end -->
 
+                <!-- SUMMARY TABLE SO/BC -->
                 <!-- bases ht / remise / port ht / deconditionnement / TOTAL HT NET / % TVA / MT TVA / TOTAUX / Net à Payer  -->
-                <table class="rounded-table table-curved">
+                <table class="table-curved summary-table">
                     <thead>
                         <tr>
                             <!--<th>BASES HT</th>-->

@@ -11,22 +11,22 @@
                 <!-- Is there a discount on at least one line? -->
                 <t t-set="display_discount" t-value="any([l.discount for l in doc.invoice_line_ids])"/>
 
-                <table class="lines-table" id="lt">
+                <table class="table-curved lines-table">
                     <thead>
                         <tr>
                             <th>REFERENCE</th>
                             <th>DESIGNATION</th>
-                            <th class="text-right">QTE</th>
-                            <th class="text-right">CONDT</th>
-                            <th class="text-right">P.U HT</th>
-                            <th t-if="display_discount"
-                                class="text-right">% REM</th>
-                            <th class="text-right">P.U HT NET</th>
-                            <th class="text-right" >MONTANT HT</th>
+                            <th>QTE</th>
+                            <th>CONDT</th>
+                            <th>P.U HT</th>
+                            <th t-if="display_discount">% REM</th>
+                            <th>P.U HT NET</th>
+                            <th>MONTANT HT</th>
                             <!-- <th class="text-right">TVA</th> -->
                         </tr>
                     </thead>
-                    <tbody class="invoice_tbody">
+                    <!-- <tbody class="invoice_tbody"> -->
+                    <tbody>
 
                         <tr t-foreach="doc.invoice_line_ids" t-as="l">
                             <!--
@@ -43,27 +43,27 @@
                             <!-- description -->
                             <td><span t-field="l.name"/></td>
                             <!-- qte -->
-                            <td class="text-right">
+                            <td class="right-align">
                                 <span t-field="l.quantity"/>
                                 <span t-field="l.product_id.uom_id" />
                             </td>
                             <!-- condt -->
                             <td><span t-field="l.product_id.uom_id"/></td>
                             <!-- P.U HT -->
-                            <td class="text-right">
+                            <td class="right-align">
                                 <span t-field="l.price_unit"/>
                             </td>
                             <!-- % REM -->
-                            <td t-if="display_discount" class="text-right">
+                            <td t-if="display_discount" class="right-align">
                                 <span t-field="l.discount"/>
                             </td>
                             <!-- P.U HT NET = P.U HT __après remise__-->
-                            <td class="text-right">
+                            <td class="right-align">
                                 <span t-field="l.price_reduce"
                                     t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                             </td>
                             <!-- MONTANT HT = MONTANT TOTAL LIGNE HT -->
-                            <td class="text-right">
+                            <td class="right-align">
                                 <!-- <span t-field="l.price_subtotal" -->
                                 <span t-field="l.price_subtotal_net"
                                     t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
@@ -134,9 +134,9 @@ En cas de paiement dans les 8 jours date de facture, escompte de 2 %
                     </div>
                 </div>
 
+                <!-- SUMMARY TABLE INVOICE -->
                 <!-- bases ht / remise / port ht / deconditionnement / TOTAL HT NET / % TVA / MT TVA / TOTAUX / Net à Payer  -->
-
-                <table class="rounded-table table-curved">
+                <table class="table-curved summary-table">
                     <thead>
                         <tr>
                             <!-- <th>BASES HT</th> -->
