@@ -98,6 +98,9 @@ otherwise border won't align because of left/right border mismatch */
     text-align: center;
     word-break: break;
     width: 100%;
+
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .header-table {
@@ -324,6 +327,10 @@ otherwise border won't align because of left/right border mismatch */
 
 /* comment stuf */
 
+tr.line-comment {
+    page-break-inside: avoid;
+}
+
 tr.line-comment td {
     border-bottom: 1px solid black !important;
     border-top: 1px solid black !important;
@@ -349,3 +356,10 @@ tr.line-comment:last-child td p {
     padding: 3px 5px 3px 5px;
     border-top: 1px solid black;
 }
+
+/* ** top message div ** not used for now..
+.top-message-div {
+    max-width: 300px;
+    background-color: red;
+    border: 1px solid black;
+} */

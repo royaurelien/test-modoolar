@@ -29,35 +29,33 @@
 
             <div class="row">
                 <div class="col-xs-6">
-                    <!-- <div class="table-responsive"> -->
-                        <table class="header-table table-curved">
-                            <thead>
-                                <tr>
-                                    <th>date</th>
-                                    <th>client</th>
-                                    <th>page</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <!-- it's a datetime, so t-field auto formats with the hour. changing this here -->
-                                        <span t-if="devis" t-field="doc.date_order"
-                                            t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
-                                        <span t-elif="bdc" t-field="doc.confirmation_date"
-                                            t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
-                                        <span t-elif="facture" t-field="doc.date_invoice"
-                                            t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
-                                        <span t-elif="bl" t-field="doc.scheduled_date"
-                                            t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
-                                        <!-- <span t-else=""> <span t-field="doc.name" /> </span> -->
-                                    </td>
-                                    <td> <span t-field="doc.partner_id.ref" /> </td>
-                                    <td> <span class="page" /> / <span class="topage" /> </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    <!-- </div> -->
+                    <table class="header-table table-curved">
+                        <thead>
+                            <tr>
+                                <th>date</th>
+                                <th>client</th>
+                                <th>page</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <!-- it's a datetime, so t-field auto formats with the hour. changing this here -->
+                                    <span t-if="devis" t-field="doc.date_order"
+                                        t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
+                                    <span t-elif="bdc" t-field="doc.confirmation_date"
+                                        t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
+                                    <span t-elif="facture" t-field="doc.date_invoice"
+                                        t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
+                                    <span t-elif="bl" t-field="doc.scheduled_date"
+                                        t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
+                                    <!-- <span t-else=""> <span t-field="doc.name" /> </span> -->
+                                </td>
+                                <td> <span t-field="doc.partner_id.ref" /> </td>
+                                <td> <span class="page" /> / <span class="topage" /> </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="col-xs-6">
@@ -66,7 +64,7 @@
                         <span t-elif="bdc"> Bon de commande </span>
                         <span t-elif="facture"> Facture </span>
                         <span t-elif="bl"> Bon de livraison </span>
-                        N° :
+                        N° :&#xA0;
                         <t t-if="devis or bdc or bl">
                             <span t-esc="doc.name" />
                         </t>
@@ -178,11 +176,13 @@
     <template id="dom_reports.upper_part">
 
         <!-- pub / address -->
-        <div class="row" style="margin-bottom: 10px;">
+        <div class="row" style="margin-bottom: 10px; padding: 0 15px 0 15px;">
 
-            <div class="col-xs-6">
-            <!-- <t t-raw="top_message" /> -->
-            <t t-raw="market_info.top_message" />
+            <div class="col-xs-6 ">
+                <div class="top-message-div">
+                    <img t-if="market_info.top_message"
+                     t-att-src="'data:image/png;base64,%s' % to_text(market_info.top_message)" />
+                </div>
             </div>
 
             <!-- partner address -->

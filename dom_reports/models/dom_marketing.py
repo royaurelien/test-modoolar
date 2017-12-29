@@ -9,7 +9,7 @@ PARAMS = [
 class DomMarketing(models.TransientModel):
     _inherit = 'res.config.settings'
 
-    top_message = fields.Html(string="Message en tête de page")
+    top_message = fields.Binary(string="Message en tête de page")
     footer_logo_1 = fields.Binary(string="Image de pied de page n°1")
     footer_logo_2 = fields.Binary(string="Image de pied de page n°2")
     footer_logo_3 = fields.Binary(string="Image de pied de page n°3")
