@@ -8,7 +8,7 @@
     <report
         id="dom_report_bl_action"
         model="stock.picking"
-        string="Dom BL"
+        string="BL Domitec"
         name="dom_reports.dom_report_bl"
         file="dom_reports.dom_report_bl"
         report_type="qweb-pdf"

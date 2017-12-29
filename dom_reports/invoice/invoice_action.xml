@@ -7,7 +7,7 @@
     <report
         id="dom_report_invoice_action"
         model="account.invoice"
-        string="Dom Invoice"
+        string="Facture Domitec"
         name="dom_reports.dom_report_invoice"
         file="dom_reports.dom_report_invoice"
         report_type="qweb-pdf"
