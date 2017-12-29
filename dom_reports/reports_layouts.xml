@@ -25,7 +25,6 @@
                 <p> &amp;nbsp; </p>
                 <p> &amp;nbsp; </p>
             -->
-                <div class="spacer-div"></div>
             </t>
 
             <div class="row">
@@ -93,60 +92,65 @@
         <!-- footer -->
         <div t-if="not bl" class="footer">
             <div class="text-center" style="font-size:12px;">
-                    <!-- address -->
-                    <!-- 92 Impasse du Terraillet 73190 ST BALDOPH - Tél : +33 4 79 25 04 80 - Fax : +334 79 25 07 10 - info@domitec.net - www.domitec.net -->
-                    <!-- SARL au capital de 200 200 - N° Siret 42995752500042 - Code APE 4619B - N° TVA Intracom. FR 52 429 957 525 - RCS CHAMBERY 429 957 525 -->
-                    <span>
-                    <t t-if="company.street"> <span t-field="company.street" /> </t>
-                    <t t-if="company.zip"> <span t-field="company.zip" /> </t>
-                    <t t-if="company.city"> <span t-field="company.city" /> </t>
-                    -
-                    </span>
+                <!-- address -->
+                <!-- 92 Impasse du Terraillet 73190 ST BALDOPH - Tél : +33 4 79 25 04 80 - Fax : +334 79 25 07 10 - info@domitec.net - www.domitec.net -->
+                <!-- SARL au capital de 200 200 - N° Siret 42995752500042 - Code APE 4619B - N° TVA Intracom. FR 52 429 957 525 - RCS CHAMBERY 429 957 525 -->
+                <span>
+                <t t-if="company.street"> <span t-field="company.street" /> </t>
+                <t t-if="company.zip"> <span t-field="company.zip" /> </t>
+                <t t-if="company.city"> <span t-field="company.city" /> </t>
+                -
+                </span>
 
-                    <t t-if="company.phone"> <span> Tél : <span t-field="company.phone" /> - </span> </t>
+                <t t-if="company.phone"> <span> Tél : <span t-field="company.phone" /> - </span> </t>
 
-                    <!-- odoo ont supprimé le champ fax de res.company... parce que le fax en 2017 c'est trop has been tavu lol -->
-                    <span> Fax : +334 79 25 07 10 - </span>
+                <!-- odoo ont supprimé le champ fax de res.company... parce que le fax en 2017 c'est trop has been tavu lol -->
+                <span> Fax : +334 79 25 07 10 - </span>
 
-                    <t t-if="company.email"> <span> <span t-field="company.email" /> - </span> </t>
-                    <t t-if="company.website"> <span> <span t-field="company.website" /> </span> </t>
+                <t t-if="company.email"> <span> <span t-field="company.email" /> - </span> </t>
+                <t t-if="company.website"> <span> <span t-field="company.website" /> </span> </t>
 
-                    <br/>
+                <br/>
 
-                    <t t-if="company.report_footer"> <span> <span t-field="company.report_footer" /> - </span> </t>
-                    <t t-if="company.siret"> <span> N° Siret <span t-field="company.siret" /> - </span> </t>
-                    <t t-if="company.ape"> <span> Code APE <span t-field="company.ape" /> - </span> </t>
-                    <t t-if="company.vat"> <span> N° TVA Intracom. <span t-field="company.vat" /> - </span> </t>
-                    <span> RCS CHAMBERY 429 957 525 </span>
-                    <!--
-                    <li t-if="company.email"><i class="fa fa-at"/> <span t-field="company.email"/></li>
-                    <li t-if="company.website"><i class="fa fa-globe"/> <span t-field="company.website"/></li>
-                    <li t-if="company.vat"><i class="fa fa-building-o"/><t t-esc="company.country_id.vat_label or 'TIN'"/>: <span t-field="company.vat"/></li>
-                    -->
+                <t t-if="company.report_footer"> <span> <span t-field="company.report_footer" /> - </span> </t>
+                <t t-if="company.siret"> <span> N° Siret <span t-field="company.siret" /> - </span> </t>
+                <t t-if="company.ape"> <span> Code APE <span t-field="company.ape" /> - </span> </t>
+                <t t-if="company.vat"> <span> N° TVA Intracom. <span t-field="company.vat" /> - </span> </t>
+                <span> RCS CHAMBERY 429 957 525 </span>
+                <!--
+                <li t-if="company.email"><i class="fa fa-at"/> <span t-field="company.email"/></li>
+                <li t-if="company.website"><i class="fa fa-globe"/> <span t-field="company.website"/></li>
+                <li t-if="company.vat"><i class="fa fa-building-o"/><t t-esc="company.country_id.vat_label or 'TIN'"/>: <span t-field="company.vat"/></li>
+                -->
 
-                    <!-- images part -->
-                    <div class="row" style="margin-top:12px;">
-                        <div class="col-xs-3 footer_logo">
-                        <!-- <img src="/dom_reports/static/imgs/lithofin_logo.png" /> -->
-                            <img t-if="market_info.fl1"
-                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl1)" />
-                        </div>
-                        <div class="col-xs-3 footer_logo">
-                            <img t-if="market_info.fl2"
-                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl2)" />
-                        </div>
-                        <div class="col-xs-3 footer_logo">
-                            <img t-if="market_info.fl3"
-                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl3)" />
-                        </div>
-                        <div class="col-xs-3 footer_logo">
-                            <img t-if="market_info.fl4"
-                                t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl4)" />
-                        </div>
+                <!-- images part -->
+                <div class="row" style="margin-top:12px;">
+                    <div class="col-xs-3 footer_logo">
+                    <!-- <img src="/dom_reports/static/imgs/lithofin_logo.png" /> -->
+                        <img t-if="market_info.fl1"
+                            t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl1)" />
                     </div>
+                    <div class="col-xs-3 footer_logo">
+                        <img t-if="market_info.fl2"
+                            t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl2)" />
+                    </div>
+                    <div class="col-xs-3 footer_logo">
+                        <img t-if="market_info.fl3"
+                            t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl3)" />
+                    </div>
+                    <div class="col-xs-3 footer_logo">
+                        <img t-if="market_info.fl4"
+                            t-att-src="'data:image/png;base64,%s' % to_text(market_info.fl4)" />
+                    </div>
+                </div>
+            </div> <!-- text center and font-size div -->
+        </div> <!-- end of footer div -->
 
-            </div>
-        </div>
+        <!--
+        <div t-if="bl" class="footer">
+            <p>footer</p>
+        </div> -->
+
     </template>
 
 

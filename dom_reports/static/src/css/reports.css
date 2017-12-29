@@ -141,6 +141,7 @@ otherwise border won't align because of left/right border mismatch */
 
 .summary-table {
     width: 100%;
+    page-break-inside: avoid;
 }
 
 .summary-table td, .summary-table th {
@@ -229,6 +230,10 @@ otherwise border won't align because of left/right border mismatch */
     text-align: right;
 }
 
+.lines-table td.left-align {
+    text-align: left;
+}
+
 /** lines table end **/
 
 .vatnums-table th {
@@ -253,9 +258,16 @@ otherwise border won't align because of left/right border mismatch */
     padding-bottom: 5px;
 }
 
+/* for under remarque/nb livraison */
 .bl-spacer-div {
     height: 70px;
 }
+
+/* not needed now that we use another paperformat
+.bl-header-spacer {
+    height: 0px;
+    background-color: red;
+} */
 
 .bl-summary-line {
     border: 1px solid black;
@@ -263,6 +275,8 @@ otherwise border won't align because of left/right border mismatch */
 
     padding: 10px 5px 10px 5px;
     margin: 2px;
+
+    page-break-inside: avoid;
 }
 
 .bl-summary-line p {

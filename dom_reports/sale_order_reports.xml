@@ -76,32 +76,36 @@
                                             ll_size : <t t-esc="l_size" />
                                         </td> -->
                                         <!-- ref -->
-                                        <td><span t-field="l.product_id.default_code"/></td>
+                                        <td class="left-align">
+                                            <span t-field="l.product_id.default_code"/>
+                                        </td>
                                         <!-- description -->
-                                        <td><span t-field="l.product_id.name"/></td>
+                                        <td class="left-align">
+                                            <span t-field="l.product_id.name"/>
+                                        </td>
                                         <!-- qte -->
-                                        <td class="text-right">
+                                        <td>
                                             <span t-field="l.product_uom_qty"/>
                                             <!--<span t-field="l.product_uom" groups="product.group_uom"/>-->
                                         </td>
                                         <!-- condt -->
                                         <td><span t-field="l.product_id.uom_id"/></td>
                                         <!-- P.U HT -->
-                                        <td class="text-right">
+                                        <td class="right-align">
                                             <span t-field="l.price_unit"/>
                                         </td>
                                         <!-- % REM -->
-                                        <td t-if="display_discount" class="text-right">
+                                        <td t-if="display_discount" class="right-align">
                                             <span t-field="l.discount"/>
                                         </td>
                                         <!-- P.U HT NET = P.U HT __après remise__-->
-                                        <td class="text-right">
+                                        <td class="right-align">
                                             <span t-field="l.price_reduce"
                                                 t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                         </td>
                                         <!-- MONTANT HT = MONTANT TOTAL LIGNE HT -->
                                         <!-- montant ht avec remise * nbre d'unités -->
-                                        <td class="text-right">
+                                        <td class="right-align">
                                             <!-- <span t-field="l.price_subtotal" -->
                                             <span t-field="l.price_subtotal_net"
                                                 t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
