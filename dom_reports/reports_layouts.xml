@@ -51,7 +51,12 @@
                                         t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
                                     <!-- <span t-else=""> <span t-field="doc.name" /> </span> -->
                                 </td>
-                                <td> <span t-field="doc.partner_id.ref" /> </td>
+                                <td>
+                                    <!-- <span t-field="doc.partner_id.ref" /> -->
+                                    <span t-if="devis or bdc" t-field="doc.client_order_ref" />
+                                    <span t-elif="facture" t-field="doc.name" />
+                                    <span t-elif="bl and doc.sale_id" t-field="doc.sale_id.client_order_ref" />
+                                </td>
                                 <td> <span class="page" /> / <span class="topage" /> </td>
                             </tr>
                         </tbody>
