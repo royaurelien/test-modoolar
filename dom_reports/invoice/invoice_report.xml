@@ -48,8 +48,10 @@
                             </td>
                             <!-- qte -->
                             <td>
-                                <span t-field="l.quantity"/>
-                                <span t-field="l.product_id.uom_id" />
+                                <!-- span t-field="l.quantity"/>
+                                <span t-field="l.product_id.uom_id" /-->
+                                <t t-set="qty" t-value="l.quantity"/>
+                                <span t-esc="int(qty) if qty.is_integer() else qty"/>
                             </td>
                             <!-- condt -->
                             <td><span t-field="l.product_id.uom_id"/></td>

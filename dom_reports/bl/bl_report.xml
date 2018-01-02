@@ -28,8 +28,10 @@
                                 <span t-field="move.product_id.name"/>
                             </td>
                             <td>
-                                <span t-field="move.quantity_done"/>
-                                <span t-field="move.product_uom"/>
+                                <!--span t-field="move.quantity_done"/>
+                                <span t-field="move.product_uom"/-->
+                                <t t-set="qty" t-value="move.quantity_done"/>
+                                <span t-esc="int(qty) if qty.is_integer() else qty"/>
                             </td>
                             <!--<td>
                                 <span t-field="move.product_uom"/>
