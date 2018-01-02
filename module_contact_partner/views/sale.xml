@@ -1,0 +1,28 @@
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="sale_contact_list" model="ir.ui.view">
+        <field name="name">sale contact list</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Client -->
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                 <attribute name="domain">[('customer', '=', True),('parent_id', '=', False)]</attribute>
+            </xpath>
+
+            <!-- Facture -->
+            <xpath expr="//field[@name='partner_invoice_id']" position="attributes">
+                 <attribute name="domain">[('customer', '=', True),'|',('parent_id', '=', False),('type','=', 'invoice')]</attribute>
+            </xpath>
+
+            <!-- Livraison -->
+            <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+                 <attribute name="domain">[('customer', '=', True),'|',('parent_id', '=', False),('type','=', 'delivery')]</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

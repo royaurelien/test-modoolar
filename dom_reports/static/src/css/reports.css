@@ -4,52 +4,168 @@
 margin: 0; padding: 0;
 }*/
 
+/** rounded table struggle
+https://stackoverflow.com/questions/18729638/rounded-tables-in-twitter-bootstrap-3
+**/
+
+.table-curved {
+    border-collapse: separate;
+    border-radius: 8px;
+    /*border: 1px solid red;*/
+    border: 1px solid black;
+}
+
+/* first and last ths */
+.table-curved th:first-child {
+    border: 0;
+    border-bottom: 1px solid black;
+}
+.table-curved th:last-child {
+    border: 0;
+    border-bottom: 1px solid black;
+}
+
+/* normal ths */
+.table-curved th {
+    border: 0;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+/*.table-curved td {
+    padding-right: 5px;
+    padding-left: 5px;
+}*/
+/*
+.table-curved th:only-child{
+    border-radius: 8px 8px 0 0;
+}
+.table-curved tr:only-child{
+    border-radius: 0 0 8px 8px;
+}
+.table-curved tr:only-child td:only-child{
+    border-radius: 0 0 8px 8px !important;
+}
+*/
+
+/* normal tds */
+.table-curved td {
+    border-left: 1px solid black;
+    /*border-bottom: 1px solid black;*/
+    border-bottom: 0;
+}
+.table-curved td:first-child {
+    border: 0;
+}
+.table-curved tr:last-child{
+    border-top: 0;
+}
+.table-curved tr:last-child td:first-child{
+    border-radius: 0 0 0px 8px;
+    border: 0;
+    /*border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: none !important;*/
+}
+.table-curved tr:last-child td:last-child {
+    border-radius: 0 0 8px 0;
+    border: 0;
+}
+
+/* before last have both borders, last have none
+otherwise border won't align because of left/right border mismatch */
+.table-curved th:nth-last-child(2) {
+    border-right: 1px solid black;
+}
+.table-curved td:nth-last-child(2) {
+    border-right: 1px solid black;
+}
+.table-curved td:last-child {
+    border: 0;
+}
+.table-curved tr {
+    border: 1px solid black;
+}
+
+
+/** end of rounded table struggle **/
+
+.header-cartouche {
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    word-break: break;
+    width: 100%;
+
+    font-weight: bold;
+    font-size: 16px;
+}
 
 .header-table {
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-color: 1px solid black;
 
     table-layout: fixed;
     word-break: break;
     width: 100%;
 }
 
-.header-table td, th {
-    border: 1px solid black;
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+.header-table td {
 
     padding: 10px;
     text-align: center;
 }
 
+.header-table th {
+
+    padding: 10px;
+    text-align: center;
+}
+
+.summary-table-absolute {
+    /*position: absolute;
+    bottom: 0px;*/
+    position: absolute;
+    /*top: 800px;
+    bottom: 0;*/
+    page-break-inside: avoid;
+
+    width: 97% !important;
+}
+
+.upper-part-table {
+    width: 100%;
+}
+
+.upper-part-table td, .upper-part-table th {
+    text-align: center;
+    padding: 10px;
+}
+
+.summary-table {
+    width: 100%;
+    page-break-inside: avoid;
+}
+
+.summary-table td, .summary-table th {
+    text-align: center;
+    padding: 10px;
+}
+
+/*
 .rounded-table {
 
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
     border-color: 1px solid black;
 
     width: 100%;
 }
 
 .rounded-table td, th {
-    /* background-color: red; */
-    border: 1px solid black;
-    /* border-right: 1px solid black; */
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
 
     padding: 10px;
     text-align: center;
 }
+*/
 
 .cadre-titre {
     /* display: flex;
@@ -86,39 +202,42 @@ margin: 0; padding: 0;
     margin: 10px;
 }
 
-.lines-table {
+/** lines table **/
 
-    border: 1px solid black;
-    border-bottom: 1px solid black;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-color: 1px solid black;
+.lines-table {
 
     width: 100%;
     margin-bottom: 15px;
 }
 
-.lines-table td, th {
-    /* border: 1px solid black; */
-    border-right: 1px solid black;
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-
-    padding: 10px;
+.lines-table th {
+    white-space: nowrap;
     text-align: center;
 }
 
-.lines-table th {
-    white-space: nowrap;
+/* first line and last line of tbody have a bit more padding */
+.lines-table tbody tr:first-child td {
+    padding-top: 12px;
+}
+
+.lines-table tbody tr:last-child td {
+    padding-bottom: 10px;
 }
 
 .lines-table td {
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding: 3px 5px 3px 5px;
+    text-align: center;
 }
+
+.lines-table td.right-align {
+    text-align: right;
+}
+
+.lines-table td.left-align {
+    text-align: left;
+}
+
+/** lines table end **/
 
 .vatnums-table th {
     font-weight: normal;
@@ -129,7 +248,7 @@ margin: 0; padding: 0;
     height: 50px;
 }
 
-/* bl stuff */
+/** bl stuff **/
 .bl-warning {
     /* background-color: green; */
     background-color: lightgrey;
@@ -142,8 +261,30 @@ margin: 0; padding: 0;
     padding-bottom: 5px;
 }
 
+/* for under remarque/nb livraison */
 .bl-spacer-div {
     height: 70px;
+}
+
+/* not needed now that we use another paperformat
+.bl-header-spacer {
+    height: 0px;
+    background-color: red;
+} */
+
+.bl-summary-line {
+    border: 1px solid black;
+    border-radius: 8px;
+
+    padding: 10px 5px 10px 5px;
+    margin: 2px;
+
+    page-break-inside: avoid;
+}
+
+.bl-summary-line p {
+    padding: 0;
+    margin: 0;
 }
 
 /* invoice stuff */
@@ -184,21 +325,41 @@ margin: 0; padding: 0;
     padding-right: 35px;
 }
 
-.pub-div {
-    /* border: 1px solid black;
-    background-color: cyan; */
-}
-
 /* comment stuf */
 
 tr.line-comment {
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    page-break-inside: avoid;
+}
+
+tr.line-comment td {
+    border-bottom: 1px solid black !important;
+    border-top: 1px solid black !important;
     text-align: left;
 }
 
-tr.line-comment p {
-    margin:0;
-    padding: 5px;
-    text-align: left;
+/* edge case: comment tr is last line of table */
+/* ugliness to palliate to the wkhtmltopdf bug that causes
+inexistent borders to be drawn when they don't exist when some
+border is set on the last TD of a table */
+
+tr.line-comment:last-child {
+    border: 0;
 }
+
+/* idk why we need the !important ...*/
+tr.line-comment:last-child td {
+    border: 0 !important;
+    padding: 0;
+}
+
+tr.line-comment:last-child td p {
+    padding: 3px 5px 3px 5px;
+    border-top: 1px solid black;
+}
+
+/* ** top message div ** not used for now..
+.top-message-div {
+    max-width: 300px;
+    background-color: red;
+    border: 1px solid black;
+} */

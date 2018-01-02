@@ -9,7 +9,7 @@
 
                 <t t-call="dom_reports.upper_part" />
 
-                <table class="lines-table">
+                <table class="table-curved lines-table">
                     <thead>
                         <tr>
                             <th>REFERENCE</th>
@@ -19,17 +19,26 @@
                             <th>POIDS</th>
                         </tr>
                     </thead>
-                    <tbody class="invoice_tbody">
+                    <tbody>
                         <tr t-foreach="doc.move_lines" t-as="move">
-                            <td> <span t-field="move.product_id.default_code"/> </td>
-                            <td> <span t-field="move.product_id.name"/> </td>
+                            <td class="left-align">
+                                <span t-field="move.product_id.default_code"/>
+                            </td>
+                            <td class="left-align">
+                                <span t-field="move.product_id.name"/>
+                            </td>
                             <td>
-                                <span t-field="move.quantity_done"/> <span t-field="move.product_uom"/>
+                                <!--span t-field="move.quantity_done"/>
+                                <span t-field="move.product_uom"/-->
+                                <t t-set="qty" t-value="move.quantity_done"/>
+                                <span t-esc="int(qty) if qty.is_integer() else qty"/>
                             </td>
                             <!--<td>
                                 <span t-field="move.product_uom"/>
                             </td>-->
-                            <td> <span t-esc="(move.product_id.weight * move.quantity_done)"/> </td>
+                            <td>
+                                <span t-esc="(move.product_id.weight * move.quantity_done)"/>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -47,17 +56,30 @@
                 <div class="bl-spacer-div"></div>
 
                 <!-- summary table -->
-                <div class="row" style="border: 1px solid black; margin: 2px; padding: 5px;">
+                <div class="row bl-summary-line">
+                    <t t-set="err_mess">
+                       <p> Odoo n'est pas configuré pour la gestion des colis. </p>
+                    </t>
                     <div class="col-xs-4">
                         <!--<p> Nombre de carton : <span t-field="doc.number_of_packages"/> </p>-->
-                        <p> Nombre de carton : <span t-esc="len(doc.package_ids.ids)"/> </p>
+                        <t t-if=" 'package_ids' in doc.fields_get() ">
+                            <p> Nombre de carton : <span t-esc="len(doc.package_ids.ids)"/> </p>
+                        </t>
+                        <t t-else="">
+                            <t t-raw="err_mess" /> <p>(champ package_ids inexistant)</p>
+                        </t>
                         <!--<p> Nombre de carton : <span t-field="doc.package_ids"/> </p>-->
                     </div>
                     <div class="col-xs-4">
                         <p> Total Quantité : <span t-esc="'%.2f'%(sum([x.quantity_done for x in doc.move_lines]))"/> </p>
                     </div>
                     <div class="col-xs-4">
-                        <p> Total Poids Brut : <span t-field="doc.shipping_weight"/> <span t-field="doc.weight_uom_id"/> </p>
+                        <t t-if=" 'shipping_weight' in doc.fields_get() ">
+                            <p> Total Poids Brut : <span t-field="doc.shipping_weight"/> <span t-field="doc.weight_uom_id"/> </p>
+                        </t>
+                        <t t-else="">
+                            <t t-raw="err_mess" /> <p>(champ shipping_weight inexistant)</p>
+                        </t>
                     </div>
                 </div>
 

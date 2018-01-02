@@ -7,12 +7,28 @@
         <field name="page_height">0</field>
         <field name="page_width">0</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">56</field>
+        <field name="margin_top">50</field>
         <field name="margin_bottom">28</field>
         <field name="margin_left">7</field>
         <field name="margin_right">7</field>
         <field name="header_line" eval="False"/>
-        <field name="header_spacing">52</field>
+        <field name="header_spacing">46</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="paperformat_dom_a4_bl" model="report.paperformat">
+        <field name="name">Papier A4 Domitec pour BL</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">65</field>
+        <field name="margin_bottom">33</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">25</field>
         <field name="dpi">90</field>
     </record>
 

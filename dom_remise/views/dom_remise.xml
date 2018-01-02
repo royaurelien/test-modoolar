@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="dom_remise_form" model="ir.ui.view">
+        <field name="name">Remise</field>
+        <field name="model">dom.remise</field>
+        <field name="arch" type="xml">
+            <form name="remise_form">
+                <sheet>
+                    <group>
+                        <field name="amount"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="dom_remise_tree" model="ir.ui.view">
+        <field name="name">List Remise</field>
+        <field name="model">dom.remise</field>
+        <field name="arch" type="xml">
+            <tree name="remise_tree">
+                <field name="amount"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="dom_remise_action_view" model="ir.actions.act_window">
+        <field name="name">Remises</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dom.remise</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="dom_remise_menu" name="List Remise" parent="sale.menu_sale_config" action="dom_remise_action_view" sequence=""/>
+
+</odoo>

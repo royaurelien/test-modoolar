@@ -7,7 +7,7 @@
     <report
         id="dom_report_invoice_action"
         model="account.invoice"
-        string="Dom Invoice"
+        string="Facture Domitec"
         name="dom_reports.dom_report_invoice"
         file="dom_reports.dom_report_invoice"
         report_type="qweb-pdf"
@@ -36,5 +36,12 @@
         </t>
     </template>
     -->
+
+    <!-- configure the invoice email template to send our invoice
+    instead of the default one. This way, when we press "send by email"
+    in the form, the correct report is added as attachment -->
+    <record id="account.email_template_edi_invoice" model="mail.template">
+        <field name="report_template" ref="dom_reports.dom_report_invoice_action"/>
+    </record>
 
 </odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- inherit so to modif form so lines -->
+    <record id="dom_gesco_tweaks_so_view" model="ir.ui.view">
+        <field name="name">dom_gesco_tweaks Sale Order Form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+           <xpath expr="//field[@name='customer_lead']" position="attributes">
+                <attribute name="invisible">True</attribute>
+           </xpath>
+        </field>
+    </record>
+
+</odoo>

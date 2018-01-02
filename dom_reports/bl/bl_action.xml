@@ -8,34 +8,16 @@
     <report
         id="dom_report_bl_action"
         model="stock.picking"
-        string="Dom BL"
+        string="BL Domitec"
         name="dom_reports.dom_report_bl"
         file="dom_reports.dom_report_bl"
         report_type="qweb-pdf"
         />
 
-    <!-- paperformat="dom_reports.paperformat_dom_a4"
-    <record id="dom_reports.dom_report_invoice_action" model="ir.actions.report">
+    <!-- paperformat="dom_reports.paperformat_dom_a4" -->
 
-        <field name="paperformat_id" ref="dom_reports.paperformat_dom_a4"/>
-
-    </record> -->
-    
-    <!--
-    <template id="report_session_view">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-
-                <t t-call="dom_reports.external_layout">
-
-                    <div class="page">
-                        <h2 t-field="doc.name"/>
-                        <p> THIS IS THE SALE ORDER REPORT </p>
-                    </div>
-                </t>
-            </t>
-        </t>
-    </template>
-    -->
+    <record id="dom_reports.dom_report_bl_action" model="ir.actions.report">
+        <field name="paperformat_id" ref="dom_reports.paperformat_dom_a4_bl"/>
+    </record>
 
 </odoo>
