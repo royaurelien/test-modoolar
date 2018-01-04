@@ -21,6 +21,11 @@
                         <field name="freq_contact"/>
                         <field name="plv" />
                         <field name="presentoir" />
+                        <field name="presentoir_id"/>
+                        <field name="plv_pdt"/>
+                        <field name="plv_p_int"/>
+                        <field name="plv_p_ext"/>
+                        <field name="plv_carrelage"/>
                     </group>
                 </group>
             </xpath>

@@ -21,6 +21,7 @@
     # always loaded
     'data': [
         'data/dom_famille.xml',
+        'data/dom_presentoir.xml',
         'security/ir.model.access.csv',
 
         'views/res_partner.xml',

@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, tools
 
-class FamilleClient(models.Model):
-    _name = 'dom.famille'
+class PresentoirClient(models.Model):
+    _name = 'dom.presentoir'
 
     #### TEXT ####
-    code = fields.Char(string="Code")
     name = fields.Char(string="Nom")
-
-    #### RELATIONNEL ####
-    property_product_pricelist = fields.Many2one('product.pricelist', string='liste de prix')
