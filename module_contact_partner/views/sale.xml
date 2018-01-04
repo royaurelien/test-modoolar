@@ -9,17 +9,17 @@
 
             <!-- Client -->
             <xpath expr="//field[@name='partner_id']" position="attributes">
-                 <attribute name="domain">[('customer', '=', True),('parent_id', '=', False)]</attribute>
+                 <attribute name="domain">[('customer', '=', True),('company_type','=','company')]</attribute>
             </xpath>
 
             <!-- Facture -->
             <xpath expr="//field[@name='partner_invoice_id']" position="attributes">
-                 <attribute name="domain">[('customer', '=', True),'|',('parent_id', '=', False),('type','=', 'invoice')]</attribute>
+                 <attribute name="domain">[('customer', '=', True),'|',('company_type','=','company'),('type','=', 'invoice')]</attribute>
             </xpath>
 
             <!-- Livraison -->
             <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
-                 <attribute name="domain">[('customer', '=', True),'|',('parent_id', '=', False),('type','=', 'delivery')]</attribute>
+                 <attribute name="domain">[('customer', '=', True),'|',('company_type','=','company'),('type','=', 'delivery')]</attribute>
             </xpath>
 
         </field>
