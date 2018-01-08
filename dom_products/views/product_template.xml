@@ -10,6 +10,8 @@
             <field name="categ_id" position="after">
                 <field name="family" />
                 <field name="dang" />
+                <field name="num_onu" />
+                <field name="nb_par_colis" />
             </field>
 
         </field>

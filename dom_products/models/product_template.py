@@ -69,7 +69,7 @@ class ProductTemplate(models.Model):
 
     # 9 more fields
 
-    nb_par_colis = fields.Integer('Nombre Par Colis')
+    nb_par_colis = fields.Integer('Nombre par colis')
     poids_brut = fields.Float('Poids Brut')
 
     reliquat_fourn = fields.Integer('Reliquat Fournisseur')
