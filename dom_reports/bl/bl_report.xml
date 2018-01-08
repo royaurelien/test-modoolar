@@ -61,9 +61,12 @@
                        <p> Odoo n'est pas configuré pour la gestion des colis. </p>
                     </t>
                     <div class="col-xs-4">
-                        <!--<p> Nombre de carton : <span t-field="doc.number_of_packages"/> </p>-->
+                        <!--
                         <t t-if=" 'package_ids' in doc.fields_get() ">
                             <p> Nombre de carton : <span t-esc="len(doc.package_ids.ids)"/> </p>
+                        </t> -->
+                        <t t-if=" 'nb_cartons' in doc.fields_get() ">
+                            <p> Nombre de cartons : <span t-esc="doc.nb_cartons"/> </p>
                         </t>
                         <t t-else="">
                             <t t-raw="err_mess" /> <p>(champ package_ids inexistant)</p>

@@ -18,6 +18,7 @@
         'account',  # for invoices (account.invoice)
         'base',  # for ir.actions.report.xml
         'stock',  # for stock.pickings (bls)
+        'dom_colisage', # BL uses nb_cartons, defined there
     ],
 
     # always loaded
