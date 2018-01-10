@@ -24,7 +24,8 @@ class ResPartner(models.Model):
                                   domain=[('active', '=', True), ('company_type', '=', 'company')],
                                   default=get_child_ids)
     child_ids = fields.One2many(domain=[('active', '=', True), ('company_type', '=', 'person')])
-    presentoir_id = fields.Many2one(comodel_name='dom.presentoir', string=u'Présentoir')
+    presentoir_id = fields.Many2many(comodel_name='dom.presentoir', string=u'Présentoir')
+    plv_id = fields.Many2many(comodel_name='dom.plv', string=u'PLV')
 
     #### TEXT ####
     code_api = fields.Char(string='Code API')
@@ -41,14 +42,14 @@ class ResPartner(models.Model):
     paie_livraison = fields.Boolean(string='Paiement avant livraison')
     fac_mail = fields.Boolean(string='Facture par mail')
     bfa = fields.Boolean(string="BFA")
-    plv = fields.Boolean(string=u"Publicité sur lieu de vente")
-    presentoir = fields.Boolean(string=u"Présentoir")
+    # plv = fields.Boolean(string=u"Publicité sur lieu de vente")
+    # presentoir = fields.Boolean(string=u"Présentoir")
 
     #### DATE ####
-    plv_pdt = fields.Date(string=u'PLV plan de travail')
-    plv_p_int = fields.Date(string=u'PLV pierre intérieure')
-    plv_p_ext = fields.Date(string=u'PLV pierre extérieure')
-    plv_carrelage = fields.Date(string=u'PLV carrelage')
+    # plv_pdt = fields.Date(string=u'PLV plan de travail')
+    # plv_p_int = fields.Date(string=u'PLV pierre intérieure')
+    # plv_p_ext = fields.Date(string=u'PLV pierre extérieure')
+    # plv_carrelage = fields.Date(string=u'PLV carrelage')
 
     #### SELECTION ####
     freq_contact = fields.Selection([

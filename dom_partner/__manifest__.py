@@ -15,13 +15,17 @@
     # any module necessary for this one to work correctly
     'depends': [
         'base',
+        'product',
+        'sale',
         'account',
     ],
 
     # always loaded
     'data': [
+        'data/dom_price_list.xml',
         'data/dom_famille.xml',
         'data/dom_presentoir.xml',
+        'data/dom_plv.xml',
         'security/ir.model.access.csv',
 
         'views/res_partner.xml',

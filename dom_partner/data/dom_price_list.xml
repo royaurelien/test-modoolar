@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--Liste de prix avec ses lignes -->
+
+        <record id="dom_remise_data_mat" model="product.pricelist">
+            <field name="name">Négoce Matériaux</field>
+            <field name="discount_policy">without_discount</field>
+        </record>
+        <record id="dom_remise_data_mat_item" model="product.pricelist.item">
+            <field name="pricelist_id" ref="dom_partner.dom_remise_data_mat"/>
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">40.0</field>
+        </record>
+
+
+        <record id="dom_remise_data_carrek" model="product.pricelist">
+            <field name="name">Négoce Carrelage spécialisé</field>
+            <field name="discount_policy">without_discount</field>
+        </record>
+        <record id="dom_remise_data_carrek_item" model="product.pricelist.item">
+            <field name="pricelist_id" ref="dom_partner.dom_remise_data_carrek"/>
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">40.0</field>
+        </record>
+
+
+        <record id="dom_remise_data_marb_40" model="product.pricelist">
+            <field name="name">Marbrier 40%</field>
+            <field name="discount_policy">without_discount</field>
+        </record>
+        <record id="dom_remise_data_marb_item_40" model="product.pricelist.item">
+            <field name="pricelist_id" ref="dom_partner.dom_remise_data_marb_40"/>
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">40.0</field>
+        </record>
+
+        <record id="dom_remise_data_marb_30" model="product.pricelist">
+            <field name="name">Marbrier 30%</field>
+            <field name="discount_policy">without_discount</field>
+        </record>
+        <record id="dom_remise_data_marb_item_30" model="product.pricelist.item">
+            <field name="pricelist_id" ref="dom_partner.dom_remise_data_marb_30"/>
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">30.0</field>
+        </record>
+
+
+        <record id="dom_remise_data_pierre_nat" model="product.pricelist">
+            <field name="name">Négoce pierre naturelle</field>
+            <field name="discount_policy">without_discount</field>
+        </record>
+        <record id="dom_remise_data_pierre_nat_item" model="product.pricelist.item">
+            <field name="pricelist_id" ref="dom_partner.dom_remise_data_pierre_nat"/>
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">40.0</field>
+        </record>
+
+        <record id="dom_remise_data_app" model="product.pricelist">
+            <field name="name">Applicateur</field>
+            <field name="discount_policy">without_discount</field>
+        </record>
+        <record id="dom_remise_data_app_item" model="product.pricelist.item">
+            <field name="pricelist_id" ref="dom_partner.dom_remise_data_app"/>
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">30.0</field>
+        </record>
+
+
+        <record id="dom_remise_data_gros" model="product.pricelist">
+            <field name="name">Grossiste</field>
+            <field name="discount_policy">without_discount</field>
+        </record>
+        <record id="dom_remise_data_gros_item" model="product.pricelist.item">
+            <field name="pricelist_id" ref="dom_partner.dom_remise_data_gros"/>
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">40.0</field>
+        </record>
+
+
+        <record id="dom_remise_data_label_priv" model="product.pricelist">
+            <field name="name">Label privé</field>
+            <field name="discount_policy">without_discount</field>
+        </record>
+        <record id="dom_remise_data_label_priv_item" model="product.pricelist.item">
+            <field name="pricelist_id" ref="dom_partner.dom_remise_data_carrek"/>
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">40.0</field>
+        </record>
+
+
+        <record id="dom_remise_data_div_40" model="product.pricelist">
+            <field name="name">Divers 40%</field>
+            <field name="discount_policy">without_discount</field>
+        </record>
+        <record id="dom_remise_data_div_item_40" model="product.pricelist.item">
+            <field name="pricelist_id" ref="dom_partner.dom_remise_data_div_40"/>
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">40.0</field>
+        </record>
+
+        <record id="dom_remise_data_div_30" model="product.pricelist">
+            <field name="name">Divers 30%</field>
+            <field name="discount_policy">without_discount</field>
+        </record>
+        <record id="dom_remise_data_div_item_30" model="product.pricelist.item">
+            <field name="pricelist_id" ref="dom_partner.dom_remise_data_div_30"/>
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">30.0</field>
+        </record>
+    </data>
+</odoo>
