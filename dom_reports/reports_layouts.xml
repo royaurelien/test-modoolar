@@ -52,10 +52,7 @@
                                     <!-- <span t-else=""> <span t-field="doc.name" /> </span> -->
                                 </td>
                                 <td>
-                                    <!-- <span t-field="doc.partner_id.ref" /> -->
-                                    <span t-if="devis or bdc" t-field="doc.client_order_ref" />
-                                    <span t-elif="facture" t-field="doc.name" />
-                                    <span t-elif="bl and doc.sale_id" t-field="doc.sale_id.client_order_ref" />
+                                    <span t-field="doc.partner_id.ref" />
                                 </td>
                                 <td> <span class="page" /> / <span class="topage" /> </td>
                             </tr>
@@ -279,8 +276,10 @@
                 <table class="table-curved upper-part-table">
                     <thead>
                         <tr>
-                            <th t-if="bl"> Départ prévu le </th>
+                            <th t-if="devis"> Date de validité </th>
                             <th t-elif="bdc"> CONFIRMATION </th>
+                            <th t-elif="facture"> ECHEANCE </th>
+                            <th t-elif="bl"> Départ prévu le </th>
                             <th t-else=""> ECHEANCE </th>
                         </tr>
                     </thead>
@@ -289,12 +288,14 @@
                             <td>
                                 <!-- <td> <span t-field="doc.date_order" /> </td> -->
                                 <!-- <p> echeance / depart val </p> -->
-                                <span t-if="bl" t-esc="doc.scheduled_date" />
-                                <span t-elif="devis"> <span t-esc="doc.validity_date" /> </span>
-                                <span t-elif="bdc"> <span t-esc="doc.confirmation_date" /> </span>
-                                <span t-elif="facture"> <span t-esc="doc.date_due" /> </span>
-                                <span t-else=""> date de départ val </span>
-
+                                <!-- some are dates, some are datetimes... -->
+                                <span t-if="devis" t-field="doc.validity_date" />
+                                <span t-elif="bdc" t-field="doc.confirmation_date"
+                                    t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }"/>
+                                <span t-elif="facture" t-field="doc.date_due" />
+                                <span t-elif="bl" t-field="doc.scheduled_date"
+                                    t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }"/>
+                                <span t-else=""> </span>
                             </td>
                         </tr>
                     </tbody>
@@ -304,8 +305,13 @@
                 <table class="table-curved upper-part-table vatnums-table">
                     <thead>
                         <tr>
-                            <th> N/Id CEE :
+                            <!-- <th> N/Id CEE :
                                 <span t-field="doc.company_id.vat" />
+                            </th> -->
+                            <th> Ref. cde :
+                                <span t-if="devis or bdc" t-field="doc.client_order_ref" />
+                                <span t-elif="facture" t-field="doc.name" />
+                                <span t-elif="bl and doc.sale_id" t-field="doc.sale_id.client_order_ref" />
                             </th>
                         </tr>
                     </thead>
