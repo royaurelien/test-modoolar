@@ -13,19 +13,19 @@ class MarketingInfo(object):
 def get_marketing_info(record):
 
         top_message = record.env['ir.config_parameter'].sudo(
-        ).get_param('dom_reports.top_message')
+        ).get_param('domreps_top_message')
 
         fl1 = record.env['ir.config_parameter'].sudo(
-        ).get_param('dom_reports.footer_logo_1')
+        ).get_param('domreps_footer_logo_1')
 
         fl2 = record.env['ir.config_parameter'].sudo(
-        ).get_param('dom_reports.footer_logo_2')
+        ).get_param('domreps_footer_logo_2')
 
         fl3 = record.env['ir.config_parameter'].sudo(
-        ).get_param('dom_reports.footer_logo_3')
+        ).get_param('domreps_footer_logo_3')
 
         fl4 = record.env['ir.config_parameter'].sudo(
-        ).get_param('dom_reports.footer_logo_4')
+        ).get_param('domreps_footer_logo_4')
 
         return MarketingInfo(top_message, fl1, fl2, fl3, fl4)
 

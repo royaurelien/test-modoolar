@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- auto configuration de la configuration de la partie marketing des rapports -->
+        <!-- footer images -->
+        <record id="marketing_autoconf_1" model="ir.config_parameter" forcecreate="False">
+            <field name="key">domreps_footer_logo_1</field>
+            <field name="value" type="base64" file="dom_reports/static/imgs/lithofin_logo.png"/>
+        </record>
+        <record id="marketing_autoconf_2" model="ir.config_parameter" forcecreate="False">
+            <field name="key">domreps_footer_logo_2</field>
+            <field name="value" type="base64" file="dom_reports/static/imgs/procover_logo.png"/>
+        </record>
+        <record id="marketing_autoconf_3" model="ir.config_parameter" forcecreate="False">
+            <field name="key">domreps_footer_logo_3</field>
+            <field name="value" type="base64" file="dom_reports/static/imgs/propad_logo.png"/>
+        </record>
+        <record id="marketing_autoconf_4" model="ir.config_parameter" forcecreate="False">
+            <field name="key">domreps_footer_logo_4</field>
+            <field name="value" type="base64" file="dom_reports/static/imgs/ottochemie_logo.png"/>
+        </record>
+
+        <!-- top  message -->
+        <record id="marketing_autoconf_5" model="ir.config_parameter" forcecreate="False">
+            <field name="key">domreps_top_message</field>
+            <field name="value" type="base64" file="dom_reports/static/imgs/rocalia_market.png"/>
+        </record>
+
+    </data>
+</odoo>

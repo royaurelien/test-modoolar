@@ -51,6 +51,9 @@
         'views/dom_comment_view.xml',
 
         'views/report_preview_views.xml',
+
+        # datas
+        'data/marketing_data.xml',
     ],
 
     # 'installable': True,
