@@ -24,6 +24,7 @@
         'views/product_template.xml',
         'views/product_dang.xml',
         'views/product_family.xml',
+        'views/product_category.xml',
     ],
 
     # 'installable': True,

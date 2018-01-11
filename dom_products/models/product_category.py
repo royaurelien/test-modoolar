@@ -1,3 +1,4 @@
+
 # -*- coding:utf-8 -*-
 
 from odoo import api, fields, models, tools
@@ -7,12 +8,11 @@ from odoo.tools import pycompat
 import logging
 logger = logging.getLogger(__name__)
 
-class ProductFamily(models.Model):
+class ProductCategory(models.Model):
 
-    _name = 'product.family'
+    _inherit = 'product.category'
 
-    name = fields.Char(string="Nom")
-    libelle = fields.Char(string=u"Libellé de la famille")
+    libelle = fields.Char(string=u"Libellé de la catégorie")
 
     def name_get(self):
 
@@ -24,4 +24,3 @@ class ProductFamily(models.Model):
             res.append((rec.id, name + libelle))
 
         return res
-

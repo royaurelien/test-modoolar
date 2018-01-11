@@ -86,7 +86,7 @@ def create_record(model_name, data_dict):
     except Exception as e:
         print "erreur lors de la creation de %s" % model_name
         print "avec les valeurs : %s" % data_dict
-        import pudb; pudb.set_trace()
+        # import pudb; pudb.set_trace()
         raise
 
     return res
@@ -321,18 +321,19 @@ class ArticleImporter(object):
     def figure_fam_id(self, article):
 
         # don't create if family name is empty
-        if article.fam == "":
+        if article.categ == "":
             return 0
 
         fam_id = get_record_id('product.family', [
-            ['name', '=', article.fam],
+            ['name', '=', article.categ],
         ])
 
         if not fam_id:
             fam_id = create_record(
                 'product.family', {
-                    'name': article.fam,
-                    'libelle': article.lib_fam,
+                    'name': article.categ,
+                    # 'name': article.fam,
+                    # 'libelle': article.lib_fam,
                 }
             )
 
@@ -365,14 +366,18 @@ class ArticleImporter(object):
         })
 
         # category
+        # on 10/01/2018, we decided category = family and
+        # family = category in the import file.
         categ_id = get_record_id('product.category', [
-            ['name', '=', article.categ],
+            ['name', '=', article.fam],
         ])
 
         if not categ_id:
             categ_id = create_record(
                 'product.category', {
-                    'name': article.categ,
+                    # 'name': article.categ,
+                    'name': article.fam,
+                    'libelle': article.lib_fam,
                 }
             )
 
@@ -408,8 +413,12 @@ class ArticleImporter(object):
             'dang': dang_id,
 
             'nb_par_colis': article.nb_par_colis,
+
             'poids_brut': article.poids_brut,
+            'weight': article.poids_brut,
+
             # 'qty_available': article.stock_phy,
+            # 'qty_available': 200,
         }
 
         if product_tmpl_id:
