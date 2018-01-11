@@ -31,6 +31,7 @@
         'views/res_partner.xml',
         'views/transporteur.xml',
         'views/famille_client.xml',
+        'views/departement.xml',
     ],
 
     # 'installable': True,

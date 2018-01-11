@@ -19,10 +19,14 @@
                     <group>
                         <field name='dernier_devis' attrs="{'invisible':[('is_company','=', False)]}"/>
                         <field name='type_rel' attrs="{'invisible': [('is_company','=', False)]}"/>
-                        <field name='service_informatique' attrs="{'invisible': [('is_company','=', False)]}"/>
+                        <!--<field name='service_informatique' attrs="{'invisible': [('is_company','=', False)]}"/>-->
                         <field name='tag_ids' attrs="{'invisible': [('is_company','=', False)]}" widget="many2many_tags"/>
                     </group>
                 </group>
+            </xpath>
+
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="attrs">{'required': [('type_rel','=','client')]}</attribute>
             </xpath>
 
         </field>
