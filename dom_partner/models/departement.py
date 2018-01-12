@@ -6,16 +6,18 @@ from odoo.osv import expression
 
 
 
-class selfartement(models.Model):
+class Departement(models.Model):
     _name = 'yziact.departement'
     _inherit = ['mail.thread']
     _descrition = 'Departement'
     # _order = 'number'
 
-    ##### Numerique ######
+    ##### Text ######
     number = fields.Char(u'Numéro')
     name = fields.Char(u'Nom')
 
+    ##### Relationel ######
+    zone_id = fields.Many2one(comodel_name='dom.zone', string='Zone')
 
     @api.multi
     def name_get(self):
@@ -46,3 +48,14 @@ class selfartement(models.Model):
         else:
             deps = self.search(args, limit=limit)
         return deps.name_get()
+
+class Zone(models.Model):
+    _name = 'dom.zone'
+    _inherit = ['mail.thread']
+    _descrition = 'Zones domitec'
+
+    ##### Text ####
+    name = fields.Char(u'Nom')
+
+    ##### Relationel ####
+    dep_ids = fields.One2many(comodel_name='yziact.departement', inverse_name='zone_id')

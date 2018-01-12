@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
+    <!-- DEPARTEMENT -->
     <record id="yziact_departement_form" model="ir.ui.view">
         <field name="name">Departement</field>
         <field name="model">yziact.departement</field>
@@ -9,6 +11,7 @@
                     <group>
                         <field name="number"/>
                         <field name="name"/>
+                        <field name="zone_id"/>
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -26,6 +29,7 @@
             <tree name="main_tree">
                 <field name="number"/>
                 <field name="name"/>
+                <field name="zone_id"/>
             </tree>
         </field>
     </record>
@@ -39,4 +43,43 @@
 
     <!-- This Menu Item must have a parent and an action -->
     <menuitem id="yziact_departement_menu" name="Departement" parent="sale.menu_sale_config" action="yziact_departement_action_view" sequence="10"/>
+
+    <!-- ZONE -->
+    <record id="dom_zone_departement_tree" model="ir.ui.view">
+        <field name="name">Zone tree</field>
+        <field name="model">dom.zone</field>
+        <field name="arch" type="xml">
+            <tree name="main_tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="dom_zone_form" model="ir.ui.view">
+        <field name="name">Zones</field>
+        <field name="model">dom.zone</field>
+        <field name="arch" type="xml">
+            <form name="main_form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="dep_ids" widget="many2many" options="{'no_create':True}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="yziact_zone_action_view" model="ir.actions.act_window">
+        <field name="name">Zones</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dom.zone</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="yziact_zone_menu" name="Zone" parent="sale.menu_sale_config" action="yziact_zone_action_view" sequence="11"/>
+
+
 </odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="" model="ir.ui.view">
+        <field name="name">Delivery grid rules</field>
+        <field name="model">delivery.price.rule</field>
+        <field name="inherit_id" ref="delivery.view_delivery_price_rule_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group[2]/div[2]" position="after">
+                <div name="dom_div" class="oe_title">
+
+                    <field name="localisation"  widget="radio" options="{'horizontal': true}" class="oe_edit_only" />
+
+                    <field name="dep_ids" attrs="{'invisible':[('localisation','=','zone')]}" widget="web_widget_many2many_tags_multi_selection"/>
+                    <field name="zone_id" attrs="{'invisible':[('localisation','=','dep')]}"/>
+                </div>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
