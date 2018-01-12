@@ -23,8 +23,8 @@ class StockPicking(models.Model):
                 # nb_delivering = sum([x.qty_done for x in line.move_line_ids])
                 nb_delivering = line.quantity_done
 
-                logger.critical("nb_delivering : %s" % nb_delivering)
-                logger.critical("nb_par_colis : %s" % nb_par_colis)
+                # logger.critical("nb_delivering : %s" % nb_delivering)
+                # logger.critical("nb_par_colis : %s" % nb_par_colis)
 
                 if nb_delivering == 0:
                     continue
