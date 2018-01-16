@@ -27,5 +27,11 @@
             <field name="value" type="base64" file="dom_reports/static/imgs/rocalia_market.png"/>
         </record>
 
+        <!-- preview id
+        <record id="marketing_autoconf_7" model="ir.config_parameter" forcecreate="True">
+            <field name="key">domreps_preview_id</field>
+            <field name="value" eval="1"/>
+        </record> -->
+
     </data>
 </odoo>

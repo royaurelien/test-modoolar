@@ -55,6 +55,13 @@
 
         # datas
         'data/marketing_data.xml',
+
+        # widget injection
+        'injection.xml',
+    ],
+
+    'qweb': [
+        'static/src/xml/*.xml'
     ],
 
     # 'installable': True,
