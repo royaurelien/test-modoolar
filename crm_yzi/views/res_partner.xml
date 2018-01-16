@@ -189,15 +189,15 @@
     </record>
 
     <!-- Menu principaux-->
-    <menuitem id="menu_compte" name="Comptes" parent="crm_yzi.menu_crm" sequence="3"/>
-    <menuitem id="menu_contact" name="Contacts" parent="crm_yzi.menu_crm" action="crm_action_partner_form_contact" sequence="4"/>
+    <menuitem id="crm.res_partner_menu_crm" parent="crm.crm_menu_root"/>
+    <menuitem id="menu_contact" name="Contacts" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_contact" sequence="4"/>
 
     <!--Sous Menu compte-->
-    <menuitem id="sous_menu_prospect" name="Prospects" parent="crm_yzi.menu_compte" action="crm_action_partner_form_prospect" sequence="1"/>
-    <menuitem id="sous_menu_customer" name="Clients" parent="crm_yzi.menu_compte" action="crm_action_partner_form_customer" sequence="2"/>
-    <menuitem id="sous_menu_partnaires" name="Partenaires" parent="crm_yzi.menu_compte" action="crm_action_partner_form_partner" sequence="3"/>
-    <menuitem id="sous_menu_concurrents" name="Concurrents" parent="crm_yzi.menu_compte" action="crm_action_partner_form_concurrent" sequence="4"/>
-    <menuitem id="sous_menu_compte" name="Tous les Comptes" parent="crm_yzi.menu_compte" action="crm_action_partner_form" sequence="5"/>
+    <menuitem id="sous_menu_prospect" name="Prospects" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_prospect" sequence="1"/>
+    <menuitem id="sous_menu_customer" name="Clients" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_customer" sequence="2"/>
+    <menuitem id="sous_menu_partnaires" name="Partenaires" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_partner" sequence="3"/>
+    <menuitem id="sous_menu_concurrents" name="Concurrents" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_concurrent" sequence="4"/>
+    <menuitem id="sous_menu_compte" name="Tous les Comptes" parent="crm.res_partner_menu_crm" action="crm_action_partner_form" sequence="5"/>
 
 
 
