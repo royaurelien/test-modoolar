@@ -25,6 +25,7 @@ class ResPartner(models.Model):
         ('concurrent', 'Concurrent'),
         ('partner', 'Partenaire'),
         ('com', 'Presse/Communication'),
+        ('fournisseur','Fournisseur'),
     ],string=u"Type de relation")
     service_informatique = fields.Selection([
         ('interne', 'Interne'),
