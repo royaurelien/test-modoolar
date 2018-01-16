@@ -81,5 +81,32 @@
 
     <menuitem id="yziact_zone_menu" name="Zone" parent="sale.menu_sale_config" action="yziact_zone_action_view" sequence="11"/>
 
+ <!-- Inherit Form View to Modify it -->
+ <record id="dom_partner_view_order_line_tree" model="ir.ui.view">
+     <field name="name">sale order line tree with dep</field>
+     <field name="model">sale.order.line</field>
+     <field name="inherit_id" ref="sale.view_order_line_tree"/>
+     <field name="arch" type="xml">
+
+         <xpath expr="//field[@name='order_partner_id']" position="after">
+             <field name="dep_id"/>
+         </xpath>
+
+     </field>
+ </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="dom_partner_view_sales_order_line_filter" model="ir.ui.view">
+        <field name="name">order line filter with dep</field>
+        <field name="model">sale.order.line</field>
+        <field name="inherit_id" ref="sale.view_sales_order_line_filter"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='order_partner_id']" position="after">
+                <field name="dep_id" string="Département"/>
+            </xpath>
+
+        </field>
+    </record>
 
 </odoo>
