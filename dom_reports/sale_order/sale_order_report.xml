@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
     <template id="dom_report_saleorder_document">
@@ -217,8 +218,8 @@
                                     t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                             </td>
 
-                            <td> valeur port ht </td>
-                            <td> valeur decond. </td>
+                            <td>  </td>
+                            <td>  </td>
 
                             <!-- TOTAL HT NET -->
                             <td>

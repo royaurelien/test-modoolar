@@ -43,4 +43,18 @@
         </field>
     </record>
 
+    <!-- preview button for Com Fourn -->
+    <record id="dom_reports_com_fourn_view_for_preview" model="ir.ui.view">
+        <field name="name">dom_reports Purchase Order Form for Preview</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+
+           <xpath expr="//header">
+                <button name="action_preview_report" type="object" string="Aperçu de la commande" help="Aperçu du Rapport"/>
+           </xpath>
+
+        </field>
+    </record>
+
 </odoo>

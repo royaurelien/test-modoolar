@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="dom_report_com_fourn_document">
+        <t t-call="dom_reports.external_layout">
+            <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
+            <div class="page">
+                <div class="oe_structure"/>
+
+                <t t-call="dom_reports.upper_part" />
+
+                <table class="table-curved lines-table">
+                    <thead>
+                        <tr>
+                            <th>Réf. Fourn.</th>
+                            <th>DESIGNATION</th>
+                            <th>QUANTITE</th>
+                            <th>Nb Colis</th>
+                            <th>P.U HT</th>
+                            <th>MONTANT HT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="doc.order_line" t-as="line">
+                            <td class="left-align">
+                                <span t-field="line.ref_fourn"/>
+                            </td>
+                            <td class="left-align">
+                                <span t-field="line.product_id.name"/>
+                            </td>
+                            <td>
+                                <t t-set="qty" t-value="line.product_qty"/>
+                                <span t-esc="int(qty) if qty.is_integer() else '%.2f'%qty "/>
+                            </td>
+                            <td>
+                                <span t-field="line.nb_colis"/>
+                            </td>
+                            <td class="right-align">
+                                <span t-field="line.price_unit"/>
+                            </td>
+                            <td class="right-align">
+                                <span t-field="line.price_subtotal"
+                                    t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table-curved summary-table">
+                    <thead>
+                        <tr>
+                            <!--
+                            <th>PORT HT</th>
+                            <th style="white-space: normal;">
+                                DECONDITIONNEMENT
+                            </th>
+                            <th>TOTAL HT NET</th>
+                            <th>% TVA</th>
+                            <th>MT TVA</th> -->
+                            <th>TOTAL HT NET</th>
+                            <th>TOTAUX</th>
+                            <th>Net à Payer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- BASES HT
+                            <td style="white-space: nowrap;">
+                                <t t-set="tax_groups_length" t-value="len(doc._get_tax_amount_by_group())"/>
+                                <t t-foreach="doc._get_tax_amount_by_group()" t-as="amount_by_group">
+                                    <span t-esc="amount_by_group[0]"/><span>&amp;nbsp;<span>sur</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></span>
+                                    <br/>
+                                </t>
+                            </td> -->
+
+                            <!-- TOTAL HT NET
+                            <td>
+                                <span t-field="doc.amount_ht_net"
+                                    t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                            </td> -->
+
+                            <!-- taxes.. ???
+                            <td>
+                                <t t-foreach="doc._get_tax_amount_by_group()" t-as="amount_by_group">
+                                    <span t-esc="amount_by_group[0]" />
+                                </t>
+                            </td> -->
+
+                            <!-- montant tva
+                            <td>
+                                <span t-field="doc.amount_tax"
+                                    t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                            </td> -->
+                            <!-- <td style="white-space: nowrap;"> -->
+                            <td>
+                                <span t-field="doc.amount_untaxed"
+                                    t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                            </td>
+                            <td>
+                                H.T. :
+                                <span t-field="doc.amount_untaxed"
+                                    t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                <br/>
+                                T.V.A. :
+                                <span t-field="doc.amount_tax"
+                                    t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                <br/>
+                            </td>
+                            <td>
+                                <span t-field="doc.amount_total"
+                                    t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div> <!-- page div -->
+        </t> <!-- external layout t -->
+
+    </template>
+
+    <!-- id used by actions -->
+    <template id="dom_report_com_fourn">
+        <t t-call="web.html_container">
+            <t t-set="cf" t-value="True"/>
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="dom_reports.dom_report_com_fourn_document" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>
+

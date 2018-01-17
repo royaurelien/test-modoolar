@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="dom_reports.IFrameWidget">
+        <t t-set="rec_id" t-value="widget.value.data.id" />
+        <iframe t-attf-src="/report/pdf/dom_reports.dom_report_saleorder/{{rec_id}}"
+            marginheight="0" marginwidth="0" frameborder="0" width="850" height="750"/>
+        <t t-js="ctx">
+            console.log("widget is", ctx.widget);
+            console.log("ctx is", ctx);
+            // console.log("widget.value.data is", ctx.widget.value.data);
+        </t>
+    </t>
+
+</templates>

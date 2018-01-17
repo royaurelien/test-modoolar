@@ -1,7 +1,7 @@
 <odoo>
 
     <!-- <template id="assets_backend" name="yz_widgets_assets" inherit_id="web.assets_backend"> -->
-    <template id="assets_backend" name="yz_widgets_assets" inherit_id="web.report_assets_common">
+    <template id="dom_reports_reports_assets_common" name="yz_widgets_assets" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
             <link rel="stylesheet" href="/dom_reports/static/src/css/reports.css"/>
         </xpath>
@@ -16,16 +16,6 @@
                     <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" class="pull-left" width="410"/>
                 </div>
             </t>
-            <t t-else="">
-            <!-- ghetto vertical spacing : nbsps or spacer div
-                more than 50 px we'll HAVE to use another paperformat though,
-                cause we don't want to carry spacer divs in the body of the reports, that's ugly -->
-            <!--
-                <p> &amp;nbsp; </p>
-                <p> &amp;nbsp; </p>
-                <p> &amp;nbsp; </p>
-            -->
-            </t>
 
             <div class="row">
                 <div class="col-xs-6">
@@ -33,7 +23,10 @@
                         <thead>
                             <tr>
                                 <th>date</th>
-                                <th>client</th>
+                                <th>
+                                    <span t-if="cf">fournisseur</span>
+                                    <span t-else="">client</span>
+                                </th>
                                 <th>page</th>
                             </tr>
                         </thead>
@@ -48,6 +41,8 @@
                                     <span t-elif="facture" t-field="doc.date_invoice"
                                         t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
                                     <span t-elif="bl" t-field="doc.scheduled_date"
+                                        t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
+                                    <span t-elif="cf" t-field="doc.date_order"
                                         t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }" />
                                     <!-- <span t-else=""> <span t-field="doc.name" /> </span> -->
                                 </td>
@@ -66,8 +61,9 @@
                         <span t-elif="bdc"> Bon de commande </span>
                         <span t-elif="facture"> Facture </span>
                         <span t-elif="bl"> Bon de livraison </span>
+                        <span t-elif="cf"> Commande </span>
                         N° :&#xA0;
-                        <t t-if="devis or bdc or bl">
+                        <t t-if="devis or bdc or bl or cf">
                             <span t-esc="doc.name" />
                         </t>
                         <t t-elif="facture">
@@ -180,10 +176,15 @@
         <!-- pub / address -->
         <div class="row" style="margin-bottom: 10px; padding: 0 15px 0 15px;">
 
-            <div class="col-xs-6 ">
+            <div t-if="not cf" class="col-xs-6">
                 <div class="top-message-div">
                     <img t-if="market_info.top_message"
                      t-att-src="'data:image/png;base64,%s' % to_text(market_info.top_message)" />
+                </div>
+            </div>
+            <div t-elif="cf" class="col-xs-6">
+                <div class="top-message-div">
+                    <span t-field="doc.company_id.horaires_livraison" />
                 </div>
             </div>
 
@@ -193,7 +194,19 @@
                     <span class="partner-name" t-field="doc.partner_id" /> <br/>
 
                     <!-- the address -->
-                    <t t-if="not bl">
+                    <t t-if="bl">
+                        <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
+                        &quot;fields&quot;: [&quot;address&quot;],
+                        &quot;no_marker&quot;: True,
+                        &quot;phone_icons&quot;: False}"/>
+                    </t>
+                    <t t-elif="cf">
+                        <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
+                        &quot;fields&quot;: [&quot;address&quot;],
+                        &quot;no_marker&quot;: True,
+                        &quot;phone_icons&quot;: False}"/>
+                    </t>
+                    <t t-elif="devis or bdc or facture">
                         <t t-if="not doc.partner_shipping_id">
                         <!--
                             <span t-if="doc.partner_id.street" t-field="doc.partner_id.street" /> <br/>
@@ -211,12 +224,6 @@
                             &quot;no_marker&quot;: True,
                             &quot;phone_icons&quot;: False}"/>
                         </t>
-                    </t>
-                    <t t-else="">
-                        <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
-                        &quot;fields&quot;: [&quot;address&quot;],
-                        &quot;no_marker&quot;: True,
-                        &quot;phone_icons&quot;: False}"/>
                     </t>
 
                 </div>
@@ -280,6 +287,7 @@
                             <th t-elif="bdc"> CONFIRMATION </th>
                             <th t-elif="facture"> ECHEANCE </th>
                             <th t-elif="bl"> Départ prévu le </th>
+                            <th t-elif="cf"> DATE DE LIVRAISON </th>
                             <th t-else=""> ECHEANCE </th>
                         </tr>
                     </thead>
@@ -291,10 +299,12 @@
                                 <!-- some are dates, some are datetimes... -->
                                 <span t-if="devis" t-field="doc.validity_date" />
                                 <span t-elif="bdc" t-field="doc.confirmation_date"
-                                    t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }"/>
+                                    t-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }"/>
                                 <span t-elif="facture" t-field="doc.date_due" />
                                 <span t-elif="bl" t-field="doc.scheduled_date"
-                                    t-field-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }"/>
+                                    t-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }"/>
+                                <span t-elif="cf" t-field="doc.date_planned"
+                                    t-options="{ &quot;format&quot; : &quot;dd/MM/yyyy&quot; }"/>
                                 <span t-else=""> </span>
                             </td>
                         </tr>
@@ -308,10 +318,13 @@
                             <!-- <th> N/Id CEE :
                                 <span t-field="doc.company_id.vat" />
                             </th> -->
-                            <th> Ref. cde :
+                            <th t-if="not cf"> Ref. cde :
                                 <span t-if="devis or bdc" t-field="doc.client_order_ref" />
                                 <span t-elif="facture" t-field="doc.name" />
                                 <span t-elif="bl and doc.sale_id" t-field="doc.sale_id.client_order_ref" />
+                            </th>
+                            <th t-elif="cf"> N/Id CEE :
+                                <span t-field="doc.company_id.vat" />
                             </th>
                         </tr>
                     </thead>
