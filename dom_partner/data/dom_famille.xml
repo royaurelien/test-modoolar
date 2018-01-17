@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="0">
+    <data noupdate="1">
         <record id="dom_famille_data_mat" model="dom.famille">
             <field name="name">Négoce Matériaux</field>
             <field name="property_product_pricelist" ref="dom_partner.dom_remise_data_mat"/>
