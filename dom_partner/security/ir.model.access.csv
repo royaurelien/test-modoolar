@@ -5,3 +5,4 @@ access_dom_plv,dom.plv,model_dom_plv,base.group_user,1,1,1,0
 access_yziact_departement,yziact.departement,model_yziact_departement,base.group_user,1,1,1,0
 access_dom_zone,dom.zone,model_dom_zone,base.group_user,1,1,1,0
 access_dom_transporteur,dom.transporteur,model_dom_transporteur,base.group_user,1,1,1,1
+access_dom_type_tier,dom.type_tier,model_dom_type_tier,base.group_user,1,1,1,1

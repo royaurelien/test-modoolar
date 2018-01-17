@@ -16,6 +16,7 @@ class ResPartner(models.Model):
     dernier_devis = fields.Date(string=u"Date dernier devis")
 
     ##### SELECTION ####
+    """
     type_rel = fields.Selection([
         ('prospect', 'Prospect'),
         ('client', 'Client'),
@@ -25,8 +26,9 @@ class ResPartner(models.Model):
         ('concurrent', 'Concurrent'),
         ('partner', 'Partenaire'),
         ('com', 'Presse/Communication'),
-        ('fournisseur','Fournisseur'),
+        ('fournisseur','Fournisseur')
     ],string=u"Type de relation")
+    """
     service_informatique = fields.Selection([
         ('interne', 'Interne'),
         ('sous-traitee', u'sous-traitée'),
@@ -38,7 +40,7 @@ class ResPartner(models.Model):
 
     ##### RELATIONNEL ####
     tag_ids =  fields.Many2many('crm.lead.tag', 'crm_partner_tag_rel', 'partner_id', 'tag_id', u'Intérêts')
-
+    type_rel = fields.Many2one(comodel_name='crm_yzi.type_rel', string=u"Type de relation")
     def change_date(self, date):
         dernier_devis = self.dernier_devis
 
@@ -62,14 +64,20 @@ class ResPartner(models.Model):
     def onchange_type_rel_values(self, type_rel):
         vals = {}
         is_client = self.customer
+        is_supplier = self.supplier
+        if type_rel :
+            if type_rel.name == 'Prospect' or type_rel.name == 'Ancien Client':
+                is_client = False
+                is_supplier = False
 
-        if type_rel == 'prospect' or type_rel == 'client_old':
-            is_client = False
+            elif type_rel.name == 'Client':
+                is_client = True
 
-        elif type_rel == 'client':
-            is_client = True
+            elif type_rel.name == 'Fournisseur':
+                is_supplier = True
 
         vals['customer'] = is_client
+        vals['supplier'] = is_supplier
         return vals
 
 

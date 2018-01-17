@@ -83,7 +83,7 @@
             "search_default_type_company":1
             }
         </field>
-        <field name="domain">[u'|', [u'type_rel', u'=', u'client'], [u'type_rel', u'=', u'client_old']]</field>
+        <field name="domain">[u'|', [u'type_rel', u'=', u'Client'], [u'type_rel', u'=', u'Ancien Client']]</field>
         <field name="search_view_id" ref="base.view_res_partner_filter"/>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
@@ -103,11 +103,10 @@
         <field name="view_mode">kanban,tree,form</field>
         <field name="context">
             {
-            "search_default_customer":1,
             "search_default_type_company":1
             }
         </field>
-        <field name="domain">[[u'type_rel', u'=', u'prospect']]</field>
+        <field name="domain">[[u'type_rel', u'=', u'Prospect']]</field>
         <field name="search_view_id" ref="base.view_res_partner_filter"/>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
@@ -132,7 +131,7 @@
             "search_default_type_rel":"partner"
             }
         </field>
-        <field name="domain">[[u'type_rel', u'=', u'partner']]</field>
+        <field name="domain">[[u'type_rel', u'=', u'Partenaire']]</field>
         <field name="search_view_id" ref="base.view_res_partner_filter"/>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
@@ -157,7 +156,7 @@
             "search_default_type_rel":"concurrent"
             }
         </field>
-        <field name="domain">[[u'type_rel', u'=', u'concurrent']]</field>
+        <field name="domain">[[u'type_rel', u'=', u'Concurrent']]</field>
         <field name="search_view_id" ref="base.view_res_partner_filter"/>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">

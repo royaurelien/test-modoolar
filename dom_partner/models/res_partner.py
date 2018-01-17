@@ -27,6 +27,7 @@ class ResPartner(models.Model):
     presentoir_id = fields.Many2many(comodel_name='dom.presentoir', string=u'Présentoir')
     plv_id = fields.Many2many(comodel_name='dom.plv', string=u'PLV')
     dep_id = fields.Many2one(comodel_name='yziact.departement', string=u"Département")
+    type_tier = fields.Many2one(comodel_name='dom.type_tier', string=u"Type tier")
 
     #### TEXT ####
     code_api = fields.Char(string='Code API')

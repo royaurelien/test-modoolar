@@ -13,6 +13,7 @@
                 <group>
                     <group>
                         <field name="famille" />
+                        <field name="type_tier"/>
                         <field name="contact1" />
                         <field name="contact2" />
                         <field name="contact3" />

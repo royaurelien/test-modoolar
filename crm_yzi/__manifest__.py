@@ -30,6 +30,9 @@
 
     # always loaded
     'data': [
+        'data/type_rel.xml',
+        'security/ir.model.access.csv',
+
         'views/crm_lead.xml',
         'views/res_partner.xml',
         'views/crm_stage.xml',
