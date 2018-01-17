@@ -18,6 +18,7 @@
         'account',  # for invoices (account.invoice)
         'base',  # for ir.actions.report.xml
         'stock',  # for stock.pickings (bls)
+        'purchase',  # for purchase.order (com_fourn)
         'dom_remise', # Devis/BC/Facture uses this
         'dom_colisage', # BL uses nb_cartons, defined there
     ],
@@ -33,14 +34,21 @@
 
         # report should be included before action, always
         # (action refers to report, not the other way around)
+        # devis/bc
         'sale_order/sale_order_report.xml',
         'sale_order/sale_order_action.xml',
 
+        # facture
         'invoice/invoice_report.xml',
         'invoice/invoice_action.xml',
 
+        # BL
         'bl/bl_report.xml',
         'bl/bl_action.xml',
+
+        # commande fournisseur
+        'purchase/com_fourn_report.xml',
+        'purchase/com_fourn_action.xml',
 
         # marketing rapports
         'views/res_config_settings_view.xml',
@@ -51,7 +59,10 @@
         # vue et menus dom.comment
         'views/dom_comment_view.xml',
 
+        # aperçus des rapports
         'views/report_preview_views.xml',
+
+        'views/res_company_view.xml',
 
         # datas
         'data/marketing_data.xml',

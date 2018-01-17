@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- inherit so to modif form so lines -->
+    <record id="dom_reports_res_company_view" model="ir.ui.view">
+        <field name="name">dom_reports Res Company Form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+           <xpath expr="//field[@name='report_footer']" position="after">
+                <field name="horaires_livraison" />
+           </xpath>
+        </field>
+    </record>
+
+</odoo>

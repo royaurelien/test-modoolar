@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- sale order report
+    attachment_use, etc
+    1 seule action pour devis & bon de commande
+    -->
+
+    <report
+        id="dom_report_com_fourn_action"
+        model="purchase.order"
+        string="Commande Fournisseur Domitec"
+        name="dom_reports.dom_report_com_fourn"
+        file="dom_reports.dom_report_com_fourn"
+        report_type="qweb-pdf"
+        />
+
+    <!-- paperformat="dom_reports.paperformat_dom_a4" -->
+
+    <record id="dom_reports.dom_report_com_fourn_action" model="ir.actions.report">
+        <field name="paperformat_id" ref="dom_reports.paperformat_dom_a4"/>
+    </record>
+
+</odoo>
