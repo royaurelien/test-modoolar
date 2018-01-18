@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+    <record id="dom_lcr_apt_form_view" model="ir.ui.view">
+        <field name="name">dom_lcr Account Payment Term Form</field>
+        <field name="model">account.payment.term</field>
+        <field name="inherit_id" ref="dom_reports.dom_report_invoice_document" />
+        <field name="arch" type="xml">
+           <xpath expr="//div[@class='page']" position="inside">
+           </xpath>
+        </field>
+    </record>
+
+    <t t-extend="base.template">
+        <t t-jquery="ul" t-operation="append">
+            <li>new element</li>
+        </t>
+    </t>
+
+        <t t-extend="dom_reports.dom_report_invoice_document">
+            <t t-jquery=".oe_structure" t-operation="replace">
+                <p>derp derp</p>
+            </t>
+        </t>
+    -->
+
+    <template id="lcr_insert" inherit_id="dom_reports.dom_report_invoice_document">
+        <!-- <xpath expr="//table[contains(@class, 'summary-table')]" position="after"> -->
+        <!-- <xpath expr="//div[@class='row'][last()]" position="after"> -->
+
+        <xpath expr="//div[@class='page']" position="inside">
+                <p style="page-break-before:always;"> </p> <!-- pagebreaker -->
+                <t t-call="dom_lcr.actual_lcr">
+                    <!-- <p> <span t-field="doc.partner_id"/> </p> -->
+                    <t t-set="doc" t-value="doc" />
+                </t>
+        </xpath>
+    </template>
+
+    <template id="actual_lcr">
+        <t t-if="doc.payment_term_id.is_lcr">
+
+        <div style="height:200px;" /> <!-- spacer -->
+
+        <div style="position:relative;">
+            <style>
+            .lcr {
+                display: inline-block;
+                position: absolute;
+            }
+
+            .l1r {
+                top: 170px;
+                /* background-color: cyan; */
+            }
+
+            .l2r {
+                top: 206px;
+                /* background-color: green; */
+            }
+
+            /* 1st row */
+
+            .montant-pour-controle {
+                left: 40px;
+                text-align: right;
+                width: 120px;
+            }
+
+            .date-de-creation {
+                left: 200px;
+            }
+
+            .echeance {
+                left: 325px;
+            }
+
+            .montant-en-euro {
+                left: 785px;
+                text-align: right;
+                width: 100px;
+            }
+
+            /* 2nd row */
+
+            .conditions-de-reglement {
+                left: 30px;
+                text-align: center;
+                width: 320px;
+            }
+
+            .numero-de-facture {
+                top: 210px;
+                left: 495px;
+            }
+
+            .code-client {
+                top: 210px;
+                left: 780px;
+            }
+
+            .rib {
+                top: 242px;
+                /* background-color: pink; */
+            }
+
+            .code-etabli {
+                left: 40px;
+            }
+
+            .code-guichet {
+                left: 110px;
+            }
+
+            .num-de-compte {
+                left: 170px;
+            }
+
+            .cle-rib {
+                left: 300px;
+            }
+
+            .addr {
+                left: 370px;
+                /* background-color: teal; */
+            }
+
+            .nom {
+                top: 247px;
+                font-weight: bold;
+            }
+
+            .addr1 {
+                top: 272px;
+            }
+
+            .addr2 {
+                top: 297px;
+            }
+
+            .code-postal-ville {
+                top: 322px;
+            }
+
+            </style>
+
+            <img src="/dom_lcr/static/src/img/lcr_image.png" />
+            <!-- première ligne -->
+            <div class="lcr l1r montant-pour-controle">
+                <t t-esc="str(doc.amount_total).replace('.',',')" />
+            </div>
+            <div class="lcr l1r date-de-creation">
+                <span t-field="doc.date_invoice" />
+            </div>
+            <div class="lcr l1r echeance">
+                <span t-field="doc.date_due" />
+            </div>
+            <div class="lcr l1r montant-en-euro">
+                <t t-esc="str(doc.amount_total).replace('.',',')" />
+            </div>
+
+            <!-- deuxième ligne -->
+            <div class="lcr l2r conditions-de-reglement">
+                <span t-field="doc.payment_term_id" />
+            </div>
+
+            <div class="lcr l2r numero-de-facture">
+                <t t-esc="doc.number" />
+            </div>
+
+            <div class="lcr l2r code-client">
+                <t t-esc="doc.partner_id.ref" />
+            </div>
+
+            <!-- troisième ligne, RIB
+            'code_banque': iban[4:9],
+            'code_guichet': iban[9:14],
+            'numero_compte': iban[14:25],
+            'cle_rib': iban[25:27],
+             -->
+            <t t-if="doc.partner_id.bank_ids">
+                <t t-set="iban" t-value="doc.partner_id.bank_ids[0].acc_number" />
+
+                <div class="lcr rib code-etabli">
+                    <t t-esc="iban[4:9]" />
+                </div>
+
+                <div class="lcr rib code-guichet">
+                    <t t-esc="iban[9:14]" />
+                </div>
+
+                <div class="lcr rib num-de-compte">
+                    <t t-esc="iban[14:25]" />
+                </div>
+                <div class="lcr rib cle-rib">
+                    <t t-esc="iban[25:27]" />
+                </div>
+            </t>
+
+            <!-- adresse du client -->
+            <t t-set="p" t-value="doc.partner_id" />
+            <div class="lcr addr nom">
+                <t t-esc="p.name" />
+            </div>
+            <div class="lcr addr addr1">
+                <t t-esc="p.street" />
+            </div>
+            <div class="lcr addr addr2">
+                <t t-esc="p.street2" />
+            </div>
+            <div class="lcr addr code-postal-ville">
+                <t t-esc="p.zip" />
+            </div>
+
+        </div>
+        </t>
+    </template>
+
+</odoo>
