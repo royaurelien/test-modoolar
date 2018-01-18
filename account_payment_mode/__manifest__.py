@@ -19,6 +19,6 @@
         'views/res_partner.xml',
         'views/account_journal.xml',
     ],
-    'demo': ['demo/payment_demo.xml'],
+    # 'demo': ['demo/payment_demo.xml'],
     'installable': True,
 }
