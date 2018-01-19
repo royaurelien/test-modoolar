@@ -11,14 +11,14 @@ sys.setdefaultencoding("utf-8")
 
 username = "admin"
 pwd = "X200yziact"
-dbname = "test_one"
+dbname = "test_three"
 
 # Connexion Odoo
-sock_common = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/common")
+sock_common = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/common")
 uid = sock_common.login(dbname, username, pwd)
-sock = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/object")
+sock = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/object")
 
-fich_ = open('BD_CLIENTS_SOUS_GROUP.csv', 'rb')
+fich_ = open('BD_CLIENTS_SOUS_GROUPE_API.csv', 'rb')
 
 csvreader = csv.reader(fich_, delimiter=';')
 
@@ -35,14 +35,14 @@ for row in csvreader:
 
     company_type = 'company'
 
-    name = row[3]
+    name = row[15]
     name_id = False
-    parent = row[2]
+    parent = row[16]
     parent_id = False
 
+    is_company = True
     customer = True
     supplier = False
-    is_company = True
 
     if parent :
         parent_id=sock.execute(dbname, uid, pwd, 'res.partner', 'search_read',[('name','=',parent)], ('id'))
@@ -56,11 +56,11 @@ for row in csvreader:
         tot += 1
         partner_dict = {
                 'company_type': company_type,
+                'is_company':is_company,
                 'name': name,
                 'parent_id': parent_id,
                 'customer ': customer ,
                 'supplier ': supplier ,
-                'is_company': is_company,
             }
 
         res_partner = sock.execute(dbname, uid, pwd, 'res.partner', 'create', partner_dict)

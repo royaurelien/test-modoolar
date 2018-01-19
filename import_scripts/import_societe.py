@@ -11,14 +11,14 @@ sys.setdefaultencoding("utf-8")
 
 username = "admin"
 pwd = "X200yziact"
-dbname = "test_one"
+dbname = "test_three"
 
 # Connexion Odoo
-sock_common = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/common")
+sock_common = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/common")
 uid = sock_common.login(dbname, username, pwd)
-sock = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/object")
+sock = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/object")
 
-fich_ = open('BD_CLIENTS_AP_GROUP.csv', 'rb')
+fich_ = open('BD_CLIENTS_GROUPE_API.csv', 'rb')
 
 csvreader = csv.reader(fich_, delimiter=';')
 
@@ -33,13 +33,13 @@ for row in csvreader:
         continue
 
 
-    company_type = 'company'
 
-    name = row[2]
+    name = row[16]
 
     customer = True
     supplier = False
-    is_company = True
+    company_type = 'company'
+
 
 
     partner_dict = {
@@ -48,7 +48,6 @@ for row in csvreader:
 
             'customer ': customer ,
             'supplier ': supplier ,
-            'is_company': is_company,
         }
 
     res_partner = sock.execute(dbname, uid, pwd, 'res.partner', 'create', partner_dict)

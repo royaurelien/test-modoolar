@@ -20,7 +20,7 @@ def set_connexion_doodoo():
     # Connexion Odoo
     username = "admin"
     pwd = "X200yziact"
-    dbname = "test_one"
+    dbname = "test_three"
 
     sock_common = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/common")
     uid = sock_common.login(dbname, username, pwd)
@@ -102,7 +102,7 @@ for row in csvreader:
 
 
     existe = partner_search(name)
-    print 'MUUUUUUU', existe
+    # print 'MUUUUUUU', existe
     parent_id = recherche_parent(parent, False)
 
     partner_dict = {
