@@ -318,12 +318,14 @@ class AccountPaymentOrder(models.Model):
         self.ensure_one()
         payment_file_str, filename = self.generate_payment_file()
         action = {}
+        import codecs
         if payment_file_str and filename:
             attachment = self.env['ir.attachment'].create({
                 'res_model': 'account.payment.order',
                 'res_id': self.id,
                 'name': filename,
-                'datas': payment_file_str.encode('base64'),
+                # 'datas': payment_file_str.encode('base64'),
+                'datas': codecs.encode(bytes(payment_file_str, 'ascii'), 'base64'),
                 'datas_fname': filename,
                 })
             simplified_form_view = self.env.ref(
@@ -472,7 +474,7 @@ class AccountPaymentOrder(models.Model):
             else:
                 trfmoves[hashcode] = bline
 
-        for hashcode, blines in trfmoves.iteritems():
+        for hashcode, blines in trfmoves.items():
             mvals = self._prepare_move(blines)
             total_company_currency = total_payment_currency = 0
             for bline in blines:

@@ -89,15 +89,15 @@ class AccountPaymentLine(models.Model):
         bplo = self.env['bank.payment.line']
         values = []
         for field in bplo.same_fields_payment_line_and_bank_payment_line():
-            values.append(unicode(self[field]))
+            values.append(str(self[field]))
         # Don't group the payment lines that are attached to the same supplier
         # but to move lines with different accounts (very unlikely),
         # for easier generation/comprehension of the transfer move
-        values.append(unicode(self.move_line_id.account_id or False))
+        values.append(str(self.move_line_id.account_id or False))
         # Don't group the payment lines that use a structured communication
         # otherwise it would break the structured communication system !
         if self.communication_type != 'normal':
-            values.append(unicode(self.id))
+            values.append(str(self.id))
         hashcode = '-'.join(values)
         return hashcode
 
@@ -113,7 +113,7 @@ class AccountPaymentLine(models.Model):
         if self.move_line_id:
             vals = self.move_line_id._prepare_payment_line_vals(self.order_id)
             vals.pop('order_id')
-            for field, value in vals.iteritems():
+            for field, value in vals.items():
                 self[field] = value
         else:
             self.partner_id = False
