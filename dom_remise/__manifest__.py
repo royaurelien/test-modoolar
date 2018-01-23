@@ -28,6 +28,7 @@
         'views/res_partner.xml',
         'views/account_invoice.xml',
         'views/sale_order.xml',
+        'views/product_template.xml',
     ],
 
     # 'installable': True,

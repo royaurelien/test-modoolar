@@ -21,6 +21,8 @@
         'purchase',  # for purchase.order (com_fourn)
         'dom_remise', # Devis/BC/Facture uses this
         'dom_colisage', # BL uses nb_cartons, defined there
+        'dom_delivery', # BL uses nb_cartons, defined there
+        'dom_decond', # BL uses nb_cartons, defined there
     ],
 
     # always loaded

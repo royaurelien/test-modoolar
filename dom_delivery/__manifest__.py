@@ -24,6 +24,7 @@
         'security/ir.model.access.csv',
 
         'views/delivery_grid.xml',
+        'views/sale_order.xml',
     ],
 
     # 'installable': True,

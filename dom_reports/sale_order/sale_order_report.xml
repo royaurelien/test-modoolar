@@ -65,64 +65,65 @@
                                             <t t-raw="l.comment_predef.value" />
                                         </td>
                                     </tr>
-
-                                    <tr>
-                                        <!--
-                                        <td>
-                                            page_index : <t t-esc="page_index" />
-                                            page_size : <t t-esc="page_size" />
-                                            lc_index : <t t-esc="layout_category_index" />
-                                            lc_size : <t t-esc="layout_category_size" />
-                                            ll_index : <t t-esc="l_index" />
-                                            ll_size : <t t-esc="l_size" />
-                                        </td> -->
-                                        <!-- ref -->
-                                        <td class="left-align">
-                                            <span t-field="l.product_id.default_code"/>
-                                        </td>
-                                        <!-- description -->
-                                        <td class="left-align">
-                                            <span t-field="l.product_id.name"/>
-                                        </td>
-                                        <!-- qte -->
-                                        <td>
-                                            <!--<span t-field="l.product_uom" groups="product.group_uom"/>-->
-                                            <!-- <span t-field="l.product_uom_qty"/> -->
-                                            <t t-set="qty" t-value="l.product_uom_qty"/>
-                                            <span t-esc="int(qty) if qty.is_integer() else qty"/>
-                                        </td>
-                                        <!-- condt -->
-                                        <td><span t-field="l.product_id.uom_id"/></td>
-                                        <!-- P.U HT -->
-                                        <td class="right-align">
-                                            <span t-field="l.price_unit"/>
-                                        </td>
-                                        <!-- % REM -->
-                                        <td t-if="display_discount" class="right-align">
-                                            <span t-field="l.discount"/>
-                                        </td>
-                                        <!-- P.U HT NET = P.U HT __après remise__-->
-                                        <td class="right-align">
-                                            <span t-field="l.price_reduce"
-                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
-                                        </td>
-                                        <!-- MONTANT HT = MONTANT TOTAL LIGNE HT -->
-                                        <!-- montant ht avec remise * nbre d'unités -->
-                                        <td class="right-align">
-                                            <!-- <span t-field="l.price_subtotal" -->
-                                            <span t-field="l.price_subtotal_net"
-                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
-                                        </td>
-                                        <!-- % TVA (taxes) -->
-                                        <!--
-                                        <td class="text-right" style="white-space: nowrap;">
-                                            <span t-esc="', '.join(map(lambda x: str(int(x.amount)) if x.amount.is_integer() else str(x.amount), l.tax_id))"/>%
-                                        </td>
-                                        -->
-                                        <!--
-                                        <span t-field="l.tax_id.amount"
-                                            t-options='{"widget": "float", "precision": 1}'/> % -->
-                                    </tr>
+                                    <t t-if="l.is_delivery==False"> <t t-if="l.is_decond==False">
+                                        <tr>
+                                            <!--
+                                            <td>
+                                                page_index : <t t-esc="page_index" />
+                                                page_size : <t t-esc="page_size" />
+                                                lc_index : <t t-esc="layout_category_index" />
+                                                lc_size : <t t-esc="layout_category_size" />
+                                                ll_index : <t t-esc="l_index" />
+                                                ll_size : <t t-esc="l_size" />
+                                            </td> -->
+                                            <!-- ref -->
+                                            <td class="left-align">
+                                                <span t-field="l.product_id.default_code"/>
+                                            </td>
+                                            <!-- description -->
+                                            <td class="left-align">
+                                                <span t-field="l.product_id.name"/>
+                                            </td>
+                                            <!-- qte -->
+                                            <td>
+                                                <!--<span t-field="l.product_uom" groups="product.group_uom"/>-->
+                                                <!-- <span t-field="l.product_uom_qty"/> -->
+                                                <t t-set="qty" t-value="l.product_uom_qty"/>
+                                                <span t-esc="int(qty) if qty.is_integer() else qty"/>
+                                            </td>
+                                            <!-- condt -->
+                                            <td><span t-field="l.product_id.uom_id"/></td>
+                                            <!-- P.U HT -->
+                                            <td class="right-align">
+                                                <span t-field="l.price_unit"/>
+                                            </td>
+                                            <!-- % REM -->
+                                            <td t-if="display_discount" class="right-align">
+                                                <span t-field="l.discount"/>
+                                            </td>
+                                            <!-- P.U HT NET = P.U HT __après remise__-->
+                                            <td class="right-align">
+                                                <span t-field="l.price_reduce"
+                                                      t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                            </td>
+                                            <!-- MONTANT HT = MONTANT TOTAL LIGNE HT -->
+                                            <!-- montant ht avec remise * nbre d'unités -->
+                                            <td class="right-align">
+                                                <!-- <span t-field="l.price_subtotal" -->
+                                                <span t-field="l.price_subtotal_net"
+                                                      t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                            </td>
+                                            <!-- % TVA (taxes) -->
+                                            <!--
+                                            <td class="text-right" style="white-space: nowrap;">
+                                                <span t-esc="', '.join(map(lambda x: str(int(x.amount)) if x.amount.is_integer() else str(x.amount), l.tax_id))"/>%
+                                            </td>
+                                            -->
+                                            <!--
+                                            <span t-field="l.tax_id.amount"
+                                                t-options='{"widget": "float", "precision": 1}'/> % -->
+                                        </tr>
+                                    </t></t>
 
                                     <!-- commentaires -->
                                     <tr t-if="l.comment_free and l.comment_position == 'after'" class="line-comment">
@@ -215,16 +216,30 @@
                                 <br/>
                                 <!-- valeur remise globale -->
                                 <span t-esc="doc.amount_ht_net*(doc.remise.amount/100)"
-                                    t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                      t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                             </td>
-
-                            <td>  </td>
-                            <td>  </td>
+                            <!-- port -->
+                            <td>
+                                <t t-foreach="doc.order_line" t-as="l">
+                                    <t t-if="l.is_delivery">
+                                        <span t-field="l.price_subtotal_net"
+                                                      t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-foreach="doc.order_line" t-as="l">
+                                    <t t-if="l.is_decond">
+                                        <span t-field="l.price_subtotal_net"
+                                                      t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                    </t>
+                                </t>
+                            </td>
 
                             <!-- TOTAL HT NET -->
                             <td>
                                 <span t-field="doc.amount_ht_net"
-                                    t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                      t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                             </td>
 
                             <!-- taxes.. ??? -->
@@ -237,22 +252,22 @@
                             <!-- montant tva -->
                             <td>
                                 <span t-field="doc.amount_tax"
-                                    t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                      t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                             </td>
                             <!-- <td style="white-space: nowrap;"> -->
                             <td>
                                 H.T. :
                                 <span t-field="doc.amount_untaxed"
-                                    t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                      t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                 <br/>
                                 T.V.A. :
                                 <span t-field="doc.amount_tax"
-                                    t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                      t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                 <br/>
                             </td>
                             <td>
                                 <span t-field="doc.amount_total"
-                                    t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                      t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                             </td>
                         </tr>
                     </tbody>

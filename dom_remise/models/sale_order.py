@@ -69,6 +69,9 @@ class SaleTarifLine(models.Model):
     #### NUMERIQUE #####
     price_subtotal_net = fields.Monetary(string='Sous-total net', compute='_compute_amount', store=True)
 
+    #### BOOLEAN #####
+    no_remise = fields.Boolean(string='ne pas appliquer la remise', related='product_id.no_remise')
+
     @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'order_id.remise')
     def _compute_amount(self):
         super(SaleTarifLine, self)._compute_amount()
@@ -76,16 +79,18 @@ class SaleTarifLine(models.Model):
             vals = {}
             price_subtotal_net = line.price_subtotal
             vals['price_subtotal_net'] = price_subtotal_net
-            if line.order_id.remise:
-                remise = line.order_id.remise.amount
+
+            if not line.no_remise:
+                if line.order_id.remise:
+                    remise = line.order_id.remise.amount
 
 
-                price_subtotal = line.price_subtotal - line.price_subtotal * (remise / 100)
-                price_tax = line.price_tax - line.price_tax * (remise / 100)
-                price_total = line.price_total - line.price_total * (remise / 100)
+                    price_subtotal = line.price_subtotal - line.price_subtotal * (remise / 100)
+                    price_tax = line.price_tax - line.price_tax * (remise / 100)
+                    price_total = line.price_total - line.price_total * (remise / 100)
 
-                vals['price_subtotal'] = price_subtotal
-                vals['price_tax'] = price_tax
-                vals['price_total'] = price_total
+                    vals['price_subtotal'] = price_subtotal
+                    vals['price_tax'] = price_tax
+                    vals['price_total'] = price_total
 
             line.update(vals)

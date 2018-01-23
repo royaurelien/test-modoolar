@@ -8,8 +8,7 @@
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
            <xpath expr="//field[@name='order_line']//tree" position="inside">
-                <field name="decond_added" groups="base.group_no_one" />
-               <field name="is_decond" groups="base.group_no_one" />
+                <field name="is_delivery" groups="base.group_no_one" />
            </xpath>
         </field>
     </record>

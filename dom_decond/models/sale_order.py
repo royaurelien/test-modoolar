@@ -86,6 +86,7 @@ class SaleOrder(models.Model):
             'price_unit': decond_product.lst_price,
             'product_uom_qty': 1,
             'product_uom': decond_product.uom_id.id,
+            'is_decond': True,
         }
 
         # (4, id, 0)
@@ -127,6 +128,7 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     decond_added = fields.Boolean(string="Déconditionnement ajouté")
+    is_decond = fields.Boolean(string="Ligne de Deconditionnement")
 
     """
     @api.onchange('product_id, product_uom_qty')

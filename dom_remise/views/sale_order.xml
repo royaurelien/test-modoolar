@@ -16,7 +16,12 @@
                 <field name="amount_ht_net" />
             </xpath>
 
+            <xpath expr="//field[@name='order_line']/form/group/group/field[@name='tax_id']" position="before">
+                <field name="no_remise" groups="base.group_no_one"/>
+            </xpath>
+
         </field>
     </record>
+
 
 </odoo>

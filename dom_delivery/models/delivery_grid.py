@@ -60,24 +60,15 @@ class DepartementProviderGrid(models.Model):
 
 
     def _get_price_from_picking(self, total, weight, volume, quantity, zone=False,dep=False):
-
         price = 0.0
         criteria_found = False
         price_dict = {'price': total, 'volume': volume, 'weight': weight, 'wv': volume * weight, 'quantity': quantity, 'zone_id':zone,'dep_ids':dep}
         for line in self.price_rule_ids:
             test = safe_eval(line.variable + line.operator + str(line.max_value), price_dict)
-            print(test)
             if line.localisation == 'zone':
-                print('ZONE')
-                print(zone)
-                print(line.zone_id)
-
                 if zone  != line.zone_id:
                     continue
             else :
-                print('DEP')
-                print(dep)
-                print(line.dep_ids)
                 if not dep in line.dep_ids:
                     continue
 

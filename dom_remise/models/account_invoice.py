@@ -39,10 +39,41 @@ class InvoiceTarif(models.Model):
             invoice.amount_ht_net = amount_ht_net
 
 
+    @api.multi
+    def get_taxes_values(self):
+        tax_grouped = {}
+        for line in self.invoice_line_ids:
+            remise = 0
+            if not line.no_remise:
+                remise = line.invoice_id.remise.amount
+
+            price_unit = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+            price_unit = price_unit - price_unit * (remise / 100)
+            print(price_unit)
+
+            taxes = line.invoice_line_tax_ids.compute_all(price_unit, self.currency_id, line.quantity, line.product_id, self.partner_id)['taxes']
+            for tax in taxes:
+                val = self._prepare_tax_line_vals(line, tax)
+                print(val)
+                key = self.env['account.tax'].browse(tax['id']).get_grouping_key(val)
+
+                if key not in tax_grouped:
+                    tax_grouped[key] = val
+                else:
+                    tax_grouped[key]['amount'] += val['amount']
+                    tax_grouped[key]['base'] += val['base']
+
+
+        return tax_grouped
+
+
 class InvoiceTarifLine(models.Model):
     _inherit = 'account.invoice.line'
 
     price_subtotal_net = fields.Monetary(string='Sous-total net', compute='_compute_price', store=True)
+
+    #### BOOLEAN #####
+    no_remise = fields.Boolean(string='ne pas appliquer la remise', related='product_id.no_remise')
 
     @api.one
     @api.depends('price_unit', 'discount', 'invoice_line_tax_ids', 'quantity',
@@ -56,17 +87,20 @@ class InvoiceTarifLine(models.Model):
             price_subtotal_net = line.price_subtotal
             vals['price_subtotal_net'] = price_subtotal_net
 
-            if line.invoice_id.remise:
-                remise = line.invoice_id.remise.amount
+            if not line.no_remise:
+                if line.invoice_id.remise:
+                    remise = line.invoice_id.remise.amount
 
-                price_subtotal = line.price_subtotal - line.price_subtotal * (remise / 100)
+                    price_subtotal = line.price_subtotal - line.price_subtotal * (remise / 100)
 
-                price_total = line.price_total - line.price_total * (remise / 100)
+                    price_total = line.price_total - line.price_total * (remise / 100)
 
-                vals['price_subtotal'] = price_subtotal
-                vals['price_total'] = price_total
+                    vals['price_subtotal'] = price_subtotal
+                    vals['price_total'] = price_total
 
             line.update(vals)
+
+"""
 
 class InvoiceTarifTax(models.Model):
     _inherit = 'account.invoice.tax'
@@ -80,3 +114,5 @@ class InvoiceTarifTax(models.Model):
                 remise = tax_line.invoice_id.remise.amount
 
                 tax_line.amount_total = tax_line.amount_total - tax_line.amount_total * (remise / 100)
+"""
+
