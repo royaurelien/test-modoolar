@@ -21,6 +21,8 @@ class DepartementDeliveryRule(models.Model):
 class DepartementProviderGrid(models.Model):
     _inherit = 'delivery.carrier'
 
+    margin = fields.Float()
+
     def get_zone(self):
         pass
 
