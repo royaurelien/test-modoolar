@@ -20,11 +20,11 @@ def set_connexion_doodoo():
     # Connexion Odoo
     username = "admin"
     pwd = "X200yziact"
-    dbname = "test_three"
+    dbname = "DOM_12_01"
 
-    sock_common = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/common")
+    sock_common = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/common")
     uid = sock_common.login(dbname, username, pwd)
-    sock = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/object")
+    sock = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/object")
 
 
 def recherche_parent(parent, parent_bis):
@@ -61,6 +61,17 @@ def search_remise(remise_str):
 
     return remise
 
+def search_reg(code_regl):
+    cond_reg_id = False
+
+    if code_regl:
+        reg = sock.execute(dbname, uid, pwd, 'account.payment.term', 'search_read', ([('name','=',code_regl)]), ('id'))
+
+        if reg:
+            cond_reg_id = reg[0]['id']
+
+    return cond_reg_id
+
 
 set_connexion_doodoo()
 fich_ = open('BD_CLIENTS_DEFINITIVE_API.csv', 'rb')
@@ -96,6 +107,7 @@ for row in csvreader:
     parent = row[16]
     property_delivery_carrier_id = row[18]
     remise_str = str(row[20]).replace(',','.')
+    cod_reg = row[21]
     bfa = row[26]
     user_id = row[35]
 
@@ -114,7 +126,7 @@ for row in csvreader:
 
     existe = partner_search(name)
     parent_id = recherche_parent(parent, parent_bis)
-
+    cond_reg_id = search_reg(cod_reg)
 
 
     if existe:
@@ -122,26 +134,6 @@ for row in csvreader:
 
     tot += 1
 
-    # partner_dict = {
-    #         'company_type': company_type,
-    #         'trust': trust,
-    #         'parent_id': parent_id,
-    #         'customer ': customer,
-    #         'supplier ': supplier,
-    #         'is_company': is_company,
-    #         'ref': ref,
-    #         'name': name,
-    #         'parent_bis': parent_bis,
-    #         'parent': parent,
-    #         'city': city,
-    #         'country_id': country_id,
-    #         'blocked':blocked,
-    #         'zip': zip,
-    #         'phone': phone,
-    #         'mobile': mobile,
-    #         'email': email,
-    #         'comment': comment,
-    #     }
 
     partner_dict = {
         'company_type':company_type,
@@ -160,9 +152,10 @@ for row in csvreader:
         'parent_bis':parent_bis,
         'parent':parent,
         'property_delivery_carrier_id':property_delivery_carrier_id,
-        'remise_str':remise_str,
+        'remise':remise,
+        'property_supplier_payment_term_id':cond_reg_id,
         'bfa':bfa,
-        'user_id':user_id,
+        # 'user_id':user_id,
     }
 
     compte = sock.execute(dbname, uid, pwd, 'res.partner', 'create', partner_dict)
