@@ -6,4 +6,4 @@ class PartnerTarif(models.Model):
     _inherit = 'res.partner'
 
     #### RELATIONEL #####
-    remise = fields.Many2one(comodel_name='dom.remise', string='Remise (%)')
+    remise = fields.Many2one(comodel_name='dom.remise', string='Remise pied de page (%)')

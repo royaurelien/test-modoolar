@@ -6,7 +6,7 @@ class InvoiceTarif(models.Model):
     _inherit = 'account.invoice'
 
     #### RELATIONEL #####
-    remise = fields.Many2one(comodel_name='dom.remise', string='Remise (%)')
+    remise = fields.Many2one(comodel_name='dom.remise', string='Remise pied de page (%)')
 
     #### NUMERIQUE #####
     amount_ht_net = fields.Float('Total HT net', compute='_compute_amount',store=True, track_visibility='onchange')

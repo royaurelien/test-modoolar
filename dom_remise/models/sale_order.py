@@ -10,7 +10,7 @@ class SaleTarif(models.Model):
     """system de remise globale en pied de page"""
 
     #### RELATIONEL #####
-    remise = fields.Many2one(comodel_name='dom.remise', string='Remise (%)')
+    remise = fields.Many2one(comodel_name='dom.remise', string='Remise pied de page (%)')
 
     #### NUMERIQUE #####
     amount_ht_net = fields.Monetary('Total HT net', compute='_amount_all',store=True, track_visibility='onchange')
