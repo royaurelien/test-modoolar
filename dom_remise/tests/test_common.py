@@ -37,15 +37,15 @@ class TestCommon(TransactionCase):
             'groups_id': [(6, 0, [group_user.id])]
         })
         """
-        self.test_user = self.env['res.users'].create({
+        self.test_user = self.env['res.partner'].create({
             'name': 'Test User',
-            'login': 'test_user',
-            'password': 'daezr',
+            # 'login': 'test_user',
+            # 'password': 'daezr',
             # 'email': 'test@test.com',
-            'signature': '--\nTest User',
+            # 'signature': '--\nTest User',
             # 'notify_email': 'never',
             # 'notification_type': 'email',
-            'groups_id': [(6, 0, [group_user.id])]
+            # 'groups_id': [(6, 0, [group_user.id])]
         })
 
 
