@@ -13,9 +13,9 @@
                 <group>
                     <group>
                         <field name="famille" />
-                        <field name="contact1" />
-                        <field name="contact2" />
-                        <field name="contact3" />
+                        <field name="contact1" options="{'no_create':True}"/>
+                        <field name="contact2" options="{'no_create':True}"/>
+                        <field name="contact3" options="{'no_create':True}"/>
                     </group>
                     <group>
                         <field name="ca_12" />
@@ -43,7 +43,7 @@
                 <group>
                     <field name="code_api" />
                     <field name="horaires_livraison"/>
-                    <field name="transporteur"/>
+                    <!--<field name="transporteur"/>-->
                     <field name="url_bfa" />
                     <field name="bfa" />
                 </group>
@@ -169,7 +169,7 @@
                      <attribute name="invisible">False</attribute>
              </xpath>
              <xpath expr="//field[@name='state_id']" position="attributes">
-                     <attribute name="invisible">False</attribute>
+                     <attribute name="placeholder">Région</attribute>
              </xpath>
         </field>
     </record>
