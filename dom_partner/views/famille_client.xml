@@ -19,4 +19,14 @@
             </form>
         </field>
     </record>
+
+    <record id="dom_famille_action_view" model="ir.actions.act_window">
+        <field name="name">Familles client</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dom.famille</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="dom_famille_menu" name="Famille client" parent="sale.menu_sale_config" action="dom_famille_action_view" sequence="11"/>
+
 </odoo>

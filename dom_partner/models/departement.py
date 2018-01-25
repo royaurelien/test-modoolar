@@ -9,7 +9,6 @@ from odoo.osv import expression
 class Departement(models.Model):
     _name = 'yziact.departement'
     _inherit = ['mail.thread']
-    _descrition = 'Departement'
     # _order = 'number'
 
     ##### Text ######
