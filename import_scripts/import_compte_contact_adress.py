@@ -72,6 +72,18 @@ def search_reg(code_regl):
 
     return cond_reg_id
 
+def search_fam_and_price(fam_name):
+    fam_id = pricelist_id = False
+    print fam_name
+
+    if fam_name:
+        fam = sock.execute(dbname, uid, pwd, 'dom.famille', 'search_read', ([('name', '=', fam_name)]),('id', 'property_product_pricelist'))
+        if fam :
+            fam_id=fam[0]['id']
+            pricelist_id = fam[0]['property_product_pricelist'][0]
+
+    return fam_id, pricelist_id
+
 
 set_connexion_doodoo()
 fich_ = open('BD_CLIENTS_DEFINITIVE_API.csv', 'rb')
@@ -80,6 +92,10 @@ csvreader = csv.reader(fich_, delimiter=';')
 
 tot = 0
 i = 1
+
+type_rel = sock.execute(dbname, uid, pwd, 'crm_yzi.type_rel','search_read', ([('name', '=', 'Client')]), ('id'))
+
+type_rel_id = type_rel[0]['id']
 
 for row in csvreader:
     print i
@@ -102,7 +118,7 @@ for row in csvreader:
     zip = row[3].strip()
     website = row[6]
     phone = row[12]
-    famille = row[14]
+    famille_raw = row[14].strip()
     parent_bis = row[15]
     parent = row[16]
     property_delivery_carrier_id = row[18]
@@ -110,11 +126,8 @@ for row in csvreader:
     cod_reg = row[21]
     bfa = row[26]
     user_id = row[35]
-
-    # country_id = row[6]
-    # blocked = row[18]
-    # mobile = row[10]
-    # email = row[24]
+    vat = row[36]
+    famille = famille_raw[0].upper()+famille_raw[1:].lower()
 
     if remise_str == '0':
         remise = False
@@ -127,13 +140,12 @@ for row in csvreader:
     existe = partner_search(name)
     parent_id = recherche_parent(parent, parent_bis)
     cond_reg_id = search_reg(cod_reg)
-
+    famille_id, pricelist_id = search_fam_and_price(famille)
 
     if existe:
-        name += ' (' + str(city) +')'
+        name = name + 'BIS'
 
     tot += 1
-
 
     partner_dict = {
         'company_type':company_type,
@@ -148,14 +160,17 @@ for row in csvreader:
         'zip':zip,
         'website':website,
         'phone':phone,
-        'famille':famille,
+        'famille':famille_id,
         'parent_bis':parent_bis,
         'parent':parent,
-        'property_delivery_carrier_id':property_delivery_carrier_id,
+        # 'property_delivery_carrier_id':property_delivery_carrier_id,
+        'property_product_pricelist':pricelist_id,
         'remise':remise,
         'property_supplier_payment_term_id':cond_reg_id,
         'bfa':bfa,
+        'type_rel':type_rel_id,
         # 'user_id':user_id,
+        'vat':vat,
     }
 
     compte = sock.execute(dbname, uid, pwd, 'res.partner', 'create', partner_dict)
