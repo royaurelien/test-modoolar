@@ -19,7 +19,8 @@ if args.verbose:
     logging.basicConfig(level=logging.DEBUG)
 
 # working with names is better than working with random integers
-# pour NouvelleBaseArticles.xlsx
+# Pour NouvelleBaseArticles.xlsx
+# Pour
 names_to_ints = {
     'code': 0, # a
     'famille': 1, # b
@@ -28,7 +29,7 @@ names_to_ints = {
     'nombre par colis': 4, # e
     'poids brut': 5, # f
     'stock physique': 6, # g
-    'date modification': 7, # h
+    # 'date modification': 7, # h
     'dernier prix': 8, # i
     'prix base ht': 9, # j
     'libelle (famille article)': 10, # k
@@ -49,6 +50,29 @@ names_to_ints = {
     # 'num danger': 18,
     # 'code barre': 19,
 }
+
+cols = [
+    'code', # a
+    'famille', # b
+    'libelle', # c
+    'unite vente', # d
+    'nombre par colis', # e
+    'poids brut', # f
+    'stock physique', # g
+    'dernier prix', # h
+    'prix base ht', # i
+    'libelle (famille article)', # j
+    'reliquat fournisseur', #k
+    'reliquat client', # l
+    'num ONU', # m
+    'categorie', # n
+    'designation', # o
+    'PG', # p
+    'classe', # q
+    'num danger', # r
+    'code barre', # s
+    'poids net', # t
+]
 
 # {{{ odoo xmlrpc stuff
 
@@ -101,8 +125,8 @@ def update_record(model_name, rec_id, data_dict):
         print "erreur lors de la l'update de %s" % model_name
         print "id : %s" % rec_id
         print "avec les valeurs : %s" % data_dict
-        import pudb; pudb.set_trace()
-        raise
+        # import pudb; pudb.set_trace()
+        # raise
 
     return res
 
@@ -153,7 +177,7 @@ class Article(object):
     def __init__(self, code, famille, libelle, unite_vente, nb_par_colis,
             poids_brut, stock_phy, date_modif, dernier_prix, prix_base_ht,
             libelle_fam, reliq_fourn, reliq_client, num_onu, categ, design,
-            pg, classe, num_danger, code_barre):
+            pg, classe, num_danger, code_barre, poids_net):
         """
         line is a LIST OF XLRD.sheet.CELL class
         type(line[0]) = xlrd.sheet.cell
@@ -181,12 +205,14 @@ class Article(object):
         self.classe = classe
         self.num_danger = num_danger
         self.code_barre = code_barre
+        self.poids_net = poids_net
 
     def get(self, name):
         try:
             # return self.line_arr[names_to_ints[name]]
             # return self.line[names_to_ints[name]]
-            return self.line[names_to_ints[name]]
+            # return self.line[names_to_ints[name]]
+            return self.line[cols.index(name)]
         except IndexError:
             return "no value for %s" % name
 
@@ -194,7 +220,11 @@ class Article(object):
     def from_xls_line(cls, xl):
 
         def get(line, name):
-            return line[names_to_ints[name]]
+            # return line[names_to_ints[name]]
+            try:
+                return line[cols.index(name)]
+            except IndexError:
+                logger.error("nom de colonne inconnu : %s" % name)
 
         code = get(xl, 'code')
         fam = get(xl, 'famille')
@@ -203,7 +233,8 @@ class Article(object):
         nb_par_colis = get(xl, 'nombre par colis')
         poids_brut = get(xl, 'poids brut')
         stock_phy = get(xl, 'stock physique')
-        date_modif = get(xl, 'date modification')
+        # date_modif = get(xl, 'date modification')
+        date_modif = False
         dernier_prix = get(xl, 'dernier prix')
         prix_base_ht = get(xl, 'prix base ht')
         lib_fam = get(xl, 'libelle (famille article)')
@@ -216,18 +247,20 @@ class Article(object):
         classe = get(xl, 'classe')
         num_danger = get(xl, 'num danger')
         code_barre = get(xl, 'code barre')
+        poids_net = get(xl, 'poids net')
 
         return cls(code, fam, lib, unite, nb_par_colis, poids_brut, stock_phy,
             date_modif, dernier_prix, prix_base_ht, lib_fam, reliq_fourn,
             reliq_client, num_onu, categ, design, pg, classe, num_danger,
-            code_barre)
+            code_barre, poids_net)
 
     def __str__(self):
         # li = [self.code, self.fam, self.lib, self.unite, self.dernier_prix,
               #self.stock_phy, self.prix_base_ht, self.code_barre]
 
         # return str(li)
-        return str(self.__dict__)
+        # return str(self.__dict__)
+        return str(sorted(self.__dict__.items()))
 
     def to_dict(self):
         """
@@ -252,6 +285,13 @@ class ArticleImporter(object):
         self.uom_id_unit = get_record_id('product.uom', [
             ['name', 'ilike', 'unit'],
         ])
+
+        self.prod_categ_tous = get_record_id('product.category', [
+            ['name', 'ilike', 'all'],
+        ])
+
+        if not self.prod_categ_tous:
+            raise Exception("Categorie 'Tous' non trouvée")
 
         if not self.uom_id_unit:
             raise Exception("ID of uom_id unit not found")
@@ -301,7 +341,7 @@ class ArticleImporter(object):
             uname = volume_units[uname]
 
         if not uom_categ_id:
-            import pudb; pudb.set_trace()
+            # import pudb; pudb.set_trace()
             raise Exception("Could not figure out uom_categ_id")
 
         uom_id = get_record_id('product.uom', [
@@ -376,10 +416,15 @@ class ArticleImporter(object):
             categ_id = create_record(
                 'product.category', {
                     # 'name': article.categ,
+                    'parent_id': self.prod_categ_tous,
                     'name': article.fam,
                     'libelle': article.lib_fam,
                 }
             )
+        else:
+            update_record('product.category', categ_id, {
+                'parent_id': self.prod_categ_tous,
+            })
 
         # family
         fam_id = self.figure_fam_id(article)
@@ -416,6 +461,8 @@ class ArticleImporter(object):
 
             'poids_brut': article.poids_brut,
             'weight': article.poids_brut,
+
+            'poids_net': article.poids_net,
 
             # 'qty_available': article.stock_phy,
             # 'qty_available': 200,
@@ -502,7 +549,8 @@ class ArticlesReader(object):
 
 
 # articles = ArticlesReader.read_from_xls('BD_ARTICLES_API.xls')
-articles = ArticlesReader.read_from_xls('NouvelleBaseArticles.xlsx')
+# articles = ArticlesReader.read_from_xls('NouvelleBaseArticles.xlsx')
+articles = ArticlesReader.read_from_xls('/home/gabriel/domitec_docs/articles/ExportBaseArticles_Definitif.xlsx')
 
 # for i, article in enumerate(articles):
     # print i+1, article

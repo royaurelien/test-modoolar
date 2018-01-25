@@ -15,6 +15,7 @@
             <field name="uom_po_id" position="after">
                 <field name="num_onu" />
                 <field name="weight" />
+                <field name="poids_net" />
             </field>
 
         </field>

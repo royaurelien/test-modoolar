@@ -70,7 +70,11 @@ class ProductTemplate(models.Model):
     # 9 more fields
 
     nb_par_colis = fields.Integer('Nombre par colis')
-    poids_brut = fields.Float('Poids Brut')
+    # poids_brut = fields.Float('Poids Brut')
+
+    # inherited
+    weight = fields.Float(string='Poids Brut')
+    poids_net = fields.Float(string='Poids Net')
 
     reliquat_fourn = fields.Integer('Reliquat Fournisseur')
     reliquat_client = fields.Integer('Reliquat Client')
