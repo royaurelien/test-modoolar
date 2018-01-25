@@ -2,12 +2,12 @@
 <odoo>
     <data noupdate="1">
         <record id="dom_famille_data_mat" model="dom.famille">
-            <field name="name">Négoce Matériaux</field>
+            <field name="name">Négoce matériaux</field>
             <field name="property_product_pricelist" ref="dom_partner.dom_remise_data_mat"/>
         </record>
 
         <record id="dom_famille_data_carrek" model="dom.famille">
-            <field name="name">Négoce Carrelage spécialisé</field>
+            <field name="name">Négoce carrelage spécialisé</field>
             <field name="property_product_pricelist" ref="dom_partner.dom_remise_data_carrek"/>
         </record>
 

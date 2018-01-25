@@ -26,6 +26,7 @@
         'data/dom_famille.xml',
         'data/dom_presentoir.xml',
         'data/dom_plv.xml',
+        'data/type_tier.xml',
         'security/ir.model.access.csv',
 
         'views/res_partner.xml',
