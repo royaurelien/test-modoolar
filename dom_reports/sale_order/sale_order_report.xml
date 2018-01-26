@@ -165,9 +165,10 @@
 
                     <!--Champs des CGV pour mettre des commentaires-->
                     <p t-field="doc.note" />
+                    <!--
                     <p t-if="doc.payment_term_id.note">
                         <span t-field="doc.payment_term_id.note"/>
-                    </p>
+                    </p> -->
 
                     <t t-if="page_index &lt; page_size - 1" groups="sale.group_sale_layout">
                         <p style="page-break-before:always;"> </p>
