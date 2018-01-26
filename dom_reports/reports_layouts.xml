@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
     <!-- <template id="assets_backend" name="yz_widgets_assets" inherit_id="web.assets_backend"> -->
@@ -272,8 +273,8 @@
                     <tbody>
                         <tr>
                             <td>
-                                <span t-if="not bl" t-field="doc.payment_term_id" />
-                                <span t-elif="bl" t-field="doc.partner_id.property_payment_term_id" />
+                                <span t-if="not bl" t-field="doc.payment_term_id.note" />
+                                <span t-elif="bl" t-field="doc.partner_id.property_payment_term_id.note" />
                             </td>
                         </tr>
                     </tbody>
@@ -320,8 +321,11 @@
                             </th> -->
                             <th t-if="not cf"> Ref. cde :
                                 <span t-if="devis or bdc" t-field="doc.client_order_ref" />
-                                <span t-elif="facture" t-field="doc.name" />
-                                <span t-elif="bl and doc.sale_id" t-field="doc.sale_id.client_order_ref" />
+                                <span t-if="facture" t-field="doc.name" />
+                                <t t-if="bl">
+                                    <span t-if="doc.sale_id" t-field="doc.sale_id.client_order_ref" />
+                                    <span t-else="">aucune vente associée</span>
+                                </t>
                             </th>
                             <th t-elif="cf"> N/Id CEE :
                                 <span t-field="doc.company_id.vat" />
