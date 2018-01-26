@@ -113,7 +113,7 @@ for ckey in class_info:
     def gen_action_preview_report(path=path):
         def f(self):
             for rec in self:
-                base_url = self.env['ir.config_parameter'].get_param('web.base.url')
+                base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
                 record_url = base_url + "/report/pdf/dom_reports.%s/" % path + str(self.id)
 
             client_action = {
