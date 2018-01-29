@@ -171,6 +171,10 @@
              <xpath expr="//field[@name='state_id']" position="attributes">
                      <attribute name="placeholder">Région</attribute>
              </xpath>
+
+            <xpath expr="//group[@name='purchase']/field[@name='supplier']" position="after">
+                <field name="famille_fournisseur"/>
+            </xpath>
         </field>
     </record>
 
