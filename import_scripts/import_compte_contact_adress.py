@@ -65,10 +65,10 @@ def search_reg(code_regl):
     cond_reg_id = False
 
     if code_regl:
-        reg = sock.execute(dbname, uid, pwd, 'account.payment.term', 'search_read', ([('name','=',code_regl)]), ('id'))
+        reg = sock.execute(dbname, uid, pwd, 'account.payment.term', 'search', ([('name','=',code_regl)]))
 
         if reg:
-            cond_reg_id = reg[0]['id']
+            cond_reg_id = reg[0]
 
     return cond_reg_id
 
@@ -166,7 +166,7 @@ for row in csvreader:
         # 'property_delivery_carrier_id':property_delivery_carrier_id,
         'property_product_pricelist':pricelist_id,
         'remise':remise,
-        'property_supplier_payment_term_id':cond_reg_id,
+        'property_payment_term_id':cond_reg_id,
         'bfa':bfa,
         'type_rel':type_rel_id,
         # 'user_id':user_id,
