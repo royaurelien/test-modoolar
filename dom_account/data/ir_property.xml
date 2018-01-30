@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+    <function model="ir.property" name="set_to_nothing" eval="[ref('account.field_res_partner_property_account_receivable_id')]"/>
+    <function model="ir.property" name="set_to_nothing" eval="[ref('account.field_res_partner_property_account_payable_id')]"/>
+
+    </data>
+</odoo>

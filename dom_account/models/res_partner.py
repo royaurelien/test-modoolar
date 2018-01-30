@@ -8,8 +8,8 @@ class ResPartner(models.Model):
 
 
     # A la creation d'un contact, on initialise pas ses comptes client et fournisseur
-    property_account_payable_id = fields.Many2one(required=False, default='False')
-    property_account_receivable_id = fields.Many2one(required=False, default='False')
+    property_account_payable_id = fields.Many2one(required=False, store=True)
+    property_account_receivable_id = fields.Many2one(required=False, store=True)
 
     # Reference interne du contact, generee automatiquement
     ref = fields.Char(readonly=True, store=True)
