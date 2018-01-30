@@ -54,7 +54,7 @@
 
                                 <!-- Lignes du devis/bc -->
                                 <t t-foreach="layout_category['lines']" t-as="l">
-                                    <!-- commentaires -->
+                                    <!-- commentaires
                                     <tr t-if="l.comment_free and l.comment_position == 'before'" class="line-comment">
                                         <td colspan="16">
                                             <t t-raw="l.comment_free" />
@@ -64,8 +64,8 @@
                                         <td colspan="16">
                                             <t t-raw="l.comment_predef.value" />
                                         </td>
-                                    </tr>
-                                    <t t-if="l.is_delivery==False"> <t t-if="l.is_decond==False">
+                                    </tr> -->
+                                    <t t-if="(not l.is_delivery) and (not l.is_decond) and (not l.product_id.is_comment)">
                                         <tr>
                                             <!--
                                             <td>
@@ -123,9 +123,17 @@
                                             <span t-field="l.tax_id.amount"
                                                 t-options='{"widget": "float", "precision": 1}'/> % -->
                                         </tr>
-                                    </t></t>
+                                    </t>
 
-                                    <!-- commentaires -->
+                                    <t t-if="l.product_id.is_comment">
+                                        <tr>
+                                            <td colspan="12" class="line_comment">
+                                                <p style="margin:0;"> <span t-field="l.name" /> </p>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                    <!-- commentaires
                                     <tr t-if="l.comment_free and l.comment_position == 'after'" class="line-comment">
                                         <td colspan="16">
                                             <t t-raw="l.comment_free" />
@@ -135,7 +143,8 @@
                                         <td colspan="16">
                                             <t t-raw="l.comment_predef.value" />
                                         </td>
-                                    </tr>
+                                    </tr> -->
+
                                 </t>
 
                                 <!-- subtotal part

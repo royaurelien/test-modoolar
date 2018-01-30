@@ -56,10 +56,13 @@
         'views/res_config_settings_view.xml',
 
         # vue sale.order.line pour commentaires
-        'views/sale_order_line_view.xml',
+        # 'views/sale_order_line_view.xml',
 
         # vue et menus dom.comment
-        'views/dom_comment_view.xml',
+        # 'views/dom_comment_view.xml',
+
+        # new comments
+        'views/product_template.xml',
 
         # aperçus des rapports
         'views/report_preview_views.xml',

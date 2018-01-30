@@ -325,41 +325,40 @@ otherwise border won't align because of left/right border mismatch */
     padding-right: 35px;
 }
 
-/* comment stuf */
-
-tr.line-comment {
-    page-break-inside: avoid;
-}
-
-tr.line-comment td {
-    border-bottom: 1px solid black !important;
-    border-top: 1px solid black !important;
-    text-align: left;
-}
-
-/* edge case: comment tr is last line of table */
-/* ugliness to palliate to the wkhtmltopdf bug that causes
-inexistent borders to be drawn when they don't exist when some
-border is set on the last TD of a table */
-
-tr.line-comment:last-child {
-    border: 0;
-}
-
-/* idk why we need the !important ...*/
-tr.line-comment:last-child td {
-    border: 0 !important;
-    padding: 0;
-}
-
-tr.line-comment:last-child td p {
-    padding: 3px 5px 3px 5px;
-    border-top: 1px solid black;
-}
-
 /* ** top message div ** not used for now..
 .top-message-div {
     max-width: 300px;
     background-color: red;
     border: 1px solid black;
 } */
+
+tr:first-child > .line_comment {
+    padding:0;
+}
+
+tr:first-child > .line_comment p {
+    border-bottom: 1px solid black;
+    padding: 5px;
+    text-align: left;
+}
+
+tr:last-child > .line_comment {
+    padding:0;
+}
+
+tr:last-child > .line_comment p {
+    border-top: 1px solid black;
+    padding: 5px;
+    text-align: left;
+}
+
+tr:not(:first-child):not(:last-child) > .line_comment {
+    padding:0;
+}
+
+tr:not(:first-child):not(:last-child) > .line_comment {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 5px;
+    text-align: left;
+}
