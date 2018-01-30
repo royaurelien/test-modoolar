@@ -21,6 +21,7 @@ if args.verbose:
 # working with names is better than working with random integers
 # Pour NouvelleBaseArticles.xlsx
 # Pour
+"""
 names_to_ints = {
     'code': 0, # a
     'famille': 1, # b
@@ -50,6 +51,7 @@ names_to_ints = {
     # 'num danger': 18,
     # 'code barre': 19,
 }
+"""
 
 cols = [
     'code', # a
@@ -84,7 +86,8 @@ server_port = 8071
 
 # server_dbname = "domitec_db_one"
 # server_dbname = "test_one"
-server_dbname = "based_one"
+# server_dbname = "based_as_cs"
+server_dbname = "domitec_conds"
 
 server_username = 'admin'
 server_pwd = 'X200yziact'
@@ -301,6 +304,24 @@ class ArticleImporter(object):
         if (not self.uom_categ_id_unit) or (not self.uom_categ_id_volume):
             raise Exception(u"Pas de catégorie d'unité Unité ou Volume")
 
+        # fournisseurs
+        def get_fourn(name):
+            fourn = get_record_id('res.partner', [
+                ['supplier', '=', True],
+                ['name', 'ilike', name],
+            ])
+
+            if not fourn:
+                raise Exception("Fournisseur %s non trouvé" % name)
+
+            return fourn
+
+        self.fourn_lithofin = get_fourn('LITHOFIN')
+        self.fourn_otto = get_fourn('OTTO CHEMIE')
+        self.fourn_fugensand = get_fourn('STONES Gesellschaft')
+        self.fourn_procover = get_fourn('LANDOLT FRANCE SAS')
+        self.fourn_propad = get_fourn('KGS DIAMOND INTERNATIONAL')
+
     def figure_uom_id(self, uname):
 
         unit_units = {
@@ -394,6 +415,51 @@ class ArticleImporter(object):
 
         return record_id
 
+    def create_supplierinfo(self, article, article_id):
+
+        name = article.lib.lower() + ' ' + article.fam.lower() + ' ' + article.lib_fam.lower()
+        logger.info(u"name : {}".format(name))
+        name_id = False
+        if 'litho' in name:
+            name_id = self.fourn_lithofin
+        elif 'otto' in name:
+            name_id = self.fourn_otto
+        elif 'fugensand' in name:
+            name_id = self.fourn_fugensand
+        elif 'procover' in name:
+            name_id = self.fourn_procover
+        elif 'propad' in name:
+            name_id = self.fourn_procover
+
+        if not name_id:
+            logger.info("Pas de fournisseur trouvé pour l'article : {}".format(article))
+            return
+
+        sup_id = get_record_id('product.supplierinfo', [
+            ['name', '=', name_id],
+            ['product_tmpl_id', '=', article_id],
+        ])
+
+        if sup_id:
+            logger.info("Le supplierinfo existe déjà")
+            return
+
+        supplierinfo_id = create_record(
+            'product.supplierinfo', {
+                'name': name_id,
+                'product_tmpl_id': article_id,
+                'product_name': article.lib,
+                'product_code': article.code,
+                'price': article.dernier_prix,
+                'delay': 1,
+                'min_qty': 1.0,
+                # 'name': article.fam,
+                # 'libelle': article.lib_fam,
+            }
+        )
+
+        logger.info("supplierinfo créé")
+
     def import_article(self, article):
 
         # dangerosity
@@ -473,6 +539,9 @@ class ArticleImporter(object):
         else:
             product_tmpl_id = create_record('product.template', vals)
 
+        # create the supplierinfo
+        self.create_supplierinfo(article, product_tmpl_id)
+
         # After the template is created, search the product, affect the barcode, you're done..
         vals = {
             'barcode': article.code_barre,
@@ -547,15 +616,15 @@ class ArticlesReader(object):
         return art_list
 
 
+if __name__ == "__main__":
+    # articles = ArticlesReader.read_from_xls('BD_ARTICLES_API.xls')
+    # articles = ArticlesReader.read_from_xls('NouvelleBaseArticles.xlsx')
+    articles = ArticlesReader.read_from_xls('./ExportBaseArticles_Definitif.xlsx')
 
-# articles = ArticlesReader.read_from_xls('BD_ARTICLES_API.xls')
-# articles = ArticlesReader.read_from_xls('NouvelleBaseArticles.xlsx')
-articles = ArticlesReader.read_from_xls('/home/gabriel/domitec_docs/articles/ExportBaseArticles_Definitif.xlsx')
+    # for i, article in enumerate(articles):
+        # print i+1, article
 
-# for i, article in enumerate(articles):
-    # print i+1, article
+    importer = ArticleImporter()
 
-importer = ArticleImporter()
-
-for article in articles:
-    importer.import_article(article)
+    for article in articles:
+        importer.import_article(article)

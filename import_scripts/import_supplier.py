@@ -6,7 +6,6 @@ import csv
 import sys
 from datetime import datetime
 
-
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -18,13 +17,17 @@ def set_connexion_doodoo():
     global sock
 
     # Connexion Odoo
+    hostname = '127.0.0.1'
+    port = '8071'
     username = "admin"
     pwd = "X200yziact"
-    dbname = "DOM_12_01"
+    # dbname = "DOM_12_01"
+    # dbname = "based_as_cs"
+    dbname = "domitec_conds"
 
-    sock_common = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/common")
+    sock_common = xmlrpclib.ServerProxy("http://" + hostname + ":" + port + "/xmlrpc/2/common")
     uid = sock_common.login(dbname, username, pwd)
-    sock = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/object")
+    sock = xmlrpclib.ServerProxy("http://" + hostname + ":" + port + "/xmlrpc/2/object")
 
 
 def search_reg(code_regl):
@@ -45,16 +48,50 @@ def search_fam(fam_name):
     print fam_name
 
     if fam_name:
-        fam = sock.execute(dbname, uid, pwd, 'dom.famille_supplier', 'search_read', ([('name', '=', fam_name)]),('id'))
+        fam = sock.execute(dbname, uid, pwd, 'res.country', 'search_read', ([('name', '=', fam_name)]),('id'))
         if fam :
             fam_id=fam[0]['id']
 
 
     return fam_id
 
+def search_country(country):
+
+    name = False
+    if country in ['f', 'fr', 'Fr', 'FR', 'FRANCE', 'France', 'france']:
+        name = 'France'
+    elif country in ['Allemagne']:
+        name = 'Germany'
+    elif country in ['The Netherlands', 'HOLLAND', 'hollande']:
+        name = 'Netherlands'
+    elif country in ['Italie', 'ITALIA']:
+        # name = 'Italie'
+        name = 'Italy'
+    elif country in ['belgique']:
+        name = 'Belgium'
+
+    if not name:
+        print ("erreur : pays non défini : %s" % country)
+        return False
+
+    country_id = False
+
+    if name:
+        co = sock.execute(dbname, uid, pwd, 'res.country', 'search_read', ([('name', '=', name)]) )
+        if co :
+            country_id = co[0]['id']
+
+    print u"%s = %s " % (country, name)
+    print u"country_id = %s" % country_id
+
+    if not country_id:
+        raise("Country not found : %s" % name)
+    # import pudb; pudb.set_trace()
+
+    return country_id
 
 set_connexion_doodoo()
-fich_ = open('fournisseurs_V2import.csv', 'rb')
+fich_ = open('fournisseurs_V2import_gcsv.csv', 'rb')
 
 csvreader = csv.reader(fich_, delimiter=';')
 
@@ -64,6 +101,57 @@ i = 1
 type_rel = sock.execute(dbname, uid, pwd, 'crm_yzi.type_rel','search_read', ([('name', '=', 'Fournisseur')]), ('id'))
 
 type_rel_id = type_rel[0]['id']
+
+# print "sys exitting"
+# sys.exit()
+
+def get_partner_id(domain):
+
+    try:
+        res = sock.execute_kw(dbname, uid, pwd, 'res.partner', 'search', [domain])
+    except Exception as e:
+        print "le model %s n'existe pas" % model_name
+        raise
+
+    return res[0] if res else False
+
+def create_or_update_supplier(partner_dict):
+
+    id = 0
+    partner_id = get_partner_id([ ['name', '=', partner_dict['name']], ['supplier', '=', True] ])
+    print "partner_id : %s" % partner_id
+    print "partner_dict : %s" % partner_dict
+    if partner_id:
+        id = sock.execute_kw(dbname, uid, pwd, 'res.partner', 'write', [[partner_id], partner_dict])
+        id = partner_id
+        print "update"
+    else :
+        id = sock.execute_kw(dbname, uid, pwd, 'res.partner', 'create', [partner_dict])
+        print "create"
+
+    # import pudb; pudb.set_trace()
+    return id
+
+def create_or_update_contact(contact_dict):
+
+    id = 0
+    partner_id = get_partner_id([
+        ['name', '=', contact_dict['name']],
+        ['type', '=', contact_dict['type']],
+        ['parent_id', '=', contact_dict['parent_id']],
+    ])
+    print "partner_id : %s" % partner_id
+    print "partner_dict : %s" % partner_dict
+    if partner_id:
+        id = sock.execute_kw(dbname, uid, pwd, 'res.partner', 'write', [[partner_id], partner_dict])
+        id = partner_id
+        print "update"
+    else :
+        id = sock.execute_kw(dbname, uid, pwd, 'res.partner', 'create', [partner_dict])
+        print "create"
+
+    # import pudb; pudb.set_trace()
+    return id
 
 for row in csvreader:
     print i
@@ -86,12 +174,13 @@ for row in csvreader:
     street = row[7]
     city = row[8]
     zip = row[9].strip()
-    country_id = row[10]
+    country = row[10]
     website = row[12]
-    famille = famille_raw[0].upper()+famille_raw[1:].lower()
+    famille = famille_raw[0].upper()+famille_raw[1:].lower() if famille_raw else ''
 
     cond_reg_id = search_reg(cod_reg)
     famille_id = search_fam(famille)
+    country_id = search_country(country)
 
     if row[11]:
         phone += ';'+row[11]
@@ -116,7 +205,8 @@ for row in csvreader:
         'type_rel':type_rel_id,
     }
 
-    compte = sock.execute(dbname, uid, pwd, 'res.partner', 'create', partner_dict)
+    compte = 0
+    compte = create_or_update_supplier(partner_dict)
 
     if row[3]:
         type = 'contact'
@@ -131,5 +221,7 @@ for row in csvreader:
             'name': name_cont,
         }
 
-        contact = sock.execute(dbname, uid, pwd, 'res.partner', 'create', contact_dict)
+        # contact = sock.execute(dbname, uid, pwd, 'res.partner', 'create', contact_dict)
+        contact = create_or_update_contact(contact_dict)
+
     i += 1
