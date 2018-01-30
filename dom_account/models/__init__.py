@@ -3,3 +3,4 @@ from . import sale_order
 from . import purchase_order
 from . import account_invoice
 from . import ir_property
+from . import res_bank
