@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="dom_account_move_line_filter" model="ir.ui.view">
+        <field name="name">filter</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="credit"/>
+                <field name="debit"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

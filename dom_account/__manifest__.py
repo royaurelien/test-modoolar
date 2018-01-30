@@ -26,6 +26,7 @@
         # 'security/ir.model.access.csv',
 
         'views/res_partner.xml',
+        'views/account_move.xml',
     ],
 
     # 'installable': True,
