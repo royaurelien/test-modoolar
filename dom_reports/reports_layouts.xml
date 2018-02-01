@@ -202,18 +202,18 @@
             <!-- partner address -->
             <div class="col-xs-6 address-div">
                 <div class="row">
-                    <span class="partner-name" t-field="doc.partner_id" /> <br/>
+                    <!--<span class="partner-name" t-field="doc.partner_id" /> <br/>-->
 
                     <!-- the address -->
                     <t t-if="bl">
                         <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
-                        &quot;fields&quot;: [&quot;address&quot;],
+                        &quot;fields&quot;: [&quot;address&quot;,'name'],
                         &quot;no_marker&quot;: True,
                         &quot;phone_icons&quot;: False}"/>
                     </t>
                     <t t-elif="cf">
                         <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
-                        &quot;fields&quot;: [&quot;address&quot;],
+                        &quot;fields&quot;: [&quot;address&quot;,'name'],
                         &quot;no_marker&quot;: True,
                         &quot;phone_icons&quot;: False}"/>
                     </t>
