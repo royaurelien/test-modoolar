@@ -119,7 +119,7 @@
         </field>
     </record>
     <record id="crm_action_partner_form_partner" model="ir.actions.act_window">
-        <field name="name">Partenaires</field>
+        <field name="name">Tiers</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.partner</field>
         <field name="view_type">form</field>
@@ -128,10 +128,35 @@
             {
             "search_default_customer":1,
             "search_default_type_company":1,
-            "search_default_type_rel":"partner"
+            "search_default_type_rel":"Tier"
             }
         </field>
-        <field name="domain">[[u'type_rel', u'=', u'Partenaire']]</field>
+        <field name="domain">[[u'type_rel', u'=', u'Tier']]</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+            </p><p>
+            Odoo helps you easily track all activities related to
+            a customer: discussions, history of business opportunities,
+            documents, etc.
+        </p>
+        </field>
+    </record>
+        <record id="crm_action_partner_form_supplier" model="ir.actions.act_window">
+        <field name="name">Fournisseurs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">
+            {
+            "search_default_customer":1,
+            "search_default_type_company":1,
+            "search_default_type_rel":"Fournisseur"
+            }
+        </field>
+        <field name="domain">[[u'type_rel', u'=', u'Fournisseur']]</field>
         <field name="search_view_id" ref="base.view_res_partner_filter"/>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
@@ -194,9 +219,10 @@
     <!--Sous Menu compte-->
     <menuitem id="sous_menu_prospect" name="Prospects" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_prospect" sequence="1"/>
     <menuitem id="sous_menu_customer" name="Clients" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_customer" sequence="2"/>
-    <menuitem id="sous_menu_partnaires" name="Partenaires" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_partner" sequence="3"/>
-    <menuitem id="sous_menu_concurrents" name="Concurrents" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_concurrent" sequence="4"/>
-    <menuitem id="sous_menu_compte" name="Tous les Comptes" parent="crm.res_partner_menu_crm" action="crm_action_partner_form" sequence="5"/>
+    <menuitem id="sous_menu_partnaires" name="Tiers" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_partner" sequence="3"/>
+    <menuitem id="sous_menu_fournisseur" name="Fournisseurs" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_supplier" sequence="4"/>
+    <menuitem id="sous_menu_concurrents" name="Concurrents" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_concurrent" sequence="5"/>
+    <menuitem id="sous_menu_compte" name="Tous les Comptes" parent="crm.res_partner_menu_crm" action="crm_action_partner_form" sequence="6"/>
 
 
 
