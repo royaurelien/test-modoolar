@@ -48,7 +48,17 @@
                                     <!-- <span t-else=""> <span t-field="doc.name" /> </span> -->
                                 </td>
                                 <td>
-                                    <span t-field="doc.partner_id.ref" />
+                                    <t t-if="bl">
+                                        <t t-if="not doc.partner_id.ref">
+                                            <span t-field="doc.partner_id.parent_id.ref" />
+                                        </t>
+                                        <t t-else="">
+                                            <span t-field="doc.partner_id.ref" />
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-field="doc.partner_id.ref" />
+                                    </t>
                                 </td>
                                 <td> <span class="page" /> / <span class="topage" /> </td>
                             </tr>
