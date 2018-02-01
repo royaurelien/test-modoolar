@@ -213,7 +213,7 @@
     </record>
 
     <!-- Menu principaux-->
-    <menuitem id="crm.res_partner_menu_crm" parent="crm.crm_menu_root"/>
+    <menuitem id="crm.res_partner_menu_crm" parent="crm.crm_menu_root" name="Comptes"/>
     <menuitem id="menu_contact" name="Contacts" parent="crm.res_partner_menu_crm" action="crm_action_partner_form_contact" sequence="4"/>
 
     <!--Sous Menu compte-->
