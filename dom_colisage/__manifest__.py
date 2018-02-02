@@ -15,10 +15,13 @@
     # any module necessary for this one to work correctly
     'depends': [
         'stock', # for stock.picking
+        'sale', # for sale.order
+        'delivery', # for view inheriting form sale.order
     ],
 
     # always loaded
     'data': [
+        'views/sale_order_view.xml',
     ],
 
     # 'installable': True,

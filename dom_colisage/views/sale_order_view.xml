@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="dom_colisage_so_view" model="ir.ui.view">
+        <field name="name">dom_colisage Sale Order Form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="delivery.view_order_form_with_carrier" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='carrier_selection']" position="after">
+                <field name="nb_cartons" />
+                <field name="poids_total_brut" />
+                <field name="poids_total_net" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
