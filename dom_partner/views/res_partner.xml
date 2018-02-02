@@ -132,7 +132,7 @@
 
             <xpath expr="//field[@name='user_id']" position="attributes">
                 <attribute name="string">Commercial</attribute>
-                <attribute name="attrs">{'required':[('type_rel','=','Client')]}</attribute>
+                <!--<attribute name="attrs">{'required':[('type_rel','=','Client')]}</attribute>-->
             </xpath>
             <xpath expr="//field[@name='category_id']" position="before">
                 <field name="dep_id"/>
