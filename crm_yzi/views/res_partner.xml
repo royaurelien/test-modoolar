@@ -43,7 +43,7 @@
                 <filter string="Clients négligés" name="neglected customer" domain="['|',
                 ('last_action', '&lt;', (context_today()-relativedelta(days=60)).strftime('%Y-%m-%d')),('dernier_devis', '&lt;', (context_today()-relativedelta(days=60)).strftime('%Y-%m-%d'))]"/>
                 <filter string="Prospects négligés" name="neglected prospect" domain="[('last_action', '&lt;', (context_today()-relativedelta(days=60)).strftime('%Y-%m-%d'))]"/>
-                <filter string="Tiers" name="group_by_tier" context="{'group_by':'type_tier'}"
+                <filter string="Tiers" name="group_by_tier" context="{'group_by':'type_tier'}"/>
             </xpath>
         </field>
     </record>
