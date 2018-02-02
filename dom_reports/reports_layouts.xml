@@ -225,13 +225,13 @@
                             <span t-if="doc.partner_id.city" t-field="doc.partner_id.city" />
                             <span t-if="doc.partner_id.zip" t-field="doc.partner_id.zip" /> -->
                             <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
-                            &quot;fields&quot;: [&quot;address&quot;],
+                            &quot;fields&quot;: [&quot;address&quot;,'name'],
                             &quot;no_marker&quot;: True,
                             &quot;phone_icons&quot;: False}"/>
                         </t>
                         <t t-else="">
                             <div t-field="doc.partner_shipping_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
-                            &quot;fields&quot;: [&quot;address&quot;],
+                            &quot;fields&quot;: [&quot;address&quot;,'name'],
                             &quot;no_marker&quot;: True,
                             &quot;phone_icons&quot;: False}"/>
                         </t>

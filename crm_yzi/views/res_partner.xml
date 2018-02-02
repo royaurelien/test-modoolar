@@ -43,7 +43,7 @@
                 <filter string="Clients négligés" name="neglected customer" domain="['|',
                 ('last_action', '&lt;', (context_today()-relativedelta(days=60)).strftime('%Y-%m-%d')),('dernier_devis', '&lt;', (context_today()-relativedelta(days=60)).strftime('%Y-%m-%d'))]"/>
                 <filter string="Prospects négligés" name="neglected prospect" domain="[('last_action', '&lt;', (context_today()-relativedelta(days=60)).strftime('%Y-%m-%d'))]"/>
-
+                <filter string="Tiers" name="group_by_tier" context="{'group_by':'type_tier'}"
             </xpath>
         </field>
     </record>
@@ -126,9 +126,8 @@
         <field name="view_mode">kanban,tree,form</field>
         <field name="context">
             {
-            "search_default_customer":1,
             "search_default_type_company":1,
-            "search_default_type_rel":"Tier"
+            "default_group_by":'group_by_tier',
             }
         </field>
         <field name="domain">[[u'type_rel', u'=', u'Tier']]</field>
@@ -143,7 +142,7 @@
         </p>
         </field>
     </record>
-        <record id="crm_action_partner_form_supplier" model="ir.actions.act_window">
+    <record id="crm_action_partner_form_supplier" model="ir.actions.act_window">
         <field name="name">Fournisseurs</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.partner</field>
@@ -151,9 +150,8 @@
         <field name="view_mode">kanban,tree,form</field>
         <field name="context">
             {
-            "search_default_customer":1,
+            "search_default_supplier":1,
             "search_default_type_company":1,
-            "search_default_type_rel":"Fournisseur"
             }
         </field>
         <field name="domain">[[u'type_rel', u'=', u'Fournisseur']]</field>

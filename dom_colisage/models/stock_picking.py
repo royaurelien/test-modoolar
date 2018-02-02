@@ -55,3 +55,9 @@ class StockPicking(models.Model):
                 # remaining_rooms.append(remaining_room)
 
             rec.nb_cartons = num_carts
+
+    @api.multi
+    def button_validate(self):
+        res = super(StockPicking, self).button_validate()
+        self._compute_nb_cartons()
+        return res
