@@ -83,6 +83,38 @@ class TestCommon(TransactionCase):
             'nb_par_colis': 0,
         })
 
+        self.prod_par10 = Product.create({
+            'name': 'test prod 1',
+            'price': 1.0,
+            'invoice_policy': 'order',
+            # 'default_code': 'a',
+            'nb_par_colis': 10,
+        })
+
+        self.prod_par5 = Product.create({
+            'name': 'test prod 2',
+            'price': 1.0,
+            'invoice_policy': 'order',
+            # 'default_code': 'a',
+            'nb_par_colis': 5,
+        })
+
+        self.prod_par2 = Product.create({
+            'name': 'test prod 3',
+            'price': 1.0,
+            'invoice_policy': 'order',
+            'default_code': 'a',
+            'nb_par_colis': 2,
+        })
+
+        self.prod_par1 = Product.create({
+            'name': 'test prod 4',
+            'price': 1.0,
+            'invoice_policy': 'order',
+            'default_code': 'a',
+            'nb_par_colis': 1,
+        })
+
     def _create_move(self, picking, product, qty, **values):
         # TDE FIXME: user as parameter
         Move = self.env['stock.move'].sudo(self.user_stock_manager)
@@ -137,8 +169,33 @@ class TestCommon(TransactionCase):
             pick._compute_nb_cartons()
             self.assertEqual(pick.nb_cartons, expected)
 
+        def make_asserts_tupled(expected, tuple_list):
+            """
+            tuple list is a list of (product, qty), that will be added as move lines to the picking
+            """
+            pick = self._create_picking("out", self.warehouse_1)
+            for tup in tuple_list:
+                self._create_move(pick, tup[0], tup[1])
+            # creating a move with a picking_id of our picking
+            # doesn't trigger the compute (?)
+            pick._compute_nb_cartons()
+            self.assertEqual(pick.nb_cartons, expected)
+
         make_asserts(0, 0, 0, 0)
 
         make_asserts(10, 3, 0, 3)
         make_asserts(1, 3, 0, 3)
         make_asserts(1, 1, 4, 6)
+
+        make_asserts_tupled(18, [
+            (self.prod_par10, 10),
+            (self.prod_par10, 50),
+            (self.prod_par5, 50),
+            (self.prod_par2, 2),
+            (self.prod_par1, 1)
+        ])
+
+        make_asserts_tupled(4, [
+            (self.prod_par2, 2),
+            (self.prod_par1, 3)
+        ])
