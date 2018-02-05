@@ -179,8 +179,10 @@
             'numero_compte': iban[14:25],
             'cle_rib': iban[25:27],
              -->
-            <t t-if="doc.partner_id.bank_ids">
-                <t t-set="iban" t-value="doc.partner_id.bank_ids[0].acc_number" />
+
+            <t t-set="bank_account" t-value="doc.partner_id.get_bank_account()" />
+            <t t-if="bank_account">
+                <t t-set="iban" t-value="bank_account.acc_number.replace(' ','')" />
 
                 <div class="lcr rib code-etabli">
                     <t t-esc="iban[4:9]" />
