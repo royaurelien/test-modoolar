@@ -28,8 +28,8 @@ class Partner(models.Model):
             })
             return
 
-        shipping_addr = partner_env.search([('parent_id', '=', self.partner_id.id), ('type', '=', 'delivery')])
-        invoicing_addr = partner_env.search([('parent_id', '=', self.partner_id.id), ('type', '=', 'invoice')])
+        shipping_addr = partner_env.search([('parent_id', '=', self.partner_id.id), ('type', '=', 'delivery')],limit=1)
+        invoicing_addr = partner_env.search([('parent_id', '=', self.partner_id.id), ('type', '=', 'invoice')],limit=1)
         ship = ''
         inv = ''
         if shipping_addr:
