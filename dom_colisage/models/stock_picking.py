@@ -12,7 +12,7 @@ class StockPicking(models.Model):
 
     @api.depends('move_lines')
     def _compute_nb_cartons(self):
-        # logger.critical('_compute_nb_cartons')
+        logger.critical('_compute_nb_cartons')
 
         for rec in self:
 
@@ -29,3 +29,12 @@ class StockPicking(models.Model):
         res = super(StockPicking, self).button_validate()
         self._compute_nb_cartons()
         return res
+
+    @api.multi
+    def do_marquer_comme_fait(self):
+
+        for rec in self:
+            for line in rec.move_lines:
+                line.quantity_done = line.product_uom_qty
+
+            rec._compute_nb_cartons()
