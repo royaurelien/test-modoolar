@@ -31,6 +31,7 @@
         'views/res_partner.xml',
         'views/sale_order.xml',
         'views/crm_lead.xml',
+        'views/calendar_event.xml',
 
         'static/src/xml/backend.xml',
     ],

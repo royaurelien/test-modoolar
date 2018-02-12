@@ -18,6 +18,9 @@ class Action(models.Model):
 
         return user_id
 
+    def get_datetime(self):
+        return datetime.now()
+
 
     ######SELECTION####
     status = fields.Selection([
@@ -38,10 +41,10 @@ class Action(models.Model):
 
     ######DATE####
     # date = fields.Datetime(string='Date', default=datetime.now(), compute='date_debut_trigger', inverse='get_true', store=True, required=True,)
-    date = fields.Datetime(string='Date debut', default=datetime.now(), required=True)
+    date = fields.Datetime(string='Date debut', default=get_datetime, required=True)
     #to create an rdv and be capable to modifie the dates of both event and action
     date_debut = fields.Datetime(string='Date debut', compute='get_date', inverse='get_true', store=True, related="event_id.start_datetime")
-    date_end = fields.Datetime(string='Date fin', compute='get_date', inverse='get_true', store=True, related="event_id.stop_datetime")
+    date_end = fields.Datetime(string='Date fin', compute='get_date', inverse='get_true', store=True, related="event_id.stop")
     #to make a filter on today i need a date without time
     date_filter = fields.Date(string='Date', compute='get_date', store=True)
 
@@ -65,13 +68,16 @@ class Action(models.Model):
         event = None
         print(vals.get('regarding', False))
         if not vals.get('regarding', False) :
-            regard = 'company'
+            regard = False
+
             if vals.get('sale_id', False):
                 regard = 'sale'
             elif vals.get('lead_id', False):
                 regard = 'lead'
             elif vals.get('contact_id', False):
                 regard = 'contact'
+            elif vals.get('company_id', False):
+                regard = 'company'
 
             vals['regarding'] = regard
 
@@ -81,10 +87,12 @@ class Action(models.Model):
             date_end = datetime.strptime(res.date, '%Y-%m-%d %H:%M:%S') + timedelta(hours=1)
             date_end = date_end.strftime('%Y-%m-%d %H:%M:%S')
 
-        if vals.get('type',False) == 9:
+        if vals.get('type',False) == 3 and not vals.get('event_id', False) :
             event = calendar_env.create({
                 'name': res.name,
                 'partner_ids': [(6, False,[user_obj.partner_id.id])],
+                'start':res.date,
+                'stop':date_end,
                 'start_datetime': res.date,
                 'stop_datetime':date_end,
                 'desciption': res.description
@@ -206,6 +214,12 @@ class PartnerActions(models.Model):
 class CalendarEvent(models.Model):
     _inherit = 'calendar.event'
 
+    ######RELATIONEL####
+    company_id = fields.Many2one(comodel_name='res.partner', string=u"Société", domain="[('company_type','=','company')]", track_visibility="always",related="action_id.company_id", store=True)
+    contact_id = fields.Many2one(comodel_name='res.partner', string=u"Contact", domain="[('company_type','=','person'), ('parent_id','=',company_id)]",related="action_id.contact_id", store=True)
+
+    action_id = fields.Many2one(comodel_name='crm_yziact.action')
+
     @api.multi
     def unlink(self, can_be_deleted=True):
         yzi_action_env = self.env['crm_yziact.action']
@@ -234,3 +248,40 @@ class CalendarEvent(models.Model):
                 yzi_action.write({'date': vals.get('start_datetime')})
         res = super(CalendarEvent, self).write(vals)
         return res
+
+    @api.model
+    def create(self, vals):
+        res = super(CalendarEvent, self).create(vals)
+        if not vals.get('action_id', False):
+            action = self.env['crm_yziact.action']
+            dict_action = {
+                'name':vals.get('name',False),
+                'company_id': vals.get('company_id', False),
+                'contact_id': vals.get('contact_id', False),
+                'type':3,
+                'event_id': res.id,
+            }
+
+            action_id = action.create(dict_action)
+            res.action_id = action_id.id
+
+        return res
+
+
+    @api.multi
+    def action_open_crm_action(self):
+        action = False
+        if self.action_id:
+            action = {
+                "type": "ir.actions.act_window",
+                "name": "Action Commerciales",
+                "res_model": "crm_yziact.action",
+                "view_type": 'form',
+                "views": [[False, "form"]],
+                "domain": [('contact_id', '=', self.id)],
+                "res_id":self.action_id.id,
+                'views_id': {'ref': "crm_yziact.action_com_form"},
+                "target": 'current',
+            }
+
+        return action
