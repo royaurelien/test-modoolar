@@ -68,7 +68,7 @@ class CrmLead(models.Model):
 
     @api.onchange('partner_id')
     def onchange_partner_id(self):
-        res = super(CrmLead, self)._onchange_partner_id(self.partner_id.id)
+        res = super(CrmLead, self)._onchange_partner_id()
         if self.partner_id.ape_id:
             self.ape_id = self.partner_id.ape_id.id
 
