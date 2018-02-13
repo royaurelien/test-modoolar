@@ -95,7 +95,8 @@ class Action(models.Model):
                 'stop':date_end,
                 'start_datetime': res.date,
                 'stop_datetime':date_end,
-                'desciption': res.description
+                'desciption': res.description,
+                'action_id':res.id,
             })
             res.event_id = event.id
 
@@ -241,13 +242,18 @@ class CalendarEvent(models.Model):
 
     @api.multi
     def write(self, vals):
-        if vals.get('start_datetime'):
-            yzi_action_env = self.env['crm_yziact.action']
-            yzi_action = yzi_action_env.search([('event_id', '=', self.id)])
-            if yzi_action and vals.get('start_datetime') != yzi_action.date:
-                yzi_action.write({'date': vals.get('start_datetime')})
+        print(vals.get('start'))
+        if vals.get('start'):
+            # yzi_action_env = self.env['crm_yziact.action']
+            # yzi_action = yzi_action_env.search([('event_id', '=', self.id)])
+
+            if self.action_id and vals.get('start') != self.action_id.date:
+                self.action_id.write({'date': vals.get('start')})
         res = super(CalendarEvent, self).write(vals)
+
+
         return res
+
 
     @api.model
     def create(self, vals):
@@ -260,6 +266,7 @@ class CalendarEvent(models.Model):
                 'contact_id': vals.get('contact_id', False),
                 'type':3,
                 'event_id': res.id,
+                'user_id':res.user_id.id,
             }
 
             action_id = action.create(dict_action)
