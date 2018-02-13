@@ -28,6 +28,7 @@
         'data/dom_presentoir.xml',
         'data/dom_plv.xml',
         'data/type_tier.xml',
+
         'data/yziact.departement.csv',
         'security/ir.model.access.csv',
 

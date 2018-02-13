@@ -130,6 +130,11 @@
                 </page>
             </xpath>
 
+            <xpath expr="//field[@name='vat']" position="before">
+                <field name="groupe" attrs="{'invisible':[('company_type','!=','company')] }" /> <br/>
+                <field name="sous_groupe" attrs="{'invisible':[('company_type','!=','company')] }" />
+            </xpath>
+
             <xpath expr="//field[@name='user_id']" position="attributes">
                 <attribute name="string">Commercial</attribute>
                 <attribute name="attrs">{'required':[('type_rel','=','Client')]}</attribute>
