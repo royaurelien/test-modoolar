@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<template>
+
+    <t t-extend="CalendarView.quick_create">
+        <t t-jquery=".form-group" t-operation="append">
+
+            <!-- <label for='societe' class='control-label'>Société:</label> -->
+            <label>Société :</label>
+            <!-- <input type='text' name='societe' class="o_input" t-att-value="widget.dataTemplate.name or None"/> -->
+            <span class="o_many2one_field_societe" />
+
+            <!-- <input type='text' name='client' class="o_input" t-att-value="widget.dataTemplate.name or None"/> -->
+            <label>Contact :</label>
+            <span class="o_many2one_field_contact" />
+        </t>
+    </t>
+
+</template>

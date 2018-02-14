@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- <link rel="stylesheet" href="/web_gantt/static/src/css/gantt.less"/> -->
+        <!-- <script type="text/javascript" src="/web_gantt/static/src/js/gantt_controller.js"></script> -->
+
+        <template id="assets_backend" name="crm_yzi_calendar_assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/crm_yzi_calendar/static/src/js/quick_create.js"></script>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>
