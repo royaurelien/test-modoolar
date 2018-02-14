@@ -49,12 +49,12 @@
                             <field name="lead_id"/>
                         </group>
                         <group name="child_two">
-                            <field name="user_id" attrs="{'required':[('type','=',9)]}"/>
+                            <field name="user_id" attrs="{'required':[('type','=',3)]}"/>
                             <field name="type"/>
-                            <field name="event_id" attrs="{'invisible':[('type','!=',9)]}"/>
+                            <field name="event_id" attrs="{'invisible':[('type','!=',3)]}"/>
                             <field name="date" required="1"/>
                             <field name="date_debut" groups="base.group_no_one"/>
-                            <field name="date_end" attrs="{'invisible':[('type','!=',9)]}"/>
+                            <field name="date_end" attrs="{'invisible':[('type','!=',3)]}"/>
                             <field name="date_filter" invisible="1"/>
                         </group>
                         <separator/>
@@ -116,7 +116,7 @@
         <field name="view_mode">tree,form</field>
         <field name="context">{
             'search_default_group_by_regarde': 1,
-            'default_status':['planned', 'running']
+            'search_default_status':['planned', 'running']
             }
         </field>
     </record>
