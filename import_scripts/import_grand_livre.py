@@ -22,16 +22,18 @@ uid = sock_common.login(dbname, username, pwd)
 sock = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/object")
 
 def format_date(date_str):
+    date = ''
     if not date_str :
         raise UserWarning('PAS de DATE')
 
-    day, month, year = date_str.split('/')
+    if '/' in date_str:
+        day, month, year = date_str.split('/')
 
-    date = year+'-'+month+'-'+day
+        date = year+'-'+month+'-'+day
 
     return date
 
-fich_ = open('Grand livre v2.csv', 'rb')
+fich_ = open('test.csv', 'rb')
 
 csvreader = csv.reader(fich_, delimiter=';')
 
@@ -52,7 +54,6 @@ dict_journaux = {
 list_move = []
 
 for row in csvreader:
-    # print(i)
     if i <=1:
         i+=1
         continue
@@ -126,19 +127,20 @@ for row in csvreader:
 
     i+=1
 
-
-# pprint.pprint(list_move)
 fail = []
 for move in list_move:
     # pprint.pprint(move)
     print(move['name'],move['journal_id'])
-    if (move['name'] == '' and move['journal_id'] == 7) or (move['name'] == '' and move['journal_id'] == 9) or len(move['line_ids'])<2 or len(move['name'])<5 or move['name']=='17092124':
+    if  len(move['line_ids']) < 2  or move['name'] == '497' or move['name'] == '496':
+        # move['name'] == '17092124' or or (len(move['name']) < 4 and move['journal_id'] == 10)
         fail.append((move['name'],move['journal_id']))
-
         continue
 
     sock.execute(dbname, uid, pwd, 'account.move', 'create', move)
     tot+=1
-    print(tot)
+
 
 print(tot)
+fich_.close()
+
+pprint.pprint(fail)

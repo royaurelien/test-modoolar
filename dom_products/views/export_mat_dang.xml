@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+      <record id="export_mat_dang"  model="ir.ui.view">
+            <field name="name">Exportation des matières dangereuses</field>
+            <field name="model">export.matiere</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group name="date">
+                            <field name="date_debut"/>
+                            <field name="date_fin"/>
+                        </group>
+                        <group>
+                            <field name="test"/>
+                        </group>
+                    </group>
+                    <group name="buttons">
+                        <group name="ber">
+                            <button  name="action_export" string="Export matières dangereuses" type="object" class="btn btn-success" icon="fa-download" attrs="{'invisible': ['|',('date_fin','=',False),('date_debut','=',False)]}"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    <record id="action_wizard_mat_dang" model="ir.actions.act_window">
+            <field name="name">Exportation des matières dangereuses</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">export.matiere</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="export_mat_dang"/>
+            <field name="target">new</field>
+    </record>
+
+    <menuitem name="Exports" id="menu_export_root" parent="stock.menu_stock_root"/>
+
+    <menuitem name="Export des matières dangereuses" id="menu_export_matiere" action="action_wizard_mat_dang" parent="menu_export_root"/>
+
+
+</odoo>

@@ -15,7 +15,9 @@
     # any module necessary for this one to work correctly
     'depends': [
         'product',
-        'stock'
+        'stock',
+        'dom_partner',
+        'base',
     ],
 
     # always loaded
@@ -25,6 +27,7 @@
         'views/product_dang.xml',
         'views/product_family.xml',
         'views/product_category.xml',
+        'views/export_mat_dang.xml',
     ],
 
     # 'installable': True,
