@@ -90,28 +90,33 @@ class ExportMatiereDangereuse(models.Model):
 
         writer.writerow(fieldnames)
 
-        bls = bl_env.search([('date','>=', date_debut),('date','<=', date_fin)])
+        bls = bl_env.search([('date','>=', date_debut),('date','<=', date_fin),('exported','=',False),('picking_type_id.code','=','outgoing')])
 
         for bl in bls:
             liste_line = []
             SEP = 'S'
             date = bl.date
             ref_client = bl.partner_id.parent_id.ref or bl.partner_id.ref
-            nom_client = bl.partner_id.display_name
-            rue = bl.partner_id.street
-            rue2 = bl.partner_id.street2
-            zip = bl.partner_id.zip
-            ville = bl.partner_id.city
-            pays = bl.partner_id.country_id.code
-            tel = bl.partner_id.phone
-            mobile = bl.partner_id.mobile
-            mail = bl.partner_id.email
-            num_bl = bl.name
-            um = bl.nb_cartons
-            nb_carton = bl.nb_cartons
-            weight = bl.weight
-
+            nom_client = bl.partner_id.display_name or ''
+            rue = bl.partner_id.street or ''
+            rue2 = bl.partner_id.street2 or ''
+            zip = bl.partner_id.zip or ''
+            ville = bl.partner_id.city or ''
+            pays = bl.partner_id.country_id.code or ''
+            tel = bl.partner_id.phone or ''
+            mobile = bl.partner_id.mobile or ''
+            mail = bl.partner_id.email or ''
+            num_bl = bl.name or ''
+            um = bl.nb_cartons or ''
+            nb_carton = bl.nb_cartons or ''
+            weight = bl.weight or ''
+            nat_mar = ''
             horaires = bl.partner_id.horaires_livraison or bl.partner_id.parent_id.horaires_livraison
+
+            for line in bl.move_lines:
+                if line.product_id.dang:
+                    if line.product_id.dang.name != 'Non dangereux' or line.product_id.dang.name != 'Non dangereux  (Inflammable)':
+                        nat_mat = 'MD'
 
             row = [
                 SEP,
@@ -149,7 +154,7 @@ class ExportMatiereDangereuse(models.Model):
                 '',
                 '',
                 '',
-                '',
+                nat_mar,
                 horaires,
                 '',
                 '',
@@ -184,10 +189,6 @@ class ExportMatiereDangereuse(models.Model):
                             poids,
                             '',
                             'O'
-                            # num_dang,
-                            # classe,
-                            # ref_art,
-
                         ]
 
                         writer.writerow(move_row)
@@ -228,3 +229,11 @@ class ExportMatiereDangereuse(models.Model):
         }
 
         return action
+
+
+
+
+class StockPicking(models.Model):
+    _inherit = 'stock.picking'
+
+    exported = fields.Boolean()
