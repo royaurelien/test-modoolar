@@ -36,6 +36,7 @@
         'views/transporteur.xml',
         'views/famille_client.xml',
         'views/departement.xml',
+        'views/account_invoice.xml',
     ],
 
     # 'installable': True,

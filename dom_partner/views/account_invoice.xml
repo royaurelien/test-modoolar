@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="partner_invoice_form_inherit" model="ir.ui.view">
+        <field name="name">Dom Partner Invoice</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="sale.account_invoice_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="fac_mail"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
