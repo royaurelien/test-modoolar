@@ -41,11 +41,17 @@
 
             <xpath expr="//notebook/page[@name='sales_purchases']/group[@name='container_row_2']" position="inside">
                 <group>
+
                     <field name="code_api" />
                     <field name="horaires_livraison"/>
                     <!--<field name="transporteur"/>-->
                     <field name="url_bfa" />
                     <field name="bfa" />
+                    <label for="bfa_num"/>
+                    <div class="o_row">
+                        <field name="bfa_num"/>
+                        <span>%</span>
+                    </div>
                 </group>
             </xpath>
 

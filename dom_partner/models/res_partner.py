@@ -42,6 +42,7 @@ class ResPartner(models.Model):
     #### NUMERIQUE ####
     ca_12 = fields.Float(compute='compute_ca_year', string='CA 12 mois')
     taux_commission = fields.Float(string='Commission (%)')
+    bfa_num = fields.Float(string='BFA (%)')
 
 
 
