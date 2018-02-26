@@ -29,6 +29,7 @@
                     <tbody>
 
                         <tr t-foreach="doc.invoice_line_ids" t-as="l">
+                            <t t-if="(not l.is_delivery) and (not l.is_decond)">
                             <!--
                             <td>
                                 page_index : <t t-esc="page_index" />
@@ -83,6 +84,7 @@
                             <!--
                             <span t-field="l.tax_id.amount"
                                 t-options='{"widget": "float", "precision": 1}'/> % -->
+                            </t>
                         </tr>
 
 <!--
@@ -178,9 +180,22 @@ En cas de paiement dans les 8 jours date de facture, escompte de 2 %
                                 <span t-esc="doc.amount_ht_net*(doc.remise.amount/100)"
                                     t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                             </td>
-
-                            <td> valeur port ht </td>
-                            <td> valeur decond. </td>
+                            <td>
+                                <t t-foreach="doc.invoice_line_ids" t-as="l">
+                                    <t t-if="l.is_delivery">
+                                        <span t-field="l.price_subtotal_net"
+                                              t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-foreach="doc.invoice_line_ids" t-as="l">
+                                    <t t-if="l.is_decond">
+                                        <span t-field="l.price_subtotal_net"
+                                                      t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </t>
+                                </t>
+                            </td>
 
                             <!-- TOTAL HT NET -->
                             <td>

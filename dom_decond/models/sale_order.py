@@ -130,8 +130,21 @@ class SaleOrderLine(models.Model):
     decond_added = fields.Boolean(string="Déconditionnement ajouté")
     is_decond = fields.Boolean(string="Ligne de Deconditionnement")
 
+    @api.multi
+    def _prepare_invoice_line(self, qty):
+        res = super(SaleOrderLine, self)._prepare_invoice_line(qty)
+
+        res['is_decond'] = self.is_decond
+
+        return res
+
     """
     @api.onchange('product_id, product_uom_qty')
     def onchange_stuff_line(self):
         logfunc()
     """
+
+class AccountInvoiceLine(models.Model):
+    _inherit = 'account.invoice.line'
+
+    is_decond = fields.Boolean(string="Ligne de Deconditionnement")
