@@ -225,7 +225,7 @@
                         &quot;no_marker&quot;: True,
                         &quot;phone_icons&quot;: False}"/>
                     </t>
-                    <t t-elif="devis or bdc or facture">
+                    <t t-elif="devis or bdc">
                         <t t-if="not doc.partner_shipping_id">
                         <!--
                             <span t-if="doc.partner_id.street" t-field="doc.partner_id.street" /> <br/>
@@ -243,6 +243,12 @@
                             &quot;no_marker&quot;: True,
                             &quot;phone_icons&quot;: False}"/>
                         </t>
+                    </t>
+                    <t t-elif="facture">
+                        <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
+                            &quot;fields&quot;: [&quot;address&quot;,'name'],
+                            &quot;no_marker&quot;: True,
+                            &quot;phone_icons&quot;: False}"/>
                     </t>
 
                 </div>
