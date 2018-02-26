@@ -63,6 +63,22 @@ class ReportInvoice(models.AbstractModel):
             'market_info': market_info,
         }
 
+class ReportFactureNohdr(models.AbstractModel):
+    _name = 'report.dom_reports.facture_nohdr'
+
+    @api.multi
+    def get_report_values(self, docids, data=None):
+        invoices = self.env['account.invoice'].browse(docids)
+        market_info = get_marketing_info(self)
+
+        return {
+            'doc_ids': docids,
+            'doc_model': 'account.invoice',
+            'data': data,
+            'docs': invoices,
+            'market_info': market_info,
+        }
+
 
 class ReportBL(ReportInvoice):
     # _name = 'report.sale.report_name'

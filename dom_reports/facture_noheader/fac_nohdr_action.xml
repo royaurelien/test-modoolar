@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- sale order report
+    attachment_use, etc
+    1 seule action pour devis & bon de commande
+    -->
+
+    <report
+        id="facture_nohdr_report"
+        model="account.invoice"
+        string="Facture Domitec sans en-tête"
+        name="dom_reports.facture_nohdr"
+        file="dom_reports.facture_nohdr"
+        report_type="qweb-pdf"
+        />
+
+    <!-- paperformat="dom_reports.paperformat_dom_a4"
+
+        <field name="name">Action Facture Noheader</field>
+        <field name="model">account.invoice</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dom_reports.facture_nohdr</field>
+    -->
+
+    <record id="dom_reports.facture_nohdr_report" model="ir.actions.report">
+        <field name="paperformat_id" ref="dom_reports.paperformat_dom_a4_fac_nohdr"/>
+    </record>
+
+</odoo>

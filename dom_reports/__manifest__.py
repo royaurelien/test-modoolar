@@ -44,6 +44,10 @@
         'invoice/invoice_report.xml',
         'invoice/invoice_action.xml',
 
+        # facture
+        'facture_noheader/fac_nohdr_action.xml',
+        'facture_noheader/fac_nohdr_report.xml',
+
         # BL
         'bl/bl_report.xml',
         'bl/bl_action.xml',
