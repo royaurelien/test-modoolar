@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- action and menu -->
+        <record model="ir.actions.act_window" id="rmlog_settings_action">
+            <field name="name">RmLog Settings Action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rmlog.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="rmlog_settings_menu" name="RmLog Settings"
+            parent="base.menu_security"
+            sequence="0" action="rmlog_settings_action"/>
+
+        <!-- {{{ view -->
+        <record id="view_stock_config_settings" model="ir.ui.view">
+            <field name="name">RmLog Settings View</field>
+            <field name="model">rmlog.settings</field>
+            <field name="arch" type="xml">
+                <form string="Configure RmLog" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+                    <group string="RmLog Config" name="config">
+                        <field name="tracked_models"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!-- }}} -->
+
+    </data>
+</openerp>

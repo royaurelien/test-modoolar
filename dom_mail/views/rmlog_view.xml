@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="rmlog_logrecord_tree_view" model="ir.ui.view">
+        <field name="name">RmLog Tree View</field>
+        <field name="model">rmlog.logrecord</field>
+        <field name="arch" type="xml">
+            <tree name="rmlog_tree">
+                <field name="user_id" string="User"/>
+                <field name="model_name" string="Model Name"/>
+                <field name="deletion_time" string="Deletion Time"/>
+                <field name="info" string="Information"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="rmlog_action">
+        <field name="name">Rm Log</field>
+        <field name="res_model">rmlog.logrecord</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="rmlog_menu_id" parent="base.menu_security" name="Rm Log" sequence="10" action="rmlog_action" groups="base.group_user" />
+
+</odoo>
