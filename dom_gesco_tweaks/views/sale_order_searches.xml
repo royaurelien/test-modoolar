@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- filtres juste sur les Devis
+    <record id="so_view_search_inh_quot" model="ir.ui.view">
+        <field name="name">Gesco Tweaks Quotation</field>
+        <field name="model">sale.order</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                <separator/>
+                <filter string="Ce mois" name="current_month"
+                domain="[('status','!=','done'),('date_filter','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')), ('date_filter','>=',time.strftime('%%Y-%%m-01'))]"/>
+            </xpath>
+        </field>
+    </record>
+-->
+
+<!-- filtres juste sur les BC
+    <record id="so_view_search_inh_sale" model="ir.ui.view">
+        <field name="name">Gesco Tweaks Sale</field>
+        <field name="model">sale.order</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                <separator/>
+                <filter string="Sales" name="sales" domain="[('state','in',('progress','done'))]" />
+                <separator/>
+                <filter string="To Invoice" domain="[('invoice_status','=','to invoice')]" />
+                <filter string="Upselling" domain="[('invoice_status','=','upselling')]" />
+            </xpath>
+        </field>
+    </record>
+-->
+
+    <!-- filtres sur les deux, Devis et BC -->
+    <record id="so_view_search_inh_sale" model="ir.ui.view">
+        <field name="name">Gesco Tweaks Devis et BC filtres</field>
+        <field name="model">sale.order</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='activities_overdue']" position="before">
+                <separator/>
+                <!-- ce jour -->
+                <filter string="Aujourd'hui" name="current_day"
+                domain="[
+                    ('date_order','>=',time.strftime('%Y-%m-%d 00:00:00')),
+                    ('date_order','&lt;=',time.strftime('%Y-%m-%d 23:59:59'))
+                ]"/>
+
+                <!-- ce mois -->
+                <filter string="Ce mois" name="current_month"
+                domain="[
+                    ('date_order','>=',time.strftime('%Y-%m-01')),
+                    ('date_order','&lt;',(context_today()+relativedelta(months=1)).strftime('%Y-%m-01')),
+                ]"/>
+
+                <!-- cette année (01/01 - 31/12)-->
+                <filter string="Cette année" name="current_year"
+                domain="[
+                    ('date_order','>=',time.strftime('%Y-01-01')),
+                    ('date_order','&lt;',(context_today()+relativedelta(years=1)).strftime('%Y-01-01')),
+                ]" />
+                <separator/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
