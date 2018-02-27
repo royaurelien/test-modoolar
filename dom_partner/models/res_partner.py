@@ -30,8 +30,8 @@ class ResPartner(models.Model):
     dep_id = fields.Many2one(comodel_name='yziact.departement', string=u"Département")
     type_tier = fields.Many2one(comodel_name='dom.type_tier', string=u"Type tiers")
 
-    groupe = fields.Many2one(comodel_name='res.partner', string=u'Groupe')
-    sous_groupe = fields.Many2one(comodel_name='res.partner', string=u'Sous-groupe')
+    gr = fields.Many2one(comodel_name='dom.groupe', string=u'Groupe')
+    sgr = fields.Many2one(comodel_name='dom.sous.groupe', string=u'Sous-groupe')
 
     #### TEXT ####
     code_api = fields.Char(string='Code API')

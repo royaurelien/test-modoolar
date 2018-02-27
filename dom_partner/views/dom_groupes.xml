@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- groupes -->
+
+    <record id="dom_groupe_form" model="ir.ui.view">
+        <field name="name">Groupes</field>
+        <field name="model">dom.groupe</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="dom_groupe_action" model="ir.actions.act_window">
+        <field name="name">Groupes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dom.groupe</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="dom_groupe_menu" name="Groupes"
+     parent="contacts.res_partner_menu_config"
+     action="dom_groupe_action" sequence="11"/>
+
+    <!-- sous groupes -->
+
+    <record id="dom_sous_groupe_form" model="ir.ui.view">
+        <field name="name">Sous Groupes</field>
+        <field name="model">dom.sous.groupe</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="dom_sous_groupes_action" model="ir.actions.act_window">
+        <field name="name">Sous Groupes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dom.sous.groupe</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="dom_sous_groupe_menu" name="Sous Groupes"
+        parent="contacts.res_partner_menu_config"
+        action="dom_sous_groupes_action" sequence="11"/>
+
+</odoo>

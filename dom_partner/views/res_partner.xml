@@ -136,9 +136,15 @@
                 </page>
             </xpath>
 
+            <!--
             <xpath expr="//field[@name='vat']" position="before">
                 <field name="groupe" attrs="{'invisible':[('company_type','!=','company')] }" /> <br/>
                 <field name="sous_groupe" attrs="{'invisible':[('company_type','!=','company')] }" />
+            </xpath> -->
+
+            <xpath expr="//field[@name='vat']" position="before">
+                <field name="gr" attrs="{'invisible':[('company_type','!=','company')] }" /> <br/>
+                <field name="sgr" attrs="{'invisible':[('company_type','!=','company')] }" />
             </xpath>
 
             <xpath expr="//field[@name='user_id']" position="attributes">

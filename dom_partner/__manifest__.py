@@ -37,6 +37,8 @@
         'views/famille_client.xml',
         'views/departement.xml',
         'views/account_invoice.xml',
+
+        'views/dom_groupes.xml',
     ],
 
     # 'installable': True,
