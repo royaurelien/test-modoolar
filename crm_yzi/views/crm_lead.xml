@@ -74,6 +74,11 @@
             <xpath expr="//field[@name='tag_ids']" position="attributes">
                 <attribute name="attrs">{'required':[('hidden_stage', '=','opp.detected')]}</attribute>
             </xpath>
+
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="string">Intérêts</attribute>
+            </xpath>
+
             <xpath expr="//field[@name='source_id']" position="attributes">
                 <attribute name="attrs">{'required':[('hidden_stage', '=','opp.detected')]}</attribute>
             </xpath>
@@ -88,7 +93,7 @@
 
             <xpath expr="//div[@class='o_row'][1]" position="after">
                 <div>
-                    <label for="revenu_mensuel"/>
+                    <label for="revenu_mensuel" string="Revenu annuel estimé"/>
                     <field name="revenu_mensuel" widget="monetary" options="{'currency_field': 'company_currency'}"/>
                     <span>€</span>
                 </div>
