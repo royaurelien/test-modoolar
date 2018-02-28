@@ -24,8 +24,11 @@ class ExportMatiereDangereuse(models.Model):
     test = fields.Boolean('Test export', help=u"Si coche les lignes exportes ne seront pas marquees comme tel")
 
     def formatDate(self, dateEN):
+        print(dateEN)
+
         date = dateEN.split('-')
-        formatted_date = date[2]+date[1]+date[0][-2:]
+        formatted_date = date[0]+date[1]+date[2][-2:]
+        print(formatted_date)
         return  formatted_date
 
     @api.multi
@@ -88,7 +91,7 @@ class ExportMatiereDangereuse(models.Model):
 
         writer = pycompat.csv_writer(csvfile,delimiter=';')
 
-        writer.writerow(fieldnames)
+        # writer.writerow(fieldnames)
 
         bls = bl_env.search([('date','>=', date_debut),('date','<=', date_fin),('exported','=',False),('picking_type_id.code','=','outgoing')])
 
@@ -96,6 +99,7 @@ class ExportMatiereDangereuse(models.Model):
             liste_line = []
             SEP = 'S'
             date = bl.date
+            date = self.formatDate(date)
             ref_client = bl.partner_id.parent_id.ref or bl.partner_id.ref
             nom_client = bl.partner_id.display_name or ''
             rue = bl.partner_id.street or ''

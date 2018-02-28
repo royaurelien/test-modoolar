@@ -17,9 +17,9 @@ username = "admin"
 pwd = "X200yziact"
 dbname = "DOM_07_02"
 
-sock_common = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/common")
+sock_common = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/common")
 uid = sock_common.login(dbname, username, pwd)
-sock = xmlrpclib.ServerProxy("http://192.168.100.139:8069/xmlrpc/object")
+sock = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/object")
 
 def format_date(date_str):
     date = ''
@@ -131,8 +131,8 @@ fail = []
 for move in list_move:
     # pprint.pprint(move)
     print(move['name'],move['journal_id'])
-    if  len(move['line_ids']) < 2  or move['name'] == '497' or move['name'] == '496':
-        # move['name'] == '17092124' or or (len(move['name']) < 4 and move['journal_id'] == 10)
+    if  len(move['line_ids']) < 2 or move['name'] == '499'or move['name'] == '501' or move['name'] == '506' or move['name'] == '509':
+        # move['name'] == '17092124' or or (len(move['name']) < 4 and move['journal_id'] == 10) or move['name'] == '497' or move['name'] == '496' or move['name'] == '498' or (0<len(move['name']) < 4 and move['journal_id'] == 10)
         fail.append((move['name'],move['journal_id']))
         continue
 
