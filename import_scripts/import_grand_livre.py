@@ -131,7 +131,7 @@ fail = []
 for move in list_move:
     # pprint.pprint(move)
     print(move['name'],move['journal_id'])
-    if  len(move['line_ids']) < 2 or move['name'] == '499'or move['name'] == '501' or move['name'] == '506' or move['name'] == '509':
+    if  move['name'] == '504bis' or move['name'] == '499'or move['name'] == '501' or move['name'] == '509':
         # move['name'] == '17092124' or or (len(move['name']) < 4 and move['journal_id'] == 10) or move['name'] == '497' or move['name'] == '496' or move['name'] == '498' or (0<len(move['name']) < 4 and move['journal_id'] == 10)
         fail.append((move['name'],move['journal_id']))
         continue

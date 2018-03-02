@@ -26,7 +26,7 @@
                                 <span t-field="line.ref_fourn"/>
                             </td>
                             <td class="left-align">
-                                <span t-field="line.product_id.name"/>
+                                <span t-field="line.name"/>
                             </td>
                             <td>
                                 <t t-set="qty" t-value="line.product_qty"/>

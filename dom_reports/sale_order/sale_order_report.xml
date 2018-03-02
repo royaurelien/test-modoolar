@@ -82,7 +82,7 @@
                                             </td>
                                             <!-- description -->
                                             <td class="left-align">
-                                                <span t-field="l.product_id.name"/>
+                                                <span t-field="l.name"/>
                                             </td>
                                             <!-- qte -->
                                             <td>

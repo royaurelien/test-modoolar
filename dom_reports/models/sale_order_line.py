@@ -10,3 +10,24 @@ class SaleOrderLine(models.Model):
         ('before', 'Avant la ligne'),
         ('after', 'Après la ligne'),
     ], default='after', string="Position commentaire")
+
+    @api.multi
+    @api.onchange('product_id')
+    def product_id_change(self):
+        res = super(SaleOrderLine, self).product_id_change()
+        product = self.product_id.with_context(
+            lang=self.order_id.partner_id.lang,
+            partner=self.order_id.partner_id.id,
+            quantity=vals.get('product_uom_qty') or self.product_uom_qty,
+            date=self.order_id.date_order,
+            pricelist=self.order_id.pricelist_id.id,
+            uom=self.product_uom.id
+        )
+
+        name = product.name
+        if product.description_sale:
+            name += '\n' + product.description_sale
+
+        self.name = name
+
+        return res
