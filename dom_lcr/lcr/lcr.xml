@@ -203,7 +203,12 @@
             <!-- adresse du client -->
             <t t-set="p" t-value="doc.partner_id" />
             <div class="lcr addr nom">
-                <t t-esc="p.name" />
+              <t t-if="p.name">
+                <t t-esc="p.name"/>
+              </t>
+              <t t-else="">
+                <t t-esc="p.parent_id.name"/>
+              </t>
             </div>
             <div class="lcr addr addr1">
                 <t t-esc="p.street" />
@@ -212,7 +217,7 @@
                 <t t-esc="p.street2" />
             </div>
             <div class="lcr addr code-postal-ville">
-                <t t-esc="p.zip" />
+              <span><t t-esc="p.zip"/> <t t-esc="p.city"/></span>
             </div>
 
         </div>
