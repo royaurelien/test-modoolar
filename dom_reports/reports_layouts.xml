@@ -68,7 +68,14 @@
 
                 <div class="col-xs-6">
                     <div class="header-cartouche">
-                        <span t-if="devis"> Devis </span>
+                        <span t-if="devis">
+                            <t t-if="doc.requested_date">
+                                Confirmation de commande
+                            </t>
+                            <t t-else="">
+                                Devis
+                            </t>
+                        </span>
                         <span t-elif="bdc"> Bon de commande </span>
                         <span t-elif="facture">
                             <t t-if="'refund' in doc.type">
