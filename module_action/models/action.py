@@ -196,7 +196,9 @@ class PartnerActions(models.Model):
         action_env = self.env['crm_yziact.action']
         for partner in self:
             action_count = action_env.search([('company_id', '=', partner.id)])
+            action_count_active = action_env.search([('company_id', '=', partner.id),('status','!=', 'done')])
             partner.action_count = len(action_count)
+            partner.action_count_active = len(action_count_active)
 
             if action_count:
                 action_decroissant = sorted(action_count, key=attrgetter('date'), reverse=True)
@@ -208,10 +210,16 @@ class PartnerActions(models.Model):
         action_env = self.env['crm_yziact.action']
         for partner in self:
             action_count = action_env.search([('contact_id', '=', partner.id)])
+            action_count_active = action_env.search([('contact_id', '=', partner.id),('status','!=','done')])
             partner.contact_action_count = len(action_count)
+            partner.contact_action_count_active = len(action_count_active)
+
 
     action_count = fields.Integer('Action', compute=get_nb_action)
+    action_count_active = fields.Integer('Action', compute=get_nb_action)
+
     contact_action_count = fields.Integer('Action', compute=get_contact_nb_action)
+    contact_action_count_active = fields.Integer('Action', compute=get_contact_nb_action)
 
     last_action = fields.Date(u'Date dernière action')
 

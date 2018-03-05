@@ -10,15 +10,26 @@
 
             <xpath expr="//div[@name='button_box']" position="inside">
                 <button class="oe_stat_button o_res_partner_tipp_opp" type="object" icon="fa-clock-o"  name="action_view_action">
-                    <field string="Actions" name="action_count" widget="statinfo" attrs="{'invisible':[('company_type','=', 'person')]}"/>
-                    <field string="Actions" name="contact_action_count" widget="statinfo" attrs="{'invisible':[('company_type','=', 'company')]}"/>
+
+                    <label for="action_count_active" string="Actions" attrs="{'invisible':[('company_type','=', 'person')]}"/>
+                    <span  class="o_stat_value" attrs="{'invisible':[('company_type','=', 'person')]}">
+                        <field name="action_count_active" widget="integer"/>
+                        (<field name="action_count" widget="integer"/>)
+                    </span>
+
+                    <label for="contact_action_count_active" string="Actions" attrs="{'invisible':[('company_type','=', 'company')]}"/>
+                    <span  class="o_stat_value" attrs="{'invisible':[('company_type','=', 'company')]}">
+                        <field name="contact_action_count_active" widget="integer"/>
+                        (<field name="contact_action_count" widget="integer"/>)
+                    </span>
+
                 </button>
             </xpath>
 
             <xpath expr="//field[@name='category_id']" position="after">
                 <field name="last_action" attrs="{'invisible':[('company_type','=', 'person')]}"/>
             </xpath>
-
+            
         </field>
     </record>
 
