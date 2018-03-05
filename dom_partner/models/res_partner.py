@@ -29,6 +29,7 @@ class ResPartner(models.Model):
     plv_id = fields.Many2many(comodel_name='dom.plv', string=u'PLV')
     dep_id = fields.Many2one(comodel_name='yziact.departement', string=u"Département")
     type_tier = fields.Many2one(comodel_name='dom.type_tier', string=u"Type tiers")
+    source_id = fields.Many2one(comodel_name='utm.source', string="Source")
 
     gr = fields.Many2one(comodel_name='dom.groupe', string=u'Groupe')
     sgr = fields.Many2one(comodel_name='dom.sous.groupe', string=u'Sous-groupe')
