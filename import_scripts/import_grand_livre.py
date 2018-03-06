@@ -4,7 +4,7 @@
 import xmlrpclib
 import csv
 import sys
-from datetime import datetime
+from datetime import datetime, date
 import pprint
 
 
@@ -15,7 +15,7 @@ sys.setdefaultencoding("utf-8")
 # Connexion Odoo
 username = "admin"
 pwd = "X200yziact"
-dbname = "DOM_07_02"
+dbname = "DOM_05_03"
 
 sock_common = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/common")
 uid = sock_common.login(dbname, username, pwd)
@@ -33,7 +33,20 @@ def format_date(date_str):
 
     return date
 
-fich_ = open('test.csv', 'rb')
+def search_account(code, name):
+    res = False
+    if code:
+        account = sock.execute(dbname, uid, pwd, 'account.account', 'search', ([('code', '=', code.strip())]))
+        if account:
+            res = account[0]
+        else:
+            print(code)
+            account = sock.execute(dbname, uid, pwd, 'account.account', 'create', {'code':code, 'name':name, 'user_type_id':1, 'reconcile':True})
+            res = account
+    return res
+
+
+fich_ = open('balance global.csv', 'rb')
 
 csvreader = csv.reader(fich_, delimiter=';')
 
@@ -51,6 +64,82 @@ dict_journaux = {
     'FG' : 12,
 }
 
+list_line = []
+for row in csvreader :
+    dict_line = {}
+    if i <= 6 :
+        i += 1
+        continue
+
+    code = row[0]
+    name = row[1]
+    debit_str = (row[5].replace(',','.')).replace(' ','')
+    credit_str = (row[7].replace(',','.')).replace(' ','')
+
+
+
+    compte = search_account(code,name)
+
+    if compte:
+        if credit_str and debit_str:
+            # print(code, 'LES-DEUX', debit_str, credit_str)
+            credit = float(credit_str)
+            debit = float(debit_str)
+            dict_line = {
+                'account_id': compte,
+                'credit': credit,
+                'name': code + ' : ' + credit_str
+            }
+
+            list_line.append((0,0,dict_line))
+
+            dict_line = {
+                'account_id': compte,
+                'debit': debit,
+                'name': code + ' : ' + debit_str
+            }
+            list_line.append((0,0,dict_line))
+
+        elif credit_str and debit_str == '':
+            # print(code, 'CREDIT', debit_str, credit_str)
+            credit = float(credit_str)
+
+            dict_line = {
+                'account_id':compte,
+                'credit':credit,
+                'name': code + ' : ' + credit_str
+            }
+            list_line.append((0,0,dict_line))
+
+
+        elif debit_str and credit_str == '':
+            # print(code, 'DEBIT', debit_str, credit_str)
+            debit = float(debit_str)
+            dict_line = {
+                'account_id': compte,
+                'debit': debit,
+                'name': code + ' : ' + debit_str
+            }
+            list_line.append((0,0,dict_line))
+
+    i+=1
+
+
+print i
+today = date.today()
+str_today = str(today)
+account_move = {
+    'date':str_today,
+    'journal_id':dict_journaux['90'], #joural des operations diverses
+    'ref': '',
+    'narration': "Ce movement a pour but de crediter/debiter tous les comptes importes dans odoo.",
+    'line_ids':list_line
+}
+
+sock.execute(dbname, uid, pwd, 'account.move', 'create', account_move)
+
+
+"""   Version d'import grand livre
 list_move = []
 
 for row in csvreader:
@@ -144,3 +233,5 @@ print(tot)
 fich_.close()
 
 pprint.pprint(fail)
+"""
+
