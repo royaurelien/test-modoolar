@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="dom_crm_kanban" model="ir.ui.view">
+        <field name="name">Dom CRM Kanban</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div/field[@name='tag_ids']" position="before">
+                <t t-if="record.date_deadline.raw_value and record.date_deadline.raw_value lt (new Date())" t-set="red">
+                    oe_kanban_text_red
+                </t>
+                <span t-attf-class="#{red || ''}">
+                    <i>
+                        <field name="date_deadline"/>
+                    </i>
+                </span>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="dom_crm_tree" model="ir.ui.view">
+        <field name="name">Dom CRM Tree</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-danger"> current_date > date_deadline</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='date_deadline']" position="attributes">
+                <attribute name="invisible">False</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
