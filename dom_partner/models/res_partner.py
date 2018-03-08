@@ -41,7 +41,7 @@ class ResPartner(models.Model):
     url_bfa = fields.Char(string='URL BFA')
 
     #### NUMERIQUE ####
-    ca_12 = fields.Float(compute='compute_ca_year', string='CA 12 mois')
+    ca_12 = fields.Float(compute='compute_ca_year', string=u'CA de cette année')
     taux_commission = fields.Float(string='Commission (%)')
     bfa_num = fields.Float(string='BFA (%)')
 
@@ -51,14 +51,7 @@ class ResPartner(models.Model):
     paie_livraison = fields.Boolean(string='Paiement avant livraison')
     fac_mail = fields.Boolean(string='Facture par mail')
     bfa = fields.Boolean(string="BFA")
-    # plv = fields.Boolean(string=u"Publicité sur lieu de vente")
-    # presentoir = fields.Boolean(string=u"Présentoir")
 
-    #### DATE ####
-    # plv_pdt = fields.Date(string=u'PLV plan de travail')
-    # plv_p_int = fields.Date(string=u'PLV pierre intérieure')
-    # plv_p_ext = fields.Date(string=u'PLV pierre extérieure')
-    # plv_carrelage = fields.Date(string=u'PLV carrelage')
 
     #### SELECTION ####
     freq_contact = fields.Selection([

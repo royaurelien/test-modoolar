@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="dom_crm_partner_form_inherit" model="ir.ui.view">
+        <field name="name">Dom CRM Partner Form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="dom_partner.dom_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='ca_12']" position="after">
+                <field name="CA_objectif" />
+                <field name="CA_progress" widget="progressbar" />
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

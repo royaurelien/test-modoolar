@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 {
-    'name': "Domitec Partner",
+    'name': "Domitec CRM",
 
-    'summary': """ Modification des Partners """,
+    'summary': """ Modification pour la CRM """,
 
     'description': """ desc""",
 
@@ -17,11 +17,13 @@
         'base',
         'crm_yzi',
         'crm',
+        'dom_partner',
     ],
 
     # always loaded
     'data': [
         'views/crm_lead.xml',
+        'views/res_partner.xml',
     ],
 
     # 'installable': True,
