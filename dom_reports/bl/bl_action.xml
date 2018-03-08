@@ -14,9 +14,21 @@
         report_type="qweb-pdf"
         />
 
+    <report
+        id="dom_report_bl_valo_action"
+        model="stock.picking"
+        string="BL Valo Domitec"
+        name="dom_reports.dom_report_bl_valo"
+        file="dom_reports.dom_report_bl_valo"
+        report_type="qweb-pdf"
+        />
+
     <!-- paperformat="dom_reports.paperformat_dom_a4" -->
 
     <record id="dom_reports.dom_report_bl_action" model="ir.actions.report">
+        <field name="paperformat_id" ref="dom_reports.paperformat_dom_a4_bl"/>
+    </record>
+    <record id="dom_reports.dom_report_bl_valo_action" model="ir.actions.report">
         <field name="paperformat_id" ref="dom_reports.paperformat_dom_a4_bl"/>
     </record>
 
