@@ -24,7 +24,7 @@
                         <field name="plv_id" widget="many2many_tags" />
                         <!--<field name="presentoir" />-->
                         <field name="presentoir_id" widget="many2many_tags"/>
-                        <field name="source_id_id"/>
+                        <field name="source_id"/>
                         <!--<field name="plv_pdt"/>
                         <field name="plv_p_int"/>
                         <field name="plv_p_ext"/>
