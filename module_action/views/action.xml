@@ -49,12 +49,13 @@
                             <field name="lead_id"/>
                         </group>
                         <group name="child_two">
-                            <field name="user_id" attrs="{'required':[('type','=',3)]}"/>
+                            <field name="user_id" attrs="{'required':[('synchro','=',True)]}"/>
                             <field name="type"/>
-                            <field name="event_id" attrs="{'invisible':[('type','!=',3)]}"/>
+                            <field name="synchro" invisible="1"/>
+                            <field name="event_id" attrs="{'invisible':[('synchro','!=',True)]}"/>
                             <field name="date" required="1"/>
                             <field name="date_debut" groups="base.group_no_one"/>
-                            <field name="date_end" attrs="{'invisible':[('type','!=',3)]}"/>
+                            <field name="date_end" attrs="{'invisible':[('synchro','!=',True)]}"/>
                             <field name="date_filter" invisible="1"/>
                         </group>
                         <separator/>
@@ -123,6 +124,22 @@
 
     <menuitem id="menu_action_com" parent="crm.crm_menu_root" name="Actions Commerciales" sequence="10" action="action_list_actions" groups="base.group_user" />
 
+
+    <!--Inherit Mail Activity Type-->
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="action_com_mail_type_inherit" model="ir.ui.view">
+        <field name="name">Action com Mail TYPE</field>
+        <field name="model">mail.activity.type</field>
+        <field name="inherit_id" ref="mail.mail_activity_type_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='category']" position="after">
+                <field name="synchro"/>
+            </xpath>
+
+        </field>
+    </record>
 
 
 </odoo>

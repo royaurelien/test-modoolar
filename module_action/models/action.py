@@ -55,7 +55,7 @@ class Action(models.Model):
 
     ######RELATIONEL####
     user_id = fields.Many2one(comodel_name='res.users', string=u'Assigné à')
-    type = fields.Many2one(comodel_name='mail.activity.type', track_visibility="always", required=True)
+    type = fields.Many2one(comodel_name='mail.activity.type', track_visibility="always", required=True, delegate=True)
     company_id = fields.Many2one(comodel_name='res.partner', string=u"Société", domain="[('company_type','=','company')]", track_visibility="always")
     contact_id = fields.Many2one(comodel_name='res.partner', string=u"Contact", domain="[('company_type','=','person'), ('parent_id','=',company_id)]")
     sale_id = fields.Many2one(comodel_name='sale.order', string="Vente", domain="['|',('partner_id','=',company_id), ('partner_id','=',contact_id)]", track_visibility="always")
@@ -66,6 +66,7 @@ class Action(models.Model):
     @api.model
     def create(self, vals):
         calendar_env = self.env['calendar.event']
+        type_act_env = self.env['mail.activity.type']
         user_env = self.env['res.users']
         user_obj = user_env.browse(vals.get('user_id', self._uid))
         event = None
@@ -90,7 +91,9 @@ class Action(models.Model):
             date_end = datetime.strptime(res.date, '%Y-%m-%d %H:%M:%S') + timedelta(hours=1)
             date_end = date_end.strftime('%Y-%m-%d %H:%M:%S')
 
-        if vals.get('type',False) == 3 and not vals.get('event_id', False) :
+        type_act =  type_act_env.browse(vals.get('type',False))
+
+        if type_act and type_act.synchro and not vals.get('event_id', False) :
             event = calendar_env.create({
                 'name': res.name,
                 'partner_ids': [(6, False,[user_obj.partner_id.id])],
@@ -267,3 +270,10 @@ class PartnerActions(models.Model):
 
         if not date_action or date > date_action:
             return self.write({'last_action':date})
+
+
+
+class TypeActivity(models.Model):
+    _inherit = 'mail.activity.type'
+
+    synchro = fields.Boolean('Synchro')

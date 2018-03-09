@@ -1,0 +1,1670 @@
+id,name,description,classification,emballage
+dom_classification_onu_1,0000,MARCHANDISES EMBALLEES EN QUANTITE LIMITEE,XX,
+dom_classification_onu_2,0012,CARTOUCHES A PROJECTILE INERTE POUR ARME OU CARTOUCHE POUR ARMES DE PETIT CALIBRE,1.4S,
+dom_classification_onu_3,0014,CARTOUCHES A BLANC POUR ARMES ou CARTOUCHES A BLANC POUR ARMES DE PETIT CALIBRE ou CARTOUCHES A BLANC POUR OUTILS,1.4S,
+dom_classification_onu_4,1001,ACÉTYLÈNE DISSOUS,4F,
+dom_classification_onu_5,1002,AIR COMPRIMÉ,1A,
+dom_classification_onu_6,1006,ARGON COMPRIMÉ,1A,
+dom_classification_onu_7,1009,BROMOTRIFLUORO-MÉTHANE (GAZ RÉFRIGÉRANT R 13B1),2A,
+dom_classification_onu_8,1013,DIOXYDE DE CARBONE,2A,
+dom_classification_onu_9,1018,CHLORODIFLUORO-MÉTHANE (GAZ RÉFRIGÉRANT R 22),2A,
+dom_classification_onu_10,1020,CHLOROPENTAFLUOR-ÉTHANE (GAZ RÉFRIGÉRANT R 115),2A,
+dom_classification_onu_11,1021,CHLORO-1 TÉTRAFLUORO-1222 ÉTHANE (GAZ RÉFRIGÉRANT R 124),2A,
+dom_classification_onu_12,1022,CHLOROTRIFLUORO-MÉTHANE (GAZ RÉFRIGÉRANT R 13),2A,
+dom_classification_onu_13,1028,DICHLORODIFLUORO-MÉTHANE (GAZ RÉFRIGÉRANT R 12),2A,
+dom_classification_onu_14,1029,DICHLOROFLUORO-MÉTHANE (GAZ RÉFRIGÉRANT R 21),2A,
+dom_classification_onu_15,1043,ENGRAIS EN SOLUTION contenant de l'ammoniac non combiné,4A,
+dom_classification_onu_16,1044,EXTINCTEURS contenant un gaz comprimé ou liquéfié,6A,
+dom_classification_onu_17,1046,HÉLIUM COMPRIMÉ,1A,
+dom_classification_onu_18,1056,KRYPTON COMPRIMÉ,1A,
+dom_classification_onu_19,1057,BRIQUETS,6F,
+dom_classification_onu_20,1057,RECHARGES POUR BRIQUETS,6F,
+dom_classification_onu_21,1058,GAZ LIQUÉFIÉS ininflammables additionnés d'azote de dioxyde de carbone ou d'air,2A,
+dom_classification_onu_22,1065,NÉON COMPRIMÉ,1A,
+dom_classification_onu_23,1066,AZOTE COMPRIMÉ,1A,
+dom_classification_onu_24,1072,OXYGÈNE COMPRIMÉ,1O,
+dom_classification_onu_25,1078,GAZ FRIGORIFIQUE N.S.A. (GAS RÉFRIGÉRANT N.S.A.) comme le mélange F1 le mélange F2 le mélange F3,2A,
+dom_classification_onu_26,1080,HEXAFLUORURE DE SOUFRE,2A,
+dom_classification_onu_27,1088,ACÉTAL,F1,2
+dom_classification_onu_28,1090,ACÉTONE,F1,2
+dom_classification_onu_29,1091,HUILES D'ACÉTONE,F1,2
+dom_classification_onu_30,1104,ACÉTATES D'AMYLE,F1,3
+dom_classification_onu_31,1105,PENTANOLS,F1,2
+dom_classification_onu_32,1105,PENTANOLS,F1,3
+dom_classification_onu_33,1106,AMYLAMINES,FC,2
+dom_classification_onu_34,1106,AMYLAMINES,FC,3
+dom_classification_onu_35,1107,CHLORURES D'AMYLE,F1,2
+dom_classification_onu_36,1109,FORMIATES D'AMYLE,F1,3
+dom_classification_onu_37,1110,n-AMYLMÉTHYLCÉTONE,F1,3
+dom_classification_onu_38,1111,MERCAPTAN AMYLIQUE,F1,2
+dom_classification_onu_39,1112,NITRATES D'AMYLE,F1,3
+dom_classification_onu_40,1113,NITRITES D'AMYLE,F1,2
+dom_classification_onu_41,1114,BENZÈNE,F1,2
+dom_classification_onu_42,1120,BUTANOLS,F1,2
+dom_classification_onu_43,1120,BUTANOLS,F1,3
+dom_classification_onu_44,1123,ACÉTATES DE BUTYLE,F1,2
+dom_classification_onu_45,1123,ACÉTATES DE BUTYLE,F1,3
+dom_classification_onu_46,1125,n-BUTYLAMINE,FC,2
+dom_classification_onu_47,1126,1-BROMOBUTANE,F1,2
+dom_classification_onu_48,1127,CHLOROBUTANES,F1,2
+dom_classification_onu_49,1128,FORMIATE DE n-BUTYLE,F1,2
+dom_classification_onu_50,1129,BUTYRALDÉHYDE,F1,2
+dom_classification_onu_51,1130,HUILE DE CAMPHRE,F1,3
+dom_classification_onu_52,1133,ADHÉSIFS contenant un liquide inflammable,F1,1
+dom_classification_onu_53,1133,ADHÉSIFS contenant un liquide inflammable,F1,3
+dom_classification_onu_54,1133,ADHÉSIFS contenant un liquide inflammable (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_55,1133,ADHÉSIFS contenant un liquide inflammable (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_56,1133,ADHÉSIFS contenant un liquide inflammable (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_57,1133,ADHÉSIFS contenant un liquide inflammable (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_58,1134,CHLOROBENZÈNE,F1,3
+dom_classification_onu_59,1136,DISTILLATS DE GOUDRON DE HOUILLE INFLAMMABLES,F1,2
+dom_classification_onu_60,1136,DISTILLATS DE GOUDRON DE HOUILLE INFLAMMABLES,F1,3
+dom_classification_onu_61,1139,SOLUTION D'ENROBAGE (traitements de surface ou enrobages utilisés dans l'industrie ou à d'autres fins tels que sous-couche pour carrosserie de véhicule revêtement pour fûts et tonneaux) ,F1,1
+dom_classification_onu_62,1139,SOLUTION D'ENROBAGE (traitements de surface ou enrobages utilisés dans l'industrie ou à d'autres fins tels que sous-couche pour carrosserie de véhicule revêtement pour fûts et tonneaux) ,F1,3
+dom_classification_onu_63,1139,SOLUTION D'ENROBAGE (traitements de surface ou enrobages utilisés dans l'industrie ou à d'autres fins tels que sous-couche pour carrosserie de véhicule revêtement pour fûts et tonneaux) (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (point d'ébullition d'au plus 35 °C),F1,3
+dom_classification_onu_64,1139,SOLUTION D'ENROBAGE (traitements de surface ou enrobages utilisés dans l'industrie ou à d'autres fins tels que sous-couche pour carrosserie de véhicule revêtement pour fûts et tonneaux) (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_65,1139,SOLUTION D'ENROBAGE (traitements de surface ou enrobages utilisés dans l'industrie ou à d'autres fins tels que sous-couche pour carrosserie de véhicule revêtement pour fûts et tonneaux) (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_66,1139,SOLUTION D'ENROBAGE (traitements de surface ou enrobages utilisés dans l'industrie ou à d'autres fins tels que sous-couche pour carrosserie de véhicule revêtement pour fûts et tonneaux) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_67,1139,SOLUTION D'ENROBAGE (traitements de surface ou enrobages utilisés dans l'industrie ou à d'autres fins tels que sous-couche pour carrosserie de véhicule revêtement pour fûts et tonneaux) (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_68,1145,CYCLOHEXANE,F1,2
+dom_classification_onu_69,1146,CYCLOPENTANE,F1,2
+dom_classification_onu_70,1147,DECAHYDRO-NAPHTALÈNE,F1,3
+dom_classification_onu_71,1148,DIACÉTONE-ALCOOL,F1,2
+dom_classification_onu_72,1148,DIACÉTONE-ALCOOL,F1,3
+dom_classification_onu_73,1149,ÉTHERS BUTYLIQUES,F1,3
+dom_classification_onu_74,1150,DICHLORO-12 ÉTHYLÈNE,F1,2
+dom_classification_onu_75,1152,DICHLOROPENTANES,F1,3
+dom_classification_onu_76,1153,ÉTHER DIÉTHYLIQUE DE L'ÉTHYLÈNEGLYCOL,F1,2
+dom_classification_onu_77,1153,ÉTHER DIÉTHYLIQUE DE L'ÉTHYLÈNEGLYCOL,F1,3
+dom_classification_onu_78,1154,DIÉTHYLAMINE,FC,2
+dom_classification_onu_79,1156,DIÉTHYLCÉTONE,F1,2
+dom_classification_onu_80,1157,DIISOBUTYLCÉTONE,F1,3
+dom_classification_onu_81,1158,DIISOPROPYLAMINE,FC,2
+dom_classification_onu_82,1159,ÉTHER ISOPROPYLIQUE,F1,2
+dom_classification_onu_83,1160,DIMÉTHYLAMINE EN SOLUTION AQUEUSE,FC,2
+dom_classification_onu_84,1161,CARBONATE DE MÉTHYLE,F1,2
+dom_classification_onu_85,1164,SULFURE DE MÉTHYLE,F1,2
+dom_classification_onu_86,1165,DIOXANNE,F1,2
+dom_classification_onu_87,1166,DIOXOLANNE,F1,2
+dom_classification_onu_88,1169,EXTRAITS AROMATIQUES LIQUIDES ,F1,3
+dom_classification_onu_89,1169,EXTRAITS AROMATIQUES LIQUIDES (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_90,1169,EXTRAITS AROMATIQUES LIQUIDES (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_91,1169,EXTRAITS AROMATIQUES LIQUIDES (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_92,1169,EXTRAITS AROMATIQUES LIQUIDES (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_93,1170,ÉTHANOL (ALCOOL ÉTHYLIQUE) ou ÉTHANOL EN SOLUTION (ALCOOL ÉTHYLIQUE EN SOLUTION),F1,2
+dom_classification_onu_94,1170,ÉTHANOL EN SOLUTION (ALCOOL ÉTHYLIQUE EN SOLUTION),F1,3
+dom_classification_onu_95,1171,ÉTHER MONOÉTHYLIQUE DE L'ÉTHYLÈNEGLYCOL,F1,3
+dom_classification_onu_96,1172,ACÉTATE DE L'ÉTHER MONOÉTHYLIQUE DE L'ÉTHYLÈNEGLYCOL,F1,3
+dom_classification_onu_97,1173,ACÉTATE D'ÉTHYLE,F1,2
+dom_classification_onu_98,1175,ÉTHYLBENZÈNE,F1,2
+dom_classification_onu_99,1176,BORATE D'ÉTHYLE,F1,2
+dom_classification_onu_100,1177,ACÉTATE DE 2-ÉTHYLBUTYLE,F1,3
+dom_classification_onu_101,1178,ALDÉHYDE ÉTHYL-2 BUTYRIQUE,F1,2
+dom_classification_onu_102,1179,ÉTHER ÉTHYLBUTYLIQUE,F1,2
+dom_classification_onu_103,1180,BUTYRATE D'ÉTHYLE,F1,3
+dom_classification_onu_104,1181,CHLORACÉTATE D'ÉTHYLE,TF1,2
+dom_classification_onu_105,1184,DICHLORURE D'ÉTHYLÈNE,FT1,2
+dom_classification_onu_106,1188,ÉTHER MONO-MÉTHYLIQUE DE L'ÉTHYLÈNEGLYCOL,F1,3
+dom_classification_onu_107,1189,ACÉTATE DE L'ÉTHER MONOMÉTHYLIQUE DE L'ÉTHYLÈNEGLYCOL,F1,3
+dom_classification_onu_108,1190,FORMIATE D'ÉTHYLE,F1,2
+dom_classification_onu_109,1191,ALDÉHYDES OCTYLIQUES,F1,3
+dom_classification_onu_110,1192,LACTATE D'ÉTHYLE,F1,3
+dom_classification_onu_111,1193,ÉTHYLMÉTHYLCÉTONE (MÉTHYLÉTHYLCÉTONE),F1,2
+dom_classification_onu_112,1195,PROPIONATE D'ÉTHYLE,F1,2
+dom_classification_onu_113,1197,EXTRAITS LIQUIDES POUR AROMATISER ,F1,3
+dom_classification_onu_114,1197,EXTRAITS LIQUIDES POUR AROMATISER (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_115,1197,EXTRAITS LIQUIDES POUR AROMATISER (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_116,1197,EXTRAITS LIQUIDES POUR AROMATISER (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_117,1197,EXTRAITS LIQUIDES POUR AROMATISER (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_118,1198,FORMALDÉHYDE EN SOLUTION INFLAMMABLE,FC,3
+dom_classification_onu_119,1199,FURALDÉHYDES,TF1,2
+dom_classification_onu_120,1201,HUILE DE FUSEL,F1,2
+dom_classification_onu_121,1201,HUILE DE FUSEL,F1,3
+dom_classification_onu_122,1202,CARBURANT DIESEL conforme à la norme EN 590:2004 ou GAZOLE ou HUILE DE CHAUFFE LÉGÈRE à point d'éclair défini dans la norme EN 590:2004,F1,3
+dom_classification_onu_123,1202,CARBURANT DIESEL ou GAZOLE ou HUILE DE CHAUFFE LÉGÈRE (point d'éclair compris entre 60 °C et 100 °C),F1,3
+dom_classification_onu_124,1202,CARBURANT DIESEL ou GAZOLE ou HUILE DE CHAUFFE LÉGÈRE (point d'éclair ne dépassant pas 60 °C),F1,3
+dom_classification_onu_125,1203,ESSENCE ,F1,2
+dom_classification_onu_126,1204,NITROGLYCÉRINE EN SOLUTION ALCOOLIQUE avec au plus 1% de nitroglycérine,D,2
+dom_classification_onu_127,1206,HEPTANES,F1,2
+dom_classification_onu_128,1207,HEXALDÉHYDE,F1,3
+dom_classification_onu_129,1208,HEXANES,F1,2
+dom_classification_onu_130,1210,ENCRES D'IMPRIMERIE inflammables ou MATIÈRES APPARENTÉES AUX ENCRES D'IMPRIMERIE (y compris solvants et diluants pour encres d'imprimerie) inflammables,F1,1
+dom_classification_onu_131,1210,ENCRES D'IMPRIMERIE inflammables ou MATIÈRES APPARENTÉES AUX ENCRES D'IMPRIMERIE (y compris solvants et diluants pour encres d'imprimerie) inflammables ,F1,3
+dom_classification_onu_132,1210,ENCRES D'IMPRIMERIE inflammables ou MATIÈRES APPARENTÉES AUX ENCRES D'IMPRIMERIE (y compris solvants et diluants pour encres d'imprimerie) inflammables (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_133,1210,ENCRES D'IMPRIMERIE inflammables ou MATIÈRES APPARENTÉES AUX ENCRES D'IMPRIMERIE (y compris solvants et diluants pour encres d'imprimerie) inflammables (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_134,1210,ENCRES D'IMPRIMERIE inflammables ou MATIÈRES APPARENTÉES AUX ENCRES D'IMPRIMERIE (y compris solvants et diluants pour encres d'imprimerie) inflammables (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_135,1210,ENCRES D'IMPRIMERIE inflammables ou MATIÈRES APPARENTÉES AUX ENCRES D'IMPRIMERIE (y compris solvants et diluants pour encres d'imprimerie) inflammables (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_136,1212,ISOBUTANOL (ALCOOL ISOBUTYLIQUE),F1,3
+dom_classification_onu_137,1213,ACÉTATE D'ISOBUTYLE,F1,2
+dom_classification_onu_138,1214,ISOBUTYLAMINE,FC,2
+dom_classification_onu_139,1216,ISOOCTÈNES,F1,2
+dom_classification_onu_140,1219,ISOPROPANOL (ALCOOL ISOPROPYLIQUE),F1,2
+dom_classification_onu_141,1220,ACÉTATE D'ISOPROPYLE,F1,2
+dom_classification_onu_142,1222,NITRATE D'ISOPROPYLE,F1,2
+dom_classification_onu_143,1223,KÉROSÈNE,F1,3
+dom_classification_onu_144,1224,CÉTONES LIQUIDES N.S.A.,F1,3
+dom_classification_onu_145,1224,CÉTONES LIQUIDES N.S.A. (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_146,1224,CÉTONES LIQUIDES N.S.A. (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_147,1228,MERCAPTANS LIQUIDES INFLAMMABLES TOXIQUES N.S.A. ou MERCAPTANS EN MÉLANGE LIQUIDE INFLAMMABLE TOXIQUE N.S.A.,FT1,2
+dom_classification_onu_148,1228,MERCAPTANS LIQUIDES INFLAMMABLES TOXIQUES N.S.A. ou MERCAPTANS EN MÉLANGE LIQUIDE INFLAMMABLE TOXIQUE N.S.A.,FT1,3
+dom_classification_onu_149,1229,OXYDE DE MÉSITYLE,F1,3
+dom_classification_onu_150,1230,MÉTHANOL,FT1,2
+dom_classification_onu_151,1231,ACÉTATE DE MÉTHYLE,F1,2
+dom_classification_onu_152,1233,ACÉTATE DE MÉTHYLAMYLE,F1,3
+dom_classification_onu_153,1234,MÉTHYLAL,F1,2
+dom_classification_onu_154,1235,MÉTHYLAMINE EN SOLUTION AQUEUSE,FC,2
+dom_classification_onu_155,1237,BUTYRATE DE MÉTHYLE,F1,2
+dom_classification_onu_156,1245,MÉTHYLISOBUTYL-CÉTONE,F1,2
+dom_classification_onu_157,1246,MÉTHYLISOPROPENYL-CÉTONE STABILISÉE,F1,2
+dom_classification_onu_158,1247,MÉTHACRYLATE DE MÉTHYLE MONOMÈRE STABILISÉ,F1,2
+dom_classification_onu_159,1248,PROPIONATE DE MÉTHYLE,F1,2
+dom_classification_onu_160,1249,MÉTHYLPROPYLCÉTONE,F1,2
+dom_classification_onu_161,1261,NITROMÉTHANE,F1,2
+dom_classification_onu_162,1262,OCTANES,F1,2
+dom_classification_onu_163,1263,PEINTURES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES (y compris solvants et diluants pour peintures) ,F1,1
+dom_classification_onu_164,1263,PEINTURES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES (y compris solvants et diluants pour peintures) ,F1,3
+dom_classification_onu_165,1263,PEINTURES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES (y compris solvants et diluants pour peintures) (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_166,1263,PEINTURES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES (y compris solvants et diluants pour peintures) (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_167,1263,PEINTURES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES (y compris solvants et diluants pour peintures) (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_168,1263,PEINTURES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES (y compris solvants et diluants pour peintures) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_169,1264,PARALDÉHYDE,F1,3
+dom_classification_onu_170,1265,PENTANES liquides,F1,2
+dom_classification_onu_171,1266,PRODUITS POUR PARFUMERIE contenant des solvants inflammables ,F1,3
+dom_classification_onu_172,1266,PRODUITS POUR PARFUMERIE contenant des solvants inflammables (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_173,1266,PRODUITS POUR PARFUMERIE contenant des solvants inflammables (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_174,1266,PRODUITS POUR PARFUMERIE contenant des solvants inflammables (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_175,1266,PRODUITS POUR PARFUMERIE contenant des solvants inflammables (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_176,1267,PÉTROLE BRUT,F1,1
+dom_classification_onu_177,1267,PÉTROLE BRUT,F1,3
+dom_classification_onu_178,1267,PÉTROLE BRUT (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_179,1267,PÉTROLE BRUT (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_180,1268,DISTILLATS DE PÉTROLE N.S.A. ou PRODUITS PÉTROLIERS N.S.A.,F1,3
+dom_classification_onu_181,1268,DISTILLATS DE PÉTROLE N.S.A. ou PRODUITS PÉTROLIERS N.S.A. ,F1,1
+dom_classification_onu_182,1268,DISTILLATS DE PÉTROLE N.S.A. ou PRODUITS PÉTROLIERS N.S.A. (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_183,1268,DISTILLATS DE PÉTROLE N.S.A. ou PRODUITS PÉTROLIERS N.S.A. (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_184,1272,HUILE DE PIN,F1,3
+dom_classification_onu_185,1274,n-PROPANOL (ALCOOL PROPYLIQUE NORMAL),F1,2
+dom_classification_onu_186,1274,n-PROPANOL (ALCOOL PROPYLIQUE NORMAL),F1,3
+dom_classification_onu_187,1275,ALDÉHYDE PROPIONIQUE,F1,2
+dom_classification_onu_188,1276,ACÉTATE DE n-PROPYLE,F1,2
+dom_classification_onu_189,1277,PROPYLAMINE,FC,2
+dom_classification_onu_190,1278,CHLORO-1 PROPANE,F1,2
+dom_classification_onu_191,1279,DICHLORO-12 PROPANE,F1,2
+dom_classification_onu_192,1281,FORMIATES DE PROPYLE,F1,2
+dom_classification_onu_193,1282,PYRIDINE,F1,2
+dom_classification_onu_194,1286,HUILE DE COLOPHANE ,F1,3
+dom_classification_onu_195,1286,HUILE DE COLOPHANE (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_196,1286,HUILE DE COLOPHANE (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_197,1286,HUILE DE COLOPHANE (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_198,1286,HUILE DE COLOPHANE (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_199,1287,DISSOLUTION DE CAOUTCHOUC ,F1,3
+dom_classification_onu_200,1287,DISSOLUTION DE CAOUTCHOUC (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_201,1287,DISSOLUTION DE CAOUTCHOUC (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_202,1287,DISSOLUTION DE CAOUTCHOUC (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_203,1287,DISSOLUTION DE CAOUTCHOUC (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_204,1288,HUILE DE SCHISTE,F1,2
+dom_classification_onu_205,1288,HUILE DE SCHISTE,F1,3
+dom_classification_onu_206,1289,MÉTHYLATE DE SODIUM EN SOLUTION dans l'alcool,FC,2
+dom_classification_onu_207,1289,MÉTHYLATE DE SODIUM EN SOLUTION dans l'alcool,FC,3
+dom_classification_onu_208,1292,SILICATE DE TÉTRAÉTHYLE,F1,3
+dom_classification_onu_209,1293,TEINTURES MÉDICINALES,F1,2
+dom_classification_onu_210,1293,TEINTURES MÉDICINALES,F1,3
+dom_classification_onu_211,1294,TOLUÈNE,F1,2
+dom_classification_onu_212,1296,TRIÉTHYLAMINE,FC,2
+dom_classification_onu_213,1297,TRIMÉTHYLAMINE EN SOLUTION AQUEUSE contenant au plus 50% (masse) de triméthylamine,FC,2
+dom_classification_onu_214,1297,TRIMÉTHYLAMINE EN SOLUTION AQUEUSE contenant au plus 50% (masse) de triméthylamine,FC,3
+dom_classification_onu_215,1299,ESSENCE DE TÉRÉBENTHINE,F1,3
+dom_classification_onu_216,1300,SUCCÉDANÉ D'ESSENCE DE TÉRÉBENTHINE,F1,2
+dom_classification_onu_217,1300,SUCCÉDANÉ D'ESSENCE DE TÉRÉBENTHINE,F1,3
+dom_classification_onu_218,1301,ACÉTATE DE VINYLE STABILISÉ,F1,2
+dom_classification_onu_219,1304,ÉTHER ISOBUTYLVINYLIQUE STABILISÉ,F1,2
+dom_classification_onu_220,1306,PRODUITS DE PRÉSERVATION DES BOIS LIQUIDES ,F1,3
+dom_classification_onu_221,1306,PRODUITS DE PRÉSERVATION DES BOIS LIQUIDES (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_222,1306,PRODUITS DE PRÉSERVATION DES BOIS LIQUIDES (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_223,1306,PRODUITS DE PRÉSERVATION DES BOIS LIQUIDES (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_224,1306,PRODUITS DE PRÉSERVATION DES BOIS LIQUIDES (pression de vapeur à 50 °C supérieure à 110 kPa) ,F1,2
+dom_classification_onu_225,1307,XYLÈNES,F1,2
+dom_classification_onu_226,1307,XYLÈNES,F1,3
+dom_classification_onu_227,1308,ZIRCONIUM EN SUSPENSION DANS UN LIQUIDE INFLAMMABLE,F1,3
+dom_classification_onu_228,1308,ZIRCONIUM EN SUSPENSION DANS UN LIQUIDE INFLAMMABLE (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_229,1308,ZIRCONIUM EN SUSPENSION DANS UN LIQUIDE INFLAMMABLE (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_230,1309,ALUMINIUM EN POUDRE ENROBÉ,F3,2
+dom_classification_onu_231,1309,ALUMINIUM EN POUDRE ENROBÉ,F3,3
+dom_classification_onu_232,1312,BORNÉOL,F1,3
+dom_classification_onu_233,1313,RÉSINATE DE CALCIUM,F3,3
+dom_classification_onu_234,1314,RÉSINATE DE CALCIUM FONDU,F3,3
+dom_classification_onu_235,1318,RÉSINATE DE COBALT PRÉCIPITÉ,F3,3
+dom_classification_onu_236,1323,FERROCÉRIUM,F3,2
+dom_classification_onu_237,1324,FILMS À SUPPORT NITRO-CELLULOSIQUE avec couche de gélatine (à l'exclusion des déchets),F1,3
+dom_classification_onu_238,1325,SOLIDE ORGANIQUE INFLAMMABLE N.S.A.,F1,2
+dom_classification_onu_239,1325,SOLIDE ORGANIQUE INFLAMMABLE N.S.A.,F1,3
+dom_classification_onu_240,1326,HAFNIUM EN POUDRE HUMIDIFIÉ avec au moins 25% d¿eau,F3,2
+dom_classification_onu_241,1328,HEXAMÉTHYLÈNE-TÉTRAMINE,F1,3
+dom_classification_onu_242,1330,RÉSINATE DE MANGANESE,F3,3
+dom_classification_onu_243,1331,ALLUMETTES NON «DE SÛRETÉ»,F1,3
+dom_classification_onu_244,1332,MÉTALDÉHYDE,F1,3
+dom_classification_onu_245,1333,CÉRIUM plaques barres lingots,F3,2
+dom_classification_onu_246,1334,NAPHTALÈNE BRUT ou NAPHTALÈNE RAFFINÉ,F1,3
+dom_classification_onu_247,1338,PHOSPHORE AMORPHE,F3,3
+dom_classification_onu_248,1339,HEPTASULFURE DE PHOSPHORE exempt de phosphore jaune ou blanc,F3,2
+dom_classification_onu_249,1340,PENTASULFURE DE PHOSPHORE exempt de phosphore jaune ou blanc,WF2,2
+dom_classification_onu_250,1341,SESQUISULFURE DE PHOSPHORE exempt de phosphore jaune ou blanc,F3,2
+dom_classification_onu_251,1343,TRISULFURE DE PHOSPHORE exempt de phosphore jaune ou blanc,F3,2
+dom_classification_onu_252,1345,CHUTES DE CAOUTCHOUC ou DÉCHETS DE CAOUTCHOUC sous forme de poudre ou de grains,F1,2
+dom_classification_onu_253,1346,SILICIUM EN POUDRE AMORPHE,F3,3
+dom_classification_onu_254,1350,SOUFRE,F3,3
+dom_classification_onu_255,1352,TITANE EN POUDRE HUMIDIFIÉ avec au moins 25% d'eau,F3,2
+dom_classification_onu_256,1353,FIBRES ou TISSUS IMPRÉGNÉS DE NITROCELLULOSE FAIBLEMENT NITRÉE N.S.A.,F1,3
+dom_classification_onu_257,1358,ZIRCONIUM EN POUDRE HUMIDIFIÉ avec au moins 25% d'eau,F3,2
+dom_classification_onu_258,1390,AMIDURES DE MÉTAUX ALCALINS,W2,2
+dom_classification_onu_259,1393,ALLIAGE DE MÉTAUX ALCALINO-TERREUX N.S.A.,W2,2
+dom_classification_onu_260,1394,CARBURE D'ALUMINIUM,W2,2
+dom_classification_onu_261,1395,ALUMINO-FERRO-SILICIUM EN POUDRE,WT2,2
+dom_classification_onu_262,1396,ALUMINIUM EN POUDRE NON ENROBÉ,W2,2
+dom_classification_onu_263,1396,ALUMINIUM EN POUDRE NON ENROBÉ,W2,3
+dom_classification_onu_264,1398,SILICO-ALUMINIUM EN POUDRE NON ENROBÉ,W2,3
+dom_classification_onu_265,1400,BARYUM,W2,2
+dom_classification_onu_266,1401,CALCIUM,W2,2
+dom_classification_onu_267,1402,CARBURE DE CALCIUM,W2,2
+dom_classification_onu_268,1403,CYANAMIDE CALCIQUE contenant plus de 01% (masse) de carbure de calcium,W2,3
+dom_classification_onu_269,1405,SILICIURE DE CALCIUM,W2,2
+dom_classification_onu_270,1405,SILICIURE DE CALCIUM,W2,3
+dom_classification_onu_271,1408,FERROSILICIUM contenant 30% ou plus mais moins de 90% (masse) de silicium,WT2,3
+dom_classification_onu_272,1409,HYDRURES MÉTALLIQUES HYDRORÉACTIFS N.S.A.,W2,2
+dom_classification_onu_273,1417,SILICO-LITHIUM,W2,2
+dom_classification_onu_274,1435,CENDRES DE ZINC,W2,3
+dom_classification_onu_275,1437,HYDRURE DE ZIRCONIUM,F3,2
+dom_classification_onu_276,1438,NITRATE D'ALUMINIUM,O2,3
+dom_classification_onu_277,1439,DICHROMATE D'AMMONIUM,O2,2
+dom_classification_onu_278,1442,PERCHLORATE D'AMMONIUM,O2,2
+dom_classification_onu_279,1444,PERSULFATE D'AMMONIUM,O2,3
+dom_classification_onu_280,1445,CHLORATE DE BARYUM SOLIDE,OT2,2
+dom_classification_onu_281,1446,NITRATE DE BARYUM,OT2,2
+dom_classification_onu_282,1447,PERCHLORATE DE BARYUM SOLIDE,OT2,2
+dom_classification_onu_283,1448,PERMANGANATE DE BARYUM,OT2,2
+dom_classification_onu_284,1449,PEROXYDE DE BARYUM,OT2,2
+dom_classification_onu_285,1450,BROMATES INORGANIQUES N.S.A.,O2,2
+dom_classification_onu_286,1451,NITRATE DE CÉSIUM,O2,3
+dom_classification_onu_287,1452,CHLORATE DE CALCIUM,O2,2
+dom_classification_onu_288,1453,CHLORITE DE CALCIUM,O2,2
+dom_classification_onu_289,1454,NITRATE DE CALCIUM,O2,3
+dom_classification_onu_290,1455,PERCHLORATE DE CALCIUM,O2,2
+dom_classification_onu_291,1456,PERMANGANATE DE CALCIUM,O2,2
+dom_classification_onu_292,1457,PEROXYDE DE CALCIUM,O2,2
+dom_classification_onu_293,1458,CHLORATE ET BORATE EN MÉLANGE,O2,3
+dom_classification_onu_294,1458,CHLORATE ET BORATE EN MÉLANGE,O2,2
+dom_classification_onu_295,1459,CHLORATE ET CHLORURE DE MAGNÉSIUM EN MÉLANGE SOLIDE,O2,2
+dom_classification_onu_296,1459,CHLORATE ET CHLORURE DE MAGNÉSIUM EN MÉLANGE SOLIDE,O2,3
+dom_classification_onu_297,1461,CHLORATES INORGANIQUES N.S.A.,O2,2
+dom_classification_onu_298,1462,CHLORITES INORGANIQUES N.S.A.,O2,2
+dom_classification_onu_299,1463,TRIOXYDE DE CHROME ANHYDRE,OTC,2
+dom_classification_onu_300,1465,NITRATE DE DIDYME,O2,3
+dom_classification_onu_301,1466,NITRATE DE FER III,O2,3
+dom_classification_onu_302,1467,NITRATE DE GUANIDINE,O2,3
+dom_classification_onu_303,1469,NITRATE DE PLOMB,OT2,2
+dom_classification_onu_304,1470,PERCHLORATE DE PLOMB SOLIDE,OT2,2
+dom_classification_onu_305,1471,HYPOCHLORITE DE LITHIUM SEC ou HYPOCHLORITE DE LITHIUM EN MÉLANGE,O2,2
+dom_classification_onu_306,1471,HYPOCHLORITE DE LITHIUM SEC ou HYPOCHLORITE DE LITHIUM EN MÉLANGE,O2,3
+dom_classification_onu_307,1472,PEROXYDE DE LITHIUM,O2,2
+dom_classification_onu_308,1473,BROMATE DE MAGNÉSIUM,O2,2
+dom_classification_onu_309,1474,NITRATE DE MAGNÉSIUM,O2,3
+dom_classification_onu_310,1475,PERCHLORATE DE MAGNÉSIUM,O2,2
+dom_classification_onu_311,1476,PEROXYDE DE MAGNÉSIUM,O2,2
+dom_classification_onu_312,1477,NITRATES INORGANIQUES N.S.A.,O2,3
+dom_classification_onu_313,1477,NITRATES INORGANIQUES N.S.A.,O2,2
+dom_classification_onu_314,1479,SOLIDE COMBURANT N.S.A.,O2,2
+dom_classification_onu_315,1479,SOLIDE COMBURANT N.S.A.,O2,3
+dom_classification_onu_316,1481,PERCHLORATES INORGANIQUES N.S.A.,O2,2
+dom_classification_onu_317,1481,PERCHLORATES INORGANIQUES N.S.A.,O2,3
+dom_classification_onu_318,1482,PERMANGANATES INORGANIQUES N.S.A.,O2,2
+dom_classification_onu_319,1482,PERMANGANATES INORGANIQUES N.S.A.,O2,3
+dom_classification_onu_320,1483,PEROXYDES INORGANIQUES N.S.A.,O2,2
+dom_classification_onu_321,1483,PEROXYDES INORGANIQUES N.S.A.,O2,3
+dom_classification_onu_322,1484,BROMATE DE POTASSIUM,O2,2
+dom_classification_onu_323,1485,CHLORATE DE POTASSIUM,O2,2
+dom_classification_onu_324,1486,NITRATE DE POTASSIUM,O2,3
+dom_classification_onu_325,1487,NITRATE DE POTASSIUM ET NITRITE DE SODIUM EN MÉLANGE,O2,2
+dom_classification_onu_326,1488,NITRITE DE POTASSIUM,O2,2
+dom_classification_onu_327,1489,PERCHLORATE DE POTASSIUM,O2,2
+dom_classification_onu_328,1490,PERMANGANATE DE POTASSIUM,O2,2
+dom_classification_onu_329,1492,PERSULFATE DE POTASSIUM,O2,3
+dom_classification_onu_330,1493,NITRATE D'ARGENT,O2,2
+dom_classification_onu_331,1494,BROMATE DE SODIUM,O2,2
+dom_classification_onu_332,1495,CHLORATE DE SODIUM,O2,2
+dom_classification_onu_333,1496,CHLORITE DE SODIUM,O2,2
+dom_classification_onu_334,1498,NITRATE DE SODIUM,O2,3
+dom_classification_onu_335,1499,NITRATE DE SODIUM ET NITRATE DE POTASSIUM EN MÉLANGE,O2,3
+dom_classification_onu_336,1500,NITRITE DE SODIUM,OT2,3
+dom_classification_onu_337,1502,PERCHLORATE DE SODIUM,O2,2
+dom_classification_onu_338,1503,PERMANGANATE DE SODIUM,O2,2
+dom_classification_onu_339,1505,PERSULFATE DE SODIUM,O2,3
+dom_classification_onu_340,1506,CHLORATE DE STRONTIUM,O2,2
+dom_classification_onu_341,1507,NITRATE DE STRONTIUM,O2,3
+dom_classification_onu_342,1508,PERCHLORATE DE STRONTIUM,O2,2
+dom_classification_onu_343,1509,PEROXYDE DE STRONTIUM,O2,2
+dom_classification_onu_344,1511,URÉE-PEROXYDE D'HYDROGÈNE,OC2,3
+dom_classification_onu_345,1512,NITRITE DE ZINC AMMONIACAL,O2,2
+dom_classification_onu_346,1513,CHLORATE DE ZINC,O2,2
+dom_classification_onu_347,1514,NITRATE DE ZINC,O2,2
+dom_classification_onu_348,1515,PERMANGANATE DE ZINC,O2,2
+dom_classification_onu_349,1516,PEROXYDE DE ZINC,O2,2
+dom_classification_onu_350,1544,ALCALOÏDES SOLIDES N.S.A. ou SELS D'ALCALOÏDES SOLIDES N.S.A.,T2,2
+dom_classification_onu_351,1544,ALCALOÏDES SOLIDES N.S.A. ou SELS D'ALCALOÏDES SOLIDES N.S.A.,T2,3
+dom_classification_onu_352,1545,ISOTHIOCYANATE D'ALLYLE STABILISÉ,TF1,2
+dom_classification_onu_353,1546,ARSÉNIATE D'AMMONIUM,T5,2
+dom_classification_onu_354,1547,ANILINE,T1,2
+dom_classification_onu_355,1548,CHLORHYDRATE D'ANILINE,T2,3
+dom_classification_onu_356,1549,COMPOSÉ INORGANIQUE SOLIDE DE L'ANTIMOINE N.S.A.,T5,3
+dom_classification_onu_357,1550,LACTATE D'ANTIMOINE,T5,3
+dom_classification_onu_358,1551,TARTRATE D'ANTIMOINE ET DE POTASSIUM,T5,3
+dom_classification_onu_359,1554,ACIDE ARSÉNIQUE SOLIDE,T5,2
+dom_classification_onu_360,1555,BROMURE D'ARSENIC,T5,2
+dom_classification_onu_361,1556,COMPOSÉ LIQUIDE DE L'ARSENIC N.S.A. inorganique notamment: arséniates n.s.a. arsénites n.s.a. et sulfures d'arsenic n.s.a.,T4,2
+dom_classification_onu_362,1556,COMPOSÉ LIQUIDE DE L'ARSENIC N.S.A. inorganique notamment: arséniates n.s.a. arsénites n.s.a. et sulfures d'arsenic n.s.a.,T4,3
+dom_classification_onu_363,1557,COMPOSÉ SOLIDE DE L'ARSENIC N.S.A. inorganique notamment: arséniates n.s.a. arsénites n.s.a. et sulfures d'arsenic n.s.a.,T5,2
+dom_classification_onu_364,1557,COMPOSÉ SOLIDE DE L'ARSENIC N.S.A. inorganique notamment: arséniates n.s.a. arsénites n.s.a. et sulfures d'arsenic n.s.a.,T5,3
+dom_classification_onu_365,1558,ARSENIC,T5,2
+dom_classification_onu_366,1559,PENTOXYDE D'ARSENIC,T5,2
+dom_classification_onu_367,1561,TRIOXYDE D'ARSENIC,T5,2
+dom_classification_onu_368,1562,POUSSIÈRE ARSENICALE,T5,2
+dom_classification_onu_369,1564,COMPOSÉ DU BARYUM N.S.A.,T5,2
+dom_classification_onu_370,1564,COMPOSÉ DU BARYUM N.S.A.,T5,3
+dom_classification_onu_371,1566,COMPOSÉ DU BERYLLIUM N.S.A.,T5,2
+dom_classification_onu_372,1566,COMPOSÉ DU BERYLLIUM N.S.A.,T5,3
+dom_classification_onu_373,1567,BERYLLIUM EN POUDRE,TF3,2
+dom_classification_onu_374,1572,ACIDE CACODYLIQUE,T5,2
+dom_classification_onu_375,1573,ARSÉNIATE DE CALCIUM,T5,2
+dom_classification_onu_376,1574,ARSÉNIATE DE CALCIUM ET ARSÉNITE DE CALCIUM EN MÉLANGE SOLIDE,T5,2
+dom_classification_onu_377,1577,CHLORODINITRO-BENZÈNES LIQUIDES,T1,2
+dom_classification_onu_378,1578,CHLORONITROBENZÈNES SOLIDES,T2,2
+dom_classification_onu_379,1579,CHLORHYDRATE DE CHLORO-4 o-TOLUIDINE SOLIDE,T2,3
+dom_classification_onu_380,1583,CHLOROPICRINE EN MÉLANGE N.S.A.,T1,2
+dom_classification_onu_381,1583,CHLOROPICRINE EN MÉLANGE N.S.A.,T1,3
+dom_classification_onu_382,1585,ACÉTOARSÉNITE DE CUIVRE,T5,2
+dom_classification_onu_383,1586,ARSÉNITE DE CUIVRE,T5,2
+dom_classification_onu_384,1587,CYANURE DE CUIVRE,T5,2
+dom_classification_onu_385,1588,CYANURES INORGANIQUES SOLIDES N.S.A.,T5,2
+dom_classification_onu_386,1588,CYANURES INORGANIQUES SOLIDES N.S.A.,T5,3
+dom_classification_onu_387,1590,DICHLORANILINES LIQUIDES,T1,2
+dom_classification_onu_388,1591,o-DICHLOROBENZÈNE,T1,3
+dom_classification_onu_389,1593,DICHLOROMÉTHANE,T1,3
+dom_classification_onu_390,1594,SULFATE DE DIÉTHYLE,T1,2
+dom_classification_onu_391,1596,DINITRANILINES,T2,2
+dom_classification_onu_392,1597,DINITROBENZÈNES LIQUIDES,T1,2
+dom_classification_onu_393,1597,DINITROBENZÈNES LIQUIDES,T1,3
+dom_classification_onu_394,1598,DINITRO-o-CRÉSOL,T2,2
+dom_classification_onu_395,1599,DINITROPHÉNOL EN SOLUTION,T1,2
+dom_classification_onu_396,1599,DINITROPHÉNOL EN SOLUTION,T1,3
+dom_classification_onu_397,1601,DÉSINFECTANT SOLIDE TOXIQUE N.S.A,T2,3
+dom_classification_onu_398,1601,DÉSINFECTANT SOLIDE TOXIQUE N.S.A,T2,2
+dom_classification_onu_399,1602,COLORANT LIQUIDE TOXIQUE N.S.A. ou MATIÈRE INTERMÉDIAIRE LIQUIDE POUR COLORANT TOXIQUE N.S.A.,T1,3
+dom_classification_onu_400,1602,COLORANT LIQUIDE TOXIQUE N.S.A. ou MATIÈRE INTERMÉDIAIRE LIQUIDE POUR COLORANT TOXIQUE N.S.A.,T1,2
+dom_classification_onu_401,1603,BROMACÉTATE D'ÉTHYLE,TF1,2
+dom_classification_onu_402,1604,ÉTHYLÈNEDIAMINE,CF1,2
+dom_classification_onu_403,1606,ARSÉNIATE DE FER III,T5,2
+dom_classification_onu_404,1607,ARSÉNITE DE FER III,T5,2
+dom_classification_onu_405,1608,ARSÉNIATE DE FER II,T5,2
+dom_classification_onu_406,1611,TÉTRAPHOSPHATE D'HEXAÉTHYLE,T1,2
+dom_classification_onu_407,1616,ACÉTATE DE PLOMB,T5,3
+dom_classification_onu_408,1617,ARSÉNIATES DE PLOMB,T5,2
+dom_classification_onu_409,1618,ARSÉNITES DE PLOMB,T5,2
+dom_classification_onu_410,1620,CYANURE DE PLOMB,T5,2
+dom_classification_onu_411,1621,POURPRE DE LONDRES,T5,2
+dom_classification_onu_412,1622,ARSÉNIATE DE MAGNÉSIUM,T5,2
+dom_classification_onu_413,1623,ARSÉNIATE DE MERCURE II,T5,2
+dom_classification_onu_414,1624,CHLORURE DE MERCURE II,T5,2
+dom_classification_onu_415,1625,NITRATE DE MERCURE II,T5,2
+dom_classification_onu_416,1627,NITRATE DE MERCURE I,T5,2
+dom_classification_onu_417,1629,ACÉTATE DE MERCURE,T5,2
+dom_classification_onu_418,1630,CHLORURE DE MERCURE AMMONIACAL,T5,2
+dom_classification_onu_419,1631,BENZOATE DE MERCURE,T5,2
+dom_classification_onu_420,1634,BROMURES DE MERCURE,T5,2
+dom_classification_onu_421,1636,CYANURE DE MERCURE,T5,2
+dom_classification_onu_422,1637,GLUCONATE DE MERCURE,T5,2
+dom_classification_onu_423,1638,IODURE DE MERCURE,T5,2
+dom_classification_onu_424,1639,NUCLÉINATE DE MERCURE,T5,2
+dom_classification_onu_425,1640,OLÉATE DE MERCURE,T5,2
+dom_classification_onu_426,1641,OXYDE DE MERCURE,T5,2
+dom_classification_onu_427,1642,OXYCYANURE DE MERCURE DÉSENSIBILISÉ,T5,2
+dom_classification_onu_428,1643,IODURE DOUBLE DE MERCURE ET DE POTASSIUM,T5,2
+dom_classification_onu_429,1644,SALICYLATE DE MERCURE,T5,2
+dom_classification_onu_430,1645,SULFATE DE MERCURE,T5,2
+dom_classification_onu_431,1646,THIOCYANATE DE MERCURE,T5,2
+dom_classification_onu_432,1648,ACÉTONITRILE,F1,2
+dom_classification_onu_433,1650,bêta-NAPHTYLAMINE SOLIDE,T2,2
+dom_classification_onu_434,1651,NAPHTYLTHIO-URÉE,T2,2
+dom_classification_onu_435,1652,NAPHTYLURÉE,T2,2
+dom_classification_onu_436,1653,CYANURE DE NICKEL,T5,2
+dom_classification_onu_437,1654,NICOTINE,T1,2
+dom_classification_onu_438,1655,COMPOSÉ SOLIDE DE LA NICOTINE N.S.A. ou PRÉPARATION SOLIDE DE LA NICOTINE N.S.A.,T2,2
+dom_classification_onu_439,1655,COMPOSÉ SOLIDE DE LA NICOTINE N.S.A. ou PRÉPARATION SOLIDE DE LA NICOTINE N.S.A.,T2,3
+dom_classification_onu_440,1656,CHLORHYDRATE DE NICOTINE LIQUIDE ou EN SOLUTION,T1,2
+dom_classification_onu_441,1656,CHLORHYDRATE DE NICOTINE LIQUIDE ou EN SOLUTION,T1,3
+dom_classification_onu_442,1657,SALICYLATE DE NICOTINE,T2,2
+dom_classification_onu_443,1658,SULFATE DE NICOTINE EN SOLUTION,T1,2
+dom_classification_onu_444,1658,SULFATE DE NICOTINE EN SOLUTION,T1,3
+dom_classification_onu_445,1659,TARTRATE DE NICOTINE,T2,2
+dom_classification_onu_446,1661,NITRANILINES (o- m- p-),T2,2
+dom_classification_onu_447,1662,NITROBENZÈNE,T1,2
+dom_classification_onu_448,1663,NITROPHÉNOLS (o- m- p-),T2,3
+dom_classification_onu_449,1664,NITROTOLUÈNES LIQUIDES,T1,2
+dom_classification_onu_450,1665,NITROXYLÈNES LIQUIDES,T1,2
+dom_classification_onu_451,1669,PENTACHLORÉTHANE,T1,2
+dom_classification_onu_452,1671,PHÉNOL SOLIDE,T2,2
+dom_classification_onu_453,1673,PHÉNYLÈNEDIAMINES (o- m- p-),T2,3
+dom_classification_onu_454,1674,ACÉTATE DE PHÉNYLMERCURE,T3,2
+dom_classification_onu_455,1677,ARSÉNIATE DE POTASSIUM,T5,2
+dom_classification_onu_456,1678,ARSÉNITE DE POTASSIUM,T5,2
+dom_classification_onu_457,1679,CUPROCYANURE DE POTASSIUM,T5,2
+dom_classification_onu_458,1683,ARSÉNITE D'ARGENT,T5,2
+dom_classification_onu_459,1684,CYANURE D'ARGENT,T5,2
+dom_classification_onu_460,1685,ARSÉNIATE DE SODIUM,T5,2
+dom_classification_onu_461,1686,ARSÉNITE DE SODIUM EN SOLUTION AQUEUSE,T4,2
+dom_classification_onu_462,1686,ARSÉNITE DE SODIUM EN SOLUTION AQUEUSE,T4,3
+dom_classification_onu_463,1687,AZOTURE DE SODIUM,T5,2
+dom_classification_onu_464,1688,CACODYLATE DE SODIUM,T5,2
+dom_classification_onu_465,1690,FLUORURE DE SODIUM SOLIDE,T5,3
+dom_classification_onu_466,1691,ARSÉNITE DE STRONTIUM,T5,2
+dom_classification_onu_467,1702,1122-TÉTRACHLORÉTHANE,T1,2
+dom_classification_onu_468,1704,DITHIOPYROPHOSPHATE DE TÉTRAÉTHYLE,T1,2
+dom_classification_onu_469,1707,COMPOSÉ DU THALLIUM N.S.A.,T5,2
+dom_classification_onu_470,1708,TOLUIDINES LIQUIDES,T1,2
+dom_classification_onu_471,1709,m-TOLUYLÈNEDIAMINE SOLIDE,T2,3
+dom_classification_onu_472,1710,TRICHLORÉTHYLÈNE,T1,3
+dom_classification_onu_473,1711,XYLIDINES LIQUIDES,T1,2
+dom_classification_onu_474,1712,ARSÉNIATE DE ZINC ou ARSÉNITE DE ZINC ou ARSÉNIATE DE ZINC ET ARSÉNITE DE ZINC EN MÉLANGE,T5,2
+dom_classification_onu_475,1715,ANHYDRIDE ACÉTIQUE,CF1,2
+dom_classification_onu_476,1716,BROMURE D'ACÉTYLE,C3,2
+dom_classification_onu_477,1717,CHLORURE D'ACÉTYLE,FC,2
+dom_classification_onu_478,1718,PHOSPHATE ACIDE DE BUTYLE,C3,3
+dom_classification_onu_479,1719,LIQUIDE ALCALIN CAUSTIQUE N.S.A.,C5,2
+dom_classification_onu_480,1719,LIQUIDE ALCALIN CAUSTIQUE N.S.A.,C5,3
+dom_classification_onu_481,1723,IODURE D'ALLYLE,FC,2
+dom_classification_onu_482,1725,BROMURE D'ALUMINIUM ANHYDRE,C2,2
+dom_classification_onu_483,1726,CHLORURE D'ALUMINIUM ANHYDRE,C2,2
+dom_classification_onu_484,1727,HYDROGÉNODI-FLUORURE D'AMMONIUM SOLIDE,C2,2
+dom_classification_onu_485,1729,CHLORURE D'ANISOYLE,C4,2
+dom_classification_onu_486,1730,PENTACHLORURE D'ANTIMOINE LIQUIDE,C1,2
+dom_classification_onu_487,1731,PENTACHLORURE D'ANTIMOINE EN SOLUTION,C1,2
+dom_classification_onu_488,1731,PENTACHLORURE D'ANTIMOINE EN SOLUTION,C1,3
+dom_classification_onu_489,1732,PENTAFLUORURE D'ANTIMOINE,CT1,2
+dom_classification_onu_490,1733,TRICHLORURE D'ANTIMOINE,C2,2
+dom_classification_onu_491,1736,CHLORURE DE BENZOYLE,C3,2
+dom_classification_onu_492,1740,HYDROGÉNODIFLUO-RURES SOLIDES N.S.A.,C2,3
+dom_classification_onu_493,1740,HYDROGÉNODIFLUO-RURES SOLIDES N.S.A.,C2,2
+dom_classification_onu_494,1742,COMPLEXE DE TRIFLUORURE DE BORE ET D'ACIDE ACÉTIQUE LIQUIDE,C3,2
+dom_classification_onu_495,1743,COMPLEXE DE TRIFLUORURE DE BORE ET D'ACIDE PROPIONIQUE LIQUIDE,C3,2
+dom_classification_onu_496,1748,HYPOCHLORITE DE CALCIUM SEC ou HYPOCHLORITE DE CALCIUM EN MÉLANGE SEC contenant plus de 39% de chlore actif (88% d'oxygène actif),O2,2
+dom_classification_onu_497,1748,HYPOCHLORITE DE CALCIUM SEC ou HYPOCHLORITE DE CALCIUM EN MÉLANGE SEC contenant plus de 39% de chlore actif (88% d'oxygène actif),O2,3
+dom_classification_onu_498,1750,ACIDE CHLORACÉTIQUE EN SOLUTION,TC1,2
+dom_classification_onu_499,1751,ACIDE CHLORACÉTIQUE SOLIDE,TC2,2
+dom_classification_onu_500,1755,ACIDE CHROMIQUE EN SOLUTION,C1,2
+dom_classification_onu_501,1755,ACIDE CHROMIQUE EN SOLUTION,C1,3
+dom_classification_onu_502,1756,FLUORURE DE CHROME III SOLIDE,C2,2
+dom_classification_onu_503,1757,FLUORURE DE CHROME III EN SOLUTION,C1,2
+dom_classification_onu_504,1757,FLUORURE DE CHROME III EN SOLUTION,C1,3
+dom_classification_onu_505,1759,SOLIDE CORROSIF N.S.A.,C10,2
+dom_classification_onu_506,1759,SOLIDE CORROSIF N.S.A.,C10,3
+dom_classification_onu_507,1760,LIQUIDE CORROSIF N.S.A.,C9,2
+dom_classification_onu_508,1760,LIQUIDE CORROSIF N.S.A.,C9,3
+dom_classification_onu_509,1761,CUPRIÉTHYLÈNEDIAMINE EN SOLUTION,CT1,2
+dom_classification_onu_510,1761,CUPRIÉTHYLÈNEDIAMINE EN SOLUTION,CT1,3
+dom_classification_onu_511,1764,ACIDE DICHLORACÉTIQUE,C3,2
+dom_classification_onu_512,1765,CHLORURE DE DICHLORACÉTYLE,C3,2
+dom_classification_onu_513,1768,ACIDE DIFLUORO-PHOSPHORIQUE ANHYDRE,C1,2
+dom_classification_onu_514,1770,BROMURE DE DIPHÉNYLMÉTHYLE,C10,2
+dom_classification_onu_515,1773,CHLORURE DE FER III ANHYDRE,C2,3
+dom_classification_onu_516,1774,CHARGES D'EXTINCTEURS liquide corrosif,C11,2
+dom_classification_onu_517,1775,ACIDE FLUOROBORIQUE,C1,2
+dom_classification_onu_518,1776,ACIDE FLUOROPHOSPHORIQUE ANHYDRE,C1,2
+dom_classification_onu_519,1778,ACIDE FLUOROSILICIQUE,C1,2
+dom_classification_onu_520,1779,ACIDE FORMIQUE contenant plus de 85% (masse) d'acide,CF1,2
+dom_classification_onu_521,1780,CHLORURE DE FUMARYLE,C3,2
+dom_classification_onu_522,1782,ACIDE HEXAFLUORO-PHOSPHORIQUE,C1,2
+dom_classification_onu_523,1783,HEXAMÉTHYLÈNE-DIAMINE EN SOLUTION,C7,2
+dom_classification_onu_524,1783,HEXAMÉTHYLÈNE-DIAMINE EN SOLUTION,C7,3
+dom_classification_onu_525,1787,ACIDE IODHYDRIQUE,C1,2
+dom_classification_onu_526,1787,ACIDE IODHYDRIQUE,C1,3
+dom_classification_onu_527,1788,ACIDE BROMHYDRIQUE,C1,2
+dom_classification_onu_528,1788,ACIDE BROMHYDRIQUE,C1,3
+dom_classification_onu_529,1789,ACIDE CHLORHYDRIQUE,C1,2
+dom_classification_onu_530,1789,ACIDE CHLORHYDRIQUE,C1,3
+dom_classification_onu_531,1790,ACIDE FLUORHYDRIQUE contenant au plus 60% de fluorure d'hydrogène,CT1,2
+dom_classification_onu_532,1791,HYPOCHLORITE EN SOLUTION,C9,2
+dom_classification_onu_533,1791,HYPOCHLORITE EN SOLUTION,C9,3
+dom_classification_onu_534,1792,MONOCHLORURE D'IODE,C1,2
+dom_classification_onu_535,1793,PHOSPHATE ACIDE D'ISOPROPYLE,C3,3
+dom_classification_onu_536,1794,SULFATE DE PLOMB contenant plus de 3% d'acide libre,C2,2
+dom_classification_onu_537,1796,ACIDE SULFONITRIQUE contenant au plus 50% d'acide nitrique,C1,2
+dom_classification_onu_538,1802,ACIDE PERCHLORIQUE contenant au plus 50% (masse) d'acide,CO1,2
+dom_classification_onu_539,1803,ACIDE PHÉNOLSULFONIQUE LIQUIDE,C3,2
+dom_classification_onu_540,1805,ACIDE PHOSPHORIQUE EN SOLUTION,C1,3
+dom_classification_onu_541,1806,PENTACHLORURE DE PHOSPHORE,C2,2
+dom_classification_onu_542,1807,ANHYDRIDE PHOSPHORIQUE (PENTOXYDE DE PHOSPHORE),C2,2
+dom_classification_onu_543,1808,TRIBROMURE DE PHOSPHORE,C1,2
+dom_classification_onu_544,1811,HYDROGÉNODIFLUO-RURE DE POTASSIUM SOLIDE,CT2,2
+dom_classification_onu_545,1812,FLUORURE DE POTASSIUM SOLIDE,T5,3
+dom_classification_onu_546,1813,HYDROXYDE DE POTASSIUM SOLIDE,C6,2
+dom_classification_onu_547,1814,HYDROXYDE DE POTASSIUM EN SOLUTION,C5,2
+dom_classification_onu_548,1814,HYDROXYDE DE POTASSIUM EN SOLUTION,C5,3
+dom_classification_onu_549,1815,CHLORURE DE PROPIONYLE,FC,2
+dom_classification_onu_550,1817,CHLORURE DE PYROSULFURYLE,C1,2
+dom_classification_onu_551,1819,ALUMINATE DE SODIUM EN SOLUTION,C5,2
+dom_classification_onu_552,1819,ALUMINATE DE SODIUM EN SOLUTION,C5,3
+dom_classification_onu_553,1823,HYDROXYDE DE SODIUM SOLIDE,C6,2
+dom_classification_onu_554,1824,HYDROXYDE DE SODIUM EN SOLUTION,C5,2
+dom_classification_onu_555,1824,HYDROXYDE DE SODIUM EN SOLUTION,C5,3
+dom_classification_onu_556,1825,MONOXYDE DE SODIUM,C6,2
+dom_classification_onu_557,1826,ACIDE SULFONITRIQUE RÉSIDUAIRE contenant au plus 50% d'acide nitrique,C1,2
+dom_classification_onu_558,1827,CHLORURE D'ÉTAIN IV ANHYDRE,C1,2
+dom_classification_onu_559,1830,ACIDE SULFURIQUE contenant plus de 51% d'acide,C1,2
+dom_classification_onu_560,1832,ACIDE SULFURIQUE RÉSIDUAIRE,C1,2
+dom_classification_onu_561,1833,ACIDE SULFUREUX,C1,2
+dom_classification_onu_562,1835,HYDROXYDE DE TÉTRAMÉTHYL-AMMONIUM EN SOLUTION,C7,2
+dom_classification_onu_563,1835,HYDROXYDE DE TÉTRAMÉTHYL-AMMONIUM EN SOLUTION,C7,3
+dom_classification_onu_564,1837,CHLORURE DE THIOPHOSPHORYLE,C1,2
+dom_classification_onu_565,1839,ACIDE TRICHLORACÉTIQUE,C4,2
+dom_classification_onu_566,1840,CHLORURE DE ZINC EN SOLUTION,C1,3
+dom_classification_onu_567,1841,ALDÉHYDATE D'AMMONIAQUE,M11,3
+dom_classification_onu_568,1843,DINITRO-o-CRÉSATE D'AMMONIUM SOLIDE,T2,2
+dom_classification_onu_569,1845,Dioxyde de carbone solide (Anydride carbonique Neige carbonique) (Attention si utilisé en tant qu'agent de réfrigération voir 5.5.3),M11,
+dom_classification_onu_570,1846,TÉTRACHLORURE DE CARBONE,T1,2
+dom_classification_onu_571,1847,SULFURE DE POTASSIUM HYDRATÉ contenant au moins 30% d'eau de cristallisation,C6,2
+dom_classification_onu_572,1848,ACIDE PROPIONIQUE contenant au moins 10% mais moins de 90% (masse) d'acide,C3,3
+dom_classification_onu_573,1849,SULFURE DE SODIUM HYDRATÉ contenant au moins 30% d'eau,C6,2
+dom_classification_onu_574,1851,MÉDICAMENT LIQUIDE TOXIQUE N.S.A.,T1,2
+dom_classification_onu_575,1851,MÉDICAMENT LIQUIDE TOXIQUE N.S.A.,T1,3
+dom_classification_onu_576,1858,HEXAFLUORO-PROPYLÈNE (GAZ RÉFRIGÉRANT R 1216),2A,
+dom_classification_onu_577,1862,CROTONATE D'ÉTHYLE,F1,2
+dom_classification_onu_578,1863,CARBURÉACTEUR,F1,1
+dom_classification_onu_579,1863,CARBURÉACTEUR,F1,3
+dom_classification_onu_580,1863,CARBURÉACTEUR (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_581,1863,CARBURÉACTEUR (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_582,1865,NITRATE DE n-PROPYLE,F1,2
+dom_classification_onu_583,1866,RÉSINE EN SOLUTION inflammable,F1,1
+dom_classification_onu_584,1866,RÉSINE EN SOLUTION inflammable ,F1,3
+dom_classification_onu_585,1866,RÉSINE EN SOLUTION inflammable (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_586,1866,RÉSINE EN SOLUTION inflammable (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_587,1866,RÉSINE EN SOLUTION inflammable (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_588,1866,RÉSINE EN SOLUTION inflammable (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_589,1868,DÉCABORANE,FT2,2
+dom_classification_onu_590,1869,MAGNÉSIUM ou ALLIAGES DE MAGNÉSIUM contenant plus de 50% de magnésium sous forme de granulés de tournures ou de rubans,F3,3
+dom_classification_onu_591,1871,HYDRURE DE TITANE,F3,2
+dom_classification_onu_592,1872,DIOXYDE DE PLOMB,OT2,3
+dom_classification_onu_593,1884,OXYDE DE BARYUM,T5,3
+dom_classification_onu_594,1885,BENZIDINE,T2,2
+dom_classification_onu_595,1886,CHLORURE DE BENZYLIDÈNE,T1,2
+dom_classification_onu_596,1887,BROMOCHLORO-MÉTHANE,T1,3
+dom_classification_onu_597,1888,CHLOROFORME,T1,3
+dom_classification_onu_598,1891,BROMURE D'ÉTHYLE,T1,2
+dom_classification_onu_599,1894,HYDROXYDE DE PHÉNYLMERCURE,T3,2
+dom_classification_onu_600,1895,NITRATE DE PHÉNYLMERCURE,T3,2
+dom_classification_onu_601,1897,TÉTRACHLORÉTHYLÈNE,T1,3
+dom_classification_onu_602,1898,IODURE D'ACÉTYLE,C3,2
+dom_classification_onu_603,1902,PHOSPHATE ACIDE DE DIISOOCTYLE,C3,3
+dom_classification_onu_604,1903,DÉSINFECTANT LIQUIDE CORROSIF N.S.A.,C9,2
+dom_classification_onu_605,1903,DÉSINFECTANT LIQUIDE CORROSIF N.S.A.,C9,3
+dom_classification_onu_606,1906,ACIDE RÉSIDUAIRE DE RAFFINAGE,C1,2
+dom_classification_onu_607,1907,CHAUX SODÉE contenant plus de 4% d'hydroxyde de sodium,C6,3
+dom_classification_onu_608,1908,CHLORITE EN SOLUTION,C9,2
+dom_classification_onu_609,1908,CHLORITE EN SOLUTION,C9,3
+dom_classification_onu_610,1913,NÉON LIQUIDE RÉFRIGÉRÉ,3A,
+dom_classification_onu_611,1914,PROPIONATES DE BUTYLE,F1,3
+dom_classification_onu_612,1915,CYCLOHEXANONE,F1,3
+dom_classification_onu_613,1916,ÉTHER DICHLORO-22' DIÉTHYLIQUE,TF1,2
+dom_classification_onu_614,1917,ACRYLATE D'ÉTHYLE STABILISÉ,F1,2
+dom_classification_onu_615,1918,ISOPROPYLBENZÈNE,F1,3
+dom_classification_onu_616,1919,ACRYLATE DE MÉTHYLE STABILISÉ,F1,2
+dom_classification_onu_617,1920,NONANES,F1,3
+dom_classification_onu_618,1922,PYRROLIDINE,FC,2
+dom_classification_onu_619,1931,DITHIONITE DE ZINC (HYDROSULFITE DE ZINC),M11,3
+dom_classification_onu_620,1935,CYANURE EN SOLUTION N.S.A.,T4,2
+dom_classification_onu_621,1935,CYANURE EN SOLUTION N.S.A.,T4,3
+dom_classification_onu_622,1938,ACIDE BROMACÉTIQUE EN SOLUTION,C3,2
+dom_classification_onu_623,1938,ACIDE BROMACÉTIQUE EN SOLUTION,C3,3
+dom_classification_onu_624,1939,OXYBROMURE DE PHOSPHORE,C2,2
+dom_classification_onu_625,1940,ACIDE THIOGLYCOLIQUE,C3,2
+dom_classification_onu_626,1941,DIBROMODIFLUORO-MÉTHANE,M11,3
+dom_classification_onu_627,1942,NITRATE D'AMMONIUM contenant au plus 02% de matières combustibles totales (y compris les matières organiques exprimées en équivalent carbone) à l'exclusion de toute autre matière,O2,3
+dom_classification_onu_628,1944,ALLUMETTES DE SÛRETÉ (à frottoir en carnets ou pochettes),F1,3
+dom_classification_onu_629,1945,ALLUMETTES-BOUGIES,F1,3
+dom_classification_onu_630,1950,AÉROSOLS asphyxiants,5A,
+dom_classification_onu_631,1950,AÉROSOLS comburants,5O,
+dom_classification_onu_632,1950,AÉROSOLS corrosifs,5C,
+dom_classification_onu_633,1950,AÉROSOLS corrosifs comburants,5CO,
+dom_classification_onu_634,1950,AÉROSOLS inflammables,5F,
+dom_classification_onu_635,1950,AÉROSOLS inflammables corrosifs,5FC,
+dom_classification_onu_636,1950,AÉROSOLS toxiques,5T,
+dom_classification_onu_637,1950,AÉROSOLS toxiques comburants,5TO,
+dom_classification_onu_638,1950,AÉROSOLS toxiques comburants corrosifs,5TOC,
+dom_classification_onu_639,1950,AÉROSOLS toxiques corrosifs,5TC,
+dom_classification_onu_640,1950,AÉROSOLS toxiques inflammables,5TF,
+dom_classification_onu_641,1950,AÉROSOLS toxiques inflammables corrosifs,5TFC,
+dom_classification_onu_642,1951,ARGON LIQUIDE RÉFRIGÉRÉ,3A,
+dom_classification_onu_643,1952,OXYDE D'ÉTHYLÈNE ET DIOXYDE DE CARBONE EN MÉLANGE contenant au plus 9% d'oxyde d'éthylène,2A,
+dom_classification_onu_644,1956,GAZ COMPRIMÉ N.S.A.,1A,
+dom_classification_onu_645,1958,DICHLORO-12 TÉTRAFLUORO-1122 ÉTHANE (GAZ RÉFRIGÉRANT R 114),2A,
+dom_classification_onu_646,1963,HÉLIUM LIQUIDE RÉFRIGÉRÉ,3A,
+dom_classification_onu_647,1968,GAZ INSECTICIDE N.S.A.,2A,
+dom_classification_onu_648,1970,KRYPTON LIQUIDE RÉFRIGÉRÉ,3A,
+dom_classification_onu_649,1973,CHLORODIFLUORO-MÉTHANE ET CHLOROPENTAFLUOR-ÉTHANE EN MÉLANGE à point d'ébullition fixe contenant environ 49% de chlorodifluorométhane (GAZ RÉFRIGÉRANT R 502),2A,
+dom_classification_onu_650,1974,BROMOCHLORODI-FLUOROMÉTHANE (GAZ RÉFRIGÉRANT R 12B1),2A,
+dom_classification_onu_651,1976,OCTAFLUOROCYCLO-BUTANE (GAZ RÉFRIGÉRANT RC 318),2A,
+dom_classification_onu_652,1977,AZOTE LIQUIDE RÉFRIGÉRÉ,3A,
+dom_classification_onu_653,1982,TÉTRAFLUOROMÉTHANE (GAZ RÉFRIGÉRANT R 14),2A,
+dom_classification_onu_654,1983,CHLORO-1 TRIFLUORO-222 ÉTHANE (GAZ RÉFRIGÉRANT R 133a),2A,
+dom_classification_onu_655,1984,TRIFLUOROMÉTHANE (GAZ RÉFRIGÉRANT R 23),2A,
+dom_classification_onu_656,1986,ALCOOLS INFLAMMABLES TOXIQUES N.S.A.,FT1,2
+dom_classification_onu_657,1986,ALCOOLS INFLAMMABLES TOXIQUES N.S.A.,FT1,3
+dom_classification_onu_658,1987,ALCOOLS N.S.A.,F1,3
+dom_classification_onu_659,1987,ALCOOLS N.S.A. (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_660,1987,ALCOOLS N.S.A. (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_661,1988,ALDÉHYDES INFLAMMABLES TOXIQUES N.S.A.,FT1,2
+dom_classification_onu_662,1988,ALDÉHYDES INFLAMMABLES TOXIQUES N.S.A.,FT1,3
+dom_classification_onu_663,1989,ALDÉHYDES N.S.A.,F1,3
+dom_classification_onu_664,1989,ALDÉHYDES N.S.A. (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_665,1989,ALDÉHYDES N.S.A. (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_666,1990,BENZALDÉHYDE,M11,3
+dom_classification_onu_667,1992,LIQUIDE INFLAMMABLE TOXIQUE N.S.A.,FT1,2
+dom_classification_onu_668,1992,LIQUIDE INFLAMMABLE TOXIQUE N.S.A.,FT1,3
+dom_classification_onu_669,1993,LIQUIDE INFLAMMABLE N.S.A. ,F1,3
+dom_classification_onu_670,1993,LIQUIDE INFLAMMABLE N.S.A. (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_671,1993,LIQUIDE INFLAMMABLE N.S.A. (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_672,1993,LIQUIDE INFLAMMABLE N.S.A. (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_673,1993,LIQUIDE INFLAMMABLE N.S.A. (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_674,1999,GOUDRONS LIQUIDES y compris les liants routiers et les cut backs bitumineux ,F1,3
+dom_classification_onu_675,1999,GOUDRONS LIQUIDES y compris les liants routiers et les cut backs bitumineux (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,3
+dom_classification_onu_676,1999,GOUDRONS LIQUIDES y compris les liants routiers et les cut backs bitumineux (ayant un point d¿éclair inférieur à 23 °C et visqueux selon 2.2.3.1.4) (pression de vapeur à 50 °C supérieure à 110 kPa point d'ébullition supérieur à 35 °C),F1,3
+dom_classification_onu_677,1999,GOUDRONS LIQUIDES y compris les liants routiers et les cut backs bitumineux (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_678,1999,GOUDRONS LIQUIDES y compris les liants routiers et les cut backs bitumineux (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_679,2000,CELLULOÏD en blocs barres rouleaux feuilles tubes etc. (à l'exclusion des déchets),F1,3
+dom_classification_onu_680,2001,NAPHTÉNATES DE COBALT EN POUDRE,F3,3
+dom_classification_onu_681,2014,PEROXYDE D'HYDROGÈNE EN SOLUTION AQUEUSE contenant au moins 20% mais au maximum 60% de peroxyde d'hydrogène (stabilisée selon les besoins),OC1,2
+dom_classification_onu_682,2018,CHLORANILINES SOLIDES,T2,2
+dom_classification_onu_683,2019,CHLORANILINES LIQUIDES,T1,2
+dom_classification_onu_684,2020,CHLOROPHÉNOLS SOLIDES,T2,3
+dom_classification_onu_685,2021,CHLOROPHÉNOLS LIQUIDES,T1,3
+dom_classification_onu_686,2022,ACIDE CRÉSILIQUE,TC1,2
+dom_classification_onu_687,2023,ÉPICHLORHYDRINE,TF1,2
+dom_classification_onu_688,2024,COMPOSÉ LIQUIDE DU MERCURE N.S.A.,T4,2
+dom_classification_onu_689,2024,COMPOSÉ LIQUIDE DU MERCURE N.S.A.,T4,3
+dom_classification_onu_690,2025,COMPOSÉ SOLIDE DE MERCURE N.S.A.,T5,2
+dom_classification_onu_691,2025,COMPOSÉ SOLIDE DE MERCURE N.S.A.,T5,3
+dom_classification_onu_692,2026,COMPOSÉ PHÉNYLMERCURIQUE N.S.A.,T3,2
+dom_classification_onu_693,2026,COMPOSÉ PHÉNYLMERCURIQUE N.S.A.,T3,3
+dom_classification_onu_694,2027,ARSÉNITE DE SODIUM SOLIDE,T5,2
+dom_classification_onu_695,2030,HYDRAZINE EN SOLUTION AQUEUSE contenant plus de 37% (masse) d'hydrazine ,CT1,2
+dom_classification_onu_696,2030,HYDRAZINE EN SOLUTION AQUEUSE contenant plus de 37% (masse) d'hydrazine ,CT1,3
+dom_classification_onu_697,2031,ACIDE NITRIQUE à l'exclusion de l'acide nitrique fumant rouge contenant au moins 65% mais au plus 70% d'acide nitrique,CO1,2
+dom_classification_onu_698,2031,ACIDE NITRIQUE à l'exclusion de l'acide nitrique fumant rouge contenant moins de 65% d'acide nitrique,C1,2
+dom_classification_onu_699,2033,MONOXYDE DE POTASSIUM,C6,2
+dom_classification_onu_700,2036,XENON,2A,
+dom_classification_onu_701,2037,RÉCIPIENTS DE FAIBLE CAPACITÉ CONTENANT DU GAZ (CARTOUCHES À GAZ) sans dispositif de détente non rechargeables,5A,
+dom_classification_onu_702,2037,RÉCIPIENTS DE FAIBLE CAPACITÉ CONTENANT DU GAZ (CARTOUCHES À GAZ) sans dispositif de détente non rechargeables,5F,
+dom_classification_onu_703,2037,RÉCIPIENTS DE FAIBLE CAPACITÉ CONTENANT DU GAZ (CARTOUCHES À GAZ) sans dispositif de détente non rechargeables,5O,
+dom_classification_onu_704,2037,RÉCIPIENTS DE FAIBLE CAPACITÉ CONTENANT DU GAZ (CARTOUCHES À GAZ) sans dispositif de détente non rechargeables,5T,
+dom_classification_onu_705,2037,RÉCIPIENTS DE FAIBLE CAPACITÉ CONTENANT DU GAZ (CARTOUCHES À GAZ) sans dispositif de détente non rechargeables,5TC,
+dom_classification_onu_706,2037,RÉCIPIENTS DE FAIBLE CAPACITÉ CONTENANT DU GAZ (CARTOUCHES À GAZ) sans dispositif de détente non rechargeables,5TF,
+dom_classification_onu_707,2037,RÉCIPIENTS DE FAIBLE CAPACITÉ CONTENANT DU GAZ (CARTOUCHES À GAZ) sans dispositif de détente non rechargeables,5TFC,
+dom_classification_onu_708,2037,RÉCIPIENTS DE FAIBLE CAPACITÉ CONTENANT DU GAZ (CARTOUCHES À GAZ) sans dispositif de détente non rechargeables,5TO,
+dom_classification_onu_709,2037,RÉCIPIENTS DE FAIBLE CAPACITÉ CONTENANT DU GAZ (CARTOUCHES À GAZ) sans dispositif de détente non rechargeables,5TOC,
+dom_classification_onu_710,2038,DINITROTOLUÈNES LIQUIDES,T1,2
+dom_classification_onu_711,2045,ISOBUTYRALDÉHYDE (ALDÉHYDE ISOBUTYRIQUE),F1,2
+dom_classification_onu_712,2046,CYMÈNES,F1,3
+dom_classification_onu_713,2047,DICHLOROPROPÈNES,F1,2
+dom_classification_onu_714,2047,DICHLOROPROPÈNES,F1,3
+dom_classification_onu_715,2048,DICYCLOPENTADIÈNE,F1,3
+dom_classification_onu_716,2049,DIÉTHYLBENZÈNE,F1,3
+dom_classification_onu_717,2050,COMPOSÉS ISOMERIQUES DU DIISOBUTYLÈNE,F1,2
+dom_classification_onu_718,2051,DIMÉTHYLAMINO-2 ÉTHANOL,CF1,2
+dom_classification_onu_719,2052,DIPENTÈNE,F1,3
+dom_classification_onu_720,2053,ALCOOL MÉTHYLAMYLIQUE,F1,3
+dom_classification_onu_721,2055,STYRÈNE MONOMÈRE STABILISÉ,F1,3
+dom_classification_onu_722,2056,TÉTRAHYDROFURANNE,F1,2
+dom_classification_onu_723,2057,TRIPROPYLÈNE,F1,2
+dom_classification_onu_724,2057,TRIPROPYLÈNE,F1,3
+dom_classification_onu_725,2058,VALÉRALDÉHYDE,F1,2
+dom_classification_onu_726,2059,NITROCELLULOSE EN SOLUTION INFLAMMABLE contenant au plus 126% (rapporté à la masse sèche) d'azote et 55% de nitrocellulose,D,3
+dom_classification_onu_727,2059,NITROCELLULOSE EN SOLUTION INFLAMMABLE contenant au plus 126% (rapporté à la masse sèche) d'azote et 55% de nitrocellulose (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),D,2
+dom_classification_onu_728,2059,NITROCELLULOSE EN SOLUTION INFLAMMABLE contenant au plus 126% (rapporté à la masse sèche) d'azote et 55% de nitrocellulose (pression de vapeur à 50 °C supérieure à 110 kPa),D,2
+dom_classification_onu_729,2067,ENGRAIS AU NITRATE D'AMMONIUM,O2,3
+dom_classification_onu_730,2073,AMMONIAC EN SOLUTION AQUEUSE de densité relative inférieure à 0880 à 15 °C contenant plus de 35% mais au plus 50% d'ammoniac,4A,
+dom_classification_onu_731,2074,ACRYLAMIDE SOLIDE,T2,3
+dom_classification_onu_732,2075,CHLORAL ANHYDRE STABILISÉ,T1,2
+dom_classification_onu_733,2076,CRÉSOLS LIQUIDES,TC1,2
+dom_classification_onu_734,2077,alpha-NAPHTYLAMINE,T2,3
+dom_classification_onu_735,2078,DIISOCYANATE DE TOLUÈNE,T1,2
+dom_classification_onu_736,2079,DIÉTHYLÈNETRIAMINE,C7,2
+dom_classification_onu_737,2187,DIOXYDE DE CARBONE LIQUIDE RÉFRIGÉRÉ,3A,
+dom_classification_onu_738,2193,HEXAFLUORÉTHANE (GAZ RÉFRIGÉRANT R 116),2A,
+dom_classification_onu_739,2205,ADIPONITRILE,T1,3
+dom_classification_onu_740,2206,ISOCYANATES TOXIQUES N.S.A. ou ISOCYANATE TOXIQUE EN SOLUTION N.S.A.,T1,2
+dom_classification_onu_741,2206,ISOCYANATES TOXIQUES N.S.A. ou ISOCYANATE TOXIQUE EN SOLUTION N.S.A.,T1,3
+dom_classification_onu_742,2208,HYPOCHLORITE DE CALCIUM EN MÉLANGE SEC contenant plus de 10% mais 39% au maximum de chlore actif,O2,3
+dom_classification_onu_743,2209,FORMALDÉHYDE EN SOLUTION contenant au moins 25% de formaldéhyde,C9,3
+dom_classification_onu_744,2211,POLYMÈRES EXPANSIBLES EN GRANULÉS dégageant des vapeurs inflammables,M3,3
+dom_classification_onu_745,2212,AMIANTE BLEU (crocidolite) ou AMIANTE BRUN (amosite ou mysorite),M1,2
+dom_classification_onu_746,2213,PARAFORMALDÉHYDE,F1,3
+dom_classification_onu_747,2214,ANHYDRIDE PHTALIQUE contenant plus de 005% d'anhydride maléique,C4,3
+dom_classification_onu_748,2215,ANHYDRIDE MALÉIQUE,C4,3
+dom_classification_onu_749,2218,ACIDE ACRYLIQUE STABILISÉ,CF1,2
+dom_classification_onu_750,2219,ÉTHER ALLYLGLYCIDIQUE,F1,3
+dom_classification_onu_751,2222,ANISOLE,F1,3
+dom_classification_onu_752,2224,BENZONITRILE,T1,2
+dom_classification_onu_753,2225,CHLORURE DE BENZÈNESULFONYLE,C3,3
+dom_classification_onu_754,2226,CHLORURE DE BENZYLIDYNE,C9,2
+dom_classification_onu_755,2227,MÉTHACRYLATE DE n-BUTYLE STABILISÉ,F1,3
+dom_classification_onu_756,2233,CHLORANISIDINES,T2,3
+dom_classification_onu_757,2234,FLUORURES DE CHLOROBENZYLIDYNE,F1,3
+dom_classification_onu_758,2235,CHLORURES DE CHLOROBENZYLE LIQUIDES,T1,3
+dom_classification_onu_759,2236,ISOCYANATE DE CHLORO-3 MÉTHYL-4 PHÉNYLE LIQUIDE,T1,2
+dom_classification_onu_760,2237,CHLORONITRANILINES,T2,3
+dom_classification_onu_761,2238,CHLOROTOLUÈNES,F1,3
+dom_classification_onu_762,2239,CHLOROTOLUIDINES SOLIDES,T2,3
+dom_classification_onu_763,2241,CYCLOHEPTANE,F1,2
+dom_classification_onu_764,2242,CYCLOHEPTÈNE,F1,2
+dom_classification_onu_765,2243,ACÉTATE DE CYCLOHEXYLE,F1,3
+dom_classification_onu_766,2244,CYCLOPENTANOL,F1,3
+dom_classification_onu_767,2245,CYCLOPENTANONE,F1,3
+dom_classification_onu_768,2246,CYCLOPENTÈNE,F1,2
+dom_classification_onu_769,2247,n-DÉCANE,F1,3
+dom_classification_onu_770,2248,DI-n-BUTYLAMINE,CF1,2
+dom_classification_onu_771,2250,ISOCYANATES DE DICHLOROPHÉNYLE,T2,2
+dom_classification_onu_772,2251,BICYCLO [2.2.1] HEPTADIÈNE-25 STABILISÉ (NORBORNADIÈNE-25 STABILISÉ),F1,2
+dom_classification_onu_773,2252,DIMÉTHOXY-12 ÉTHANE,F1,2
+dom_classification_onu_774,2253,NN-DIMÉTHYLANILINE,T1,2
+dom_classification_onu_775,2254,ALLUMETTES-TISONS,F1,3
+dom_classification_onu_776,2256,CYCLOHEXÈNE,F1,2
+dom_classification_onu_777,2258,PROPYLÈNE-12 DIAMINE,CF1,2
+dom_classification_onu_778,2259,TRIÉTHYLÈNE-TÉTRAMINE,C7,2
+dom_classification_onu_779,2260,TRIPROPYLAMINE,FC,3
+dom_classification_onu_780,2261,XYLÉNOLS SOLIDES,T2,2
+dom_classification_onu_781,2262,CHLORURE DE DIMÉTHYLCARBAMOYLE,C3,2
+dom_classification_onu_782,2263,DIMÉTHYLCYCLO-HEXANES,F1,2
+dom_classification_onu_783,2264,NN-DIMÉTHYLCYCLO-HEXYLAMINE,CF1,2
+dom_classification_onu_784,2265,NN-DIMÉTHYL-FORMAMIDE,F1,3
+dom_classification_onu_785,2266,NN-DIMÉTHYL-PROPYLAMINE,FC,2
+dom_classification_onu_786,2267,CHLORURE DE DIMÉTHYLTHIO-PHOSPHORYLE,TC1,2
+dom_classification_onu_787,2269,IMINOBISPROPYLAMINE-33',C7,3
+dom_classification_onu_788,2270,ÉTHYLAMINE EN SOLUTION AQUEUSE contenant au moins 50% mais au maximum 70% (masse) d'éthylamine,FC,2
+dom_classification_onu_789,2271,ÉTHYLAMYLCÉTONE,F1,3
+dom_classification_onu_790,2272,N-ÉTHYLANILINE,T1,3
+dom_classification_onu_791,2273,ÉTHYL-2 ANILINE,T1,3
+dom_classification_onu_792,2274,N-ÉTHYL N-BENZYLANILINE,T1,3
+dom_classification_onu_793,2275,ÉTHYL-2 BUTANOL,F1,3
+dom_classification_onu_794,2276,ÉTHYL-2 HEXYLAMINE,FC,3
+dom_classification_onu_795,2277,MÉTHACRYLATE D'ÉTHYLE STABILISÉ,F1,2
+dom_classification_onu_796,2278,n-HEPTÈNE,F1,2
+dom_classification_onu_797,2279,HEXACHLORO-BUTADIÈNE,T1,3
+dom_classification_onu_798,2280,HEXAMÉTHYLÈNE-DIAMINE SOLIDE,C8,3
+dom_classification_onu_799,2281,DIISOCYANATE D'HEXAMÉTHYLÈNE,T1,2
+dom_classification_onu_800,2282,HEXANOLS,F1,3
+dom_classification_onu_801,2283,MÉTHACRYLATE D'ISOBUTYLE STABILISÉ,F1,3
+dom_classification_onu_802,2284,ISOBUTYRONITRILE,FT1,2
+dom_classification_onu_803,2285,FLUORURES D'ISOCYA-NATOBENZYLIDYNE,TF1,2
+dom_classification_onu_804,2286,PENTAMÉTHYLHEPTANE,F1,3
+dom_classification_onu_805,2287,ISOHEPTÈNES,F1,2
+dom_classification_onu_806,2288,ISOHEXÈNES,F1,2
+dom_classification_onu_807,2289,ISOPHORONEDIAMINE,C7,3
+dom_classification_onu_808,2290,DIISOCYANATE D'ISOPHORONE,T1,3
+dom_classification_onu_809,2291,COMPOSÉ SOLUBLE DU PLOMB N.S.A.,T5,3
+dom_classification_onu_810,2293,METHOXY-4 MÉTHYL-4 PENTANONE-2,F1,3
+dom_classification_onu_811,2294,N-MÉTHYLANILINE,T1,3
+dom_classification_onu_812,2296,MÉTHYLCYCLOHEXANE,F1,2
+dom_classification_onu_813,2297,MÉTHYLCYCLO-HEXANONE,F1,3
+dom_classification_onu_814,2298,MÉTHYLCYCLO- PENTANE,F1,2
+dom_classification_onu_815,2299,DICHLORACÉTATE DE MÉTHYLE,T1,3
+dom_classification_onu_816,2300,MÉTHYL-2 ÉTHYL-5 PYRIDINE,T1,3
+dom_classification_onu_817,2301,MÉTHYL-2 FURANNE,F1,2
+dom_classification_onu_818,2302,MÉTHYL-5 HEXANONE-2,F1,3
+dom_classification_onu_819,2303,ISOPROPÉNYLBENZÈNE,F1,3
+dom_classification_onu_820,2305,ACIDE NITROBENZÈNE-SULFONIQUE,C4,2
+dom_classification_onu_821,2306,FLUORURES DE NITROBENZYLIDYNE LIQUIDES,T1,2
+dom_classification_onu_822,2307,FLUORURE DE NITRO-3 CHLORO-4 BENZYLIDYNE,T1,2
+dom_classification_onu_823,2308,HYDROGÉNOSULFATE DE NITROSYLE LIQUIDE,C1,2
+dom_classification_onu_824,2309,OCTADIÈNES,F1,2
+dom_classification_onu_825,2310,PENTANEDIONE-24,FT1,3
+dom_classification_onu_826,2311,PHÉNÉTIDINES,T1,3
+dom_classification_onu_827,2313,PICOLINES,F1,3
+dom_classification_onu_828,2315,DIPHÉNYLES POLYCHLORÉS LIQUIDES,M2,2
+dom_classification_onu_829,2319,HYDROCARBURES TERPENIQUES N.S.A.,F1,3
+dom_classification_onu_830,2320,TÉTRAÉTHYLÈNE-PENTAMINE,C7,3
+dom_classification_onu_831,2321,TRICHLOROBENZÈNES LIQUIDES,T1,3
+dom_classification_onu_832,2322,TRICHLOROBUTÈNE,T1,2
+dom_classification_onu_833,2323,PHOSPHITE DE TRIÉTHYLE,F1,3
+dom_classification_onu_834,2324,TRIISOBUTYLÈNE,F1,3
+dom_classification_onu_835,2325,TRIMÉTHYL-135 BENZÈNE,F1,3
+dom_classification_onu_836,2326,TRIMÉTHYLCYCLO-HEXYLAMINE,C7,3
+dom_classification_onu_837,2327,TRIMÉTHYLHEXA-MÉTHYLÈNEDIAMINES,C7,3
+dom_classification_onu_838,2328,DIISOCYANATE DE TRIMÉTHYLHEXA-MÉTHYLÈNE,T1,3
+dom_classification_onu_839,2329,PHOSPHITE DE TRIMÉTHYLE,F1,3
+dom_classification_onu_840,2330,UNDECANE,F1,3
+dom_classification_onu_841,2331,CHLORURE DE ZINC ANHYDRE,C2,3
+dom_classification_onu_842,2332,ACÉTALDOXIME,F1,3
+dom_classification_onu_843,2333,ACÉTATE D'ALLYLE,FT1,2
+dom_classification_onu_844,2335,ÉTHER ALLYLÉTHYLIQUE,FT1,2
+dom_classification_onu_845,2338,FLUORURE DE BENZYLIDYNE,F1,2
+dom_classification_onu_846,2339,BROMO-2 BUTANE,F1,2
+dom_classification_onu_847,2340,ÉTHER BROMO-2 ÉTHYLÉTHYLIQUE,F1,2
+dom_classification_onu_848,2341,BROMO-1 MÉTHYL-3 BUTANE,F1,3
+dom_classification_onu_849,2342,BROMOMÉTHYL-PROPANES,F1,2
+dom_classification_onu_850,2343,BROMO-2 PENTANE,F1,2
+dom_classification_onu_851,2344,BROMOPROPANES,F1,2
+dom_classification_onu_852,2344,BROMOPROPANES,F1,3
+dom_classification_onu_853,2345,BROMO-3 PROPYNE,F1,2
+dom_classification_onu_854,2346,BUTANEDIONE,F1,2
+dom_classification_onu_855,2347,MERCAPTAN BUTYLIQUE,F1,2
+dom_classification_onu_856,2348,ACRYLATES DE BUTYLE STABILISÉS,F1,3
+dom_classification_onu_857,2350,ÉTHER BUTYLMÉTHYLIQUE,F1,2
+dom_classification_onu_858,2351,NITRITES DE BUTYLE,F1,2
+dom_classification_onu_859,2351,NITRITES DE BUTYLE,F1,3
+dom_classification_onu_860,2352,ÉTHER BUTYLVINYLIQUE STABILISÉ,F1,2
+dom_classification_onu_861,2353,CHLORURE DE BUTYRYLE,FC,2
+dom_classification_onu_862,2354,ÉTHER CHLORO-MÉTHYLÉTHYLIQUE,FT1,2
+dom_classification_onu_863,2357,CYCLOHEXYLAMINE,CF1,2
+dom_classification_onu_864,2358,CYCLOOCTATÉTRAÈNE,F1,2
+dom_classification_onu_865,2359,DIALLYLAMINE,FTC,2
+dom_classification_onu_866,2360,ÉTHER DIALLYLIQUE,FT1,2
+dom_classification_onu_867,2361,DIISOBUTYLAMINE,FC,3
+dom_classification_onu_868,2362,DICHLORO-11 ÉTHANE,F1,2
+dom_classification_onu_869,2364,n-PROPYLBENZÈNE,F1,3
+dom_classification_onu_870,2366,CARBONATE D'ÉTHYLE,F1,3
+dom_classification_onu_871,2367,alpha-MÉTHYL-VALÉRALDÉHYDE,F1,2
+dom_classification_onu_872,2368,alpha-PINÈNE,F1,3
+dom_classification_onu_873,2370,HEXÈNE-1,F1,2
+dom_classification_onu_874,2372,BIS (DIMÉTHYLAMINO)-12 ÉTHANE,F1,2
+dom_classification_onu_875,2373,DIÉTHOXYMÉTHANE,F1,2
+dom_classification_onu_876,2374,DIÉTHOXY-33 PROPÈNE,F1,2
+dom_classification_onu_877,2375,SULFURE D'ÉTHYLE,F1,2
+dom_classification_onu_878,2376,DIHYDRO-23 PYRANNE,F1,2
+dom_classification_onu_879,2377,DIMETHOXY-11 ÉTHANE,F1,2
+dom_classification_onu_880,2378,DIMÉTHYLAMINO-ACÉTONITRILE,FT1,2
+dom_classification_onu_881,2379,DIMÉTHYL-13 BUTYLAMINE,FC,2
+dom_classification_onu_882,2380,DIMÉTHYLDIÉTHOXY-SILANE,F1,2
+dom_classification_onu_883,2381,DISULFURE DE DIMÉTHYLE,F1,2
+dom_classification_onu_884,2383,DIPROPYLAMINE,FC,2
+dom_classification_onu_885,2384,ÉTHER DI-n-PROPYLIQUE,F1,2
+dom_classification_onu_886,2385,ISOBUTYRATE D'ÉTHYLE,F1,2
+dom_classification_onu_887,2386,ÉTHYL-1 PIPÉRIDINE,FC,2
+dom_classification_onu_888,2387,FLUOROBENZÈNE,F1,2
+dom_classification_onu_889,2388,FLUOROTOLUÈNES,F1,2
+dom_classification_onu_890,2390,IODO-2 BUTANE,F1,2
+dom_classification_onu_891,2391,IODOMÉTHYLPROPANES,F1,2
+dom_classification_onu_892,2392,IODOPROPANES,F1,3
+dom_classification_onu_893,2393,FORMIATE D'ISOBUTYLE,F1,2
+dom_classification_onu_894,2394,PROPIONATE D'ISOBUTYLE,F1,3
+dom_classification_onu_895,2395,CHLORURE D'ISOBUTYRYLE,FC,2
+dom_classification_onu_896,2396,MÉTHYLACROLÉINE STABILISÉE,FT1,2
+dom_classification_onu_897,2397,MÉTHYL-3 BUTANONE-2,F1,2
+dom_classification_onu_898,2398,ÉTHER MÉTHYL tert-BUTYLIQUE,F1,2
+dom_classification_onu_899,2399,MÉTHYL-1 PIPÉRIDINE,FC,2
+dom_classification_onu_900,2400,ISOVALÉRATE DE MÉTHYLE,F1,2
+dom_classification_onu_901,2402,PROPANETHIOLS,F1,2
+dom_classification_onu_902,2403,ACÉTATE D'ISOPROPÉNYLE,F1,2
+dom_classification_onu_903,2404,PROPIONITRILE,FT1,2
+dom_classification_onu_904,2405,BUTYRATE D'ISOPROPYLE,F1,3
+dom_classification_onu_905,2406,ISOBUTYRATE D'ISOPROPYLE,F1,2
+dom_classification_onu_906,2409,PROPIONATE D'ISOPROPYLE,F1,2
+dom_classification_onu_907,2410,TÉTRAHYDRO-1236 PYRIDINE,F1,2
+dom_classification_onu_908,2411,BUTYRONITRILE,FT1,2
+dom_classification_onu_909,2412,TÉTRAHYDROTHIOPHÈNE,F1,2
+dom_classification_onu_910,2413,ORTHOTITANATE DE PROPYLE,F1,3
+dom_classification_onu_911,2414,THIOPHÈNE,F1,2
+dom_classification_onu_912,2416,BORATE DE TRIMÉTHYLE,F1,2
+dom_classification_onu_913,2422,OCTAFLUOROBUTÈNE-2 (GAZ RÉFRIGÉRANT R 1318),2A,
+dom_classification_onu_914,2424,OCTAFLUOROPROPANE (GAZ RÉFRIGÉRANT R 218),2A,
+dom_classification_onu_915,2427,CHLORATE DE POTASSIUM EN SOLUTION AQUEUSE,O1,2
+dom_classification_onu_916,2427,CHLORATE DE POTASSIUM EN SOLUTION AQUEUSE,O1,3
+dom_classification_onu_917,2428,CHLORATE DE SODIUM EN SOLUTION AQUEUSE,O1,2
+dom_classification_onu_918,2428,CHLORATE DE SODIUM EN SOLUTION AQUEUSE,O1,3
+dom_classification_onu_919,2429,CHLORATE DE CALCIUM EN SOLUTION AQUEUSE,O1,2
+dom_classification_onu_920,2429,CHLORATE DE CALCIUM EN SOLUTION AQUEUSE,O1,3
+dom_classification_onu_921,2430,ALKYLPHÉNOLS SOLIDES N.S.A. (y compris les homologues C2 à C12 ),C4,3
+dom_classification_onu_922,2430,ALKYLPHÉNOLS SOLIDES N.S.A. (y compris les homologues C2 à C12 ),C4,2
+dom_classification_onu_923,2431,ANISIDINES,T1,3
+dom_classification_onu_924,2432,NN-DIÉTHYLANILINE,T1,3
+dom_classification_onu_925,2433,CHLORONITROTOLUÈNES LIQUIDES,T1,3
+dom_classification_onu_926,2436,ACIDE THIOACÉTIQUE,F1,2
+dom_classification_onu_927,2439,HYDROGÉNODIFLUORURE DE SODIUM,C2,2
+dom_classification_onu_928,2440,CHLORURE D'ÉTAIN IV PENTAHYDRATÉ,C2,3
+dom_classification_onu_929,2443,OXYTRICHLORURE DE VANADIUM,C1,2
+dom_classification_onu_930,2446,NITROCRÉSOLS SOLIDES,T2,3
+dom_classification_onu_931,2457,DIMÉTHYL-23 BUTANE,F1,2
+dom_classification_onu_932,2458,HEXADIÈNES,F1,2
+dom_classification_onu_933,2460,MÉTHYL-2 BUTÈNE-2,F1,2
+dom_classification_onu_934,2461,MÉTHYLPENTADIÈNES,F1,2
+dom_classification_onu_935,2464,NITRATE DE BÉRYLLIUM,OT2,2
+dom_classification_onu_936,2465,ACIDE DICHLORO-ISOCYANURIQUE SEC ou SELS DE L'ACIDE DICHLORO-ISOCYANURIQUE,O2,2
+dom_classification_onu_937,2468,ACIDE TRICHLORO-ISOCYANURIQUE SEC,O2,2
+dom_classification_onu_938,2469,BROMATE DE ZINC,O2,3
+dom_classification_onu_939,2470,PHÉNYLACÉTONITRILE LIQUIDE,T1,3
+dom_classification_onu_940,2473,ARSANILATE DE SODIUM,T3,3
+dom_classification_onu_941,2475,TRICHLORURE DE VANADIUM,C2,3
+dom_classification_onu_942,2478,ISOCYANATES INFLAMMABLES TOXIQUES N.S.A. ou ISOCYANATE EN SOLUTION INFLAMMABLE TOXIQUE N.S.A.,FT1,2
+dom_classification_onu_943,2478,ISOCYANATES INFLAMMABLES TOXIQUES N.S.A. ou ISOCYANATES EN SOLUTION INFLAMMABLE TOXIQUE N.S.A.,FT1,3
+dom_classification_onu_944,2490,ÉTHER DICHLORO-ISOPROPYLIQUE,T1,2
+dom_classification_onu_945,2491,ÉTHANOLAMINE ou ÉTHANOLAMINE EN SOLUTION,C7,3
+dom_classification_onu_946,2493,HEXAMÉTHYLÈNEIMINE,FC,2
+dom_classification_onu_947,2496,ANHYDRIDE PROPIONIQUE,C3,3
+dom_classification_onu_948,2498,TÉTRAHYDRO-1236 BENZALDÉHYDE,F1,3
+dom_classification_onu_949,2501,OXYDE DE TRIS (AZIRIDINYL-1) PHOSPHINE EN SOLUTION,T1,2
+dom_classification_onu_950,2501,OXYDE DE TRIS (AZIRIDINYL-1) PHOSPHINE EN SOLUTION,T1,3
+dom_classification_onu_951,2502,CHLORURE DE VALÉRYLE,CF1,2
+dom_classification_onu_952,2503,TÉTRACHLORURE DE ZIRCONIUM,C2,3
+dom_classification_onu_953,2504,TÉTRABROMÉTHANE,T1,3
+dom_classification_onu_954,2505,FLUORURE D'AMMONIUM,T5,3
+dom_classification_onu_955,2506,HYDROGÉNOSULFATE D'AMMONIUM,C2,2
+dom_classification_onu_956,2507,ACIDE CHLOROPLATINIQUE SOLIDE,C2,3
+dom_classification_onu_957,2508,PENTACHLORURE DE MOLYBDÈNE,C2,3
+dom_classification_onu_958,2509,HYDROGÉNOSULFATE DE POTASSIUM,C2,2
+dom_classification_onu_959,2511,ACIDE CHLORO-2 PROPIONIQUE ,C3,3
+dom_classification_onu_960,2512,AMINOPHÉNOLS (o- m- p-),T2,3
+dom_classification_onu_961,2513,BROMURE DE BROMACÉTYLE,C3,2
+dom_classification_onu_962,2514,BROMOBENZÈNE,F1,3
+dom_classification_onu_963,2515,BROMOFORME,T1,3
+dom_classification_onu_964,2516,TÉTRABROMURE DE CARBONE,T2,3
+dom_classification_onu_965,2518,CYCLODODÉCATRIÈNE-159,T1,3
+dom_classification_onu_966,2520,CYCLOOCTADIÈNES,F1,3
+dom_classification_onu_967,2522,MÉTHACRYLATE DE 2-DIMÉTHYLAMINOÉTHYLE,T1,2
+dom_classification_onu_968,2524,ORTHOFORMIATE D'ÉTHYLE,F1,3
+dom_classification_onu_969,2525,OXALATE D'ÉTHYLE,T1,3
+dom_classification_onu_970,2526,FURFURYLAMINE,FC,3
+dom_classification_onu_971,2527,ACRYLATE D'ISOBUTYLE STABILISÉ,F1,3
+dom_classification_onu_972,2528,ISOBUTYRATE D'ISOBUTYLE,F1,3
+dom_classification_onu_973,2529,ACIDE ISOBUTYRIQUE,FC,3
+dom_classification_onu_974,2531,ACIDE MÉTHACRYLIQUE STABILISÉ,C3,2
+dom_classification_onu_975,2533,TRICHLORACÉTATE DE MÉTHYLE,T1,3
+dom_classification_onu_976,2535,4-MÉTHYLMORPHOLINE (N-MÉTHYLMORPHOLINE),FC,2
+dom_classification_onu_977,2536,MÉTHYLTÉTRAHYDRO-FURANNE,F1,2
+dom_classification_onu_978,2538,NITRONAPHTALÈNE,F1,3
+dom_classification_onu_979,2541,TERPINOLÈNE,F1,3
+dom_classification_onu_980,2542,TRIBUTYLAMINE,T1,2
+dom_classification_onu_981,2552,HYDRATE D'HEXAFLUORACÉTONE LIQUIDE,T1,2
+dom_classification_onu_982,2554,CHLORURE DE MÉTHYLALLYLE,F1,2
+dom_classification_onu_983,2560,MÉTHYL-2 PENTANOL-2,F1,3
+dom_classification_onu_984,2564,ACIDE TRICHLORACÉTIQUE EN SOLUTION,C3,2
+dom_classification_onu_985,2564,ACIDE TRICHLORACÉTIQUE EN SOLUTION,C3,3
+dom_classification_onu_986,2565,DICYCLOHEXYLAMINE,C7,3
+dom_classification_onu_987,2567,PENTACHLOROPHÉNATE DE SODIUM,T2,2
+dom_classification_onu_988,2570,COMPOSÉ DU CADMIUM,T5,2
+dom_classification_onu_989,2570,COMPOSÉ DU CADMIUM,T5,3
+dom_classification_onu_990,2571,ACIDES ALKYLSULFURIQUES,C3,2
+dom_classification_onu_991,2572,PHÉNYLHYDRAZINE,T1,2
+dom_classification_onu_992,2573,CHLORATE DE THALLIUM,OT2,2
+dom_classification_onu_993,2574,PHOSPHATE DE TRICRÉSYLE avec plus de 3% d'isomère ortho,T1,2
+dom_classification_onu_994,2577,CHLORURE DE PHÉNYLACÉTYLE,C3,2
+dom_classification_onu_995,2578,TRIOXYDE DE PHOSPHORE,C2,3
+dom_classification_onu_996,2579,PIPÉRAZINE,C8,3
+dom_classification_onu_997,2580,BROMURE D'ALUMINIUM EN SOLUTION,C1,3
+dom_classification_onu_998,2581,CHLORURE D'ALUMINIUM EN SOLUTION,C1,3
+dom_classification_onu_999,2582,CHLORURE DE FER III EN SOLUTION,C1,3
+dom_classification_onu_1000,2583,ACIDES ALKYLSULFONIQUES SOLIDES ou ACIDES ARYLSULFONIQUES SOLIDES contenant plus de 5% d'acide sulfurique libre,C2,2
+dom_classification_onu_1001,2584,ACIDES ALKYLSULFONIQUES LIQUIDES ou ACIDES ARYLSULFONIQUES LIQUIDES contenant plus de 5% d'acide sulfurique libre,C1,2
+dom_classification_onu_1002,2585,ACIDES ALKYLSULFONIQUES SOLIDES ou ACIDES ARYLSULFONIQUES SOLIDES contenant au plus 5% d'acide sulfurique libre,C4,3
+dom_classification_onu_1003,2586,ACIDES ALKYLSULFONIQUES LIQUIDES ou ACIDES ARYLSULFONIQUES LIQUIDES contenant au plus 5% d'acide sulfurique libre,C3,3
+dom_classification_onu_1004,2587,BENZOQUINONE,T2,2
+dom_classification_onu_1005,2588,PESTICIDE SOLIDE TOXIQUE N.S.A.,T7,2
+dom_classification_onu_1006,2588,PESTICIDE SOLIDE TOXIQUE N.S.A.,T7,3
+dom_classification_onu_1007,2589,CHLORACÉTATE DE VINYLE,TF1,2
+dom_classification_onu_1008,2591,XÉNON LIQUIDE RÉFRIGÉRÉ,3A,
+dom_classification_onu_1009,2599,CHLOROTRIFLUORO-MÉTHANE ET TRIFLUOROMÉTHANE EN MÉLANGE AZÉOTROPE contenant environ 60% de chlorotrifluorométhane (GAZ RÉFRIGÉRANT R 503),2A,
+dom_classification_onu_1010,2602,DICHLORODIFLUORO-MÉTHANE ET DIFLUORO-11 ÉTHANE EN MÉLANGE AZÉOTROPE contenant environ 74% de dichloro-difluorométhane (GAZ RÉFRIGÉRANT R 500),2A,
+dom_classification_onu_1011,2603,CYCLOHEPTATRIÈNE,FT1,2
+dom_classification_onu_1012,2607,ACROLÉINE DIMÈRE STABILISÉ,F1,3
+dom_classification_onu_1013,2608,NITROPROPANES,F1,3
+dom_classification_onu_1014,2609,BORATE DE TRIALLYLE,T1,3
+dom_classification_onu_1015,2610,TRIALLYLAMINE,FC,3
+dom_classification_onu_1016,2611,CHLORO-1 PROPANOL-2,TF1,2
+dom_classification_onu_1017,2612,ÉTHER MÉTHYLPROPYLIQUE,F1,2
+dom_classification_onu_1018,2614,ALCOOL MÉTHALLYLIQUE,F1,3
+dom_classification_onu_1019,2615,ÉTHER ÉTHYLPROPYLIQUE,F1,2
+dom_classification_onu_1020,2616,BORATE DE TRIISOPROPYLE,F1,2
+dom_classification_onu_1021,2616,BORATE DE TRIISOPROPYLE,F1,3
+dom_classification_onu_1022,2617,MÉTHYLCYCLO-HEXANOLS inflammables,F1,3
+dom_classification_onu_1023,2618,VINYLTOLUÈNES STABILISÉS,F1,3
+dom_classification_onu_1024,2619,BENZYLDIMÉTHYLAMINE,CF1,2
+dom_classification_onu_1025,2620,BUTYRATES D'AMYLE,F1,3
+dom_classification_onu_1026,2621,ACÉTYLMÉTHYL-CARBINOL,F1,3
+dom_classification_onu_1027,2622,GLYCIDALDÉHYDE,FT1,2
+dom_classification_onu_1028,2623,ALLUME-FEU SOLIDES imprégnés de liquide inflammable,F1,3
+dom_classification_onu_1029,2624,SILICIURE DE MAGNÉSIUM,W2,2
+dom_classification_onu_1030,2626,ACIDE CHLORIQUE EN SOLUTION AQUEUSE contenant au plus 10% d'acide chlorique,O1,2
+dom_classification_onu_1031,2627,NITRITES INORGANIQUES N.S.A.,O2,2
+dom_classification_onu_1032,2643,BROMACÉTATE DE MÉTHYLE,T1,2
+dom_classification_onu_1033,2645,BROMURE DE PHÉNACYLE,T2,2
+dom_classification_onu_1034,2647,MALONITRILE,T2,2
+dom_classification_onu_1035,2648,DIBROMO-12 BUTANONE-3,T1,2
+dom_classification_onu_1036,2649,DICHLORO-13 ACÉTONE,T2,2
+dom_classification_onu_1037,2650,DICHLORO-11 NITRO-1 ÉTHANE,T1,2
+dom_classification_onu_1038,2651,DIAMINO-44' DIPHÉNYLMÉTHANE,T2,3
+dom_classification_onu_1039,2653,IODURE DE BENZYLE,T1,2
+dom_classification_onu_1040,2655,FLUOROSILICATE DE POTASSIUM,T5,3
+dom_classification_onu_1041,2656,QUINOLÉINE,T1,3
+dom_classification_onu_1042,2657,DISULFURE DE SÉLÉNIUM,T5,2
+dom_classification_onu_1043,2659,CHLORACÉTATE DE SODIUM,T2,3
+dom_classification_onu_1044,2660,MONONITROTOLUIDINES,T2,3
+dom_classification_onu_1045,2661,HEXACHLORACÉTONE,T1,3
+dom_classification_onu_1046,2664,DIBROMOMÉTHANE,T1,3
+dom_classification_onu_1047,2667,BUTYLTOLUÈNES,T1,3
+dom_classification_onu_1048,2669,CHLOROCRÉSOLS EN SOLUTION,T1,2
+dom_classification_onu_1049,2669,CHLOROCRÉSOLS EN SOLUTION,T1,3
+dom_classification_onu_1050,2670,CHLORURE CYANURIQUE,C4,2
+dom_classification_onu_1051,2671,AMINOPYRIDINES (o- m- p-),T2,2
+dom_classification_onu_1052,2672,AMMONIAC EN SOLUTION aqueuse de densité relative comprise entre 0880 et 0957 à 15 °C contenant plus de 10% mais pas plus de 35% d'ammoniac,C5,3
+dom_classification_onu_1053,2673,AMINO-2 CHLORO-4 PHÉNOL,T2,2
+dom_classification_onu_1054,2674,FLUOROSILICATE DE SODIUM,T5,3
+dom_classification_onu_1055,2677,HYDROXYDE DE RUBIDIUM EN SOLUTION,C5,2
+dom_classification_onu_1056,2677,HYDROXYDE DE RUBIDIUM EN SOLUTION,C5,3
+dom_classification_onu_1057,2678,HYDROXYDE DE RUBIDIUM,C6,2
+dom_classification_onu_1058,2679,HYDROXYDE DE LITHIUM EN SOLUTION,C5,2
+dom_classification_onu_1059,2679,HYDROXYDE DE LITHIUM EN SOLUTION,C5,3
+dom_classification_onu_1060,2680,HYDROXYDE DE LITHIUM,C6,2
+dom_classification_onu_1061,2681,HYDROXYDE DE CÉSIUM EN SOLUTION,C5,2
+dom_classification_onu_1062,2681,HYDROXYDE DE CÉSIUM EN SOLUTION,C5,3
+dom_classification_onu_1063,2682,HYDROXYDE DE CÉSIUM,C6,2
+dom_classification_onu_1064,2683,SULFURE D'AMMONIUM EN SOLUTION,CFT,2
+dom_classification_onu_1065,2684,3-DIÉTHYLAMINO-PROPYLAMINE,FC,3
+dom_classification_onu_1066,2685,NN-DIÉTHYL-ÉTHYLÈNEDIAMINE,CF1,2
+dom_classification_onu_1067,2686,DIÉTHYLAMINO-2 ÉTHANOL,CF1,2
+dom_classification_onu_1068,2687,NITRITE DE DICYCLO-HEXYLAMMONIUM,F3,3
+dom_classification_onu_1069,2688,BROMO-1 CHLORO-3 PROPANE,T1,3
+dom_classification_onu_1070,2689,alpha-MONOCHLORHYDRINE DU GLYCÉROL,T1,3
+dom_classification_onu_1071,2690,Nn-BUTYLIMIDAZOLE,T1,2
+dom_classification_onu_1072,2691,PENTABROMURE DE PHOSPHORE,C2,2
+dom_classification_onu_1073,2693,HYDROGÉNOSULFITES EN SOLUTION AQUEUSE N.S.A.,C1,3
+dom_classification_onu_1074,2698,ANHYDRIDES TÉTRA-HYDROPHTALIQUES contenant plus de 005% d'anhydride maléique,C4,3
+dom_classification_onu_1075,2705,PENTOL-1,C9,2
+dom_classification_onu_1076,2707,DIMÉTHYLDIOXANNES,F1,2
+dom_classification_onu_1077,2707,DIMÉTHYLDIOXANNES,F1,3
+dom_classification_onu_1078,2709,BUTYLBENZÈNES,F1,3
+dom_classification_onu_1079,2710,DIPROPYLCÉTONE,F1,3
+dom_classification_onu_1080,2713,ACRIDINE,T2,3
+dom_classification_onu_1081,2714,RÉSINATE DE ZINC,F3,3
+dom_classification_onu_1082,2715,RÉSINATE D'ALUMINIUM,F3,3
+dom_classification_onu_1083,2716,BUTYNEDIOL-14,T2,3
+dom_classification_onu_1084,2717,CAMPHRE synthétique,F1,3
+dom_classification_onu_1085,2719,BROMATE DE BARYUM,OT2,2
+dom_classification_onu_1086,2720,NITRATE DE CHROME,O2,3
+dom_classification_onu_1087,2721,CHLORATE DE CUIVRE,O2,2
+dom_classification_onu_1088,2722,NITRATE DE LITHIUM,O2,3
+dom_classification_onu_1089,2723,CHLORATE DE MAGNÉSIUM,O2,2
+dom_classification_onu_1090,2724,NITRATE DE MANGANÈSE,O2,3
+dom_classification_onu_1091,2725,NITRATE DE NICKEL,O2,3
+dom_classification_onu_1092,2726,NITRITE DE NICKEL,O2,3
+dom_classification_onu_1093,2727,NITRATE DE THALLIUM,TO2,2
+dom_classification_onu_1094,2728,NITRATE DE ZIRCONIUM,O2,3
+dom_classification_onu_1095,2729,HEXACHLOROBENZÈNE,T2,3
+dom_classification_onu_1096,2730,NITRANISOLES LIQUIDES,T1,3
+dom_classification_onu_1097,2732,NITROBROMOBENZÈNES LIQUIDES,T1,3
+dom_classification_onu_1098,2733,AMINES INFLAMMABLES CORROSIVES N.S.A. ou POLYAMINES INFLAMMABLES CORROSIVES N.S.A.,FC,2
+dom_classification_onu_1099,2733,AMINES INFLAMMABLES CORROSIVES N.S.A. ou POLYAMINES INFLAMMABLES CORROSIVES N.S.A.,FC,3
+dom_classification_onu_1100,2734,AMINES LIQUIDES CORROSIVES INFLAMMABLES N.S.A. ou POLYAMINES LIQUIDES CORROSIVES INFLAMMABLES N.S.A.,CF1,2
+dom_classification_onu_1101,2735,AMINES LIQUIDES CORROSIVES N.S.A. ou POLYAMINES LIQUIDES CORROSIVES N.S.A.,C7,2
+dom_classification_onu_1102,2735,AMINES LIQUIDES CORROSIVES N.S.A. ou POLYAMINES LIQUIDES CORROSIVES N.S.A.,C7,3
+dom_classification_onu_1103,2738,N-BUTYLANILINE,T1,2
+dom_classification_onu_1104,2739,ANHYDRIDE BUTYRIQUE,C3,3
+dom_classification_onu_1105,2741,HYPOCHLORITE DE BARYUM contenant plus de 22% de chlore actif,OT2,2
+dom_classification_onu_1106,2742,CHLOROFORMIATES TOXIQUES CORROSIFS INFLAMMABLES N.S.A.,TFC,2
+dom_classification_onu_1107,2743,CHLOROFORMIATE DE n-BUTYLE,TFC,2
+dom_classification_onu_1108,2744,CHLOROFORMIATE DE CYCLOBUTYLE,TFC,2
+dom_classification_onu_1109,2745,CHLOROFORMIATE DE CHLOROMÉTHYLE,TC1,2
+dom_classification_onu_1110,2746,CHLOROFORMIATE DE PHÉNYLE,TC1,2
+dom_classification_onu_1111,2747,CHLOROFORMIATE DE tert-BUTYLCYCLOHEXYLE,T1,3
+dom_classification_onu_1112,2748,CHLOROFORMIATE D'ÉTHYL-2 HEXYLE,TC1,2
+dom_classification_onu_1113,2750,DICHLORO-13 PROPANOL-2,T1,2
+dom_classification_onu_1114,2751,CHLORURE DE DIÉTHYLTHIO-PHOSPHORYLE,C3,2
+dom_classification_onu_1115,2752,ÉPOXY-12 ÉTHOXY-3 PROPANE,F1,3
+dom_classification_onu_1116,2753,N-ÉTHYLBENZYL-TOLUIDINES LIQUIDES,T1,3
+dom_classification_onu_1117,2754,N-ÉTHYLTOLUIDINES,T1,2
+dom_classification_onu_1118,2757,CARBAMATE PESTICIDE SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1119,2757,CARBAMATE PESTICIDE SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1120,2758,CARBAMATE PESTICIDE LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1121,2759,PESTICIDE ARSENICAL SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1122,2759,PESTICIDE ARSENICAL SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1123,2760,PESTICIDE ARSENICAL LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1124,2761,PESTICIDE ORGANOCHLORÉ SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1125,2761,PESTICIDE ORGANOCHLORÉ SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1126,2762,PESTICIDE ORGANOCHLORÉ LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1127,2763,TRIAZINE PESTICIDE SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1128,2763,TRIAZINE PESTICIDE SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1129,2764,TRIAZINE PESTICIDE LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1130,2771,THIOCARBAMATE PESTICIDE SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1131,2771,THIOCARBAMATE PESTICIDE SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1132,2772,THIOCARBAMATE PESTICIDE LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1133,2775,PESTICIDE CUIVRIQUE SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1134,2775,PESTICIDE CUIVRIQUE SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1135,2776,PESTICIDE CUIVRIQUE LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1136,2777,PESTICIDE MERCURIEL SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1137,2777,PESTICIDE MERCURIEL SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1138,2778,PESTICIDE MERCURIEL LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1139,2779,NITROPHÉNOL SUBSTITUÉ PESTICIDE SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1140,2779,NITROPHÉNOL SUBSTITUÉ PESTICIDE SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1141,2780,NITROPHÉNOL SUBSTITUÉ PESTICIDE LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1142,2781,PESTICIDE BIPYRIDYLIQUE SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1143,2781,PESTICIDE BIPYRIDYLIQUE SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1144,2782,PESTICIDE BIPYRIDYLIQUE LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1145,2783,PESTICIDE ORGANOPHOSPHORÉ SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1146,2783,PESTICIDE ORGANOPHOSPHORÉ SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1147,2784,PESTICIDE ORGANOPHOSPHORÉ LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1148,2785,4-THIAPENTANAL (MÉTHYLTHIO-3 PROPANAL),T1,3
+dom_classification_onu_1149,2786,PESTICIDE ORGANOSTANNIQUE SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1150,2786,PESTICIDE ORGANOSTANNIQUE SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1151,2787,PESTICIDE ORGANOSTANNIQUE LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1152,2788,COMPOSÉ ORGANIQUE LIQUIDE DE L'ÉTAIN N.S.A.,T3,2
+dom_classification_onu_1153,2788,COMPOSÉ ORGANIQUE LIQUIDE DE L'ÉTAIN N.S.A.,T3,3
+dom_classification_onu_1154,2789,ACIDE ACÉTIQUE GLACIAL ou ACIDE ACÉTIQUE EN SOLUTION contenant plus de 80% (masse) d'acide,CF1,2
+dom_classification_onu_1155,2790,ACIDE ACÉTIQUE EN SOLUTION contenant au moins 50% et au plus 80% (masse) d¿acide ,C3,2
+dom_classification_onu_1156,2790,ACIDE ACÉTIQUE EN SOLUTION contenant plus de 10% et moins de 50% (masse) d¿acide,C3,3
+dom_classification_onu_1157,2794,ACCUMULATEURS électriques REMPLIS D'ÉLECTROLYTE LIQUIDE ACIDE,C11,
+dom_classification_onu_1158,2795,ACCUMULATEURS électriques REMPLIS D'ÉLECTROLYTE LIQUIDE ALCALIN,C11,
+dom_classification_onu_1159,2796,ACIDE SULFURIQUE contenant au plus 51% d'acide ou ÉLECTROLYTE ACIDE POUR ACCUMULATEURS,C1,2
+dom_classification_onu_1160,2797,ÉLECTROLYTE ALCALIN POUR ACCUMULATEURS,C5,2
+dom_classification_onu_1161,2798,DICHLOROPHÉNYL- PHOSPHINE,C3,2
+dom_classification_onu_1162,2799,DICHLORO(PHÉNYL)-THIOPHOSPHORE,C3,2
+dom_classification_onu_1163,2800,ACCUMULATEURS électriques INVERSABLES REMPLIS D'ÉLECTROLYTE LIQUIDE,C11,
+dom_classification_onu_1164,2801,COLORANT LIQUIDE CORROSIF N.S.A. ou MATIÈRE INTERMÉDIAIRE LIQUIDE POUR COLORANT CORROSIVE N.S.A.,C9,2
+dom_classification_onu_1165,2801,COLORANT LIQUIDE CORROSIF N.S.A. ou MATIÈRE INTERMÉDIAIRE LIQUIDE POUR COLORANT CORROSIVE N.S.A.,C9,3
+dom_classification_onu_1166,2802,CHLORURE DE CUIVRE,C2,3
+dom_classification_onu_1167,2803,GALLIUM,C10,3
+dom_classification_onu_1168,2805,HYDRURE DE LITHIUM SOLIDE PIÈCES COULÉES,W2,2
+dom_classification_onu_1169,2809,MERCURE,C9,3
+dom_classification_onu_1170,2810,LIQUIDE ORGANIQUE TOXIQUE N.S.A.,T1,2
+dom_classification_onu_1171,2810,LIQUIDE ORGANIQUE TOXIQUE N.S.A.,T1,3
+dom_classification_onu_1172,2811,SOLIDE ORGANIQUE TOXIQUE N.S.A.,T2,2
+dom_classification_onu_1173,2811,SOLIDE ORGANIQUE TOXIQUE N.S.A.,T2,3
+dom_classification_onu_1174,2813,SOLIDE HYDRORÉACTIF N.S.A.,W2,2
+dom_classification_onu_1175,2813,SOLIDE HYDRORÉACTIF N.S.A.,W2,3
+dom_classification_onu_1176,2815,N-AMINOÉTHYL-PIPERAZINE,C7,3
+dom_classification_onu_1177,2817,DIFLUORURE ACIDE D'AMMONIUM EN SOLUTION,CT1,2
+dom_classification_onu_1178,2817,DIFLUORURE ACIDE D'AMMONIUM EN SOLUTION,CT1,3
+dom_classification_onu_1179,2818,POLYSULFURE D'AMMONIUM EN SOLUTION,CT1,2
+dom_classification_onu_1180,2818,POLYSULFURE D'AMMONIUM EN SOLUTION,CT1,3
+dom_classification_onu_1181,2819,PHOSPHATE ACIDE D'AMYLE,C3,3
+dom_classification_onu_1182,2820,ACIDE BUTYRIQUE,C3,3
+dom_classification_onu_1183,2821,PHÉNOL EN SOLUTION,T1,2
+dom_classification_onu_1184,2821,PHÉNOL EN SOLUTION,T1,3
+dom_classification_onu_1185,2822,CHLORO-2-PYRIDINE,T1,2
+dom_classification_onu_1186,2823,ACIDE CROTONIQUE SOLIDE,C4,3
+dom_classification_onu_1187,2829,ACIDE CAPROÏQUE,C3,3
+dom_classification_onu_1188,2830,SILICO-FERRO-LITHIUM,W2,2
+dom_classification_onu_1189,2831,TRICHLORO-111 ÉTHANE,T1,3
+dom_classification_onu_1190,2834,ACIDE PHOSPHOREUX,C2,3
+dom_classification_onu_1191,2835,HYDRURE DE SODIUM-ALUMINIUM,W2,2
+dom_classification_onu_1192,2837,HYDROGÉNOSULFATES EN SOLUTION AQUEUSE,C1,2
+dom_classification_onu_1193,2837,HYDROGÉNOSULFATES EN SOLUTION AQUEUSE,C1,3
+dom_classification_onu_1194,2838,BUTYRATE DE VINYLE STABILISÉ,F1,2
+dom_classification_onu_1195,2839,ALDOL,T1,2
+dom_classification_onu_1196,2840,BUTYRALDOXIME,F1,3
+dom_classification_onu_1197,2841,DI-n-AMYLAMINE,FT1,3
+dom_classification_onu_1198,2842,NITROÉTHANE,F1,3
+dom_classification_onu_1199,2844,SILICO-MANGANO-CALCIUM,W2,3
+dom_classification_onu_1200,2849,CHLORO-3 PROPANOL-1,T1,3
+dom_classification_onu_1201,2850,TÉTRAPROPYLÈNE,F1,3
+dom_classification_onu_1202,2851,TRIFLUORURE DE BORE DIHYDRATÉ,C1,2
+dom_classification_onu_1203,2853,FLUOROSILICATE DE MAGNÉSIUM,T5,3
+dom_classification_onu_1204,2854,FLUOROSILICATE D'AMMONIUM,T5,3
+dom_classification_onu_1205,2855,FLUOROSILICATE DE ZINC,T5,3
+dom_classification_onu_1206,2856,FLUOROSILICATES N.S.A.,T5,3
+dom_classification_onu_1207,2858,ZIRCONIUM SEC sous forme de fils enroulés plaques métalliques ou de bandes (d'une épaisseur inférieure à 254 microns mais au minimum 18 microns),F3,3
+dom_classification_onu_1208,2859,MÉTAVANADATE D'AMMONIUM,T5,2
+dom_classification_onu_1209,2861,POLYVANADATE D'AMMONIUM,T5,2
+dom_classification_onu_1210,2862,PENTOXYDE DE VANADIUM sous forme non fondue,T5,3
+dom_classification_onu_1211,2863,VANADATE DOUBLE D'AMMONIUM ET DE SODIUM,T5,2
+dom_classification_onu_1212,2864,MÉTAVANADATE DE POTASSIUM,T5,2
+dom_classification_onu_1213,2865,SULFATE NEUTRE D'HYDROXYLAMINE,C2,3
+dom_classification_onu_1214,2869,TRICHLORURE DE TITANE EN MÉLANGE,C2,2
+dom_classification_onu_1215,2869,TRICHLORURE DE TITANE EN MÉLANGE,C2,3
+dom_classification_onu_1216,2871,ANTIMOINE EN POUDRE,T5,3
+dom_classification_onu_1217,2872,DIBROMOCHLORO-PROPANES,T1,2
+dom_classification_onu_1218,2872,DIBROMOCHLORO-PROPANES,T1,3
+dom_classification_onu_1219,2873,DIBUTYLAMINOÉTHANOL,T1,3
+dom_classification_onu_1220,2874,ALCOOL FURFURYLIQUE,T1,3
+dom_classification_onu_1221,2875,HEXACHLOROPHÈNE,T2,3
+dom_classification_onu_1222,2876,RÉSORCINOL,T2,3
+dom_classification_onu_1223,2878,ÉPONGE DE TITANE SOUS FORME DE GRANULES ou SOUS FORME DE POUDRE,F3,3
+dom_classification_onu_1224,2880,HYPOCHLORITE DE CALCIUM HYDRATÉ ou HYPOCHLORITE DE CALCIUM EN MÉLANGE HYDRATÉ avec au moins 55% mais au plus 16% d¿eau,O2,2
+dom_classification_onu_1225,2880,HYPOCHLORITE DE CALCIUM HYDRATÉ ou HYPOCHLORITE DE CALCIUM EN MÉLANGE HYDRATÉ avec au moins 55% mais au plus 16% d¿eau,O2,3
+dom_classification_onu_1226,2902,PESTICIDE LIQUIDE TOXIQUE N.S.A.,T6,2
+dom_classification_onu_1227,2902,PESTICIDE LIQUIDE TOXIQUE N.S.A.,T6,3
+dom_classification_onu_1228,2903,PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE N.S.A. ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1229,2903,PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE N.S.A. ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1230,2904,CHLOROPHÉNOLATES LIQUIDES ou PHÉNOLATES LIQUIDES,C9,3
+dom_classification_onu_1231,2905,CHLOROPHÉNOLATES SOLIDES ou PHÉNOLATES SOLIDES,C10,3
+dom_classification_onu_1232,2920,LIQUIDE CORROSIF INFLAMMABLE N.S.A.,CF1,2
+dom_classification_onu_1233,2921,SOLIDE CORROSIF INFLAMMABLE N.S.A.,CF2,2
+dom_classification_onu_1234,2922,LIQUIDE CORROSIF TOXIQUE N.S.A.,CT1,2
+dom_classification_onu_1235,2922,LIQUIDE CORROSIF TOXIQUE N.S.A.,CT1,3
+dom_classification_onu_1236,2923,SOLIDE CORROSIF TOXIQUE N.S.A.,CT2,2
+dom_classification_onu_1237,2923,SOLIDE CORROSIF TOXIQUE N.S.A.,CT2,3
+dom_classification_onu_1238,2924,LIQUIDE INFLAMMABLE CORROSIF N.S.A.,FC,2
+dom_classification_onu_1239,2924,LIQUIDE INFLAMMABLE CORROSIF N.S.A.,FC,3
+dom_classification_onu_1240,2925,SOLIDE ORGANIQUE INFLAMMABLE CORROSIF N.S.A.,FC1,2
+dom_classification_onu_1241,2925,SOLIDE ORGANIQUE INFLAMMABLE CORROSIF N.S.A.,FC1,3
+dom_classification_onu_1242,2926,SOLIDE ORGANIQUE INFLAMMABLE TOXIQUE N.S.A.,FT1,2
+dom_classification_onu_1243,2926,SOLIDE ORGANIQUE INFLAMMABLE TOXIQUE N.S.A.,FT1,3
+dom_classification_onu_1244,2927,LIQUIDE ORGANIQUE TOXIQUE CORROSIF N.S.A.,TC1,2
+dom_classification_onu_1245,2928,SOLIDE ORGANIQUE TOXIQUE CORROSIF N.S.A.,TC2,2
+dom_classification_onu_1246,2929,LIQUIDE ORGANIQUE TOXIQUE INFLAMMABLE N.S.A.,TF1,2
+dom_classification_onu_1247,2930,SOLIDE ORGANIQUE TOXIQUE INFLAMMABLE N.S.A.,TF3,2
+dom_classification_onu_1248,2931,SULFATE DE VANADYLE,T5,2
+dom_classification_onu_1249,2933,CHLORO-2 PROPIONATE DE MÉTHYLE,F1,3
+dom_classification_onu_1250,2934,CHLORO-2 PROPIONATE D'ISOPROPYLE,F1,3
+dom_classification_onu_1251,2935,CHLORO-2 PROPIONATE D'ÉTHYLE,F1,3
+dom_classification_onu_1252,2936,ACIDE THIOLACTIQUE,T1,2
+dom_classification_onu_1253,2937,ALCOOL alpha-MÉTHYLBENZYLIQUE LIQUIDE,T1,3
+dom_classification_onu_1254,2941,FLUOROANILINES,T1,3
+dom_classification_onu_1255,2942,TRIFLUOROMÉTHYL-2 ANILINE,T1,3
+dom_classification_onu_1256,2943,TÉTRAHYDRO-FURFURYLAMINE,F1,3
+dom_classification_onu_1257,2945,N-MÉTHYLBUTYLAMINE,FC,2
+dom_classification_onu_1258,2946,AMINO-2 DIÉTHYLAMINO-5 PENTANE,T1,3
+dom_classification_onu_1259,2947,CHLORACÉTATE D'ISOPROPYLE,F1,3
+dom_classification_onu_1260,2948,TRIFLUOROMÉTHYL-3 ANILINE,T1,2
+dom_classification_onu_1261,2949,HYDROGÉNOSULFURE DE SODIUM HYDRATÉ avec au moins 25% d'eau de cristallisation,C6,2
+dom_classification_onu_1262,2950,GRANULÉS DE MAGNÉSIUM ENROBÉS d'une granulométrie d'au moins 149 microns,W2,3
+dom_classification_onu_1263,2956,tert-BUTYL-5 TRINITRO-246 m-XYLÈNE (MUSC-XYLÈNE),SR1,3
+dom_classification_onu_1264,2966,THIOGLYCOL,T1,2
+dom_classification_onu_1265,2967,ACIDE SULFAMIQUE,C2,3
+dom_classification_onu_1266,2968,MANÈBE STABILISÉ ou PRÉPARATIONS DE MANÈBE STABILISÉES contre l'auto-échauffement,W2,3
+dom_classification_onu_1267,2969,FARINE DE RICIN ou GRAINES DE RICIN ou GRAINES DE RICIN EN FLOCONS ou TOURTEAUX DE RICIN,M11,2
+dom_classification_onu_1268,2984,PEROXYDE D'HYDROGÈNE EN SOLUTION AQUEUSE contenant au minimum 8% mais moins de 20% de peroxyde d'hydrogène (stabilisée selon les besoins),O1,3
+dom_classification_onu_1269,2989,PHOSPHITE DE PLOMB DIBASIQUE,F3,2
+dom_classification_onu_1270,2989,PHOSPHITE DE PLOMB DIBASIQUE,F3,3
+dom_classification_onu_1271,2990,ENGINS DE SAUVETAGE AUTOGONFLABLES,M5,
+dom_classification_onu_1272,2991,CARBAMATE PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1273,2991,CARBAMATE PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1274,2992,CARBAMATE PESTICIDE LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1275,2992,CARBAMATE PESTICIDE LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1276,2993,PESTICIDE ARSENICAL LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1277,2993,PESTICIDE ARSENICAL LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1278,2994,PESTICIDE ARSENICAL LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1279,2994,PESTICIDE ARSENICAL LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1280,2995,PESTICIDE ORGANOCHLORÉ LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1281,2995,PESTICIDE ORGANOCHLORÉ LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1282,2996,PESTICIDE ORGANOCHLORÉ LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1283,2996,PESTICIDE ORGANOCHLORÉ LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1284,2997,TRIAZINE PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1285,2997,TRIAZINE PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1286,2998,TRIAZINE PESTICIDE LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1287,2998,TRIAZINE PESTICIDE LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1288,3005,THIOCARBAMATE PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1289,3005,THIOCARBAMATE PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1290,3006,THIOCARBAMATE PESTICIDE LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1291,3006,THIOCARBAMATE PESTICIDE LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1292,3009,PESTICIDE CUIVRIQUE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1293,3009,PESTICIDE CUIVRIQUE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1294,3010,PESTICIDE CUIVRIQUE LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1295,3010,PESTICIDE CUIVRIQUE LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1296,3011,PESTICIDE MERCURIEL LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1297,3011,PESTICIDE MERCURIEL LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1298,3012,PESTICIDE MERCURIEL LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1299,3012,PESTICIDE MERCURIEL LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1300,3013,NITROPHÉNOL SUBSTITUÉ PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1301,3013,NITROPHÉNOL SUBSTITUÉ PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1302,3014,NITROPHÉNOL SUBSTITUÉ PESTICIDE LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1303,3014,NITROPHÉNOL SUBSTITUÉ PESTICIDE LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1304,3015,PESTICIDE BIPYRIDYLIQUE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1305,3015,PESTICIDE BIPYRIDYLIQUE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1306,3016,PESTICIDE BIPYRIDYLIQUE LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1307,3016,PESTICIDE BIPYRIDYLIQUE LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1308,3017,PESTICIDE ORGANOPHOSPHORÉ LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1309,3017,PESTICIDE ORGANOPHOSPHORÉ LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1310,3018,PESTICIDE ORGANOPHOSPHORÉ LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1311,3018,PESTICIDE ORGANOPHOSPHORÉ LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1312,3019,PESTICIDE ORGANOSTANNIQUE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1313,3019,PESTICIDE ORGANOSTANNIQUE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1314,3020,PESTICIDE ORGANOSTANNIQUE LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1315,3020,PESTICIDE ORGANOSTANNIQUE LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1316,3021,PESTICIDE LIQUIDE INFLAMMABLE TOXIQUE N.S.A. ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1317,3022,OXYDE DE BUTYLÈNE-12 STABILISÉ,F1,2
+dom_classification_onu_1318,3024,PESTICIDE COUMARINIQUE LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1319,3025,PESTICIDE COUMARINIQUE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1320,3025,PESTICIDE COUMARINIQUE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1321,3026,PESTICIDE COUMARINIQUE LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1322,3026,PESTICIDE COUMARINIQUE LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1323,3027,PESTICIDE COUMARINIQUE SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1324,3027,PESTICIDE COUMARINIQUE SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1325,3028,ACCUMULATEURS électriques SECS CONTENANT DE L'HYDROXYDE DE POTASSIUM SOLIDE,C11,
+dom_classification_onu_1326,3054,MERCAPTAN CYCLOHEXYLIQUE,F1,3
+dom_classification_onu_1327,3055,(AMINO-2 ÉTHOXY)-2 ÉTHANOL,C7,3
+dom_classification_onu_1328,3056,n-HEPTALDÉHYDE,F1,3
+dom_classification_onu_1329,3065,BOISSONS ALCOOLISÉES contenant entre 24% et 70% d¿alcool en volume,F1,3
+dom_classification_onu_1330,3065,BOISSONS ALCOOLISÉES contenant plus de 70% d'alcool en volume,F1,2
+dom_classification_onu_1331,3066,PEINTURES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES (y compris solvants et diluants pour peintures),C9,2
+dom_classification_onu_1332,3066,PEINTURES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES (y compris solvants et diluants pour peintures),C9,3
+dom_classification_onu_1333,3070,OXYDE D'ÉTHYLÈNE ET DICHLORODIFLUORO-MÉTHANE EN MÉLANGE contenant au plus 125% d'oxyde d'éthylène,2A,
+dom_classification_onu_1334,3071,MERCAPTANS LIQUIDES TOXIQUES INFLAMMABLES N.S.A. ou MERCAPTANS EN MÉLANGE LIQUIDE TOXIQUE INFLAMMABLE N.S.A.,TF1,2
+dom_classification_onu_1335,3073,VINYLPYRIDINES STABILISÉES,TFC,2
+dom_classification_onu_1336,3077,MATIÈRE DANGEREUSE DU POINT DE VUE DE L'ENVIRONNEMENT SOLIDE N.S.A.,M7,3
+dom_classification_onu_1337,3078,CÉRIUM copeaux ou poudre abrasive,W2,2
+dom_classification_onu_1338,3080,ISOCYANATES TOXIQUES INFLAMMABLES N.S.A. ou ISOCYANATE TOXIQUE INFLAMMABLE EN SOLUTION N.S.A.,TF1,2
+dom_classification_onu_1339,3082,MATIÈRE DANGEREUSE DU POINT DE VUE DE L'ENVIRONNEMENT LIQUIDE N.S.A.,M6,3
+dom_classification_onu_1340,3084,SOLIDE CORROSIF COMBURANT N.S.A.,CO2,2
+dom_classification_onu_1341,3085,SOLIDE COMBURANT CORROSIF N.S.A.,OC2,3
+dom_classification_onu_1342,3085,SOLIDE COMBURANT CORROSIF N.S.A.,OC2,2
+dom_classification_onu_1343,3086,SOLIDE TOXIQUE COMBURANT N.S.A.,TO2,2
+dom_classification_onu_1344,3087,SOLIDE COMBURANT TOXIQUE N.S.A.,OT2,2
+dom_classification_onu_1345,3087,SOLIDE COMBURANT TOXIQUE N.S.A.,OT2,3
+dom_classification_onu_1346,3089,POUDRE MÉTALLIQUE INFLAMMABLE N.S.A.,F3,2
+dom_classification_onu_1347,3089,POUDRE MÉTALLIQUE INFLAMMABLE N.S.A.,F3,3
+dom_classification_onu_1348,3090,PILES AU LITHIUM MÉTAL,M4,2
+dom_classification_onu_1349,3091,PILES AU LITHIUM MÉTAL CONTENUES DANS UN ÉQUIPEMENT,M4,2
+dom_classification_onu_1350,3092,MÉTHOXY-1 PROPANOL-2,F1,3
+dom_classification_onu_1351,3093,LIQUIDE CORROSIF COMBURANT N.S.A.,CO1,2
+dom_classification_onu_1352,3094,LIQUIDE CORROSIF HYDRORÉACTIF N.S.A.,CW1,2
+dom_classification_onu_1353,3095,SOLIDE CORROSIF AUTO-ÉCHAUFFANT N.S.A.,CS2,2
+dom_classification_onu_1354,3096,SOLIDE CORROSIF HYDRORÉACTIF N.S.A.,CW2,2
+dom_classification_onu_1355,3098,LIQUIDE COMBURANT CORROSIF N.S.A.,OC1,2
+dom_classification_onu_1356,3098,LIQUIDE COMBURANT CORROSIF N.S.A.,OC1,3
+dom_classification_onu_1357,3099,LIQUIDE COMBURANT TOXIQUE N.S.A.,OT1,2
+dom_classification_onu_1358,3099,LIQUIDE COMBURANT TOXIQUE N.S.A.,OT1,3
+dom_classification_onu_1359,3101,PEROXYDE ORGANIQUE DE TYPE B LIQUIDE,P1,
+dom_classification_onu_1360,3102,PEROXYDE ORGANIQUE DE TYPE B SOLIDE,P1,
+dom_classification_onu_1361,3103,PEROXYDE ORGANIQUE DE TYPE C LIQUIDE,P1,
+dom_classification_onu_1362,3104,PEROXYDE ORGANIQUE DE TYPE C SOLIDE,P1,
+dom_classification_onu_1363,3105,PEROXYDE ORGANIQUE DE TYPE D LIQUIDE,P1,
+dom_classification_onu_1364,3106,PEROXYDE ORGANIQUE DE TYPE D SOLIDE,P1,
+dom_classification_onu_1365,3107,PEROXYDE ORGANIQUE DE TYPE E LIQUIDE,P1,
+dom_classification_onu_1366,3108,PEROXYDE ORGANIQUE DE TYPE E SOLIDE,P1,
+dom_classification_onu_1367,3109,PEROXYDE ORGANIQUE DE TYPE F LIQUIDE,P1,
+dom_classification_onu_1368,3110,PEROXYDE ORGANIQUE DE TYPE F SOLIDE,P1,
+dom_classification_onu_1369,3122,LIQUIDE TOXIQUE COMBURANT N.S.A.,TO1,2
+dom_classification_onu_1370,3123,LIQUIDE TOXIQUE HYDRORÉACTIF N.S.A.,TW1,2
+dom_classification_onu_1371,3125,SOLIDE TOXIQUE HYDRORÉACTIF N.S.A.,TW2,2
+dom_classification_onu_1372,3129,LIQUIDE HYDRORÉACTIF CORROSIF N.S.A.,WC1,2
+dom_classification_onu_1373,3129,LIQUIDE HYDRORÉACTIF CORROSIF N.S.A.,WC1,3
+dom_classification_onu_1374,3130,LIQUIDE HYDRORÉACTIF TOXIQUE N.S.A.,WT1,2
+dom_classification_onu_1375,3130,LIQUIDE HYDRORÉACTIF TOXIQUE N.S.A.,WT1,3
+dom_classification_onu_1376,3131,SOLIDE HYDRORÉACTIF CORROSIF N.S.A.,WC2,2
+dom_classification_onu_1377,3131,SOLIDE HYDRORÉACTIF CORROSIF N.S.A.,WC2,3
+dom_classification_onu_1378,3132,SOLIDE HYDRORÉACTIF INFLAMMABLE N.S.A.,WF2,2
+dom_classification_onu_1379,3132,SOLIDE HYDRORÉACTIF INFLAMMABLE N.S.A.,WF2,3
+dom_classification_onu_1380,3134,SOLIDE HYDRORÉACTIF TOXIQUE N.S.A.,WT2,2
+dom_classification_onu_1381,3134,SOLIDE HYDRORÉACTIF TOXIQUE N.S.A.,WT2,3
+dom_classification_onu_1382,3136,TRIFLUOROMÉTHANE LIQUIDE RÉFRIGÉRÉ,3A,
+dom_classification_onu_1383,3139,LIQUIDE COMBURANT N.S.A.,O1,2
+dom_classification_onu_1384,3139,LIQUIDE COMBURANT N.S.A.,O1,3
+dom_classification_onu_1385,3140,ALCALOÏDES LIQUIDES N.S.A. ou SELS D'ALCALOÏDES LIQUIDES N.S.A.,T1,2
+dom_classification_onu_1386,3140,ALCALOÏDES LIQUIDES N.S.A. ou SELS D'ALCALOÏDES LIQUIDES N.S.A.,T1,3
+dom_classification_onu_1387,3141,COMPOSÉ INORGANIQUE LIQUIDE DE L'ANTIMOINE N.S.A.,T4,3
+dom_classification_onu_1388,3142,DÉSINFECTANT LIQUIDE TOXIQUE N.S.A.,T1,2
+dom_classification_onu_1389,3142,DÉSINFECTANT LIQUIDE TOXIQUE N.S.A.,T1,3
+dom_classification_onu_1390,3143,COLORANT SOLIDE TOXIQUE N.S.A. ou MATIÈRE INTERMÉDIAIRE SOLIDE POUR COLORANT TOXIQUE N.S.A.,T2,2
+dom_classification_onu_1391,3143,COLORANT SOLIDE TOXIQUE N.S.A. ou MATIÈRE INTERMÉDIAIRE SOLIDE POUR COLORANT TOXIQUE N.S.A.,T2,3
+dom_classification_onu_1392,3144,COMPOSÉ LIQUIDE DE LA NICOTINE N.S.A. ou PRÉPARATION LIQUIDE DE LA NICOTINE N.S.A.,T1,2
+dom_classification_onu_1393,3144,COMPOSÉ LIQUIDE DE LA NICOTINE N.S.A. ou PRÉPARATION LIQUIDE DE LA NICOTINE N.S.A.,T1,3
+dom_classification_onu_1394,3145,ALKYLPHÉNOLS LIQUIDES N.S.A. (y compris les homologues C2 à C12 ),C3,2
+dom_classification_onu_1395,3145,ALKYLPHÉNOLS LIQUIDES N.S.A. (y compris les homologues C2 à C12 ),C3,3
+dom_classification_onu_1396,3146,COMPOSÉ ORGANIQUE SOLIDE DE L'ÉTAIN N.S.A.,T3,2
+dom_classification_onu_1397,3146,COMPOSÉ ORGANIQUE SOLIDE DE L'ÉTAIN N.S.A.,T3,3
+dom_classification_onu_1398,3147,COLORANT SOLIDE CORROSIF N.S.A. ou MATIÈRE INTERMÉDIAIRE SOLIDE POUR COLORANT CORROSIVE N.S.A.,C10,2
+dom_classification_onu_1399,3147,COLORANT SOLIDE CORROSIF N.S.A. ou MATIÈRE INTERMÉDIAIRE SOLIDE POUR COLORANT CORROSIVE N.S.A.,C10,3
+dom_classification_onu_1400,3148,LIQUIDE HYDRORÉACTIF N.S.A.,W1,2
+dom_classification_onu_1401,3148,LIQUIDE HYDRORÉACTIF N.S.A.,W1,3
+dom_classification_onu_1402,3149,PEROXYDE D'HYDROGÈNE ET ACIDE PEROXYACÉTIQUE EN MÉLANGE avec acide(s) eau et au plus 5% d'acide peroxyacétique STABILISÉ,OC1,2
+dom_classification_onu_1403,3150,PETITS APPAREILS À HYDROCARBURES GAZEUX ou RECHARGES D'HYDROCARBURES GAZEUX POUR PETITS APPAREILS avec dispositif de décharge,6F,
+dom_classification_onu_1404,3151,DIPHÉNYLES POLYHALOGÉNÉS LIQUIDES ou TERPHÉNYLES POLYHALOGÉNÉS LIQUIDES,M2,2
+dom_classification_onu_1405,3152,DIPHÉNYLES POLYHALOGÉNÉS SOLIDES ou TERPHÉNYLES POLYHALOGÉNÉS SOLIDES,M2,2
+dom_classification_onu_1406,3155,PENTACHLOROPHÉNOL,T2,2
+dom_classification_onu_1407,3158,GAZ LIQUIDE RÉFRIGÉRÉ N.S.A.,3A,
+dom_classification_onu_1408,3159,TÉTRAFLUORO-1112 ÉTHANE (GAZ RÉFRIGÉRANT R 134a),2A,
+dom_classification_onu_1409,3163,GAZ LIQUÉFIÉ N.S.A.,2A,
+dom_classification_onu_1410,3164,OBJETS SOUS PRESSION PNEUMATIQUE ou HYDRAULIQUE (contenant un gaz non inflammable),6A,
+dom_classification_onu_1411,3166,Moteur à combustion interne ou véhicule à propulsion par gaz inflammable ou véhicule à propulsion par liquide inflammable ou moteur pile à combustible contenant du gaz inflammable ou moteur pile à combustible contenant du liquide inflammable ou véhicule à propulsion par pile à combustible contenant du gaz inflammable ou véhicule à propulsion par pile à combustible contenant du liquide inflammable.,M11,
+dom_classification_onu_1412,3170,SOUS-PRODUITS DE LA FABRICATION DE L'ALUMINIUM ou SOUS-PRODUITS DE LA REFUSION DE L'ALUMINIUM,W2,2
+dom_classification_onu_1413,3170,SOUS-PRODUITS DE LA FABRICATION DE L'ALUMINIUM ou SOUS-PRODUITS DE LA REFUSION DE L'ALUMINIUM,W2,3
+dom_classification_onu_1414,3172,TOXINES EXTRAITES D'ORGANISMES VIVANTS LIQUIDES N.S.A.,T1,2
+dom_classification_onu_1415,3172,TOXINES EXTRAITES D'ORGANISMES VIVANTS LIQUIDES N.S.A.,T1,3
+dom_classification_onu_1416,3175,SOLIDES ou mélanges de solides CONTENANT DU LIQUIDE INFLAMMABLE ayant un point d'éclair inférieur ou égal à 60 °C (tels que préparations et déchets) N.S.A.,F1,2
+dom_classification_onu_1417,3178,SOLIDE INORGANIQUE INFLAMMABLE N.S.A.,F3,2
+dom_classification_onu_1418,3178,SOLIDE INORGANIQUE INFLAMMABLE N.S.A.,F3,3
+dom_classification_onu_1419,3179,SOLIDE INORGANIQUE INFLAMMABLE TOXIQUE N.S.A.,FT2,2
+dom_classification_onu_1420,3179,SOLIDE INORGANIQUE INFLAMMABLE TOXIQUE N.S.A.,FT2,3
+dom_classification_onu_1421,3180,SOLIDE INORGANIQUE INFLAMMABLE CORROSIF N.S.A.,FC2,2
+dom_classification_onu_1422,3180,SOLIDE INORGANIQUE INFLAMMABLE CORROSIF N.S.A.,FC2,3
+dom_classification_onu_1423,3181,SELS MÉTALLIQUES DE COMPOSÉS ORGANIQUES INFLAMMABLES N.S.A.,F3,2
+dom_classification_onu_1424,3181,SELS MÉTALLIQUES DE COMPOSÉS ORGANIQUES INFLAMMABLES N.S.A.,F3,3
+dom_classification_onu_1425,3182,HYDRURES MÉTALLIQUES INFLAMMABLES N.S.A.,F3,2
+dom_classification_onu_1426,3182,HYDRURES MÉTALLIQUES INFLAMMABLES N.S.A.,F3,3
+dom_classification_onu_1427,3208,MATIÈRE MÉTALLIQUE HYDRORÉACTIVE N.S.A.,W2,2
+dom_classification_onu_1428,3208,MATIÈRE MÉTALLIQUE HYDRORÉACTIVE N.S.A.,W2,3
+dom_classification_onu_1429,3210,CHLORATES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,2
+dom_classification_onu_1430,3210,CHLORATES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,3
+dom_classification_onu_1431,3211,PERCHLORATES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,2
+dom_classification_onu_1432,3211,PERCHLORATES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,3
+dom_classification_onu_1433,3212,HYPOCHLORITES INORGANIQUES N.S.A.,O2,2
+dom_classification_onu_1434,3213,BROMATES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,2
+dom_classification_onu_1435,3213,BROMATES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,3
+dom_classification_onu_1436,3214,PERMANGANATES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,2
+dom_classification_onu_1437,3215,PERSULFATES INORGANIQUES N.S.A.,O2,3
+dom_classification_onu_1438,3216,PERSULFATES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,3
+dom_classification_onu_1439,3218,NITRATES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,2
+dom_classification_onu_1440,3218,NITRATES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,3
+dom_classification_onu_1441,3219,NITRITES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,2
+dom_classification_onu_1442,3219,NITRITES INORGANIQUES EN SOLUTION AQUEUSE N.S.A.,O1,3
+dom_classification_onu_1443,3220,PENTAFLUORÉTHANE (GAZ RÉFRIGÉRANT R 125),2A,
+dom_classification_onu_1444,3221,LIQUIDE AUTORÉACTIF DU TYPE B,SR1,
+dom_classification_onu_1445,3222,SOLIDE AUTORÉACTIF DU TYPE B,SR1,
+dom_classification_onu_1446,3223,LIQUIDE AUTORÉACTIF DU TYPE C,SR1,
+dom_classification_onu_1447,3224,SOLIDE AUTORÉACTIF DU TYPE C,SR1,
+dom_classification_onu_1448,3225,LIQUIDE AUTORÉACTIF DU TYPE D,SR1,
+dom_classification_onu_1449,3226,SOLIDE AUTORÉACTIF DU TYPE D,SR1,
+dom_classification_onu_1450,3227,LIQUIDE AUTORÉACTIF DU TYPE E,SR1,
+dom_classification_onu_1451,3228,SOLIDE AUTORÉACTIF DU TYPE E,SR1,
+dom_classification_onu_1452,3229,LIQUIDE AUTORÉACTIF DU TYPE F,SR1,
+dom_classification_onu_1453,3230,SOLIDE AUTORÉACTIF DU TYPE F,SR1,
+dom_classification_onu_1454,3241,BROMO-2 NITRO-2 PROPANEDIOL-13,SR1,3
+dom_classification_onu_1455,3242,AZODICARBONAMIDE,SR1,2
+dom_classification_onu_1456,3243,SOLIDES CONTENANT DU LIQUIDE TOXIQUE N.S.A.,T9,2
+dom_classification_onu_1457,3244,SOLIDES CONTENANT DU LIQUIDE CORROSIF N.S.A.,C10,2
+dom_classification_onu_1458,3247,PEROXOBORATE DE SODIUM ANHYDRE,O2,2
+dom_classification_onu_1459,3248,MÉDICAMENT LIQUIDE INFLAMMABLE TOXIQUE N.S.A.,FT1,2
+dom_classification_onu_1460,3248,MÉDICAMENT LIQUIDE INFLAMMABLE TOXIQUE N.S.A.,FT1,3
+dom_classification_onu_1461,3249,MÉDICAMENT SOLIDE TOXIQUE N.S.A.,T2,2
+dom_classification_onu_1462,3249,MÉDICAMENT SOLIDE TOXIQUE N.S.A.,T2,3
+dom_classification_onu_1463,3251,MONONITRATE-5 D'ISOSORBIDE,SR1,3
+dom_classification_onu_1464,3253,TRIOXOSILICATE DE DISODIUM,C6,3
+dom_classification_onu_1465,3259,AMINES SOLIDES CORROSIVES N.S.A. ou POLYAMINES SOLIDES CORROSIVES N.S.A.,C8,2
+dom_classification_onu_1466,3259,AMINES SOLIDES CORROSIVES N.S.A. ou POLYAMINES SOLIDES CORROSIVES N.S.A.,C8,3
+dom_classification_onu_1467,3260,SOLIDE INORGANIQUE CORROSIF ACIDE N.S.A.,C2,2
+dom_classification_onu_1468,3260,SOLIDE INORGANIQUE CORROSIF ACIDE N.S.A.,C2,3
+dom_classification_onu_1469,3261,SOLIDE ORGANIQUE CORROSIF ACIDE N.S.A.,C4,2
+dom_classification_onu_1470,3261,SOLIDE ORGANIQUE CORROSIF ACIDE N.S.A.,C4,3
+dom_classification_onu_1471,3262,SOLIDE INORGANIQUE CORROSIF BASIQUE N.S.A.,C6,2
+dom_classification_onu_1472,3262,SOLIDE INORGANIQUE CORROSIF BASIQUE N.S.A.,C6,3
+dom_classification_onu_1473,3263,SOLIDE ORGANIQUE CORROSIF BASIQUE N.S.A.,C8,2
+dom_classification_onu_1474,3263,SOLIDE ORGANIQUE CORROSIF BASIQUE N.S.A.,C8,3
+dom_classification_onu_1475,3264,LIQUIDE INORGANIQUE CORROSIF ACIDE N.S.A.,C1,3
+dom_classification_onu_1476,3264,LIQUIDE INORGANIQUE CORROSIF ACIDE N.S.A.,C1,2
+dom_classification_onu_1477,3265,LIQUIDE ORGANIQUE CORROSIF ACIDE N.S.A.,C3,2
+dom_classification_onu_1478,3265,LIQUIDE ORGANIQUE CORROSIF ACIDE N.S.A.,C3,3
+dom_classification_onu_1479,3266,LIQUIDE INORGANIQUE CORROSIF BASIQUE N.S.A.,C5,2
+dom_classification_onu_1480,3266,LIQUIDE INORGANIQUE CORROSIF BASIQUE N.S.A.,C5,3
+dom_classification_onu_1481,3267,LIQUIDE ORGANIQUE CORROSIF BASIQUE N.S.A.,C7,2
+dom_classification_onu_1482,3267,LIQUIDE ORGANIQUE CORROSIF BASIQUE N.S.A.,C7,3
+dom_classification_onu_1483,3269,TROUSSES DE RÉSINE POLYESTER,F1,2
+dom_classification_onu_1484,3269,TROUSSES DE RÉSINE POLYESTER,F1,3
+dom_classification_onu_1485,3270,MEMBRANES FILTRANTES EN NITROCELLULOSE d'une teneur en azote ne dépassant pas 126% (rapportée à la masse sèche),F1,2
+dom_classification_onu_1486,3271,ÉTHERS N.S.A.,F1,2
+dom_classification_onu_1487,3271,ÉTHERS N.S.A.,F1,3
+dom_classification_onu_1488,3272,ESTERS N.S.A.,F1,2
+dom_classification_onu_1489,3272,ESTERS N.S.A.,F1,3
+dom_classification_onu_1490,3273,NITRILES INFLAMMABLES TOXIQUES N.S.A.,FT1,2
+dom_classification_onu_1491,3274,ALCOOLATES EN SOLUTION dans l'alcool N.S.A.,FC,2
+dom_classification_onu_1492,3275,NITRILES TOXIQUES INFLAMMABLES N.S.A.,TF1,2
+dom_classification_onu_1493,3276,NITRILES TOXIQUES LIQUIDES N.S.A.,T1,2
+dom_classification_onu_1494,3276,NITRILES TOXIQUES LIQUIDES N.S.A.,T1,3
+dom_classification_onu_1495,3277,CHLOROFORMIATES TOXIQUES CORROSIFS N.S.A.,TC1,2
+dom_classification_onu_1496,3278,COMPOSÉ ORGANOPHOSPHORÉ TOXIQUE LIQUIDE N.S.A.,T1,2
+dom_classification_onu_1497,3278,COMPOSÉ ORGANOPHOSPHORÉ TOXIQUE LIQUIDE N.S.A.,T1,3
+dom_classification_onu_1498,3279,COMPOSÉ ORGANOPHOSPHORÉ TOXIQUE INFLAMMABLE N.S.A.,TF1,2
+dom_classification_onu_1499,3280,COMPOSÉ ORGANIQUE DE L'ARSENIC LIQUIDE N.S.A.,T3,2
+dom_classification_onu_1500,3280,COMPOSÉ ORGANIQUE DE L'ARSENIC LIQUIDE N.S.A.,T3,3
+dom_classification_onu_1501,3281,MÉTAUX-CARBONYLES LIQUIDES N.S.A. ,T3,2
+dom_classification_onu_1502,3281,MÉTAUX-CARBONYLES LIQUIDES N.S.A. ,T3,3
+dom_classification_onu_1503,3282,COMPOSÉ ORGANOMÉTALLIQUE TOXIQUE LIQUIDE N.S.A.,T3,2
+dom_classification_onu_1504,3282,COMPOSÉ ORGANOMÉTALLIQUE TOXIQUE LIQUIDE N.S.A.,T3,3
+dom_classification_onu_1505,3283,COMPOSÉ DU SÉLÉNIUM SOLIDE N.S.A.,T5,2
+dom_classification_onu_1506,3283,COMPOSÉ DU SÉLÉNIUM SOLIDE N.S.A.,T5,3
+dom_classification_onu_1507,3284,COMPOSÉ DU TELLURE N.S.A.,T5,2
+dom_classification_onu_1508,3284,COMPOSÉ DU TELLURE N.S.A.,T5,3
+dom_classification_onu_1509,3285,COMPOSÉ DU VANADIUM N.S.A.,T5,2
+dom_classification_onu_1510,3285,COMPOSÉ DU VANADIUM N.S.A.,T5,3
+dom_classification_onu_1511,3286,LIQUIDE INFLAMMABLE TOXIQUE CORROSIF N.S.A.,FTC,2
+dom_classification_onu_1512,3287,LIQUIDE INORGANIQUE TOXIQUE N.S.A.,T4,2
+dom_classification_onu_1513,3287,LIQUIDE INORGANIQUE TOXIQUE N.S.A.,T4,3
+dom_classification_onu_1514,3288,SOLIDE INORGANIQUE TOXIQUE N.S.A.,T5,2
+dom_classification_onu_1515,3288,SOLIDE INORGANIQUE TOXIQUE N.S.A.,T5,3
+dom_classification_onu_1516,3289,LIQUIDE INORGANIQUE TOXIQUE CORROSIF N.S.A.,TC3,2
+dom_classification_onu_1517,3290,SOLIDE INORGANIQUE TOXIQUE CORROSIF N.S.A.,TC4,2
+dom_classification_onu_1518,3293,HYDRAZINE EN SOLUTION AQUEUSE avec au plus 37% (masse) d'hydrazine,T4,3
+dom_classification_onu_1519,3295,HYDROCARBURES LIQUIDES N.S.A.,F1,1
+dom_classification_onu_1520,3295,HYDROCARBURES LIQUIDES N.S.A.,F1,3
+dom_classification_onu_1521,3295,HYDROCARBURES LIQUIDES N.S.A. (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_1522,3295,HYDROCARBURES LIQUIDES N.S.A. (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_1523,3296,HEPTAFLUOROPROPANE (GAZ RÉFRIGÉRANT R 227),2A,
+dom_classification_onu_1524,3297,OXYDE D'ÉTHYLÈNE ET CHLOROTÉTRAFLUOR-ÉTHANE EN MÉLANGE contenant au plus 88% d'oxyde d'éthylène,2A,
+dom_classification_onu_1525,3298,OXYDE D'ÉTHYLÈNE ET PENTAFLUORÉTHANE EN MÉLANGE contenant au plus 79% d'oxyde d'éthylène,2A,
+dom_classification_onu_1526,3299,OXYDE D'ÉTHYLÈNE ET TÉTRAFLUORÉTHANE EN MÉLANGE contenant au plus 56% d'oxyde d'éthylène,2A,
+dom_classification_onu_1527,3302,ACRYLATE DE 2-DIMÉTHYLAMINOÉTHYLE,T1,2
+dom_classification_onu_1528,3314,MATIÈRE PLASTIQUE POUR MOULAGE en pâte en feuille ou en cordon extrudé dégageant des vapeurs inflammables,M3,3
+dom_classification_onu_1529,3316,TROUSSE CHIMIQUE ou TROUSSE DE PREMIER SECOURS,M11,2
+dom_classification_onu_1530,3316,TROUSSE CHIMIQUE ou TROUSSE DE PREMIER SECOURS,M11,3
+dom_classification_onu_1531,3320,BOROHYDRURE DE SODIUM ET HYDROXYDE DE SODIUM EN SOLUTION contenant au plus 12% (masse) de borohydrure de sodium et au plus 40% (masse) d'hydroxyde de sodium,C5,2
+dom_classification_onu_1532,3320,BOROHYDRURE DE SODIUM ET HYDROXYDE DE SODIUM EN SOLUTION contenant au plus 12% (masse) de borohydrure de sodium et au plus 40% (masse) d'hydroxyde de sodium,C5,3
+dom_classification_onu_1533,3334,Matière liquide réglementée pour l'aviation n.s.a.,M11,
+dom_classification_onu_1534,3335,Matière solide réglementée pour l'aviation n.s.a.,M11,
+dom_classification_onu_1535,3336,MERCAPTANS LIQUIDES INFLAMMABLES N.S.A. ou MERCAPTANS EN MÉLANGE LIQUIDE INFLAMMABLE N.S.A.,F1,3
+dom_classification_onu_1536,3336,MERCAPTANS LIQUIDES INFLAMMABLES N.S.A. OU MERCAPTANS EN MÉLANGE LIQUIDE INFLAMMABLE N.S.A. (pression de vapeur à 50 °C inférieure ou égale à 110 kPa),F1,2
+dom_classification_onu_1537,3336,MERCAPTANS LIQUIDES INFLAMMABLES N.S.A. OU MERCAPTANS EN MÉLANGE LIQUIDE INFLAMMABLE N.S.A. (pression de vapeur à 50 °C supérieure à 110 kPa),F1,2
+dom_classification_onu_1538,3337,GAZ RÉFRIGÉRANT R 404A (pentafluoréthane trifluoro-111 éthane et tétrafluoro-1112 éthane en mélange zéotropique avec environ 44% de pentafluoréthane et 52% de trifluoro111 éthane),2A,
+dom_classification_onu_1539,3338,GAZ RÉFRIGÉRANT R 407A (difluorométhane pentafluoréthane et tétrafluoro-1112 éthane en mélange zéotropique avec environ 20% de difluorométhane et 40% de pentafluoréthane),2A,
+dom_classification_onu_1540,3339,GAZ RÉFRIGÉRANT R 407B (difluorométhane pentafluoréthane et tétrafluoro-1112 éthane en mélange zéotropique avec environ 10% de difluorométhane et 70% de pentafluoréthane),2A,
+dom_classification_onu_1541,3340,GAZ RÉFRIGÉRANT R 407C (difluorométhane pentafluoréthane et tétrafluoro-1112 éthane en mélange zéotropique avec environ 23% de difluorométhane et 25% de pentafluoréthane),2A,
+dom_classification_onu_1542,3345,ACIDE PHÉNOXYACÉTIQUE DÉRIVÉ PESTICIDE SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1543,3345,ACIDE PHÉNOXYACÉTIQUE DÉRIVÉ PESTICIDE SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1544,3346,ACIDE PHÉNOXYACÉTIQUE DÉRIVÉ PESTICIDE LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1545,3347,ACIDE PHÉNOXYACÉTIQUE DÉRIVÉ PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1546,3347,ACIDE PHÉNOXYACÉTIQUE DÉRIVÉ PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1547,3348,ACIDE PHÉNOXYACÉTIQUE DÉRIVÉ PESTICIDE LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1548,3348,ACIDE PHÉNOXYACÉTIQUE DÉRIVÉ PESTICIDE LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1549,3349,PYRÉTHROÏDE PESTICIDE SOLIDE TOXIQUE,T7,2
+dom_classification_onu_1550,3349,PYRÉTHROÏDE PESTICIDE SOLIDE TOXIQUE,T7,3
+dom_classification_onu_1551,3350,PYRÉTHROÏDE PESTICIDE LIQUIDE INFLAMMABLE TOXIQUE ayant un point d'éclair inférieur à 23 °C,FT2,2
+dom_classification_onu_1552,3351,PYRÉTHROÏDE PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,2
+dom_classification_onu_1553,3351,PYRÉTHROÏDE PESTICIDE LIQUIDE TOXIQUE INFLAMMABLE ayant un point d'éclair égal ou supérieur à 23 °C,TF2,3
+dom_classification_onu_1554,3352,PYRÉTHROÏDE PESTICIDE LIQUIDE TOXIQUE,T6,2
+dom_classification_onu_1555,3352,PYRÉTHROÏDE PESTICIDE LIQUIDE TOXIQUE,T6,3
+dom_classification_onu_1556,3359,ENGIN DE TRANSPORT SOUS FUMIGATION,M11,
+dom_classification_onu_1557,3363,Marchandises dangereuses contenues dans des machines ou marchandises dangereuses contenues dans des appareils,M11,
+dom_classification_onu_1558,3371,2-MÉTHYLBUTANAL,F1,2
+dom_classification_onu_1559,3377,PERBORATE DE SODIUM MONOHYDRATÉ,O2,3
+dom_classification_onu_1560,3378,CARBONATE DE SODIUM PEROXYHYDRATÉ,O2,2
+dom_classification_onu_1561,3378,CARBONATE DE SODIUM PEROXYHYDRATÉ,O2,3
+dom_classification_onu_1562,3395,MATIÈRE ORGANO-MÉTALLIQUE SOLIDE HYDRORÉACTIVE,W2,2
+dom_classification_onu_1563,3395,MATIÈRE ORGANO-MÉTALLIQUE SOLIDE HYDRORÉACTIVE,W2,3
+dom_classification_onu_1564,3396,MATIÈRE ORGANO-MÉTALLIQUE SOLIDE HYDRORÉACTIVE INFLAMMABLE,WF2,2
+dom_classification_onu_1565,3396,MATIÈRE ORGANO-MÉTALLIQUE SOLIDE HYDRORÉACTIVE INFLAMMABLE,WF2,3
+dom_classification_onu_1566,3397,MATIÈRE ORGANO-MÉTALLIQUE SOLIDE HYDRORÉACTIVE AUTO-ÉCHAUFFANTE,WS,2
+dom_classification_onu_1567,3397,MATIÈRE ORGANO-MÉTALLIQUE SOLIDE HYDRORÉACTIVE AUTO-ÉCHAUFFANTE,WS,3
+dom_classification_onu_1568,3398,MATIÈRE ORGANO-MÉTALLIQUE LIQUIDE HYDRORÉACTIVE,W1,2
+dom_classification_onu_1569,3398,MATIÈRE ORGANO-MÉTALLIQUE LIQUIDE HYDRORÉACTIVE,W1,3
+dom_classification_onu_1570,3399,MATIÈRE ORGANO-MÉTALLIQUE LIQUIDE HYDRORÉACTIVE INFLAMMABLE,WF1,2
+dom_classification_onu_1571,3399,MATIÈRE ORGANO-MÉTALLIQUE LIQUIDE HYDRORÉACTIVE INFLAMMABLE,WF1,3
+dom_classification_onu_1572,3400,MATIÈRE ORGANO-MÉTALLIQUE SOLIDE AUTO-ÉCHAUFFANTE,S5,2
+dom_classification_onu_1573,3400,MATIÈRE ORGANO-MÉTALLIQUE SOLIDE AUTO-ÉCHAUFFANTE,S5,3
+dom_classification_onu_1574,3405,CHLORATE DE BARYUM EN SOLUTION,OT1,2
+dom_classification_onu_1575,3405,CHLORATE DE BARYUM EN SOLUTION,OT1,3
+dom_classification_onu_1576,3406,PERCHLORATE DE BARYUM EN SOLUTION,OT1,2
+dom_classification_onu_1577,3406,PERCHLORATE DE BARYUM EN SOLUTION,OT1,3
+dom_classification_onu_1578,3407,CHLORATE ET CHLORURE DE MAGNÉSIUM EN MÉLANGE EN SOLUTION,O1,2
+dom_classification_onu_1579,3407,CHLORATE ET CHLORURE DE MAGNÉSIUM EN MÉLANGE EN SOLUTION,O1,3
+dom_classification_onu_1580,3408,PERCHLORATE DE PLOMB EN SOLUTION,OT1,2
+dom_classification_onu_1581,3408,PERCHLORATE DE PLOMB EN SOLUTION,OT1,3
+dom_classification_onu_1582,3409,CHLORONITRO-BENZÈNES LIQUIDES,T1,2
+dom_classification_onu_1583,3410,CHLORHYDRATE DE CHLORO-4 o-TOLUIDINE EN SOLUTION,T1,3
+dom_classification_onu_1584,3411,bêta-NAPHTHYLAMINE EN SOLUTION,T1,2
+dom_classification_onu_1585,3411,bêta-NAPHTHYLAMINE EN SOLUTION,T1,3
+dom_classification_onu_1586,3412,ACIDE FORMIQUE contenant au moins 10% et au plus 85% (masse) d'acide,C3,2
+dom_classification_onu_1587,3412,ACIDE FORMIQUE contenant au moins 5% mais moins de 10% (masse) d'acide,C3,3
+dom_classification_onu_1588,3413,CYANURE DE POTASSIUM EN SOLUTION,T4,2
+dom_classification_onu_1589,3413,CYANURE DE POTASSIUM EN SOLUTION,T4,3
+dom_classification_onu_1590,3414,CYANURE DE SODIUM EN SOLUTION,T4,2
+dom_classification_onu_1591,3414,CYANURE DE SODIUM EN SOLUTION,T4,3
+dom_classification_onu_1592,3415,FLUORURE DE SODIUM EN SOLUTION,T4,3
+dom_classification_onu_1593,3418,m-TOLUYLÈNEDIAMINE EN SOLUTION,T1,3
+dom_classification_onu_1594,3419,COMPLEXE DE TRIFLUORURE DE BORE ET D'ACIDE ACÉTIQUE SOLIDE,C4,2
+dom_classification_onu_1595,3420,COMPLEXE DE TRIFLUORURE DE BORE ET D'ACIDE PROPIONIQUE SOLIDE,C4,2
+dom_classification_onu_1596,3421,HYDROGÉNO-DIFLUORURE DE POTASSIUM EN SOLUTION,CT1,2
+dom_classification_onu_1597,3421,HYDROGÉNO-DIFLUORURE DE POTASSIUM EN SOLUTION,CT1,3
+dom_classification_onu_1598,3422,FLUORURE DE POTASSIUM EN SOLUTION,T4,3
+dom_classification_onu_1599,3423,HYDROXYDE DE TÉTRAMÉTHYL-AMMONIUM SOLIDE,C8,2
+dom_classification_onu_1600,3424,DINITRO-o-CRÉSATE D'AMMONIUM EN SOLUTION,T1,2
+dom_classification_onu_1601,3424,DINITRO-o-CRÉSATE D'AMMONIUM EN SOLUTION,T1,3
+dom_classification_onu_1602,3425,ACIDE BROMACÉTIQUE SOLIDE,C4,2
+dom_classification_onu_1603,3426,ACRYLAMIDE EN SOLUTION,T1,3
+dom_classification_onu_1604,3427,CHLORURES DE CHLOROBENZYLE SOLIDES,T2,3
+dom_classification_onu_1605,3428,ISOCYANATE DE CHLORO-3 MÉTHYL-4 PHÉNYLE SOLIDE,T2,2
+dom_classification_onu_1606,3429,CHLOROTOLUIDINES LIQUIDES,T1,3
+dom_classification_onu_1607,3430,XYLÉNOLS LIQUIDES,T1,2
+dom_classification_onu_1608,3431,FLUORURES DE NITROBENZYLIDYNE SOLIDES,T2,2
+dom_classification_onu_1609,3432,DIPHÉNYLES POLYCHLORÉS SOLIDES,M2,2
+dom_classification_onu_1610,3434,NITROCRÉSOLS LIQUIDES,T1,3
+dom_classification_onu_1611,3436,HYDRATE D'HEXA-FLUORACÉTONE SOLIDE,T2,2
+dom_classification_onu_1612,3437,CHLOROCRÉSOLS SOLIDES,T2,2
+dom_classification_onu_1613,3438,ALCOOL alpha-MÉTHYL-BENZYLIQUE SOLIDE,T2,3
+dom_classification_onu_1614,3439,NITRILES TOXIQUES SOLIDES N.S.A.,T2,2
+dom_classification_onu_1615,3439,NITRILES TOXIQUES SOLIDES N.S.A.,T2,3
+dom_classification_onu_1616,3440,COMPOSÉ DU SÉLÉNIUM LIQUIDE N.S.A,T4,2
+dom_classification_onu_1617,3440,COMPOSÉ DU SÉLÉNIUM LIQUIDE N.S.A,T4,3
+dom_classification_onu_1618,3441,CHLORODINITRO-BENZÈNES SOLIDES,T2,2
+dom_classification_onu_1619,3442,DICHLORANILINES SOLIDES,T2,2
+dom_classification_onu_1620,3443,DINITROBENZÈNES SOLIDES,T2,2
+dom_classification_onu_1621,3444,CHLORHYDRATE DE NICOTINE SOLIDE,T2,2
+dom_classification_onu_1622,3445,SULFATE DE NICOTINE SOLIDE,T2,2
+dom_classification_onu_1623,3446,NITROTOLUÈNES SOLIDES,T2,2
+dom_classification_onu_1624,3447,NITROXYLÈNES SOLIDES,T2,2
+dom_classification_onu_1625,3451,TOLUIDINES SOLIDES,T2,2
+dom_classification_onu_1626,3452,XYLIDINES SOLIDES,T2,2
+dom_classification_onu_1627,3453,ACIDE PHOSPHORIQUE SOLIDE,C2,3
+dom_classification_onu_1628,3454,DINITROTOLUÈNES SOLIDES,T2,2
+dom_classification_onu_1629,3455,CRÉSOLS SOLIDES,TC2,2
+dom_classification_onu_1630,3456,HYDROGÉNOSULFATE DE NITROSYLE SOLIDE,C2,2
+dom_classification_onu_1631,3457,CHLORONITRO-TOLUÈNES SOLIDES,T2,3
+dom_classification_onu_1632,3458,NITRANISOLES SOLIDES,T2,3
+dom_classification_onu_1633,3459,NITROBROMOBENZÈNES SOLIDES,T2,3
+dom_classification_onu_1634,3460,N-ÉTHYLBENZYL-TOLUIDINES SOLIDES,T2,3
+dom_classification_onu_1635,3462,TOXINES EXTRAITES D'ORGANISMES VIVANTS SOLIDES N.S.A.,T2,2
+dom_classification_onu_1636,3462,TOXINES EXTRAITES D'ORGANISMES VIVANTS SOLIDES N.S.A.,T2,3
+dom_classification_onu_1637,3463,ACIDE PROPIONIQUE contenant au moins 90% (masse) d'acide,CF1,2
+dom_classification_onu_1638,3464,COMPOSÉ ORGANOPHOSPHORÉ TOXIQUE SOLIDE N.S.A.,T2,2
+dom_classification_onu_1639,3464,COMPOSÉ ORGANOPHOSPHORÉ TOXIQUE SOLIDE N.S.A.,T2,3
+dom_classification_onu_1640,3465,COMPOSÉ ORGANIQUE DE L'ARSENIC SOLIDE N.S.A.,T3,2
+dom_classification_onu_1641,3465,COMPOSÉ ORGANIQUE DE L'ARSENIC SOLIDE N.S.A.,T3,3
+dom_classification_onu_1642,3466,MÉTAUX-CARBONYLES SOLIDES N.S.A. ,T3,2
+dom_classification_onu_1643,3466,MÉTAUX-CARBONYLES SOLIDES N.S.A. ,T3,3
+dom_classification_onu_1644,3467,COMPOSÉ ORGANOMÉTALLIQUE TOXIQUE SOLIDE N.S.A.,T3,2
+dom_classification_onu_1645,3467,COMPOSÉ ORGANOMÉTALLIQUE TOXIQUE SOLIDE N.S.A.,T3,3
+dom_classification_onu_1646,3469,PEINTURES INFLAMMABLES CORROSIVES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES INFLAMMABLES CORROSIVES (y compris solvants et diluants pour peintures) ,FC,2
+dom_classification_onu_1647,3469,PEINTURES INFLAMMABLES CORROSIVES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES INFLAMMABLES CORROSIVES (y compris solvants et diluants pour peintures) ,FC,3
+dom_classification_onu_1648,3470,PEINTURES CORROSIVES INFLAMMABLES (y compris peintures laques émaux couleurs shellac vernis cirages encaustiques enduits d'apprêt et bases liquides pour laques) ou MATIÈRES APPARENTÉES AUX PEINTURES CORROSIVES INFLAMMABLES (y compris solvants et diluants pour peintures) ,CF1,2
+dom_classification_onu_1649,3471,HYDROGÉNODIFLUORU-RES EN SOLUTION N.S.A.,CT1,2
+dom_classification_onu_1650,3471,HYDROGÉNODIFLUORU-RES EN SOLUTION N.S.A.,CT1,3
+dom_classification_onu_1651,3472,ACIDE CROTONIQUE LIQUIDE,C3,3
+dom_classification_onu_1652,3473,CARTOUCHES POUR PILE À COMBUSTIBLE ou CARTOUCHES POUR PILE À COMBUSTIBLE CONTENUES DANS UN ÉQUIPEMENT ou CARTOUCHES POUR PILE À COMBUSTIBLE EMBALLÉES AVEC UN ÉQUIPEMENT contenant des liquides inflammables,F1,
+dom_classification_onu_1653,3475,MÉLANGE D¿ÉTHANOL ET D¿ESSENCE contenant plus de 10% d¿éthanol,F1,2
+dom_classification_onu_1654,3476,CARTOUCHES POUR PILE À COMBUSTIBLE ou CARTOUCHES POUR PILE À COMBUSTIBLE CONTENUES DANS UN ÉQUIPEMENT ou CARTOUCHES POUR PILE À COMBUSTIBLE EMBALLÉES AVEC UN ÉQUIPEMENT contenant des matières hydroréactives,W3,
+dom_classification_onu_1655,3477,CARTOUCHES POUR PILE À COMBUSTIBLE ou CARTOUCHES POUR PILE À COMBUSTIBLE CONTENUES DANS UN ÉQUIPEMENT ou CARTOUCHES POUR PILE À COMBUSTIBLE EMBALLÉES AVEC UN ÉQUIPEMENT contenant des matières corrosives,C11,
+dom_classification_onu_1656,3478,CARTOUCHES POUR PILE À COMBUSTIBLE ou CARTOUCHES POUR PILE À COMBUSTIBLE CONTENUES DANS UN ÉQUIPEMENT ou CARTOUCHES POUR PILE À COMBUSTIBLE EMBALLÉES AVEC UN ÉQUIPEMENT contenant un gaz liquéfié inflammable ,6F,
+dom_classification_onu_1657,3479,CARTOUCHES POUR PILE À COMBUSTIBLE ou CARTOUCHES POUR PILE À COMBUSTIBLE CONTENUES DANS UN ÉQUIPEMENT ou CARTOUCHES POUR PILE À COMBUSTIBLE EMBALLÉES AVEC UN ÉQUIPEMENT contenant de l'hydrogène dans un hydrure métallique,6F,
+dom_classification_onu_1658,3480,PILES AU LITHIUM IONIQUE (y compris les piles au lithium ionique à membrane polymère),M4,
+dom_classification_onu_1659,3481,PILES AU LITHIUM IONIQUE CONTENUES DANS UN ÉQUIPEMENT,M4,
+dom_classification_onu_1660,3485,HYPOCHLORITE DE CALCIUM SEC CORROSIF ou HYPOCHLORITE DE CALCIUM EN MÉLANGE SEC CORROSIF contenant plus de 39% de chlore actif (88% d¿oxygène actif),OC2,2
+dom_classification_onu_1661,3486,HYPOCHLORITE DE CALCIUM EN MÉLANGE SEC CORROSIF contenant plus de 10% mais 39% au maximum de chlore actif,OC2,3
+dom_classification_onu_1662,3487,HYPOCHLORITE DE CALCIUM HYDRATÉ CORROSIF ou HYPOCHLORITE DE CALCIUM EN MÉLANGE HYDRATÉ CORROSIF avec au moins 55% mais au plus 16% d¿eau,OC2,2
+dom_classification_onu_1663,3487,HYPOCHLORITE DE CALCIUM HYDRATÉ CORROSIF ou HYPOCHLORITE DE CALCIUM EN MÉLANGE HYDRATÉ CORROSIF avec au moins 55% mais au plus 16% d¿eau,OC2,3
+dom_classification_onu_1664,3494,PÉTROLE BRUT ACIDE INFLAMMABLE TOXIQUE,FT1,2
+dom_classification_onu_1665,3494,PÉTROLE BRUT ACIDE INFLAMMABLE TOXIQUE,FT1,3
+dom_classification_onu_1666,3495,IODE,CT2,3
+dom_classification_onu_1667,3496,Piles au nickel-hydrure métallique,M11,
+dom_classification_onu_1668,3498,MONOCHLORURE D'IODE LIQUIDE,8,2
+dom_classification_onu_1669,3506,MERCURE CONTENU DANS DES OBJETS MANUFACTURES,CT3,
