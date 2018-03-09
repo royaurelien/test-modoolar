@@ -27,7 +27,7 @@ class ExportMatiereDangereuse(models.Model):
         print(dateEN)
 
         date = dateEN.split('-')
-        formatted_date = date[0]+date[1]+date[2][-2:]
+        formatted_date = date[0]+date[1]+date[2][0:2]
         print(formatted_date)
         return  formatted_date
 
@@ -101,7 +101,7 @@ class ExportMatiereDangereuse(models.Model):
             date = bl.date
             date = self.formatDate(date)
             ref_client = bl.partner_id.parent_id.ref or bl.partner_id.ref
-            nom_client = bl.partner_id.display_name or ''
+            nom_client = bl.partner_id.name or bl.partner_id.parent_id.name
             rue = bl.partner_id.street or ''
             rue2 = bl.partner_id.street2 or ''
             zip = bl.partner_id.zip or ''
@@ -176,23 +176,26 @@ class ExportMatiereDangereuse(models.Model):
                         continue
                     else:
                         num_dang = line.product_id.dang.num_danger
-                        classe = line.product_id.dang.classe
+                        pg = line.product_id.dang.pg
                         ref_art = line.product_id.default_code
                         seg = 'MD'
-                        pg = line.product_id.dang.pg
-                        desc = line.product_id.display_name + '' +line.product_id.dang.name
-                        onu = line.product_id.num_onu
-                        poids = line.weight
+                        onu = line.product_id.onu_id.name
+                        desc = line.product_id.onu_id.description
+                        classe = line.product_id.onu_id.classification
+                        emballage = line.product_id.onu_id.emballage
+                        poids = line.weight  #en kg
+                        poids_g = int(poids * 1000)
 
                         move_row = [
                             seg,
                             onu,
                             desc,
-                            pg,
+                            classe,
+                            emballage,
+                            poids_g,
                             '',
-                            poids,
-                            '',
-                            'O'
+                            'O',
+                            ''
                         ]
 
                         writer.writerow(move_row)
@@ -228,7 +231,7 @@ class ExportMatiereDangereuse(models.Model):
             'name': 'ecriture_sage',
             'type': 'ir.actions.act_url',
             'url': "web/content/?model=export.matiere&id=" + str(
-                self.id) + "&filename_field=file_mat_dange&field=value_mat_dange&download=true&filename=%s.csv" % (name),
+                self.id) + "&filename_field=file_mat_dange&field=value_mat_dange&download=true&filename=%s" % (name),
             'target': 'new',
         }
 

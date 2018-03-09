@@ -64,13 +64,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 class ProductTemplate(models.Model):
-
     _inherit = 'product.template'
 
-    # 9 more fields
-
     nb_par_colis = fields.Integer('Nombre par colis')
-    # poids_brut = fields.Float('Poids Brut')
 
     # inherited
     weight = fields.Float(string='Poids Brut')
@@ -80,5 +76,6 @@ class ProductTemplate(models.Model):
     reliquat_client = fields.Integer('Reliquat Client')
     num_onu = fields.Integer('Num ONU')
 
+    onu_id = fields.Many2one(comodel_name='dom.classification.onu', string="Code ONU")
     family = fields.Many2one(comodel_name='product.family', string="Famille")
     dang = fields.Many2one(comodel_name='product.dang', string=u"Dangerosité")

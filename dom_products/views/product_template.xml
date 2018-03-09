@@ -13,17 +13,13 @@
                 <field name="nb_par_colis" />
             </field>
             <field name="uom_po_id" position="after">
-                <field name="num_onu" />
+                <field name="num_onu" invisible="True"/>
+                <field name="onu_id" options="{'no_create':True}"/>
                 <field name="weight" />
                 <field name="poids_net" />
             </field>
 
         </field>
     </record>
-
-    <!--
-    widget="selection"
-    <menuitem id="menu_fams" name="Families" parent="stock.menu_stock_root"
-        action="action_fams_tree"/> -->
 
 </odoo>

@@ -28,6 +28,8 @@
         'views/product_family.xml',
         'views/product_category.xml',
         'views/export_mat_dang.xml',
+
+        'data/dom.classification.onu.csv',
     ],
 
     # 'installable': True,
