@@ -14,12 +14,12 @@ sys.setdefaultencoding("utf-8")
 
 # Connexion Odoo
 username = "admin"
-pwd = "X200yziact"
-dbname = "DOM_05_03"
+pwd = "X300yziact"
+dbname = "domitec_prod"
 
-sock_common = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/common")
+sock_common = xmlrpclib.ServerProxy("http://odoo.domitec.net:8069/xmlrpc/common")
 uid = sock_common.login(dbname, username, pwd)
-sock = xmlrpclib.ServerProxy("http://odoo-domitec.yziact.net:8069/xmlrpc/object")
+sock = xmlrpclib.ServerProxy("http://odoo.domitec.net:8069/xmlrpc/object")
 
 def format_date(date_str):
     date = ''
@@ -46,7 +46,7 @@ def search_account(code, name):
     return res
 
 
-fich_ = open('balance global.csv', 'rb')
+fich_ = open('Classeur1.csv', 'rb')
 
 csvreader = csv.reader(fich_, delimiter=';')
 
@@ -71,7 +71,7 @@ for row in csvreader :
         i += 1
         continue
 
-    code = row[0]
+    code = str(row[0])
     name = row[1]
     debit_str = (row[5].replace(',','.')).replace(' ','')
     credit_str = (row[7].replace(',','.')).replace(' ','')

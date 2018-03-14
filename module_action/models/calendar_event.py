@@ -56,10 +56,12 @@ class CalendarEvent(models.Model):
         res = super(CalendarEvent, self).create(vals)
         if not vals.get('action_id', False):
             action = self.env['crm_yziact.action']
-            regarding = 'company'
+            regarding = ''
 
             if vals.get('contact_id', False):
                 regarding = 'contact'
+            if vals.get('company_id', False):
+                regarding = 'company'
 
             dict_action = {
                 'name':vals.get('name',False),
