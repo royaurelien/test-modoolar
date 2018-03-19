@@ -9,7 +9,7 @@
 
             <xpath expr="//field[@name='virtual_available']" position="after">
                 <field name="standard_price"/>
-                <field name="stock_value"/>
+                <field name="stock_value" sum="Stock Valuation" widget="monetary" string="Valeur total"/>
             </xpath>
 
         </field>
