@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="dom_product_value_tree" model="ir.ui.view">
+        <field name="name">Dom product Tree value</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='virtual_available']" position="after">
+                <field name="standard_price"/>
+                <field name="stock_value"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
