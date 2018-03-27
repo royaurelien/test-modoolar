@@ -9,10 +9,13 @@ from odoo import models, fields, api
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
+    # payment_mode_id = fields.Many2one(
+    #     comodel_name='account.payment.mode', string="Payment Mode",
+    #     ondelete='restrict',
+    #     readonly=True, states={'draft': [('readonly', False)]})
     payment_mode_id = fields.Many2one(
         comodel_name='account.payment.mode', string="Payment Mode",
-        ondelete='restrict',
-        readonly=True, states={'draft': [('readonly', False)]})
+        ondelete='restrict')
     bank_account_required = fields.Boolean(
         related='payment_mode_id.payment_method_id.bank_account_required',
         readonly=True)
