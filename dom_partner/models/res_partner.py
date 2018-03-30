@@ -92,6 +92,14 @@ class ResPartner(models.Model):
 
         return values
 
+    @api.onchange('parent_id')
+    def onchange_parent_id(self):
+        res = super(ResPartner, self).onchange_parent_id()
+
+        if self.company_type == 'company':
+            res = {}
+
+        return res
 
     #### COMPUTE ####
     @api.multi
