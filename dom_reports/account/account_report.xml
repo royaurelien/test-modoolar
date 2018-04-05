@@ -1,0 +1,71 @@
+<odoo>
+
+    <report
+        id="account_line_report"
+        model="account.move.line"
+        string="Account Report"
+        name="dom_reports.dom_report_account_line"
+        file="dom_reports.dom_report_account_line"
+        report_type="qweb-pdf" />
+
+    <template id="dom_report_account_line">
+        <t t-set="debit" t-value="0" />
+        <t t-set="credit" t-value="0" />
+        <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <table class="table-curved lines-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>N° de compte</th>
+                                    <th>Client</th>
+                                    <th>Débit</th>
+                                    <th>Crédit</th>
+                                    <th>N° de pièce</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="doc">
+                                    <tr>
+                                        <td><span t-field="doc.date_maturity"/></td>
+                                        <td><span t-field="doc.account_id"/></td>
+                                        <td>
+                                            <t t-if="doc.partner_id.name==True">
+                                                <span t-field="doc.partner_id.name"/>
+                                            </t>
+                                        </td>
+                                        <td><span t-field="doc.debit"/></td>
+                                        <td><span t-field="doc.credit"/></td>
+                                        <td><span t-field="doc.move_id"/></td>
+                                    </tr>
+                                    <t t-set="debit" t-value="debit+doc.debit" />
+                                    <t t-set="credit" t-value="credit+doc.credit" />
+                                </t>
+
+                                <div class="row">
+                                    <div class="col-xs-4 pull-right">
+                                        <table class="table-curved lines-table">
+                                            <thead>
+                                                <tr>
+                                                    <td>Total débit</td>
+                                                    <td>Total crédit</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><t t-esc="'%.2f'%(debit)"/></td>
+                                                    <td><t t-esc="'%.2f'%(credit)"/></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+    </template>
+
+</odoo>

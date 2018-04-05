@@ -78,6 +78,8 @@
 
         # widget injection
         'injection.xml',
+
+        'account/account_report.xml',
     ],
 
     'qweb': [
