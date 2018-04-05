@@ -79,7 +79,9 @@
         # widget injection
         'injection.xml',
 
+        # account
         'account/account_report.xml',
+        'account/account_export.xml',
     ],
 
     'qweb': [
