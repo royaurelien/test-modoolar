@@ -31,7 +31,7 @@
                                         <td><span t-field="doc.date_maturity"/></td>
                                         <td><span t-field="doc.account_id"/></td>
                                         <td>
-                                            <t t-if="doc.partner_id.name==True">
+                                            <t t-if="doc.partner_id.name">
                                                 <span t-field="doc.partner_id.name"/>
                                             </t>
                                         </td>
