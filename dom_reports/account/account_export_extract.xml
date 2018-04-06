@@ -5,17 +5,20 @@
         <field name="model">yz.acc.report.extract</field>
         <field name="arch" type="xml">
             <form>
-                <group>
+                <group name="choices">
                     <field name="account_id"/>
                     <field name="date_debut"/>
                     <field name="date_fin"/>
+                </group>
+                <group name="button">
+                    <button name="action_export_extract" string="Export" type="object" class="btn btn-success" icon="fa-download"/>
                 </group>
             </form>
         </field>
     </record>
 
    <record model="ir.actions.act_window" id="action_wizard_export_line">
-        <field name="name">Exportation</field>
+        <field name="name">Etats</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">yz.acc.report.extract</field>
         <field name="view_mode">form</field>

@@ -80,8 +80,8 @@
         'injection.xml',
 
         # account
-        'account/account_report.xml',
-        'account/account_export.xml',
+        'account/account_report_extract.xml',
+        'account/account_export_extract.xml',
     ],
 
     'qweb': [

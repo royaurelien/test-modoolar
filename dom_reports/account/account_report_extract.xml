@@ -28,7 +28,7 @@
                             <tbody>
                                 <t t-foreach="docs" t-as="doc">
                                     <tr>
-                                        <td><span t-field="doc.date_maturity"/></td>
+                                        <td><span t-field="doc.date"/></td>
                                         <td><span t-field="doc.account_id"/></td>
                                         <td>
                                             <t t-if="doc.partner_id.name">
