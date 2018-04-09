@@ -2,10 +2,15 @@ from odoo import api, models, fields
 
 class YzAccReportExtract(models.TransientModel):
     _name = "yz.acc.report.extract"
+    move_account = fields.Many2one('account.move.line')
+
 
     date_debut = fields.Date()
     date_fin = fields.Date()
     account_id = fields.Many2one('account.account', string='Account')
+
+    filename_extract = fields.Char(string='Filename', size=256, readonly=True)
+    value_extract = fields.Binary(string='Value',readonly=True)
 
     @api.multi
     def action_export(self, date_deb, date_f, account):
@@ -16,48 +21,39 @@ class YzAccReportExtract(models.TransientModel):
 
     @api.multi
     def action_export_extract(self):
-	
-        #data_move_lines = self.action_export(self.date_debut, self.date_fin, self.account_id)
-
-        #self.env.ref('dom_reports.dom_report_account_line').report_action(self, data=data_move_lines, config=False)
-        
-        context = self._context or {}
-
-        data = {}
-
-        data['ids'] = context.get('active_ids', [])
-
-        data['model'] = context.get('active_model', 'ir.ui.menu')
-
-         
-
-        return self.env['ir.actions.report'].report_action('dom_reports.dom_report_account_line', data=data)
+        data_move_lines = self.action_export(self.date_debut, self.date_fin, self.account_id)
 
 
-class Report(models.AbstractModel):
-    _name = 'dom_reports.dom_report_account_line'
 
-    @api.multi
-    def get_report_values(self, docids, data=None):
+        docids = []
 
-        invoices = self.env['yz.acc.report.extract'].browse(docids)
-        market_info = get_marketing_info(self)
+        for move in data_move_lines:
+            docids.append(move.id)
 
-        return {
+        report_obj = self.env['ir.actions.report']
+
+        report = report_obj._get_report_from_name('dom_reports.dom_report_account_line')
+
+        docargs = {
             'doc_ids': docids,
-            'doc_model': 'yz.acc.report.extract',
-            'data': data,
-            'docs': invoices,
-            #'market_info': market_info,
+            'doc_model': report.model,
+            #'doc_model': 'dom_reports.dom_report_account_line',
+            'report_type': report.report_type,
+            'docs': self,
         }
-        context = self._context or {}
 
-        data = {}
+        self.filename_extract = 'Extract_test'
+        self.value_extract = report.render(docids, docargs)
+        name = 'extract'
 
-        data['ids'] = context.get('active_ids', [])
+        action = {
+            # 'name': 'ecriture_sage',
+            'type': 'ir.actions.act_url',
+            'url': "web/content/?model=account.move.line&id=" + str(
+                self.id) + "&filename_field=%s&field=%s&download=true&filename=%s.csv" % ('filename_extract', 'value_extract', name),
+            'target': 'new',
+        }
 
-        data['model'] = context.get('active_model', 'ir.ui.menu')
+        return action
 
-         
 
-        return self.env['report'].get_action('custom_module.report_pricelist', data=data)

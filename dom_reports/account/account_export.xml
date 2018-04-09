@@ -1,0 +1,31 @@
+<odoo>
+
+    <record model="ir.ui.view" id="acc_export_line">
+        <field name="name">Exportation</field>
+        <field name="model">yz.acc.report.extract</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="choices">
+                    <field name="account_id"/>
+                    <field name="date_debut"/>
+                    <field name="date_fin"/>
+                </group>
+                <group name="button">
+                    <button  name="action_acc_export_line" string="Export"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+   <record model="ir.actions.act_window" id="action_wizard_export_line">
+        <field name="name">Exportation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">yz.acc.report.extract</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="acc_export_line"/>
+        <field name="target">new</field>
+   </record>
+
+   <menuitem name="Exports Comptables" id="menu_exports_account1" parent="account.menu_finance" action="action_wizard_export_line"/>
+
+</odoo>

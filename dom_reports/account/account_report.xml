@@ -23,13 +23,12 @@
                                     <th>Débit</th>
                                     <th>Crédit</th>
                                     <th>N° de pièce</th>
-                                    <th>Référence de lettrage</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <t t-foreach="docs" t-as="doc">
                                     <tr>
-                                        <td><span t-field="doc.date"/></td>
+                                        <td><span t-field="doc.date_maturity"/></td>
                                         <td><span t-field="doc.account_id"/></td>
                                         <td>
                                             <t t-if="doc.partner_id.name">
@@ -39,7 +38,6 @@
                                         <td><span t-field="doc.debit"/></td>
                                         <td><span t-field="doc.credit"/></td>
                                         <td><span t-field="doc.move_id"/></td>
-                                        <td><span t-field="doc.full_reconcile_id"/></td>
                                     </tr>
                                     <t t-set="debit" t-value="debit+doc.debit" />
                                     <t t-set="credit" t-value="credit+doc.credit" />
