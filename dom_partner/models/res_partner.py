@@ -182,3 +182,18 @@ class ResPartner(models.Model):
             if any(field in values for field in address_fields):
                 contacts = self.child_ids.filtered(lambda c: c.type == 'contact')
                 contacts.update_address(values)
+
+    @api.onchange('company_type')
+    def onchange_company_type(self):
+        res = super(ResPartner, self).onchange_company_type()
+
+        partner_type = self.type
+        is_company = self.is_company
+        parent_id = self.parent_id.id
+
+        print('In onchange. Partner type : ', partner_type, "|is_company : ", is_company, "|parent_id : ", parent_id)
+        # self._compute_company_type()
+        if not self.image:
+            self.image = self._get_default_image(partner_type, is_company, parent_id)
+
+        return res
