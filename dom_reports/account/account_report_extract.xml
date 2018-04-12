@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
+    <!-- Paramètres du report -->
     <report
         id="account_line_report"
         model="account.move.line"
@@ -9,6 +10,7 @@
         file="dom_reports.dom_report_account_line"
         report_type="qweb-pdf" />
 
+    <!-- Template du report -->
     <template id="dom_report_account_line">
         <t t-set="debit" t-value="0" />
         <t t-set="credit" t-value="0" />
