@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, tools
 from datetime import datetime
+import threading
+import base64
+from odoo.modules import get_module_resource
+
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
@@ -182,6 +186,35 @@ class ResPartner(models.Model):
             if any(field in values for field in address_fields):
                 contacts = self.child_ids.filtered(lambda c: c.type == 'contact')
                 contacts.update_address(values)
+
+    @api.model
+    def _get_default_image(self, partner_type, is_company, parent_id):
+        if getattr(threading.currentThread(), 'testing', False) or self._context.get('install_mode'):
+            return False
+
+        colorize, img_path, image = False, False, False
+
+        if partner_type in ['other'] and parent_id:
+            parent_image = self.browse(parent_id).image
+            image = parent_image and base64.b64decode(parent_image) or None
+
+        if not image and partner_type == 'invoice':
+            img_path = get_module_resource('base', 'static/src/img', 'money.png')
+        elif not image and partner_type == 'delivery':
+            img_path = get_module_resource('base', 'static/src/img', 'truck.png')
+        elif not image and is_company:
+            img_path = get_module_resource('base', 'static/src/img', 'company_image.png')
+        elif not image:
+            img_path = get_module_resource('base', 'static/src/img', 'avatar.png')
+            colorize = True
+
+        if img_path:
+            with open(img_path, 'rb') as f:
+                image = f.read()
+        if image and colorize:
+            image = tools.image_colorize(image)
+
+        return tools.image_resize_image_big(base64.b64encode(image))
 
     @api.onchange('company_type')
     def onchange_company_type(self):
