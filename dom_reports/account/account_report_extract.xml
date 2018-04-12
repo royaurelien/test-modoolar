@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
     <report
         id="account_line_report"
         model="account.move.line"
-        string="Account Report"
+        string="Extrait de compte"
         name="dom_reports.dom_report_account_line"
         file="dom_reports.dom_report_account_line"
         report_type="qweb-pdf" />
@@ -12,62 +13,74 @@
         <t t-set="debit" t-value="0" />
         <t t-set="credit" t-value="0" />
         <t t-call="web.html_container">
-                <t t-call="web.external_layout">
-                    <div class="page">
-                        <table class="table-curved lines-table">
-                            <thead>
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1>Extrait de compte</h1>
+                    <table class="table-curved lines-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>N° de compte</th>
+                                <th>Client</th>
+                                <th>Débit</th>
+                                <th>Crédit</th>
+                                <th>N° de pièce</th>
+                                <th>Référence de lettrage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="doc">
                                 <tr>
-                                    <th>Date</th>
-                                    <th>N° de compte</th>
-                                    <th>Client</th>
-                                    <th>Débit</th>
-                                    <th>Crédit</th>
-                                    <th>N° de pièce</th>
-                                    <th>Référence de lettrage</th>
+                                    <td><span t-field="doc.date"/></td>
+                                    <td>
+                                        <t t-if="doc.account_id and doc.account_id.code">
+                                            <span t-field="doc.account_id.code"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="doc.partner_id and doc.partner_id.name">
+                                            <span t-field="doc.partner_id.name"/>
+                                        </t>
+                                    </td>
+                                    <td><span t-field="doc.debit"/></td>
+                                    <td><span t-field="doc.credit"/></td>
+                                    <td>
+                                        <t t-if="doc.move_id and doc.move_id.name">
+                                            <span t-field="doc.move_id.name"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="doc.full_reconcile_id and doc.full_reconcile_id.name">
+                                            <span t-field="doc.full_reconcile_id.name"/>
+                                        </t>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <t t-foreach="docs" t-as="doc">
-                                    <tr>
-                                        <td><span t-field="doc.date"/></td>
-                                        <td><span t-field="doc.account_id"/></td>
-                                        <td>
-                                            <t t-if="doc.partner_id.name">
-                                                <span t-field="doc.partner_id.name"/>
-                                            </t>
-                                        </td>
-                                        <td><span t-field="doc.debit"/></td>
-                                        <td><span t-field="doc.credit"/></td>
-                                        <td><span t-field="doc.move_id"/></td>
-                                        <td><span t-field="doc.full_reconcile_id"/></td>
-                                    </tr>
-                                    <t t-set="debit" t-value="debit+doc.debit" />
-                                    <t t-set="credit" t-value="credit+doc.credit" />
-                                </t>
-
-                                <div class="row">
-                                    <div class="col-xs-4 pull-right">
-                                        <table class="table-curved lines-table">
-                                            <thead>
-                                                <tr>
-                                                    <td>Total débit</td>
-                                                    <td>Total crédit</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><t t-esc="'%.2f'%(debit)"/></td>
-                                                    <td><t t-esc="'%.2f'%(credit)"/></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                <t t-set="debit" t-value="debit+doc.debit" />
+                                <t t-set="credit" t-value="credit+doc.credit" />
+                            </t>
+                            <div class="row">
+                                <div class="col-xs-4 pull-right">
+                                    <table class="table-curved lines-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Total débit</th>
+                                                <th>Total crédit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><t t-esc="'%.2f'%(debit)"/></td>
+                                                <td><t t-esc="'%.2f'%(credit)"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </tbody>
-                        </table>
-                    </div>
-                </t>
+                            </div>
+                        </tbody>
+                    </table>
+                </div>
             </t>
+        </t>
     </template>
 
 </odoo>

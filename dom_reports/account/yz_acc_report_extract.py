@@ -1,16 +1,18 @@
-from odoo import api, models, fields
+# -*- coding: utf-8 -*-
+from odoo import api, models, fields, _
+from odoo.exceptions import UserError
+import base64
 
 class YzAccReportExtract(models.TransientModel):
     _name = "yz.acc.report.extract"
-    move_account = fields.Many2one('account.move.line')
-
 
     date_debut = fields.Date()
     date_fin = fields.Date()
+
     account_id = fields.Many2one('account.account', string='Account')
 
-    filename_extract = fields.Char(string='Filename', size=256, readonly=True)
-    value_extract = fields.Binary(string='Value',readonly=True)
+    filename = fields.Char(string='Filename', size=256, readonly=True)
+    value = fields.Binary(readonly=True)
 
     @api.multi
     def action_export(self, date_deb, date_f, account):
@@ -21,39 +23,42 @@ class YzAccReportExtract(models.TransientModel):
 
     @api.multi
     def action_export_extract(self):
-        data_move_lines = self.action_export(self.date_debut, self.date_fin, self.account_id)
+        if self.date_debut > self.date_fin:
+            raise UserError(_('La date de début doit être inférieure ou égale à la date de fin'))
+        else:
+            data_move_lines = self.action_export(self.date_debut, self.date_fin, self.account_id)
 
+            docids = []
 
+            for move in data_move_lines:
+                docids.append(move.id)
 
-        docids = []
+            report_obj = self.env['ir.actions.report']
 
-        for move in data_move_lines:
-            docids.append(move.id)
+            report = report_obj._get_report_from_name('dom_reports.dom_report_account_line')
 
-        report_obj = self.env['ir.actions.report']
+            docargs = {
+                'doc_ids': docids,
+                'doc_model': report.model,
+                'docs': data_move_lines,
+            }
 
-        report = report_obj._get_report_from_name('dom_reports.dom_report_account_line')
+            html = report.render_qweb_html(docids, docargs)
 
-        docargs = {
-            'doc_ids': docids,
-            'doc_model': report.model,
-            #'doc_model': 'dom_reports.dom_report_account_line',
-            'report_type': report.report_type,
-            'docs': self,
-        }
+            bodies, res_ids, header, footer, specific_paperformat_args = report._prepare_html(html[0])
 
-        self.filename_extract = 'Extract_test'
-        self.value_extract = report.render(docids, docargs)
-        name = 'extract'
+            mu = report._run_wkhtmltopdf(bodies, header, footer, specific_paperformat_args)
 
-        action = {
-            # 'name': 'ecriture_sage',
-            'type': 'ir.actions.act_url',
-            'url': "web/content/?model=account.move.line&id=" + str(
-                self.id) + "&filename_field=%s&field=%s&download=true&filename=%s.csv" % ('filename_extract', 'value_extract', name),
-            'target': 'new',
-        }
+            self.write({
+                'value': base64.encodestring(mu),
+                'filename': 'Extrait de compte',
+             })
 
-        return action
+            return {
+                     "type": "ir.actions.act_url",
+                     "url": "web/content/?model=yz.acc.report.extract&id=" + str(
+                         self.id) + "&filename_field=filename&field=value&download=true&filename=%s.pdf" % ('Extrait de compte'),
+                     "target": "new",
+             }
 
 
