@@ -9,6 +9,7 @@ class PurchaseOrderLine(models.Model):
     ref_fourn = fields.Char(compute='_compute_ref_fourn')
     nb_colis = fields.Integer(compute='_compute_nb_colis')
 
+    """
     @api.multi
     def _compute_ref_fourn(self):
         for rec in self:
@@ -18,6 +19,20 @@ class PurchaseOrderLine(models.Model):
                 rec.ref_fourn = val
             except Exception as e:
                 rec.ref_fourn = rec.product_id.default_code
+    """
+
+    @api.multi
+    def _compute_ref_fourn(self):
+        for order_line in self:
+            fourn = order_line.order_id.partner_id
+            code = order_line.product_id.default_code
+            if order_line.product_id and order_line.product_id.seller_ids:
+                for seller in order_line.product_id.seller_ids:
+                    if seller.name.id == fourn.id:
+                        code = seller.product_code
+
+            order_line.ref_fourn = code
+
 
     @api.multi
     def _compute_nb_colis(self):
