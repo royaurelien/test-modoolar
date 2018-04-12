@@ -63,8 +63,8 @@
                                     <table class="table-curved lines-table">
                                         <thead>
                                             <tr>
-                                                <th>Total débit</th>
-                                                <th>Total crédit</th>
+                                                <th>Débit total</th>
+                                                <th>Crédit total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
