@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
-    <!-- Parametres du report -->
-    <report
-        id="account_line_report"
-        model="account.move.line"
-        string="Extrait de compte"
-        name="dom_reports.dom_report_account_line"
-        file="dom_reports.dom_report_account_line"
-        report_type="qweb-pdf" />
-
     <!-- Template du report -->
     <template id="dom_report_account_line">
         <t t-set="debit" t-value="0" />
         <t t-set="credit" t-value="0" />
+        <t t-set="solde_cumule" t-value="solde"/>
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
                 <div class="page">
-                    <h1>Extrait de compte</h1>
+
+                    <!-- Informations generales -->
+                    <h3>Extrait de compte du compte n°<t t-esc="infos.account_id.code"/> <t t-esc="infos.account_id.name"/></h3>
+                    <p>Période du <t t-esc="infos.date_debut"/> au <t t-esc="infos.date_fin"/></p>
+
+                    <!-- Extrait de compte -->
+                    <p>Solde initial : <t t-esc="'%.2f'%(solde)"/></p>
+
                     <table class="table-curved lines-table">
                         <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>N° de compte</th>
                                 <th>Client</th>
-                                <th>Débit</th>
-                                <th>Crédit</th>
                                 <th>N° de pièce</th>
-                                <th>Référence de lettrage</th>
+                                <th>Débit</th>
+                                <th>Lettré</th>
+                                <th>Crédit</th>
+                                <th>Solde cumulé</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,27 +34,28 @@
                                 <tr>
                                     <td><span t-field="doc.date"/></td>
                                     <td>
-                                        <t t-if="doc.account_id and doc.account_id.code">
-                                            <span t-field="doc.account_id.code"/>
-                                        </t>
-                                    </td>
-                                    <td>
                                         <t t-if="doc.partner_id and doc.partner_id.name">
                                             <span t-field="doc.partner_id.name"/>
                                         </t>
                                     </td>
-                                    <td><span t-field="doc.debit"/></td>
-                                    <td><span t-field="doc.credit"/></td>
                                     <td>
                                         <t t-if="doc.move_id and doc.move_id.name">
                                             <span t-field="doc.move_id.name"/>
                                         </t>
                                     </td>
+                                    <td><span t-field="doc.debit"/></td>
                                     <td>
-                                        <t t-if="doc.full_reconcile_id and doc.full_reconcile_id.name">
-                                            <span t-field="doc.full_reconcile_id.name"/>
+                                        <t t-if="doc.reconciled == True">
+                                            Oui
+                                        </t>
+                                        <t t-if="doc.reconciled == False">
+                                            Non
                                         </t>
                                     </td>
+                                    <td><span t-field="doc.credit"/></td>
+
+                                    <t t-set="solde_cumule" t-value="solde_cumule + doc.balance"/>
+                                    <td><span t-esc="'%.2f'%(solde_cumule)"/></td>
                                 </tr>
                                 <t t-set="debit" t-value="debit+doc.debit" />
                                 <t t-set="credit" t-value="credit+doc.credit" />
@@ -67,12 +67,14 @@
                                             <tr>
                                                 <th>Débit total</th>
                                                 <th>Crédit total</th>
+                                                <th>Solde final</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td><t t-esc="'%.2f'%(debit)"/></td>
                                                 <td><t t-esc="'%.2f'%(credit)"/></td>
+                                                <td><t t-esc="'%.2f'%(solde_cumule)"/></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -84,5 +86,14 @@
             </t>
         </t>
     </template>
+
+     <!-- Parametres du report -->
+    <report
+        id="account_line_report"
+        model="account.move.line"
+        string="Extrait de compte"
+        name="dom_reports.dom_report_account_line"
+        file="dom_reports.dom_report_account_line"
+        report_type="qweb-pdf" />
 
 </odoo>

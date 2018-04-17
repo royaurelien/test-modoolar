@@ -29,7 +29,8 @@
         <field name="target">new</field>
    </record>
 
-    <!-- Ajout d'une option au menu de facturation -->
-   <menuitem name="Exports comptables" id="menu_exports_account1" parent="account.menu_finance" action="action_wizard_export_line"/>
+   <!-- Ajout d'un menu deroulant pour les etats comptables dans le menu de facturation, et de son sous-menu d'extrait de compte -->
+   <menuitem name="Etats comptables" id="menu_exports_account" parent="account.menu_finance"/>
+   <menuitem name="Extrait de compte" id="menu_exports_account_extract" parent="menu_exports_account" action="action_wizard_export_line"/>
 
 </odoo>

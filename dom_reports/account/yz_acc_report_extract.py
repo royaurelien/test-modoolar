@@ -19,8 +19,24 @@ class YzAccReportExtract(models.TransientModel):
     #### BINAIRE ####
     value = fields.Binary(readonly=True)
 
+    def solde_initial(self, date_deb, account):
+        """
+            :param date_deb: date maximum des enregistrements
+            :param account: compte a utiliser
+            :return le solde initial
+        """
+
+        lines = self.env['account.move.line'].search([('date', '<', date_deb), ('account_id', '=', account.id)])                        # Récuperation des enregistrements precedant ceux de l'extrait de compte
+        solde = 0                                                                                                                       # Initialisation du solde
+
+        # Calcul du solde initial
+        for line in lines:
+            solde = solde + line.balance
+
+        return solde
+
     @api.multi
-    def action_export(self, date_deb, date_f, account):
+    def operations_export(self, date_deb, date_f, account):
         """
         :param date_deb: date de debut pour la selection
         :param date_f: date de fin pour la selection
@@ -40,10 +56,9 @@ class YzAccReportExtract(models.TransientModel):
         """
 
         if self.date_debut > self.date_fin:
-            raise UserError(_('La date de début doit être inférieure ou égale à la date de fin.'))
+            raise UserError(_('La date de début doit être inférieure ou égale à la date de fin.'))          # Retourne une erreur
         else:
-            data_move_lines = self.action_export(self.date_debut, self.date_fin, self.account_id)       # Selection des lignes a afficher
-
+            data_move_lines = self.operations_export(self.date_debut, self.date_fin, self.account_id)       # Selection des lignes a afficher
 
             # Recuperation des ids de chaque ligne a afficher
             docids = []
@@ -51,32 +66,32 @@ class YzAccReportExtract(models.TransientModel):
             for move in data_move_lines:
                 docids.append(move.id)
 
+            solde_initial = self.solde_initial(self.date_debut, self.account_id)                            # Recuperation du solde initial
 
             # Recuperation du template a utiliser
             report_obj = self.env['ir.actions.report']
             report = report_obj._get_report_from_name('dom_reports.dom_report_account_line')
 
-
             # Dictionnaire indiquant les lignes a afficher
             docargs = {
                 'doc_ids': docids,
-                'doc_model': report.model,
+                'doc_model': 'account.move.line',
                 'docs': data_move_lines,
+                'solde': solde_initial,
+                'infos': self,
             }
 
-            html = report.render_qweb_html(docids, docargs)                                             # Generation du document sous forme html
-
-            bodies, res_ids, header, footer, specific_paperformat_args = report._prepare_html(html[0])  # Division du html en differentes parties
-
-            mu = report._run_wkhtmltopdf(bodies, header, footer, specific_paperformat_args)             # Assemblage des parties et generation du pdf
+            # Creation du PDF
+            html = report_obj.render_template('dom_reports.dom_report_account_line', docargs)            # Generation du html
+            bodies, res_ids, header, footer, specific_paperformat_args = report_obj._prepare_html(html)  # Division du html en differentes parties
+            pdf = report._run_wkhtmltopdf(bodies, header, footer, specific_paperformat_args)             # Assemblage des parties et generation du pdf
 
 
             # Encodage du pdf et determination du nom de fichier
             self.write({
-                'value': base64.encodestring(mu),
+                'value': base64.encodestring(pdf),
                 'filename': 'Extrait de compte',
              })
-
 
             # Ouverture de la fenetre de telechargement du pdf
             return {
