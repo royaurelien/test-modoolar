@@ -28,6 +28,7 @@
 
         'views/res_partner.xml',
         'views/account_move.xml',
+        'views/account_invoice.xml',
     ],
 
     # 'installable': True,

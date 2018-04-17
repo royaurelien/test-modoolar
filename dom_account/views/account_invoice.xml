@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="dom_invoice_tree" model="ir.ui.view">
+        <field name="name">Dom Invoice Tree</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='amount_total_signed']" position="before">
+                <field name="amount_untaxed" string="Total HT" sum="Total HT"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
