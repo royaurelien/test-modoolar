@@ -82,6 +82,8 @@
         # account
         'account/account_report_extract.xml',
         'account/account_export_extract.xml',
+        'account/account_report_balance.xml',
+        'account/account_export_balance.xml',
     ],
 
     'qweb': [

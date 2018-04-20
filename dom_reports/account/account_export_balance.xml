@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Form view -->
+    <record model="ir.ui.view" id="acc_export_line_balance">
+        <field name="name">Exportation</field>
+        <field name="model">yz.acc.report.balance</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="choices">
+                    <field name="classe" string="Classe"/>
+                    <field name="date_debut" string="Début de l'exercice"/>
+                    <field name="date_fin" string="Jusqu'au"/>
+                    <field name="lettre" string="Lettrage" widget="radio"/>
+                </group>
+                <group name="button">
+                    <button name="action_export_balance" string="Export" type="object" class="btn btn-success" icon="fa-download"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+   <record model="ir.actions.act_window" id="action_wizard_export_line_balance">
+        <field name="name">Balance générale</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">yz.acc.report.balance</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="acc_export_line_balance"/>
+        <field name="target">new</field>
+   </record>
+
+    <!-- Ajout d'un menu deroulant pour les etats comptables dans le menu de facturation, et de son sous-menu de balance générale -->
+   <menuitem name="Balance générale" id="menu_exports_account_balance" parent="menu_exports_account" action="action_wizard_export_line_balance"/>
+
+</odoo>

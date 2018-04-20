@@ -60,26 +60,13 @@
                                 <t t-set="debit" t-value="debit+doc.debit" />
                                 <t t-set="credit" t-value="credit+doc.credit" />
                             </t>
-                            <div class="row">
-                                <div class="col-xs-4 pull-right">
-                                    <table class="table-curved lines-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Débit total</th>
-                                                <th>Crédit total</th>
-                                                <th>Solde final</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><t t-esc="'%.2f'%(debit)"/></td>
-                                                <td><t t-esc="'%.2f'%(credit)"/></td>
-                                                <td><t t-esc="'%.2f'%(solde_cumule)"/></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            <tr>
+                                <td colspan="3">Totaux</td>
+                                <th><t t-esc="'%.2f'%(debit)"/></th>
+                                <td></td>
+                                <th><t t-esc="'%.2f'%(credit)"/></th>
+                                <th><t t-esc="'%.2f'%(solde_cumule)"/></th>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
