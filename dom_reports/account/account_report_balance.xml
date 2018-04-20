@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Template du report -->
+    <template id="dom_report_account_line_balance">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <!-- Informations generales -->
+                    <h2>Balance générale</h2>
+
+                    <h3>Période du <t t-esc="infos.date_debut"/> au <t t-esc="infos.date_fin"/></h3>
+
+                    <!-- Affichage classe par classe -->
+                    <t t-foreach="classes" t-as="classe">
+                        <h4>Classe <t t-esc="classe"/></h4>
+
+                        <!-- Affichage compte par compte -->
+                        <table class="table-curved lines-table">
+                            <thead>
+                                <tr>
+                                    <th rowspan = "2">N°</th>
+                                    <th rowspan = "2">Compte</th>
+                                    <th>Débit</th>
+                                    <th>Crédit</th>
+                                    <th>Solde débiteur</th>
+                                    <th>Solde créditeur</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="soldes" t-as="doc">
+                                    <t t-if="doc[6] == classe">
+                                        <tr>
+                                            <td><span t-esc="doc[0]"/></td>
+                                            <td><span t-esc="doc[1]"/></td>
+
+                                            <t t-if="doc[2] != 0">
+                                                <td><span t-esc="'%.2f'%(doc[2])"/></td>
+                                            </t>
+                                            <t t-if="doc[2] == 0">
+                                                <td></td>
+                                            </t>
+
+
+                                            <t t-if="doc[3] != 0">
+                                                <td><span t-esc="'%.2f'%(doc[3])"/></td>
+                                            </t>
+                                            <t t-if="doc[3] == 0">
+                                                <td></td>
+                                            </t>
+
+
+                                            <t t-if="doc[4] != 0">
+                                                <td><span t-esc="'%.2f'%(doc[4])"/></td>
+                                            </t>
+                                            <t t-if="doc[4] == 0">
+                                                <td></td>
+                                            </t>
+
+
+                                            <t t-if="doc[5] != 0">
+                                                <td><span t-esc="'%.2f'%(doc[5])"/></td>
+                                            </t>
+                                            <t t-if="doc[5] == 0">
+                                                <td></td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                </t>
+
+                                <!-- Totaux de la classe -->
+                                <tr>
+                                    <th colspan="2">Totaux</th>
+                                    <t t-foreach="totaux" t-as="total">
+                                        <t t-if="total[4] == classe">
+                                            <th><t t-esc="'%.2f'%(total[0])"/></th>
+                                            <th><t t-esc="'%.2f'%(total[1])"/></th>
+                                            <th><t t-esc="'%.2f'%(total[2])"/></th>
+                                            <th><t t-esc="'%.2f'%(total[3])"/></th>
+                                        </t>
+                                    </t>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+
+                    <!-- Totaux generaux des classes -->
+                    <table class="table-curved lines-table">
+                        <thead>
+                            <tr>
+                                <th>Total général débit</th>
+                                <th>Total général crédit</th>
+                                <th>Total général débiteur</th>
+                                <th>Total général créditeur</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><t t-esc="'%.2f'%(total_gen[0])"/></td>
+                                <td><t t-esc="'%.2f'%(total_gen[1])"/></td>
+                                <td><t t-esc="'%.2f'%(total_gen[2])"/></td>
+                                <td><t t-esc="'%.2f'%(total_gen[3])"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- Parametres du report -->
+    <report
+        id="account_line_report_balance"
+        model="account.account"
+        string="Balance générale"
+        name="dom_reports.yz_report_account_line_balance"
+        file="dom_reports.yz_report_account_line_balance"
+        report_type="qweb-pdf" />
+
+</odoo>
