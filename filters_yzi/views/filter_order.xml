@@ -12,6 +12,10 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//search" position="inside">
+                    <!--Specif domitec-->
+                    <field name="gr" string="Groupe"/>
+                    <field name="sgr" string="Sous Groupe"/>
+
                     <field name="date_order"/>
                     <field name="state"/>
 
@@ -42,7 +46,6 @@
             <field name="search_view_id" ref="filters_yzi.custom_filters_order"/>
         </record>
 
-
          <!-- Filtre SALE REPORT -->
         <record id="custom_filters_sale_report" model="ir.ui.view">
             <field name="name">Filtres temporels</field>
@@ -52,6 +55,13 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//search" position="inside">
+                    <!--Specif domitec-->
+                    <!--<field name="part_group" string="Groupe"/>
+                    <field name="part_sous_group" string="Sous Groupe"/>-->
+
+                    <field name="gr"/>
+                    <field name="sgr"/>
+
                     <field name="date"/>
                     <field name="state"/>
 
@@ -70,8 +80,28 @@
 
                 </xpath>
 
+                <xpath expr="//group[@expand='1']" position="inside">
+                    <filter string="Groupe" name="groupe" context="{'group_by':'gr'}"/>
+                    <filter string="Sous Groupe" name="sous_groupe" context="{'group_by':'sgr'}"/>
+                </xpath>
             </field>
         </record>
+
+        <!-- SALE ORDER VIEW -->
+        <record id="dom_sale_tree" model="ir.ui.view">
+            <field name="name">dom_sale_tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="gr" invisible="True"/>
+                    <field name="sgr" invisible="True"/>
+                </xpath>
+
+            </field>
+        </record>
+
 
     </data>
 </odoo>

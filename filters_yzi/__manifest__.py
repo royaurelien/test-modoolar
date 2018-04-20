@@ -20,6 +20,9 @@
         'web',
         'sale',
         'account',
+
+        #specifique domitec
+        'dom_partner',
     ],
 
     # always loaded

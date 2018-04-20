@@ -9,11 +9,25 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-#sys.path.insert(0, '..')
-#sys.path.insert(0, '/var/lib/odoo/odoo-beraud/')
-#sys.path.insert(0, '/var/lib/odoo/odoo-beraud2')
-#sys.path.insert(0, '/mnt/extra-addons/')
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    partner_id = fields.Many2one('res.partner', delegate=True)
 
 
+class SaleReport(models.Model):
+    _inherit = 'sale.report'
+
+    partner_id = fields.Many2one('res.partner', delegate=True)
 
 
+class AccountInvoice(models.Model):
+    _inherit = 'account.invoice'
+
+    partner_id = fields.Many2one('res.partner', delegate=True)
+
+
+class AccountInvoice(models.Model):
+    _inherit = 'account.invoice.report'
+
+    partner_id = fields.Many2one('res.partner', delegate=True)
