@@ -337,9 +337,9 @@ class YzAccReportBalance(models.TransientModel):
             report = report_obj._get_report_from_name('dom_reports.dom_report_account_line_balance')
 
             # Creation du PDF
-            html = report_obj.render_template('dom_reports.dom_report_account_line_balance', docargs)  # Generation du html
-            bodies, res_ids, header, footer, specific_paperformat_args = report_obj._prepare_html(html)  # Division du html en differentes parties
-            pdf = report._run_wkhtmltopdf(bodies, header, footer, specific_paperformat_args)  # Assemblage des parties et generation du pdf
+            html = report_obj.render_template('dom_reports.dom_report_account_line_balance', docargs)                   # Generation du html
+            bodies, res_ids, header, footer, specific_paperformat_args = report_obj._prepare_html(html)                 # Division du html en differentes parties
+            pdf = report._run_wkhtmltopdf(bodies, header, footer, specific_paperformat_args)                            # Assemblage des parties et generation du pdf
 
             # Enregistrement du PDF et definition de son nom
             self.write({
