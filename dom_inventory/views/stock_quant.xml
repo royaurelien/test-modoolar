@@ -15,6 +15,24 @@
             </field>
         </record>
 
+        <record id="dom_supplier_filter" model="ir.ui.view">
+            <field name="name">DOM filter supplier</field>
+            <field name="model">stock.quant</field>
+            <field name="inherit_id" ref="stock.quant_search_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="seller_ids" string="Fournisseur"/>
+                </xpath>
+
+                <!-- ONPEUPA ;( -->
+                <!--<xpath expr="(//group[@expand='0'])[1]" position="inside">
+                    <filter name="supplierinfo_group_by" string="Fournisseur" context="{'group_by': 'seller_ids'}"/>
+                </xpath>-->
+
+            </field>
+        </record>
+
     </data>
 </openerp>
 

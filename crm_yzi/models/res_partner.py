@@ -60,7 +60,6 @@ class ResPartner(models.Model):
 
         return self.update(values)
 
-
     def onchange_type_rel_values(self, type_rel):
         vals = {}
         is_client = self.customer
