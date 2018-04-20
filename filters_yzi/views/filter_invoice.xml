@@ -35,7 +35,7 @@
 
 
         <!-- Filtres Factures Rapport -->
-        <record id="_custom_filters_invoice" model="ir.ui.view">
+	<record id="_custom_filters_invoice" model="ir.ui.view">
             <field name="name">Filtres temporels</field>
             <field name="model">account.invoice.report</field>
             <field name="inherit_id" ref="account.view_account_invoice_report_search"/>
@@ -44,8 +44,8 @@
                 <xpath expr="//search" position="inside">
                     <field name="date_due"/>
 
-                    <field name="gr" string="Groupe"/>
-                    <field name="sgr" string="Sous Groupe"/>
+		    <!-- <field name="gr" string="Groupe"/>
+		    <field name="sgr" string="Sous Groupe"/>-->
 
                     <filter string="Aujourd'hui" name="current_day" domain="[('date','&lt;=',context_today().strftime('%Y-%m-%d')),('date','&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
                     <filter string="Mois précédent" name="previous_month" domain="[('date','&lt;=',(context_today()-relativedelta(months=1, day=31)).strftime('%Y-%m-%d')),('date','&gt;=',(context_today()-relativedelta(months=1, day=1)).strftime('%Y-%m-%d'))]"/>
@@ -61,7 +61,7 @@
                 </xpath>
 
             </field>
-        </record>
+	</record>
 
         <record id="dom_invoice_tree" model="ir.ui.view">
             <field name="name">dom_invoice_tree</field>

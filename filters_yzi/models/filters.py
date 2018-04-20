@@ -26,8 +26,9 @@ class AccountInvoice(models.Model):
 
     partner_id = fields.Many2one('res.partner', delegate=True)
 
-
+"""
 class AccountInvoiceReport(models.Model):
     _inherit = 'account.invoice.report'
 
     partner_id = fields.Many2one('res.partner', delegate=True)
+"""
