@@ -55,10 +55,10 @@
 
                 </xpath>
 
-                <xpath expr="//group[@expand='1']" position="inside">
+                <!--<xpath expr="//group[@expand='1']" position="inside">
                     <filter string="Groupe" name="groupe" context="{'group_by':'gr'}"/>
                     <filter string="Sous Groupe" name="sous_groupe" context="{'group_by':'sgr'}"/>
-                </xpath>
+                </xpath>-->
 
             </field>
 	</record>

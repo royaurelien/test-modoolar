@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 
-
-# [TODOO]: Trier les imports
-
 from odoo import models, api, fields, _
 
-import logging
-_logger = logging.getLogger(__name__)
+# import logging
+# _logger = logging.getLogger(__name__)
 
 
 class SaleOrder(models.Model):
