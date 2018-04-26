@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Filtres -->
+    <record id="filters_amount_ecritures" model="ir.ui.view">
+        <field name="name">Filtres sur les écritures comptables</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="debit"/>
+                <field name="credit"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="filters_amount_pieces" model="ir.ui.view">
+        <field name="name">Filtres sur les pièces comptables</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_move_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="amount"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="filters_amount_factures" model="ir.ui.view">
+        <field name="name">Filtres sur les factures</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="amount_total"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

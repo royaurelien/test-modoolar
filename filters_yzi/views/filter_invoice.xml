@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <odoo>
+
     <data>
 
         <!-- Filtres Factures -->
@@ -11,6 +12,7 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//search" position="inside">
+
                     <field name="date_invoice"/>
 
                     <field name="gr" string="Groupe"/>

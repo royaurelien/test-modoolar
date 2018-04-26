@@ -84,6 +84,7 @@
         'account/account_export_extract.xml',
         'account/account_report_balance.xml',
         'account/account_export_balance.xml',
+        'account/filters_amount.xml',
     ],
 
     'qweb': [
