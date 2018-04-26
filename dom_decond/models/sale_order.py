@@ -78,6 +78,7 @@ class SaleOrder(models.Model):
         logger.critical("ids list : %s" % ids_list)
         return {'values': {'order_line': ids_list }}
         """
+        taxes_id = self.partner_id.property_account_position_id.map_tax(decond_product.taxes_id, decond_product, self.partner_id).ids
 
         values = {
             # 'name': 'déconditionnement',
@@ -87,6 +88,7 @@ class SaleOrder(models.Model):
             'product_uom_qty': 1,
             'product_uom': decond_product.uom_id.id,
             'is_decond': True,
+            'tax_id':taxes_id,
         }
 
         # (4, id, 0)
