@@ -16,7 +16,14 @@ class AccountInvoice(models.Model):
             partner = parnter_env.browse(vals.get('partner_id'))
 
             if not partner.ref:
-                partner.get_ref()
+                if partner.type == 'invoice':
+                    if partner.parent_id:
+                        if partner.parent_id.ref:
+                            partner.parent_id.get_ref()
+                        else:
+                            partner.get_ref()
+                else:
+                    partner.get_ref()
 
             if not partner.property_account_receivable_id:
                 partner.action_create_account_customer()
