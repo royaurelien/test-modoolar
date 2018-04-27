@@ -18,10 +18,10 @@ class AccountInvoice(models.Model):
             if not partner.ref:
                 if partner.type == 'invoice':
                     if partner.parent_id:
-                        if partner.parent_id.ref:
+                        if not partner.parent_id.ref:
                             partner.parent_id.get_ref()
-                        else:
-                            partner.get_ref()
+                    else:
+                        partner.get_ref()
                 else:
                     partner.get_ref()
 
