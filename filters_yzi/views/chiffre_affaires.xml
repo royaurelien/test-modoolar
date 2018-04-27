@@ -5,9 +5,8 @@
     <record id="turnover_filtered_view" model="ir.ui.view">
         <field name="name">Chiffre d'affaires</field>
         <field name="model">sale.order</field>
-        <field name="view_mode">tree</field>
         <field name="arch" type="xml">
-            <tree string="Chiffre d'affaires">
+            <tree string="Chiffre d'affaires" default_order="name desc" create="false">
                 <field name="name"/>
                 <field name="requested_date"/>
                 <field name="date_order"/>
@@ -19,91 +18,115 @@
         </field>
     </record>
 
+
+    <!-- GraphVoir -->
+    <record id="turnover_filtered_view_graph" model="ir.ui.view">
+        <field name="name">Chiffre d'affaires - Graphique</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <graph string="Chiffre d'affaires">
+                <field name="invoice_status" type="row"/>
+                <field name="amount_total" type="col"/>
+            </graph>
+
+        </field>
+    </record>
+
+
     <!-- Filtres -->
     <record id="turnover_filtered_view_filt" model="ir.ui.view">
         <field name="name">Filtres chiffre d'affaires</field>
         <field name="model">sale.order</field>
         <field name="arch" type="xml">
             <search>
-                    <field name="requested_date"/>
+                <!-- Field -->
+                <field name="requested_date"/>
 
-                    <!-- Jours -->
-                    <filter string="Hier" name="yesterday" domain="
+                <!-- Group by -->
+                <group expand="0" string="Group by">
+                    <filter name="grp_by_invoice_status" string="État des factures" context="{'group_by': 'invoice_status'}"/>
+                </group>
+
+                <!-- Jours -->
+                <filter string="Hier" name="yesterday" domain="
                         [('requested_date','&lt;=', (context_today()+relativedelta(days=-1)).strftime('%Y-%m-%d')),
                          ('requested_date','&gt;=', (context_today()+relativedelta(days=-1)).strftime('%Y-%m-%d'))]"/>
 
-                    <filter string="Aujourd'hui" name="current_day" domain="
+                <filter string="Aujourd'hui" name="current_day" domain="
                                             [('requested_date','&lt;=',context_today().strftime('%Y-%m-%d')),
                                              ('requested_date','&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
 
-                    <filter string="Demain" name="tomorrow" domain="
+                <filter string="Demain" name="tomorrow" domain="
                         [('requested_date','&lt;=', (context_today()+relativedelta(days=1)).strftime('%Y-%m-%d')),
                          ('requested_date','&gt;=', (context_today()+relativedelta(days=1)).strftime('%Y-%m-%d'))]"/>
 
-                    <separator/>
+                <separator/>
 
-                    <!-- Semaines -->
-                    <filter string="Semaine dernière" name="last_week" domain="
+                <!-- Semaines -->
+                <filter string="Semaine dernière" name="last_week" domain="
                         [('requested_date','&gt;=', (context_today()+relativedelta(days=-(7+context_today().weekday()))).strftime('%Y-%m-%d')),
                          ('requested_date','&lt;=', (context_today()+relativedelta(days=-(7+(context_today().weekday()-6)))).strftime('%Y-%m-%d'))]"/>
 
-                    <filter string="Semaine en cours" name="current_week" domain="
+                <filter string="Semaine en cours" name="current_week" domain="
                         [('requested_date','&lt;=', (context_today()+relativedelta(days=6-context_today().weekday())).strftime('%Y-%m-%d')),
                          ('requested_date','&gt;=', (context_today()+relativedelta(days=-(context_today().weekday()))).strftime('%Y-%m-%d'))]"/>
 
-                    <filter string="Semaine prochaine" name="next_week" domain="
+                <filter string="Semaine prochaine" name="next_week" domain="
                         [('requested_date','&lt;=', (context_today()+relativedelta(days=(6-context_today().weekday())+7)).strftime('%Y-%m-%d')),
                          ('requested_date','&gt;=', (context_today()+relativedelta(days=(6-context_today().weekday())+1)).strftime('%Y-%m-%d'))]"/>
 
-                    <separator/>
+                <separator/>
 
-                    <!-- Mois -->
-                    <filter string="Mois précédent" name="previous_month" domain="
+                <!-- Mois -->
+                <filter string="Mois précédent" name="previous_month" domain="
                         [('requested_date','&lt;', context_today().strftime('%Y-%m-01')),
                          ('requested_date','&gt;=',(context_today()+relativedelta(months=-1)).strftime('%Y-%m-01'))]"/>
 
-                    <filter string="Mois en cours" name="current_month" domain="
+                <filter string="Mois en cours" name="current_month" domain="
                         [('requested_date','&lt;',(context_today()+relativedelta(months=1)).strftime('%Y-%m-01')),
                          ('requested_date','&gt;=',context_today().strftime('%Y-%m-01'))]"/>
 
-                    <filter string="Mois prochain" name="next_month" domain="
+                <filter string="Mois prochain" name="next_month" domain="
                         [('requested_date','&lt;',(context_today()+relativedelta(months=2)).strftime('%Y-%m-01')),
                          ('requested_date','&gt;=', (context_today()+relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
 
-                    <filter string="3 prochains mois" name="next_three_months" domain="
+                <filter string="3 prochains mois" name="next_three_months" domain="
                         [('requested_date','&lt;', (context_today()+relativedelta(months=4)).strftime('%Y-%m-01')),
                          ('requested_date','&gt;=', (context_today()+relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
 
-                    <separator/>
+                <separator/>
 
-                    <!-- Annees -->
-                    <filter string="Année précédente" name="previous_year" domain="
+                <!-- Annees -->
+                <filter string="Année précédente" name="previous_year" domain="
                         [('requested_date','&lt;=',(context_today()+relativedelta(years=-1)).strftime('%Y-12-31')),
                          ('requested_date','&gt;=',(context_today()+relativedelta(years=-1)).strftime('%Y-01-01'))]"/>
 
-                    <filter string="Année en cours" name="current_year" domain="
+                <filter string="Année en cours" name="current_year" domain="
                         [('requested_date','&lt;=', context_today().strftime('%Y-12-31')),
                          ('requested_date','&gt;=', context_today().strftime('%Y-01-01'))]"/>
 
-                    <filter string="Année prochaine" name="next_year" domain="
+                <filter string="Année prochaine" name="next_year" domain="
                         [('requested_date','&lt;=',(context_today()+relativedelta(years=1)).strftime('%Y-12-31')),
                          ('requested_date','&gt;=',(context_today()+relativedelta(years=1)).strftime('%Y-01-01'))]"/>
             </search>
         </field>
     </record>
 
+
     <!-- Action -->
     <record id="turnover_filtered_view_action" model="ir.actions.act_window">
         <field name="name">Chiffre d'affaires</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">sale.order</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="views">[(False,tree), (False,form), (False,graph)]</field>
         <field name="view_id" ref="turnover_filtered_view"/>
         <field name="domain">
             ['|', ('picking_ids.state','=','assigned'),('invoice_status', 'in', ['invoiced','to invoice'])]
         </field>
         <field name="target">current</field>
     </record>
+
 
     <!-- Ajout au menu Rapport, dans Vente -->
     <menuitem id="turnover_menu" name="Chiffre d'affaires" parent="sale.menu_sale_report"

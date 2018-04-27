@@ -31,8 +31,5 @@
         # 'views/filter_invoice.xml',
         'views/chiffre_affaires.xml',
     ],
-    'qweb': [
-
-    ]
 }
 
