@@ -198,9 +198,10 @@
     </record>
 
     <record id="dom_partner_tree" model="ir.ui.view">
-        <field name="name">Dom Partner Tree</field>
+        <field name="name">Dom Partner Form</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <!--<field name="inherit_id" ref="base.view_partner_tree"/>-->
         <field name="arch" type="xml">
 
             <xpath expr="//field[@name='ref']" position="after">
@@ -212,10 +213,17 @@
                 <field name="trust" invisible="1"/>
             </xpath>
 
+        </field>
+    </record>
+
+    <record id="dom_partner_tree" model="ir.ui.view">
+        <field name="name">Dom Partner Tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
             <xpath expr="//tree" position="attributes">
                 <attribute name="decoration-danger">trust == 'bad'</attribute>
             </xpath>
-
         </field>
     </record>
 

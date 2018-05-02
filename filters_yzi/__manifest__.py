@@ -20,14 +20,13 @@
         'web',
         'sale',
         'account',
-
         #specifique domitec
         'dom_partner',
     ],
 
     # always loaded
     'data': [
-        'views/filter_order.xml',
+        #'views/filter_order.xml',
         'views/filter_invoice.xml',
         'views/chiffre_affaires.xml',
     ],
