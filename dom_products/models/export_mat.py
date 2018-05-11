@@ -24,8 +24,11 @@ class ExportMatiereDangereuse(models.Model):
     test = fields.Boolean('Test export', help=u"Si coche les lignes exportes ne seront pas marquees comme tel")
 
     def formatDate(self, dateEN):
+        print(dateEN)
+
         date = dateEN.split('-')
         formatted_date = date[0]+date[1]+date[2][0:2]
+        print(formatted_date)
         return  formatted_date
 
     @api.multi
