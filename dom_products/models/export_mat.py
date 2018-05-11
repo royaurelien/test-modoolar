@@ -24,11 +24,8 @@ class ExportMatiereDangereuse(models.Model):
     test = fields.Boolean('Test export', help=u"Si coche les lignes exportes ne seront pas marquees comme tel")
 
     def formatDate(self, dateEN):
-        print(dateEN)
-
         date = dateEN.split('-')
         formatted_date = date[0]+date[1]+date[2][0:2]
-        print(formatted_date)
         return  formatted_date
 
     @api.multi
@@ -85,6 +82,7 @@ class ExportMatiereDangereuse(models.Model):
            u'DATE_LIV',#vide
            u'VIDE4',#vide
            u'VIDE5',#vide
+           u'VIDE6',# vide
            u'TEL_PORT',
            u'MAIL',
         ]
@@ -160,6 +158,7 @@ class ExportMatiereDangereuse(models.Model):
                 '',
                 nat_mar,
                 horaires,
+                '',
                 '',
                 '',
                 '',
