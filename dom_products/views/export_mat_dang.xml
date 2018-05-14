@@ -34,10 +34,9 @@
     </record>
 
 
-
-    <!-- Tree view lors du click sur 'Chercher plus -->
-    <record id="inherit_view_bl_citySchenker_tree" model="ir.ui.view">
-        <field name="name">bl.citySchenker.inherit.tree</field>
+    <!-- Tree view lors du click sur 'Chercher plus...' pour Ville Schenker -->
+    <record id="bl_citySchenker_tree" model="ir.ui.view">
+        <field name="name">Tree view - BL - dom.cities</field>
         <field name="model">dom.cities</field>
         <field name="context">{'search_default_city':1}</field>
         <field name="arch" type="xml">
@@ -48,31 +47,31 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="bl_villeSchenker_search_view">
-            <field name="name">search</field>
-            <field name="model">dom.cities</field>
-            <field name="arch" type="xml">
-                <search>
-                    <field name="city" string="Ville"/>
-                    <field name="zip" string="Code postal"/>
-                </search>
-            </field>
-        </record>
+    <!-- Search view pour la tree view de recherche sur la Ville Schenker -->
+    <record model="ir.ui.view" id="bl_citySchenker_search">
+        <field name="name">Search view - BL - dom.cities</field>
+        <field name="model">dom.cities</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="city" string="Ville"/>
+                <field name="zip" string="Code postal"/>
+            </search>
+        </field>
+    </record>
 
-
-    <record id="export_mat_dang_ville_schenker"  model="ir.ui.view">
-        <field name="name">Bon  de livraison</field>
+    <!-- Ajout du champ de la Ville Schenker lors de la creation d'un BL -->
+    <record id="export_mat_dang_city_schenker"  model="ir.ui.view">
+        <field name="name">Bon  de livraison - Ajout Ville Schenker</field>
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form/sheet/group/group[1]/field[1]" position="after">
                 <field name="citySchenker" options="{'no_create':True}">
-                    <attribute name="context">{'tree_view_ref': 'inherit_view_bl_citySchenker_tree'}</attribute>
+                    <attribute name="context">{'tree_view_ref': 'bl_citySchenker_tree'}</attribute>
                 </field>
             </xpath>
         </field>
     </record>
-
 
 
     <menuitem name="Exports" id="menu_export_root" parent="stock.menu_stock_root"/>
