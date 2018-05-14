@@ -106,7 +106,7 @@ class ExportMatiereDangereuse(models.Model):
             rue = bl.partner_id.street or ''
             rue2 = bl.partner_id.street2 or ''
             zip = bl.partner_id.zip or ''
-            ville = bl.citySchenker.city or ''
+            ville = bl.citySchenker_id.city or ''
             pays = bl.partner_id.country_id.code or ''
             tel = bl.partner_id.phone or ''
             mobile = bl.partner_id.mobile or ''
@@ -271,14 +271,14 @@ class Cities(models.Model):
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
+    exported = fields.Boolean()
+    zip_related = fields.Char(related="partner_id.zip")
+    citySchenker_id = fields.Many2one('dom.cities', string="Ville transporteur", compute="_change_onchange", readonly=0, store=True)
+
     # Mise a jour de la ville pour Schenker lors du changement de client
-    @api.onchange('partner_id')
+    @api.depends('partner_id')
+    @api.one
     def _change_onchange(self):
         citySelect = self.env['dom.cities'].search([('zip', '=', self.partner_id.zip)], limit=1)
-        self.citySchenker = citySelect
-
-    exported = fields.Boolean()
-    citySchenker = fields.Many2one('dom.cities', string="Ville Schenker")
-
-
+        self.citySchenker_id = citySelect
 
