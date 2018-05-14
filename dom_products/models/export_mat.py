@@ -106,7 +106,7 @@ class ExportMatiereDangereuse(models.Model):
             rue = bl.partner_id.street or ''
             rue2 = bl.partner_id.street2 or ''
             zip = bl.partner_id.zip or ''
-            ville = bl.partner_id.city or ''
+            ville = bl.citySchenker.city or ''
             pays = bl.partner_id.country_id.code or ''
             tel = bl.partner_id.phone or ''
             mobile = bl.partner_id.mobile or ''
@@ -240,9 +240,45 @@ class ExportMatiereDangereuse(models.Model):
         return action
 
 
+class Cities(models.Model):
+    """
+    Contient les villes selon les codes de Schenker
+    """
+    _name='dom.cities'
+
+    zip = fields.Char()
+    city = fields.Char()
+    pays = fields.Char()
+
+    # Pour afficher la ville dans le formulaire
+    @api.multi
+    def name_get(self):
+        data=[]
+        for rec in self:
+            data.append((rec.id, rec.city))
+        return data
+
+    # Pour rechercher sur la ville ou le code postal dans le fomulaire
+    @api.model
+    def name_search(self, name='', args=None, operator='ilike', limit=100):
+        args = args or []
+        recs = self.browse()
+        if not recs:
+            recs = self.search(['|', ('city', operator, name), ('zip', operator, name)] + args, limit=limit)
+        return recs.name_get()
 
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
+    # Mise a jour de la ville pour Schenker lors du changement de client
+    @api.onchange('partner_id')
+    def _change_onchange(self):
+        citySelect = self.env['dom.cities'].search([('zip', '=', self.partner_id.zip)], limit=1)
+        self.citySchenker = citySelect
+
     exported = fields.Boolean()
+    citySchenker = fields.Many2one('dom.cities', string="Ville Schenker")
+
+
+

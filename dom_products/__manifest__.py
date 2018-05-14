@@ -30,6 +30,7 @@
         'views/export_mat_dang.xml',
 
         'data/dom.classification.onu.csv',
+        'data/dom.cities.csv',
     ],
 
     # 'installable': True,
