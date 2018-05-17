@@ -21,6 +21,7 @@
             'mail',
             'sales_team',
             'calendar',
+            'purchase',
         ],
 
     # always loaded
@@ -32,10 +33,11 @@
         'views/sale_order.xml',
         'views/crm_lead.xml',
         'views/calendar_event.xml',
-
+        'views/mail_activity.xml',
         'static/src/xml/backend.xml',
     ],
     'qweb': [
         'static/src/xml/sales_team_dashboard.xml',
+        'static/src/xml/mail_activity_inherit.xml',
     ],
 }
