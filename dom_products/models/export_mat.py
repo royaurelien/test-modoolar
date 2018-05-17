@@ -116,7 +116,13 @@ class ExportMatiereDangereuse(models.Model):
             nb_carton = bl.nb_cartons or ''
             weight = bl.weight or ''
             nat_mar = ''
-            horaires = bl.partner_id.horaires_livraison or bl.partner_id.parent_id.horaires_livraison
+
+            if bl.partner_id.horaires_livraison:
+                hr = bl.partner_id.horaires_livraison.replace('\n','').replace('\r','')
+            elif bl.partner_id.parent_id.horaires_livraison:
+                hr = bl.partner_id.parent_id.horaires_livraison.replace('\n','').replace('\r','')
+
+            horaires = hr # bl.partner_id.horaires_livraison or bl.partner_id.parent_id.horaires_livraison
 
             for line in bl.move_lines:
                 if line.product_id.dang:
