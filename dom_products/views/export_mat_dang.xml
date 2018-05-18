@@ -22,7 +22,7 @@
                     </group>
                 </form>
             </field>
-        </record>
+      </record>
 
     <record id="action_wizard_mat_dang" model="ir.actions.act_window">
             <field name="name">Exportation des matières dangereuses</field>
@@ -32,6 +32,47 @@
             <field name="view_id" ref="export_mat_dang"/>
             <field name="target">new</field>
     </record>
+
+
+    <!-- Tree view lors du click sur 'Chercher plus...' pour Ville Schenker -->
+    <record id="bl_citySchenker_tree" model="ir.ui.view">
+        <field name="name">Tree view - BL - dom.cities</field>
+        <field name="model">dom.cities</field>
+        <field name="arch" type="xml">
+            <tree string="Ville Schenker">
+                <field name="zip" string="Code postal"/>
+                <field name="city" string="Ville"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view pour la tree view de recherche sur la Ville Schenker -->
+    <record model="ir.ui.view" id="bl_citySchenker_search">
+        <field name="name">Search view - BL - dom.cities</field>
+        <field name="model">dom.cities</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="city" string="Ville"/>
+                <field name="zip" string="Code postal"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Ajout du champ de la Ville Schenker lors de la creation d'un BL -->
+    <record id="export_mat_dang_city_schenker"  model="ir.ui.view">
+        <field name="name">Bon  de livraison - Ajout Ville Schenker</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group/group[1]/field[1]" position="after">
+                <field name="zip_related" attrs="{'invisible':1}"/>
+                <field name="citySchenker_id" options="{'no_create': True, 'no_open':True}" domain="[('zip','=', zip_related)]">
+                    <attribute name="context">{'tree_view_ref': 'bl_citySchenker_tree'}</attribute>
+                </field>
+            </xpath>
+        </field>
+    </record>
+
 
     <menuitem name="Exports" id="menu_export_root" parent="stock.menu_stock_root"/>
 
