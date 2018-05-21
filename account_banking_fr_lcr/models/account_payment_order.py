@@ -126,8 +126,9 @@ class AccountPaymentOrder(models.Model):
         numero_enregistrement = str(transactions_count + 1).zfill(8)
         reference_tire = self._prepare_field(
             u'Référence tiré', line.communication, 10)
+        print("COIN")
         rib = self._get_rib_from_iban(line.partner_bank_id)
-
+        print("COIN2")
         nom_tire = self._prepare_field(
             u'Nom tiré', line.partner_id.name, 24)
         nom_banque = self._prepare_field(
@@ -188,9 +189,7 @@ class AccountPaymentOrder(models.Model):
     def generate_payment_file(self):
         '''Creates the LCR CFONB file.'''
         self.ensure_one()
-        if (
-                self.payment_method_id.code !=
-                'fr_lcr'):
+        if (self.payment_method_id.code != 'fr_lcr'):
             return super(AccountPaymentOrder, self).generate_payment_file()
 
         cfonb_string = self._prepare_first_cfonb_line()
@@ -204,12 +203,100 @@ class AccountPaymentOrder(models.Model):
                     "The currency of payment line '%s' is '%s'. To be "
                     "included in a French LCR, the currency must be EUR.")
                     % (line.name, line.currency_id.name))
+        maped_lines = self.regroup_bank_lines(self.bank_line_ids)
+
+        for line in maped_lines :
             transactions_count += 1
-            cfonb_string += self._prepare_cfonb_line(line, transactions_count)
-            total_amount += line.amount_currency
+            line_cfonb = self._prepare_cfonb_line_grouped(line, transactions_count)
+            cfonb_string += line_cfonb
+            total_amount += line['amount_currency']
+
 
         cfonb_string += self._prepare_final_cfonb_line(
             total_amount, transactions_count)
 
         filename = 'LCR_%s.txt' % self.name.replace('/', '-')
+
         return (cfonb_string, filename)
+
+
+    def regroup_bank_lines(self, lines):
+        """
+        regroupe les lignes de LCR en fonction du banque acc_number
+        avec un code moche mais qui marche
+        """
+
+        copie_lines = []
+        maped_lines = []
+
+        for line in lines:
+            c_line = {
+                'partner_id': line.partner_id,
+                'partner_bank_id': line.partner_bank_id,
+                'communication': line.communication,
+                'amount_currency': line.amount_currency,
+                'date': line.date,
+            }
+            copie_lines.append(c_line)
+
+        for line in copie_lines:
+            maped = False
+            for m_line in maped_lines:
+                if maped == False and m_line['partner_bank_id'].acc_number == line['partner_bank_id'].acc_number:
+                    m_line['amount_currency'] += line['amount_currency']
+                    maped = True
+
+            if not maped:
+                maped_lines.append(line)
+
+
+        return maped_lines
+
+    @api.model
+    def _prepare_cfonb_line_grouped(self, line, transactions_count):
+        '''Generate each debit line of the CFONB file'''
+        # I use French variable names because the specs are in French
+        code_enregistrement = '06'
+        code_operation = '60'
+        numero_enregistrement = str(transactions_count + 1).zfill(8)
+        reference_tire = self._prepare_field(
+            u'Référence tiré', line['communication'], 10)
+        rib = self._get_rib_from_iban(line['partner_bank_id'])
+        nom_tire = self._prepare_field(
+            u'Nom tiré', line['partner_id'].name, 24)
+        nom_banque = self._prepare_field(
+            u'Nom banque', line['partner_bank_id'].bank_id.name, 24)
+        code_acceptation = '0'
+        montant_centimes = str(line['amount_currency'] * 100).split('.')[0]
+        zero_montant_centimes = montant_centimes.zfill(12)
+        today_str = fields.Date.context_today(self)
+        today_dt = fields.Date.from_string(today_str)
+        date_creation = today_dt.strftime(LCR_DATE_FORMAT)
+        requested_date_dt = fields.Date.from_string(line['date'])
+        date_echeance = requested_date_dt.strftime(LCR_DATE_FORMAT)
+        reference_tireur = reference_tire
+
+        cfonb_line = ''.join([
+            code_enregistrement,
+            code_operation,
+            numero_enregistrement,
+            ' ' * (6 + 2),
+            reference_tire,
+            nom_tire,
+            nom_banque,
+            code_acceptation,
+            ' ' * 2,
+            rib['code_banque'],
+            rib['code_guichet'],
+            rib['numero_compte'],
+            zero_montant_centimes,
+            ' ' * 4,
+            date_echeance,
+            date_creation,
+            ' ' * (4 + 1 + 3 + 3 + 9),
+            reference_tireur,
+            ])
+        assert len(cfonb_line) == 160, 'LCR CFONB line must have 160 chars'
+        cfonb_line += '\r\n'
+        return cfonb_line
+

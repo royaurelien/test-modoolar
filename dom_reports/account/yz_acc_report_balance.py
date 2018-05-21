@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from openerp import api, models, fields, _
 from openerp.exceptions import UserError
+import xlsxwriter
+from io import BytesIO
 import base64
 
 
@@ -208,6 +210,13 @@ class YzAccReportBalance(models.TransientModel):
         accounts_others_4 = []
         dc = []
 
+        s401, t401 = self.cas401()
+        s411, t411 = self.cas411()
+
+        # Ajout des lignes de 401, 411, et du compte 411000
+        dc.append([s401[0][0], s401[0][1], s401[0][2], s401[0][3], s401[0][4], s401[0][5], '4'])
+        dc.append([s411[0][0], s411[0][1], s411[0][2], s411[0][3], s411[0][4], s411[0][5], '4'])
+
         # Recuperation des comptes de la classe 4 sauf 401 et 411
         for acc in a4:
             if acc not in a401 and acc not in a411:
@@ -220,12 +229,7 @@ class YzAccReportBalance(models.TransientModel):
             if de_cr[0] > 0.0 or de_cr[1] > 0.0:
                 dc.append([account.code, account.name, de_cr[0], de_cr[1], sol[0], sol[1], '4'])
 
-        s401, t401 = self.cas401()
-        s411, t411 = self.cas411()
 
-        # Ajout des lignes de 401, 411, et du compte 411000
-        dc.append([s401[0][0], s401[0][1],s401[0][2], s401[0][3], s401[0][4], s401[0][5], '4'])
-        dc.append([s411[0][0], s411[0][1],s411[0][2], s411[0][3], s411[0][4], s411[0][5], '4'])
 
         # Calcul des totaux de la classe 4
         totaux_4 = self.calcul_totaux_classe(dc, '4')
@@ -353,5 +357,131 @@ class YzAccReportBalance(models.TransientModel):
                 "url": "web/content/?model=yz.acc.report.balance&id=" + str(
                     self.id) + "&filename_field=filename&field=value&download=true&filename=%s.pdf" % (
                             'Balance générale'),
+                "target": "new",
+            }
+
+    @api.multi
+    def action_export_balance_excel(self):
+        """
+        :return une action act_url pour telecharger l'excel
+        """
+
+        # Calcul du debut de l'exercice suivant
+        if self.date_debut != False:
+            date_debut_split = self.date_debut.split('-')
+            date_fin_max = str(int(date_debut_split[0]) + 1) + '-' + str(date_debut_split[1]) + '-' + str(
+                date_debut_split[2])
+
+        if self.date_fin == False or self.date_debut == False or self.date_fin < self.date_debut or self.classe == False or self.date_fin >= date_fin_max:
+            raise UserError(_(
+                'Vous avez oublié un champ, entré des dates incorectes ou donné une période de temps supérieure à un exercice'))  # Si l'utilisateur ne remplit par tous les champs, on provoque une erreur
+        else:
+            """
+                Utilisation de la bonne methode, selon la demande
+                dc est sous forme : [[code, nom, debit, credit, solde debiteur, solde crediteur, classe],[], []...]
+                totaux est sous la forme : [[debit total, credit total, solde debiteur total, solde crediteur total, classe], [], []...]
+                classes est une liste des classes qu'on veut afficher
+            """
+            if self.classe == 'all':
+                dc, totaux_classes = self.others_case(['1', '2', '3', '4', '5', '6', '7'])
+                classes = ['1', '2', '3', '4', '5', '6', '7']
+
+            elif self.classe == '401':
+                dc, totaux_classes = self.cas401()
+                classes = ['401']
+
+            elif self.classe == '411':
+                dc, totaux_classes = self.cas411()
+                classes = ['411']
+
+            else:
+                dc, totaux_classes = self.others_case([self.classe])
+                classes = [self.classe]
+
+            # Total general des debits, credits et soldes
+            total_gen = self.calcul_total_general(totaux_classes)
+
+            # Creation du fichier excel
+            output = BytesIO()
+            workbook = xlsxwriter.Workbook(output)
+
+            # Creation du bon nombre de worksheet, un pour chaque classe
+            worksheets = []
+
+            for classe in classes:
+                worksheets.append(workbook.add_worksheet('Classe ' + classe))
+
+            sheet = 0
+            format = workbook.add_format({'num_format': 0x02})
+
+            # Remplissage de la bonne feuille pour chaque classe
+            for cl in classes:
+                worksheets[sheet].set_column(0, 5, 20)
+                worksheets[sheet].set_column(1, 1, 40)
+
+                table = 1
+                data = []
+                columns = []
+                total_data = []
+                total_columns = []
+
+                # Ajout d'une ligne pour chaque compte
+                for compte in dc:
+                    if compte[6] == cl:
+                        table = table + 1
+                        data.append([compte[0], compte[1], compte[2], compte[3], compte[4], compte[5]])
+
+                # Lignes d'en-tete et de total
+                for tc in totaux_classes:
+                    if tc[4] == cl:
+                        columns.append({'header': 'Numero', 'total_string': 'Totaux'})
+                        columns.append({'header': 'Compte'})
+                        columns.append(
+                            {'header': 'Debit', 'total_function': 'sum', 'total_value': tc[0], 'format': format})
+                        columns.append(
+                            {'header': 'Credit', 'total_function': 'sum', 'total_value': tc[1], 'format': format})
+                        columns.append({'header': 'Solde debiteur', 'total_function': 'sum', 'total_value': tc[2],
+                                        'format': format})
+                        columns.append({'header': 'Solde crediteur', 'total_function': 'sum', 'total_value': tc[3],
+                                        'format': format})
+
+                # Creation d'un tableau pour y placer les informations
+                worksheets[sheet].add_table(0, 0, table, 5, {'total_row': 1, 'columns': columns, 'data': data,
+                                                             'style': 'Table Style Light 1'})
+                sheet = sheet + 1
+
+            # Creation du worksheet de total general
+            totaux = workbook.add_worksheet('Totaux')
+            totaux.set_column(0, 5, 20)
+
+            for tc in totaux_classes:
+                total_data.append([tc[4], tc[0], tc[1], tc[2], tc[3]])
+
+            total_columns.append({'header': 'Classe', 'total_string': 'Totaux'})
+            total_columns.append(
+                {'header': 'Debit', 'total_function': 'sum', 'total_value': total_gen[0], 'format': format})
+            total_columns.append(
+                {'header': 'Credit', 'total_function': 'sum', 'total_value': total_gen[1], 'format': format})
+            total_columns.append(
+                {'header': 'Solde debiteur', 'total_function': 'sum', 'total_value': total_gen[2], 'format': format})
+            total_columns.append(
+                {'header': 'Solde crediteur', 'total_function': 'sum', 'total_value': total_gen[3], 'format': format})
+
+            totaux.add_table(0, 0, len(classes) + 1, 4, {'total_row': 1, 'columns': total_columns, 'data': total_data,
+                                                         'style': 'Table Style Light 1'})
+
+            workbook.close()
+
+            # Telechargement du fichier
+            self.write({
+                'value': base64.encodestring(output.getvalue()),
+                'filename': 'Balance générale' + '-' + self.date_debut + '/' + self.date_fin,
+            })
+
+            return {
+                "type": "ir.actions.act_url",
+                "url": "web/content/?model=yz.acc.report.balance&id=" + str(
+                    self.id) + "&filename_field=filename&field=value&download=true&filename=%s.xlsx" % (
+                               'Balance générale' + '-' + self.date_debut + "/" + self.date_fin),
                 "target": "new",
             }

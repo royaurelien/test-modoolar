@@ -14,7 +14,8 @@
                     <field name="lettre" string="Lettrage" widget="radio"/>
                 </group>
                 <group name="button">
-                    <button name="action_export_balance" string="Export" type="object" class="btn btn-success" icon="fa-download"/>
+                    <button name="action_export_balance" string="Export PDF" type="object" class="btn btn-success" icon="fa-download"/>
+                    <button name="action_export_balance_excel" string="Export excel" type="object" class="btn btn-success" icon="fa-download"/>
                 </group>
             </form>
         </field>
