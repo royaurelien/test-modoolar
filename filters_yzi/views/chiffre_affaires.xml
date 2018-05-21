@@ -13,8 +13,8 @@
                 <field name="partner_id"/>
                 <field name="state"/>
                 <field name="invoice_status"/>
-                <field name="amount_total" sum="Total HT"/>
-                <field name="amount_ht_net" sum="Total TTC"/>
+                <field name="amount_ht_net" sum="Total HT"/>
+                <field name="amount_total" sum="Total TTC"/>
             </tree>
         </field>
     </record>
