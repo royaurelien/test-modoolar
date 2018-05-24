@@ -4,11 +4,19 @@
 
     <data>
 
+        <!--<record id="_custom_filters_invoice_action" model="ir.actions.act_window">-->
+            <!--<field name="name">Calling filters invoice invoice/customers</field>-->
+            <!--<field name="type">ir.actions.act_window</field>-->
+            <!--<field name="res_model">account.invoice</field>-->
+            <!--<field name="view_mode">tree,form</field>-->
+            <!--<field name="view_id" ref="_custom_filters_invoice"/>-->
+        <!--</record>-->
+
         <!-- Filtres Factures -->
         <record id="_custom_filters_invoice" model="ir.ui.view">
-            <field name="name">Filtres temporels</field>
+            <field name="name">Filtres temporels - Facture/client</field>
             <field name="model">account.invoice</field>
-            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="inherit_id" ref="account.view_account_invoice_filter_inherit_invoices"/>
             <field name="arch" type="xml">
 
                 <xpath expr="//search" position="inside">
@@ -18,12 +26,61 @@
                     <field name="gr" string="Groupe"/>
                     <field name="sgr" string="Sous Groupe"/>
 
-                    <filter string="Aujourd'hui" name="current_day" domain="[('date_invoice','&lt;=',context_today().strftime('%Y-%m-%d')),('date_invoice','&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
-                    <filter string="Mois précédent" name="previous_month" domain="[('date_invoice','&lt;=',(context_today()-relativedelta(months=1, day=31)).strftime('%Y-%m-%d')),('date_invoice','&gt;=',(context_today()-relativedelta(months=1, day=1)).strftime('%Y-%m-%d'))]"/>
-                    <filter string="Mois en cours" name="current_month" domain="[('date_invoice','&gt;=',((context_today()+relativedelta(day=1)).strftime('%Y-%m-%d'))),('date_invoice','&lt;=',((context_today()+relativedelta(day=31)).strftime('%Y-%m-%d')))]"/>
-                    <filter string="Année précédente" name="previous_year" domain="[('date_invoice','&lt;=',(context_today()-relativedelta(years=1)).strftime('%Y-12-31')),('date_invoice','&gt;=',(context_today()-relativedelta(years=1)).strftime('%Y-01-01'))]"/>
-                    <filter string="Année en cours" name="current_year" domain="[('date_invoice','&lt;=',context_today().strftime('%Y-12-31')),('date_invoice','&gt;',time.strftime('%Y-01-01'))]"/>
+                    <!-- Jours -->
+                <filter string="Hier" name="yesterday" domain="
+                        [('date_invoice','&lt;=', (context_today()+relativedelta(days=-1)).strftime('%Y-%m-%d')),
+                        ('date_invoice','&gt;=', (context_today()+relativedelta(days=-1)).strftime('%Y-%m-%d'))]"/>
 
+                <filter string="Aujourd'hui" name="current_day" domain="
+                        [('date_invoice','&lt;=',context_today().strftime('%Y-%m-%d')),
+                        ('date_invoice','&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
+
+                <filter string="Demain" name="tomorrow" domain="
+                        [('date_invoice','&lt;=', (context_today()+relativedelta(days=1)).strftime('%Y-%m-%d')),
+                        ('date_invoice','&gt;=', (context_today()+relativedelta(days=1)).strftime('%Y-%m-%d'))]"/>
+
+                <!-- Semaines -->
+                <filter string="Semaine dernière" name="last_week" domain="
+                        [('date_invoice','&gt;=', (context_today()+relativedelta(days=-(7+context_today().weekday()))).strftime('%Y-%m-%d')),
+                        ('date_invoice','&lt;=', (context_today()+relativedelta(days=-(7+(context_today().weekday()-6)))).strftime('%Y-%m-%d'))]"/>
+
+                <filter string="Semaine en cours" name="current_week" domain="
+                        [('date_invoice','&lt;=', (context_today()+relativedelta(days=6-context_today().weekday())).strftime('%Y-%m-%d')),
+                        ('date_invoice','&gt;=', (context_today()+relativedelta(days=-(context_today().weekday()))).strftime('%Y-%m-%d'))]"/>
+
+                <filter string="Semaine prochaine" name="next_week" domain="
+                        [('date_invoice','&lt;=', (context_today()+relativedelta(days=(6-context_today().weekday())+7)).strftime('%Y-%m-%d')),
+                        ('date_invoice','&gt;=', (context_today()+relativedelta(days=(6-context_today().weekday())+1)).strftime('%Y-%m-%d'))]"/>
+
+                <!-- Mois -->
+                <filter string="Mois précédent" name="previous_month" domain="
+                        [('date_invoice','&lt;', context_today().strftime('%Y-%m-01')),
+                        ('date_invoice','&gt;=',(context_today()+relativedelta(months=-1)).strftime('%Y-%m-01'))]"/>
+
+                <filter string="Mois en cours" name="current_month" domain="
+                        [('date_invoice','&lt;',(context_today()+relativedelta(months=1)).strftime('%Y-%m-01')),
+                        ('date_invoice','&gt;=',context_today().strftime('%Y-%m-01')]"/>
+
+                <filter string="Mois prochain" name="next_month" domain="
+                        [('date_invoice','&lt;',(context_today()+relativedelta(months=2)).strftime('%Y-%m-01')),
+                        ('date_invoice','&gt;=', (context_today()+relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
+
+                <!--<filter string="3 prochains mois" name="next_three_months" domain="-->
+                        <!--[('date_invoice','&lt;', (context_today()+relativedelta(months=4)).strftime('%Y-%m-01')),-->
+                        <!--('date_invoice','&gt;=', (context_today()+relativedelta(months=1)).strftime('%Y-%m-01'))]"/>-->
+
+                <!-- Annees -->
+                <filter string="Année précédente" name="previous_year" domain="
+                        [('date_invoice','&lt;=',(context_today()+relativedelta(years=-1)).strftime('%Y-12-31')),
+                        ('date_invoice','&gt;=',(context_today()+relativedelta(years=-1)).strftime('%Y-01-01'))]"/>
+
+                <filter string="Année en cours" name="current_year" domain="
+                        [('date_invoice','&lt;=', context_today().strftime('%Y-12-31')),
+                        ('date_invoice','&gt;=', context_today().strftime('%Y-01-01'))]"/>
+
+                <!--<filter string="Année prochaine" name="next_year" domain="-->
+                        <!--[('date_invoice','&lt;=',(context_today()+relativedelta(years=1)).strftime('%Y-12-31')),-->
+                        <!--('date_invoice','&gt;=',(context_today()+relativedelta(years=1)).strftime('%Y-01-01'))]"/>-->
                 </xpath>
 
                 <xpath expr="//group[@expand='0']" position="inside">
@@ -37,7 +94,7 @@
 
 
         <!-- Filtres Factures Rapport -->
-	<record id="_custom_filters_invoice" model="ir.ui.view">
+	<record id="custom_filters_invoice" model="ir.ui.view">
             <field name="name">Filtres temporels</field>
             <field name="model">account.invoice.report</field>
             <field name="inherit_id" ref="account.view_account_invoice_report_search"/>
