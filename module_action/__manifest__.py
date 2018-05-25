@@ -28,16 +28,16 @@
     'data': [
         'security/ir.model.access.csv',
 
-        'views/action.xml',
-        'views/res_partner.xml',
-        'views/sale_order.xml',
-        'views/crm_lead.xml',
-        'views/calendar_event.xml',
+        # 'views/action.xml',
+        # 'views/res_partner.xml',
+        # 'views/sale_order.xml',
+        # 'views/crm_lead.xml',
+        # 'views/calendar_event.xml',
         'views/mail_activity.xml',
-        'static/src/xml/backend.xml',
+        # 'static/src/xml/backend.xml',
     ],
     'qweb': [
-        'static/src/xml/sales_team_dashboard.xml',
+        # 'static/src/xml/sales_team_dashboard.xml',
         'static/src/xml/mail_activity_inherit.xml',
     ],
 }

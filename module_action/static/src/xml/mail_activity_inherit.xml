@@ -2,8 +2,8 @@
 <odoo>
         <t t-extend="mail.activity_items" t-name="mail.activity_items">
             <t t-jquery="div[class='o_thread_message']" t-operation="replace">
-                <div class="o_thread_message" style="margin-bottom: 10px">
-                    <t t-if="activity.archived != true">
+                <t t-if="activity.archived != true">
+                    <div class="o_thread_message" style="margin-bottom: 10px">
                         <div class="o_thread_message_sidebar">
                             <div class="o_avatar_stack">
                                 <img t-attf-src="/web/image#{activity.user_id[0] >= 0 ? ('/res.users/' + activity.user_id[0] + '/image_small') : ''}" class="o_thread_message_avatar img-circle mb8" t-att-title="activity.create_uid[1]"/>
@@ -57,8 +57,8 @@
                                 </a>
                             </div>
                         </div>
-                    </t>
-                </div>
+                    </div>
+                </t>
             </t>
 
             <t t-jquery="div[class='o_thread_date_separator o_border_dashed']" t-operation="replace">

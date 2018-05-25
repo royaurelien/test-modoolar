@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
+    <!-- Tree view des activités -->
     <record model="ir.ui.view" id="mail_activity_tree_view">
         <field name="name">Activités</field>
         <field name="model">mail.activity</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree create="false" import="false" delete="false" default_order="date_deadline desc">
                 <field name="activity_type_id" string="Type"/>
                 <field name="summary" string="Résumé"/>
                 <field name="res_name" string="Document"/>
@@ -17,6 +18,7 @@
         </field>
     </record>
 
+    <!-- Search view des activités -->
     <record id="mail_activity_search_view" model="ir.ui.view">
         <field name="name">Filtres</field>
         <field name="model">mail.activity</field>
@@ -26,11 +28,18 @@
                 <field name="state"/>
                 <field name="archived"/>
                 <field name="activity_type_id"/>
+                <field name="res_id"/>
+                <field name="res_model"/>
+                <field name="date_deadline"/>
 
                 <!-- Group by -->
                 <group expand="0" string="Group by">
                     <filter name="grp_by_type" string="Type" context="{'group_by': 'activity_type_id'}"/>
                 </group>
+
+                    <filter string="Mes activités" name="mine" domain="[('user_id', '=', uid)]"/>
+
+                    <separator/>
 
                     <filter string="Activités en cours" name="currently" domain="[('archived','!=', True)]"/>
                     <filter string="Activités archivées" name="ended" domain="[('archived','=', True)]"/>
@@ -44,25 +53,138 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="mail_activity_form_view_for_tree">
+        <field name="name">Activités</field>
+        <field name="model">mail.activity</field>
+        <field name="priority" eval="22"/>
+        <field name="arch" type="xml">
+            <form string="Créer une activité" create="false" delete="false">
+                <sheet string="Activités">
+                    <group invisible="1">
+                        <field name="activity_category"/>
+                        <field name="res_model"/>
+                        <field name="res_model_id"/>
+                        <field name="res_id"/>
+                        <field name="archived"/>
+                        <field name="previous_activity_type_id"/>
+                        <field name="has_recommended_activities"/>
+                    </group>
+                    <group attrs="{'invisible': [('has_recommended_activities','=',False)]}">
+                        <div>
+                            <p><strong>Recommended Activities</strong></p>
+                            <field name="recommended_activity_type_id" widget="radio" domain="[('previous_type_ids', '=', previous_activity_type_id)]" options="{'horizontal':true}" nolabel="1"/>
+                        </div>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="activity_type_id" required="1" attrs="{'no_create': True, 'no_open': True, 'readonly': 1}" />
+                            <field name="summary" placeholder="Ex. : proposition d'examen" attrs="{'readonly':[('archived','=', True)]}"/>
+                        </group>
+                        <group>
+                            <field name="date_deadline" attrs="{'readonly':[('archived','=', True)]}"/>
+                            <field name="user_id" attrs="{'readonly':[('archived','=', True)]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="state" string="Etat" attrs="{'invisible': [('archived', '=', True)], 'readonly': 1}" />
+                        <field name="archived" string="Archivé" attrs="{'invisible': [('archived', '!=', True)], 'readonly': 1}"/>
+                        <field name="note" placeholder="Enregistrer une note..." string="Description" attrs="{'readonly':[('archived','=', True)]}"/>
+                        <field name="feedback" string="Feedback" attrs="{'invisible': [('archived', '!=', True)], 'readonly': 1}"/>
+                    </group>
+                    <footer attrs="{'invisible': [('archived', '=', True)]}">
+                        <button string="Marquer comme fait" name="open_feedback_form" type="object" class="btn-primary"/>
+                        <button string="SUPPRIMER" name="unlink" type="object" class="btn-link"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
     <record model="ir.actions.act_window" id="mail_activity_tree_view_action">
         <field name="name">Activités</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">mail.activity</field>
-        <field name="view_mode">tree, form</field>
-        <field name="view_id" ref="mail_activity_tree_view"/>
+        <!--<field name="view_type">form</field>-->
+        <field name="view_mode">tree,form</field>
+        <field name="views">[(False,tree), (False,form)]</field>
         <field name="search_view_id" ref="mail_activity_search_view"/>
-        <field name="domain">
-            [('user_id','=', uid)]
-        </field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                                      (0, 0, {'view_mode': 'tree', 'view_id': ref('mail_activity_tree_view')}),
+                                      (0, 0, {'view_mode': 'form', 'view_id': ref('mail_activity_form_view_for_tree')})]"/>
+        <field name="context">{'search_default_mine':1}</field>
         <field name="target">current</field>
    </record>
 
+    <!-- Ajout d'un menu pour acceder à la tree view -->
    <menuitem id="menu_activites_tree" parent="crm.crm_menu_root" name="Activités" action="mail_activity_tree_view_action"/>
 
 
 
 
-    <record id="account_search_view_for_activities" model="ir.ui.view">
+
+
+
+    <record model="ir.ui.view" id="mail_activity_form_feedback">
+        <field name="name">Activités</field>
+        <field name="model">mail.activity</field>
+        <field name="priority" eval="23"/>
+        <field name="arch" type="xml">
+            <form string="Feedback">
+                <group invisible="1">
+                    <field name="activity_category"/>
+                    <field name="res_model"/>
+                    <field name="res_model_id"/>
+                    <field name="res_id"/>
+                    <field name="previous_activity_type_id"/>
+                    <field name="has_recommended_activities"/>
+                </group>
+                <field name="feedback"/>
+                <footer>
+                    <button string="Marqué comme fait" name="action_done_with_feedback" type="object" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mail_activity_form_feedback_action">
+        <field name="name">Feedback</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">form</field>
+        <field name="views">[(False,form)]</field>
+        <field name="view_id" ref="mail_activity_form_feedback"/>
+        <field name="target">new</field>
+   </record>
+
+
+
+
+
+    <!-- Ajout d'un bouton dans les fiches clients pour accéder aux activités le concernant -->
+    <record id="button_partner_activities" model="ir.ui.view">
+        <field name="name">Contacts</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button o_res_partner_tipp_opp" type="object" icon="fa-clock-o" name="mail_activity_tree_view_action">
+                    <label for="activities_count_current" string="Activités"/>
+                    <span class="o_stat_value">
+                        <field name="activities_count_current" widget="integer"/>
+                        (<field name="activities_count" widget="integer"/>)
+                    </span>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+
+    <!-- Changement des filtres pour y intégrer le fait de ne prendre que les activités non archivées -->
+    <record id="search_view_for_activities" model="ir.ui.view">
         <field name="name">Filtres</field>
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.view_account_invoice_filter"/>
@@ -74,7 +196,7 @@
                 <filter string="Activités du jour" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_upcoming_all']" position="replace">
-                      <filter string="Activités futuressss" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
+                      <filter string="Activités futures" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_my']" position="replace">
                 <filter string="Mes activités" name="activities_my" domain="[('activity_ids.user_id', '=', uid), ('activity_ids.archived', '!=', True)]"/>
@@ -82,7 +204,7 @@
         </field>
     </record>
 
-    <record id="account_search_view_for_activities2" model="ir.ui.view">
+    <record id="search_view_for_activities2" model="ir.ui.view">
         <field name="name">Filtres</field>
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_internal_search"/>
@@ -94,7 +216,7 @@
                 <filter string="Activités du jour" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_upcoming_all']" position="replace">
-                      <filter string="Activités futuressss" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
+                      <filter string="Activités futures" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_my']" position="replace">
                 <filter string="Mes activités" name="activities_my" domain="[('activity_ids.user_id', '=', uid), ('activity_ids.archived', '!=', True)]"/>
@@ -102,7 +224,7 @@
         </field>
     </record>
 
-    <record id="account_search_view_for_activities3" model="ir.ui.view">
+    <record id="search_view_for_activities3" model="ir.ui.view">
         <field name="name">Filtres</field>
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
@@ -114,7 +236,7 @@
                 <filter string="Activités du jour" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_upcoming_all']" position="replace">
-                      <filter string="Activités futuressss" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
+                      <filter string="Activités futures" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_my']" position="replace">
                 <filter string="Mes activités" name="activities_my" domain="[('activity_ids.user_id', '=', uid), ('activity_ids.archived', '!=', True)]"/>
@@ -122,7 +244,7 @@
         </field>
     </record>
 
-    <record id="account_search_view_for_activities4" model="ir.ui.view">
+    <record id="search_view_for_activities4" model="ir.ui.view">
         <field name="name">Filtres</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_sales_order_filter"/>
@@ -134,7 +256,7 @@
                 <filter string="Activités du jour" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_upcoming_all']" position="replace">
-                      <filter string="Activités futuressss" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
+                      <filter string="Activités futures" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_my']" position="replace">
                 <filter string="Mes activités" name="activities_my" domain="[('activity_ids.user_id', '=', uid), ('activity_ids.archived', '!=', True)]"/>
@@ -142,7 +264,7 @@
         </field>
     </record>
 
-    <record id="account_search_view_for_activities5" model="ir.ui.view">
+    <record id="search_view_for_activities5" model="ir.ui.view">
         <field name="name">Filtres</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="mail.res_partner_view_search_inherit_mail"/>
@@ -154,7 +276,7 @@
                 <filter string="Activités du jour" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_upcoming_all']" position="replace">
-                      <filter string="Activités futuressss" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
+                <filter string="Activités futures" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_my']" position="replace">
                 <filter string="Mes activités" name="activities_my" domain="[('activity_ids.user_id', '=', uid), ('activity_ids.archived', '!=', True)]"/>
@@ -162,7 +284,7 @@
         </field>
     </record>
 
-     <record id="account_search_view_for_activities6" model="ir.ui.view">
+     <record id="search_view_for_activities6" model="ir.ui.view">
         <field name="name">Filtres</field>
         <field name="model">crm.lead</field>
         <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
@@ -174,7 +296,7 @@
                 <filter string="Activités du jour" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_upcoming_all']" position="replace">
-                      <filter string="Activités futuressss" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
+                      <filter string="Activités futures" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_my']" position="replace">
                 <filter string="Mes activités" name="activities_my" domain="[('activity_ids.user_id', '=', uid), ('activity_ids.archived', '!=', True)]"/>
@@ -182,11 +304,10 @@
         </field>
     </record>
 
-    <record id="account_search_view_for_activities7" model="ir.ui.view">
+    <record id="search_view_for_activities7" model="ir.ui.view">
         <field name="name">Filtres</field>
         <field name="model">crm.lead</field>
-        <field name="inherit_id" ref="
-        crm.view_crm_case_leads_filter"/>
+        <field name="inherit_id" ref="crm.view_crm_case_leads_filter"/>
         <field name="arch" type="xml">
             <xpath expr="//search/filter[@name='activities_overdue']" position="replace">
                 <filter string="Activités en retard" name="activities_overdue" domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]" help="Show all records which has next action date is before today"/>
@@ -195,13 +316,33 @@
                 <filter string="Activités du jour" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_week']" position="replace">
-                <filter string="Future Activities (7 dayssss)" name="activities_week" domain="['&amp;', ('activity_ids.date_deadline', '&gt;=', context_today().strftime('%Y-%m-%d')),('activity_ids.date_deadline', '&lt;=', (context_today()+datetime.timedelta(days=7)).strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
+                <filter string="Activités futures (7 jours)" name="activities_week" domain="['&amp;', ('activity_ids.date_deadline', '&gt;=', context_today().strftime('%Y-%m-%d')),('activity_ids.date_deadline', '&lt;=', (context_today()+datetime.timedelta(days=7)).strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_upcoming_all']" position="replace">
-                    <filter string="Future Activities (All)" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
+                    <filter string="Activités futures (toutes)" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.archived', '!=', True)]"/>
             </xpath>
             <xpath expr="//search/filter[@name='activities_my']" position="replace">
                 <filter string="Mes activités" name="activities_my" domain="[('activity_ids.user_id', '=', uid), ('activity_ids.archived', '!=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="search_view_for_activities8" model="ir.ui.view">
+        <field name="name">Filtres</field>
+        <field name="model">mail.activity</field>
+        <field name="inherit_id" ref="mail.mail_activity_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/filter[@name='activities_overdue']" position="replace">
+                <filter string="Activités en retard" name="activities_overdue" domain="[('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d')), ('archived', '!=', True)]" help="Show all records which has next action date is before today"/>
+            </xpath>
+            <xpath expr="//search/filter[@name='activities_today']" position="replace">
+                <filter string="Activités du jour" name="activities_today" domain="[('date_deadline', '=', context_today().strftime('%Y-%m-%d')), ('archived', '!=', True)]"/>
+            </xpath>
+            <xpath expr="//search/filter[@name='activities_upcoming_all']" position="replace">
+                <filter string="Activités futures" name="activities_upcoming_all" domain="[('date_deadline', '&gt;', context_today().strftime('%Y-%m-%d')), ('archived', '!=', True)]"/>
+            </xpath>
+            <xpath expr="//search/filter[@name='activities_my']" position="replace">
+                <filter string="Mes activités" name="activities_my" domain="[('user_id', '=', uid), ('archived', '!=', True)]"/>
             </xpath>
         </field>
     </record>
