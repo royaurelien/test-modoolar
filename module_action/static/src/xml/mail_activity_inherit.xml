@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+        <!-- Changements pour le widget -->
         <t t-extend="mail.activity_items" t-name="mail.activity_items">
             <t t-jquery="div[class='o_thread_message']" t-operation="replace">
+                <!-- Affichage uniquement si non archive -->
                 <t t-if="activity.archived != true">
                     <div class="o_thread_message" style="margin-bottom: 10px">
                         <div class="o_thread_message_sidebar">
@@ -62,6 +64,7 @@
             </t>
 
             <t t-jquery="div[class='o_thread_date_separator o_border_dashed']" t-operation="replace">
+                <!-- Retrait des activites archivees aux totaux -->
                 <t t-set="all_archived" t-value="true"/>
                 <t t-set="planned_to_remove" t-value="0"/>
                 <t t-set="today_to_remove" t-value="0"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
-    <!-- Tree view des activités -->
+    <!-- Tree view des activites -->
     <record model="ir.ui.view" id="mail_activity_tree_view">
         <field name="name">Activités</field>
         <field name="model">mail.activity</field>
@@ -18,13 +18,13 @@
         </field>
     </record>
 
-    <!-- Search view des activités -->
+    <!-- Search view des activites -->
     <record id="mail_activity_search_view" model="ir.ui.view">
         <field name="name">Filtres</field>
         <field name="model">mail.activity</field>
         <field name="arch" type="xml">
             <search>
-                <!-- Field -->
+                <!-- Fields -->
                 <field name="state"/>
                 <field name="archived"/>
                 <field name="activity_type_id"/>
@@ -37,22 +37,24 @@
                     <filter name="grp_by_type" string="Type" context="{'group_by': 'activity_type_id'}"/>
                 </group>
 
-                    <filter string="Mes activités" name="mine" domain="[('user_id', '=', uid)]"/>
+                <!-- Filters -->
+                <filter string="Mes activités" name="mine" domain="[('user_id', '=', uid)]"/>
 
-                    <separator/>
+                <separator/>
 
-                    <filter string="Activités en cours" name="currently" domain="[('archived','!=', True)]"/>
-                    <filter string="Activités archivées" name="ended" domain="[('archived','=', True)]"/>
+                <filter string="Activités en cours" name="currently" domain="[('archived','!=', True)]"/>
+                <filter string="Activités archivées" name="ended" domain="[('archived','=', True)]"/>
 
-                    <separator/>
+                <separator/>
 
-                    <filter string="Activités planifiées" name="planned" domain="[('archived','!=', True),('date_deadline','&gt;', context_today().strftime('%Y-%m-%d'))]"/>
-                    <filter string="Activités aujourd'hui" name="today" domain="[('archived','!=', True),('date_deadline','=', context_today().strftime('%Y-%m-%d'))]"/>
-                    <filter string="Activités en retard" name="overdue" domain="[('archived','!=', True),('date_deadline','&lt;', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter string="Activités planifiées" name="planned" domain="[('archived','!=', True),('date_deadline','&gt;', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter string="Activités aujourd'hui" name="today" domain="[('archived','!=', True),('date_deadline','=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter string="Activités en retard" name="overdue" domain="[('archived','!=', True),('date_deadline','&lt;', context_today().strftime('%Y-%m-%d'))]"/>
             </search>
         </field>
     </record>
 
+    <!-- Form view des activites -->
     <record model="ir.ui.view" id="mail_activity_form_view_for_tree">
         <field name="name">Activités</field>
         <field name="model">mail.activity</field>
@@ -105,7 +107,6 @@
         <field name="name">Activités</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">mail.activity</field>
-        <!--<field name="view_type">form</field>-->
         <field name="view_mode">tree,form</field>
         <field name="views">[(False,tree), (False,form)]</field>
         <field name="search_view_id" ref="mail_activity_search_view"/>
@@ -120,11 +121,7 @@
    <menuitem id="menu_activites_tree" parent="crm.crm_menu_root" name="Activités" action="mail_activity_tree_view_action"/>
 
 
-
-
-
-
-
+    <!-- Formulaire du feedback -->
     <record model="ir.ui.view" id="mail_activity_form_feedback">
         <field name="name">Activités</field>
         <field name="model">mail.activity</field>
@@ -147,6 +144,7 @@
         </field>
     </record>
 
+    <!-- Action -->
     <record model="ir.actions.act_window" id="mail_activity_form_feedback_action">
         <field name="name">Feedback</field>
         <field name="type">ir.actions.act_window</field>
@@ -158,11 +156,8 @@
    </record>
 
 
-
-
-
-    <!-- Ajout d'un bouton dans les fiches clients pour accéder aux activités le concernant -->
-    <record id="button_partner_activities" model="ir.ui.view">
+    <!-- Ajout d'un bouton dans les fiches client pour acceder aux activites le concernant -->
+    <record id="button_partners_activities" model="ir.ui.view">
         <field name="name">Contacts</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
@@ -170,7 +165,7 @@
             <xpath expr="//div[@name='button_box']" position="inside">
                 <button class="oe_stat_button o_res_partner_tipp_opp" type="object" icon="fa-clock-o" name="mail_activity_tree_view_action">
                     <label for="activities_count_current" string="Activités"/>
-                    <span class="o_stat_value">
+                    <span class="oe_stat_value">
                         <field name="activities_count_current" widget="integer"/>
                         (<field name="activities_count" widget="integer"/>)
                     </span>
@@ -180,10 +175,23 @@
     </record>
 
 
+    <!-- Ajout des champs societe et contact -->
+    <record id="button_partner_activities" model="ir.ui.view">
+        <field name="name">Evènement</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/div[1]" position="after">
+                <group>
+                    <field name="company_activity_id"/>
+                    <field name="contact_activity_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
 
 
-
-    <!-- Changement des filtres pour y intégrer le fait de ne prendre que les activités non archivées -->
+    <!-- Changement des filtres pour y integrer le fait de ne prendre que les activites non archivees -->
     <record id="search_view_for_activities" model="ir.ui.view">
         <field name="name">Filtres</field>
         <field name="model">account.invoice</field>
