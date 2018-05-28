@@ -179,6 +179,7 @@ class ExportMatiereDangereuse(models.Model):
 
 
             for line in bl.move_lines :
+                line._compute_nb_cartons()
                 if line.product_id.dang:
                     if line.product_id.dang.name == 'Non dangereux' or line.product_id.dang.name == 'Non dangereux  (Inflammable)':
                         continue
@@ -193,6 +194,7 @@ class ExportMatiereDangereuse(models.Model):
                         emballage = line.product_id.onu_id.emballage
                         poids = line.weight  #en kg
                         poids_g = int(poids * 1000)
+                        um = line.nb_cartons
 
                         move_row = [
                             seg,
@@ -201,7 +203,7 @@ class ExportMatiereDangereuse(models.Model):
                             classe,
                             emballage,
                             poids_g,
-                            '',
+                            um,
                             'O',
                             ''
                         ]

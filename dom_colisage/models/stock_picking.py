@@ -11,6 +11,7 @@ class StockPicking(models.Model):
     nb_cartons = fields.Integer(compute="_compute_nb_cartons", store=True)
 
     @api.depends('move_lines')
+    @api.multi
     def _compute_nb_cartons(self):
         logger.critical('_compute_nb_cartons')
 
@@ -38,3 +39,20 @@ class StockPicking(models.Model):
                 line.quantity_done = line.product_uom_qty
 
             rec._compute_nb_cartons()
+
+class StockMove(models.Model):
+    _inherit = 'stock.move'
+
+    nb_cartons = fields.Integer(compute='_compute_nb_cartons', store=True)
+
+    @api.depends('picking_id.nb_cartons')
+    @api.multi
+    def _compute_nb_cartons(self):
+        items = []
+
+        for rec in self:
+            nb_par_colis = rec.product_id.nb_par_colis
+            nb_delivering = rec.quantity_done
+            items.append(Item(nb_par_colis, nb_delivering))
+
+            rec.nb_cartons = CartonsComputer(items).get_num_cartons()
