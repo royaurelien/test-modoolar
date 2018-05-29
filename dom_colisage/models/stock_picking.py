@@ -23,7 +23,7 @@ class StockPicking(models.Model):
                 nb_par_colis = line.product_id.nb_par_colis
                 nb_delivering = line.quantity_done
 
-                if line.product_id.is_comment == True or 'palette' in line.product_id.name or 'Palette' in line.product_id.name or 'PALETTE' in line.product_id.name:
+                if rec.product_id.not_count_cartons:
                     nb_delivering = 0
 
                 items.append(Item(nb_par_colis, nb_delivering))
@@ -59,10 +59,15 @@ class StockMove(models.Model):
             nb_par_colis = rec.product_id.nb_par_colis
             nb_delivering = rec.quantity_done
 
-            if rec.product_id.is_comment == True or 'palette' in rec.product_id.name or 'Palette' in rec.product_id.name or 'PALETTE' in rec.product_id.name:
+            if rec.product_id.not_count_cartons:
                 nb_delivering = 0
 
             items.append(Item(nb_par_colis, nb_delivering))
 
             rec.nb_cartons = CartonsComputer(items).get_num_cartons()
+
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
+
+    not_count_cartons = fields.Boolean(default=False, string='Ne doit pas être compté pour les matières dangereuses')
 
