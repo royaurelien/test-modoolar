@@ -158,7 +158,7 @@
     <menuitem id="crm_menu_sale_quotations_crm" name="Devis"
               action="sale.action_quotations" parent="crm_yzi.menu_crm"
               sequence="6"/>
-    <menuitem id="crm_menu_action_com" parent="crm_yzi.menu_crm" name="Actions Commerciales" sequence="7" action="module_action.action_list_actions" groups="base.group_user" />
+    <!--<menuitem id="crm_menu_action_com" parent="crm_yzi.menu_crm" name="Actions Commerciales" sequence="7" action="module_action.action_list_actions" groups="base.group_user" />-->
     <menuitem id="crm_mail_menu_calendar" name="Calendrier"  sequence="99" action="calendar.action_calendar_event" parent="crm_yzi.menu_crm" groups="base.group_user"/>
 
 

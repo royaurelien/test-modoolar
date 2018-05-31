@@ -91,7 +91,7 @@
                         <field name="state" string="Etat" attrs="{'invisible': [('archived', '=', True)], 'readonly': 1}" />
                         <field name="archived" string="Archivé" attrs="{'invisible': [('archived', '!=', True)], 'readonly': 1}"/>
                         <field name="note" placeholder="Enregistrer une note..." string="Description" attrs="{'readonly':[('archived','=', True)]}"/>
-                        <field name="feedback" string="Feedback" attrs="{'invisible': [('archived', '!=', True)], 'readonly': 1}"/>
+                        <field name="feedback" string="Compte-rendu" attrs="{'invisible': [('archived', '!=', True)], 'readonly': 1}"/>
                     </group>
                     <footer attrs="{'invisible': [('archived', '=', True)]}">
                         <button string="Marquer comme fait" name="open_feedback_form" type="object" class="btn-primary"/>
@@ -136,7 +136,8 @@
                     <field name="previous_activity_type_id"/>
                     <field name="has_recommended_activities"/>
                 </group>
-                <field name="feedback"/>
+                <label for="feedback" string="Compte-rendu"/>
+                <field name="feedback" string="Compte-rendu"/>
                 <footer>
                     <button string="Marqué comme fait" name="action_done_with_feedback" type="object" class="btn-primary"/>
                 </footer>
@@ -354,5 +355,44 @@
             </xpath>
         </field>
     </record>
+
+    <!-- Fin de l'activite depuis le RDV, changement de nom d'un bouton -->
+    <record id="buttons_form_calendar" model="ir.ui.view">
+        <field name="name">Boutons</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/button[@name='action_open_calendar_event']" position="replace">
+                <field name="activity_ids" invisible="1"/>
+                <button string="Document associé" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="action_open_calendar_event" attrs="{'invisible': ['|', ('res_model', '=', False), ('res_id', '=', False)]}"/>
+                <button string="Activité" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="end_activity" attrs="{'invisible': [('activity_ids', '=', [])]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="buttons_form_popup_calendar" model="ir.ui.view">
+        <field name="name">Boutons - Popup</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form_popup"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/button[@name='action_open_calendar_event']" position="replace">
+                <field name="activity_ids" invisible="1"/>
+                <button string="Document associé" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="action_open_calendar_event" attrs="{'invisible': ['|', ('res_model', '=', False), ('res_id', '=', False)]}"/>
+                <button string="Activité" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="end_activity" attrs="{'invisible': [('activity_ids', '=', [])]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Pour la traduction du bouton -->
+    <!--<record id="button_traduction" model="ir.ui.view">-->
+        <!--<field name="name">Boutons - Traduction</field>-->
+        <!--<field name="model">calendar.event</field>-->
+        <!--<field name="inherit_id" ref="calendar.mail_activity_view_form_popup"/>-->
+        <!--<field name="arch" type="xml">-->
+            <!--<xpath expr="//form/sheet/footer/button[@name='action_create_calendar_event']" position="replace">-->
+                <!--<button string="Planifier un rendez-vous" attrs="{'invisible': [('activity_category', '!=', 'meeting')]}" name="action_create_calendar_event" type="object" class="btn-primary"/>-->
+            <!--</xpath>-->
+        <!--</field>-->
+    <!--</record>-->
 
 </odoo>

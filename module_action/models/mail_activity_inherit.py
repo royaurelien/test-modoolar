@@ -8,6 +8,24 @@ class MailActivity(models.Model):
 
     archived = fields.Boolean(default=False) # Indique si l'activite est terminee
 
+    @api.multi
+    def action_create_calendar_event(self):
+        """
+        Ajout de la société et/ou contact sur le calendrier
+        """
+        res = super(MailActivity, self).action_create_calendar_event()
+
+        id_res = self.env['res.partner'].search([('id', '=', self.res_id)])
+
+        if self.res_model == 'res.partner':
+            if not id_res.parent_id:
+                res['context']['default_company_activity_id'] = self.res_id
+            else:
+                res['context']['default_company_activity_id'] = id_res.parent_id.id
+                res['context']['default_contact_activity_id'] = self.res_id
+
+        return res
+
     def action_feedback(self, feedback=False):
         """
         :param feedback: feedback entre par l'utilisateur
@@ -17,11 +35,29 @@ class MailActivity(models.Model):
 
         self.feedback = feedback
 
-        self.copy() # Copie de l'activite avant sa suppression
+        new_enr = self.copy() # Copie de l'activite avant sa suppression
 
         res = super(MailActivity, self).action_feedback(feedback) # Etait return à la base
 
-        return {'type': 'ir.actions.client', 'tag': 'history_back'} or res
+        if 'active_model' in self._context and self._context['active_model'] != 'calendar.event':
+            form_id = self.env.ref('module_action.mail_activity_form_view_for_tree').id
+
+            return {
+                "type": 'ir.actions.act_window',
+                "name": 'Activités',
+                "res_model": 'mail.activity',
+                "view_type": 'form',
+                "view_mode": 'form',
+                "views": [[form_id, 'form']],
+                "views_id": {'ref': form_id},
+                "view_id": {'ref': form_id},
+                "res_id": new_enr.id,
+                "target": 'current',
+            }
+
+            # return {'type': 'ir.actions.client', 'tag': 'reload'}
+
+        return res
 
     def unlink_w_meeting(self):
         """
@@ -349,9 +385,9 @@ class PartnerInherit(models.Model):
             sale_order = self.env['sale.order'].search([('partner_id', '=', self.id)]).ids  # Devis/bons de commande
             crm_lead = self.env['crm.lead'].search([('partner_id', '=', self.id)]).ids  # Opportunites
 
-            activities_society = self.env['mail.activity'].search([('res_id', '=', self.id), ('res_model', '=', 'res.partner')])  # Liees à la societe
-            activities_order = self.env['mail.activity'].search([('res_id', 'in', sale_order), ('res_model', '=', 'sale.order')])  # Liees devis/bons de commande
-            activities_lead = self.env['mail.activity'].search([('res_id', 'in', crm_lead), ('res_model', '=', 'crm.lead')])  # Liees aux opportunites
+            activities_society = self.env['mail.activity'].search([('res_id', '=', self.id), ('res_model', '=', 'res.partner')]).ids  # Liees à la societe
+            activities_order = self.env['mail.activity'].search([('res_id', 'in', sale_order), ('res_model', '=', 'sale.order')]).ids  # Liees devis/bons de commande
+            activities_lead = self.env['mail.activity'].search([('res_id', 'in', crm_lead), ('res_model', '=', 'crm.lead')]).ids  # Liees aux opportunites
 
             return {
                 "type": 'ir.actions.act_window',
@@ -366,7 +402,7 @@ class PartnerInherit(models.Model):
                 },
                 "views_id": {'ref': 'mail_activity_tree_view_action'},
                 "view_id": {'ref': 'mail_activity_tree_view_action'},
-                'domain': ['|', '|', '|', ('id', 'in', activities_society), ('id', 'in', activities_order), ('id', 'in', activities_lead)],
+                'domain': ['|', '|', ('id', 'in', activities_society), ('id', 'in', activities_order), ('id', 'in', activities_lead)],
                 "target": 'current',
             }
         else:
@@ -374,10 +410,10 @@ class PartnerInherit(models.Model):
             sale_order = self.env['sale.order'].search(['|', ('partner_id', '=', self.id), ('partner_id', 'in', children)]).ids  # Devis/bons de commande
             crm_lead = self.env['crm.lead'].search(['|', ('partner_id', '=', self.id), ('partner_id', 'in', children)]).ids  # Opportunites
 
-            activities_society = self.env['mail.activity'].search([('res_id', '=', self.id), ('res_model', '=', 'res.partner')])  # Liees à la societe
-            activities_children = self.env['mail.activity'].search([('res_id', 'in', children), ('res_model', '=', 'res.partner')])  # Liees aux contacts
-            activities_order = self.env['mail.activity'].search([('res_id', 'in', sale_order), ('res_model', '=', 'sale.order')])  # Liees devis/bons de commande
-            activities_lead = self.env['mail.activity'].search([('res_id', 'in', crm_lead), ('res_model', '=', 'crm.lead')])  # Liees aux opportunites
+            activities_society = self.env['mail.activity'].search([('res_id', '=', self.id), ('res_model', '=', 'res.partner')]).ids  # Liees à la societe
+            activities_children = self.env['mail.activity'].search([('res_id', 'in', children), ('res_model', '=', 'res.partner')]).ids  # Liees aux contacts
+            activities_order = self.env['mail.activity'].search([('res_id', 'in', sale_order), ('res_model', '=', 'sale.order')]).ids  # Liees devis/bons de commande
+            activities_lead = self.env['mail.activity'].search([('res_id', 'in', crm_lead), ('res_model', '=', 'crm.lead')]).ids  # Liees aux opportunites
 
             return {
                 "type": 'ir.actions.act_window',
@@ -430,6 +466,29 @@ class CalendarEvent(models.Model):
                 result.partner_ids = result.partner_ids + participant
 
         return result
+
+    def end_activity(self):
+        """
+        Ouvre la vue pour entrer un feedback, depuis le formulaire de la tree view
+        """
+        activity = self.env['mail.activity'].search([('calendar_event_id', '=', self.id)])
+
+        view_id = self.env.ref('module_action.mail_activity_form_feedback').id
+
+        if activity[0] and activity[0].archived == False:
+            return {
+                "type": 'ir.actions.act_window',
+                "name": 'Activités',
+                "res_model": 'mail.activity',
+                "view_mode": 'form',
+                "view_type": 'form',
+                "views": [[view_id, 'form']],
+                'res_id': activity[0].id,
+                "view_id": view_id,
+                "target": 'new',
+            }
+        else:
+            raise UserError(_("L'activité est déjà archivée."))
 
 
 
