@@ -33,6 +33,10 @@ class AccountInvoice(models.Model):
 
         return super(AccountInvoice, self).create(vals)
 
+    @api.onchange('partner_id')
+    def onchange_partner(self):
+        if self.partner_id.user_id:
+            self.user_id                 = self.partner_id.user_id.id
 
 class AccountPaymentTerm(models.Model):
     _inherit = "account.payment.term"

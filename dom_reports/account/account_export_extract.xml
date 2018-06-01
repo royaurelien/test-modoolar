@@ -13,7 +13,8 @@
                     <field name="date_fin" string="Date de fin"/>
                 </group>
                 <group name="button">
-                    <button name="action_export_extract" string="Export" type="object" class="btn btn-success" icon="fa-download"/>
+                    <button name="action_export_extract" string="Export PDF" type="object" class="btn btn-success" icon="fa-download"/>
+                    <button name="action_export_extract_excel" string="Export excel" type="object" class="btn btn-success" icon="fa-download"/>
                 </group>
             </form>
         </field>
