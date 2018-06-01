@@ -17,6 +17,7 @@
         'stock', # for stock.picking
         'sale', # for sale.order
         'delivery', # for view inheriting form sale.order
+        'dom_products',
     ],
 
     # always loaded
