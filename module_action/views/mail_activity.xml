@@ -140,6 +140,7 @@
                 <field name="feedback" string="Compte-rendu"/>
                 <footer>
                     <button string="Marqué comme fait" name="action_done_with_feedback" type="object" class="btn-primary"/>
+                    <button string="Annuler" class="btn-default" special="cancel"/>
                 </footer>
             </form>
         </field>
@@ -365,7 +366,7 @@
             <xpath expr="//form/sheet/button[@name='action_open_calendar_event']" position="replace">
                 <field name="activity_ids" invisible="1"/>
                 <button string="Document associé" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="action_open_calendar_event" attrs="{'invisible': ['|', ('res_model', '=', False), ('res_id', '=', False)]}"/>
-                <button string="Activité" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="end_activity" attrs="{'invisible': [('activity_ids', '=', [])]}"/>
+                <button string="Terminer l'activité" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="end_activity" attrs="{'invisible': [('activity_ids', '=', [])]}"/>
             </xpath>
         </field>
     </record>
@@ -378,7 +379,12 @@
             <xpath expr="//form/button[@name='action_open_calendar_event']" position="replace">
                 <field name="activity_ids" invisible="1"/>
                 <button string="Document associé" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="action_open_calendar_event" attrs="{'invisible': ['|', ('res_model', '=', False), ('res_id', '=', False)]}"/>
-                <button string="Activité" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="end_activity" attrs="{'invisible': [('activity_ids', '=', [])]}"/>
+                <button string="Terminer l'activité" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="end_activity" attrs="{'invisible': [('activity_ids', '=', [])]}"/>
+            </xpath>
+            <xpath expr="//form/group" position="after">
+                <group>
+                    <field name="description" widget="html"/>
+                </group>
             </xpath>
         </field>
     </record>

@@ -37,7 +37,15 @@ class MailActivity(models.Model):
 
         new_enr = self.copy() # Copie de l'activite avant sa suppression
 
-        res = super(MailActivity, self).action_feedback(feedback) # Etait return à la base
+        res = super(MailActivity, self).action_feedback(feedback)  # Etait return à la base
+
+        events = new_enr.mapped('calendar_event_id')
+        if feedback:
+            for event in events:
+                description = event.description
+                tab_res = description.split('Feedback')
+                description = '<p>%s</p>\n%s%s' % (tab_res[0] or '', _("Feedback: "), feedback)
+                event.write({'description': description})
 
         if 'active_model' in self._context and self._context['active_model'] != 'calendar.event':
             form_id = self.env.ref('module_action.mail_activity_form_view_for_tree').id
@@ -490,7 +498,63 @@ class CalendarEvent(models.Model):
         else:
             raise UserError(_("L'activité est déjà archivée."))
 
+    # Deux methodes pour mettre les coordonnees de la societe ou du contact en description
+    @api.onchange('contact_activity_id')
+    def onchange_contact_coordonnees(self):
+        country_name = ''
+        if self.contact_activity_id:
+            if self.contact_activity_id.country_id:
+                country_name = self.env['res.country'].search([('id', '=', self.contact_activity_id.country_id.id)])
+                country_name = country_name[0].name
 
+            string_to_add = '%s\n%s - %s\n%s\n%s %s\n%s %s\n%s\n__________\n' % (self.contact_activity_id.name or '',
+                                                                                 self.contact_activity_id.phone or '',
+                                                                                 self.contact_activity_id.mobile or '',
+                                                                                 self.contact_activity_id.email or '',
+                                                                                 self.contact_activity_id.street or '',
+                                                                                 self.contact_activity_id.street2 or '',
+                                                                                 self.contact_activity_id.zip or '',
+                                                                                 self.contact_activity_id.city or '',
+                                                                                 country_name or '')
+            desc = self.description
+            if self.description == False:
+                desc = ['', '']
+            else:
+                desc = self.description.split('__________')
+
+            if len(desc) == 1:
+                self.description = '%s%s' % (string_to_add, desc[0])
+            elif len(desc) > 1:
+                self.description = '%s%s' % (string_to_add, desc[1])
+
+    @api.onchange('company_activity_id')
+    def onchange_company_coordonnees(self):
+        self.contact_activity_id = False
+        country_name = ''
+        if self.company_activity_id:
+            if self.company_activity_id.country_id:
+                country_name = self.env['res.country'].search([('id', '=', self.company_activity_id.country_id.id)])
+                country_name = country_name[0].name
+
+            string_to_add = '%s\n%s - %s\n%s\n%s %s\n%s %s\n%s\n__________\n' % (self.company_activity_id.name or '',
+                                                                                 self.company_activity_id.phone or '',
+                                                                                 self.company_activity_id.mobile or '',
+                                                                                 self.company_activity_id.email or '',
+                                                                                 self.company_activity_id.street or '',
+                                                                                 self.company_activity_id.street2 or '',
+                                                                                 self.company_activity_id.zip or '',
+                                                                                 self.company_activity_id.city or '',
+                                                                                 country_name or '')
+            desc = self.description
+            if self.description == False:
+                desc = ['', '']
+            else:
+                desc = self.description.split('__________')
+
+            if len(desc) == 1:
+                self.description = '%s%s' % (string_to_add, desc[0])
+            elif len(desc) > 1:
+                self.description = '%s%s' % (string_to_add, desc[1])
 
 
 
