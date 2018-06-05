@@ -224,7 +224,6 @@ class ResPartner(models.Model):
         is_company = self.is_company
         parent_id = self.parent_id.id
 
-        print('In onchange. Partner type : ', partner_type, "|is_company : ", is_company, "|parent_id : ", parent_id)
         # self._compute_company_type()
         if not self.image:
             self.image = self._get_default_image(partner_type, is_company, parent_id)
