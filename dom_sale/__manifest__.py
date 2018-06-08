@@ -20,7 +20,8 @@
 
     # always loaded
     'data': [
-        'views/devis.xml'
+        'views/devis.xml',
+        'views/commande.xml',
     ],
 
     # 'installable': True,

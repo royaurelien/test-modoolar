@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
+    <!--TREE-->
     <record id="tree_sale_date_remove" model="ir.ui.view">
         <field name="name">Devis</field>
         <field name="model">sale.order</field>
@@ -21,6 +22,14 @@
             </xpath>
 
         </field>
+    </record>
+
+
+    <!--ACTION-->
+
+    <record id="sale.action_quotations" model="ir.actions.act_window">
+        <!--<field name="inherit_id" ref="sale.action_quotations"/>-->
+        <field name="domain">[('state','in',['draft','sent','cancel'])]</field>
     </record>
 
 </odoo>
