@@ -185,8 +185,9 @@
         <field name="arch" type="xml">
             <xpath expr="//form/sheet/div[1]" position="after">
                 <group>
-                    <field name="company_activity_id"/>
-                    <field name="contact_activity_id"/>
+                    <field name="activity_archived" invisible="1"/>
+                    <field name="company_activity_id" attrs="{'readonly': [('activity_archived', '=', True)]}"/>
+                    <field name="contact_activity_id" attrs="{'readonly': [('activity_archived', '=', True)]}"/>
                 </group>
             </xpath>
         </field>
@@ -357,7 +358,7 @@
         </field>
     </record>
 
-    <!-- Fin de l'activite depuis le RDV, changement de nom d'un bouton -->
+     Fin de l'activite depuis le RDV, changement de nom d'un bouton
     <record id="buttons_form_calendar" model="ir.ui.view">
         <field name="name">Boutons</field>
         <field name="model">calendar.event</field>
@@ -365,8 +366,10 @@
         <field name="arch" type="xml">
             <xpath expr="//form/sheet/button[@name='action_open_calendar_event']" position="replace">
                 <field name="activity_ids" invisible="1"/>
-                <button string="Document associé" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="action_open_calendar_event" attrs="{'invisible': ['|', ('res_model', '=', False), ('res_id', '=', False)]}"/>
-                <button string="Terminer l'activité" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="end_activity" attrs="{'invisible': [('activity_ids', '=', [])]}"/>
+                <field name="activity_archived" invisible="1"/>
+                <field name="activity_exist" invisible="1"/>
+                <button string="Document associé" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="action_open_calendar_event" attrs="{'invisible':['|', ('res_model', '=', False), ('res_id', '=', False)]}"/>
+                <button string="Terminer l'activité" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="end_activity" attrs="{'invisible':['|', ('activity_exist', '=', False), '&amp;',('activity_exist', '=', True), ('activity_archived', '=', True)]}"/>
             </xpath>
         </field>
     </record>
@@ -378,8 +381,10 @@
         <field name="arch" type="xml">
             <xpath expr="//form/button[@name='action_open_calendar_event']" position="replace">
                 <field name="activity_ids" invisible="1"/>
-                <button string="Document associé" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="action_open_calendar_event" attrs="{'invisible': ['|', ('res_model', '=', False), ('res_id', '=', False)]}"/>
-                <button string="Terminer l'activité" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="end_activity" attrs="{'invisible': [('activity_ids', '=', [])]}"/>
+                <field name="activity_archived" invisible="1"/>
+                <field name="activity_exist" invisible="1"/>
+                <button string="Document associé" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="action_open_calendar_event" attrs="{'invisible':['|', ('res_model', '=', False), ('res_id', '=', False)]}"/>
+                <button string="Terminer l'activité" class="oe_stat_button pull-right" icon="fa-bars" type="object" name="end_activity" attrs="{'invisible':['|', ('activity_exist', '=', False), '&amp;',('activity_exist', '=', True), ('activity_archived', '=', True)]}"/>
             </xpath>
             <xpath expr="//form/group" position="after">
                 <group>
