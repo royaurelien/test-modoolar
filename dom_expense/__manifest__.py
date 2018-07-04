@@ -24,6 +24,7 @@
     'data': [
         'views/hr_employee.xml',
         'views/hr_expense_sheet.xml',
+        'views/hr_expense.xml',
     ],
 
     # 'installable': True,
