@@ -9,7 +9,6 @@ class AccountMoveLineReconcile(models.TransientModel):
 
     @api.multi
     def trans_rec_get(self):
-        print("COIIIIIN COIN COIN !  ")
         context = self._context or {}
         credit = debit = 0
         lines = self.env['account.move.line'].browse(context.get('active_ids', []))
