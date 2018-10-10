@@ -103,8 +103,8 @@
                 <xpath expr="//search" position="inside">
                     <field name="date_due"/>
 
-		    <!-- <field name="gr" string="Groupe"/>
-		    <field name="sgr" string="Sous Groupe"/>-->
+		     <field name="gr" string="Groupe"/>
+		    <field name="sgr" string="Sous Groupe"/>
 
                     <filter string="Aujourd'hui" name="current_day" domain="[('date','&lt;=',context_today().strftime('%Y-%m-%d')),('date','&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
                     <filter string="Mois précédent" name="previous_month" domain="[('date','&lt;=',(context_today()-relativedelta(months=1, day=31)).strftime('%Y-%m-%d')),('date','&gt;=',(context_today()-relativedelta(months=1, day=1)).strftime('%Y-%m-%d'))]"/>
@@ -114,10 +114,10 @@
 
                 </xpath>
 
-                <!--<xpath expr="//group[@expand='1']" position="inside">
+                <xpath expr="//group[@expand='1']" position="inside">
                     <filter string="Groupe" name="groupe" context="{'group_by':'gr'}"/>
                     <filter string="Sous Groupe" name="sous_groupe" context="{'group_by':'sgr'}"/>
-                </xpath>-->
+                </xpath>
 
             </field>
 	</record>
