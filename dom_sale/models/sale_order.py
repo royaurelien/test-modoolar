@@ -24,3 +24,7 @@ class SaleOrder(models.Model):
         """
 
     residual = fields.Monetary(string=u'Montant dû', compute='get_residual', store=True, track_visibility='onchange')
+
+    @api.onchange('user_id')
+    def onchange_user_id(self):
+        self.team_id = self.user_id.sale_team_id

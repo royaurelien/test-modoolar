@@ -18,7 +18,7 @@ class MailActivity(models.Model):
         id_res = self.env['res.partner'].search([('id', '=', self.res_id)])
 
         if self.res_model == 'res.partner':
-            if not id_res.parent_id:
+            if id_res.is_company:
                 res['context']['default_company_activity_id'] = self.res_id
             else:
                 res['context']['default_company_activity_id'] = id_res.parent_id.id
@@ -47,7 +47,7 @@ class MailActivity(models.Model):
                 description = '<p>%s</p>\n%s%s' % (tab_res[0] or '', _("Feedback: "), feedback)
                 event.write({'description': description})
 
-        if 'active_model' in self._context and self._context['active_model'] != 'calendar.event':
+        if 'archived_model' in self._context and self._context['archived_model'] != 'calendar.event':
             form_id = self.env.ref('module_action.mail_activity_form_view_for_tree').id
 
             return {
@@ -600,6 +600,7 @@ class CalendarEvent(models.Model):
                                                                                  self.company_activity_id.zip or '',
                                                                                  self.company_activity_id.city or '',
                                                                                  country_name or '')
+
             desc = self.description
             if self.description == False:
                 desc = ['', '']
