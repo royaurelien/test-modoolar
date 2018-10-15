@@ -171,7 +171,7 @@ class ExportMatiereDangereuse(models.Model):
                 '',
                 '',
                 '',
-                '',
+                mail,
                 mobile,
                 mail,
             ]
@@ -207,7 +207,7 @@ class ExportMatiereDangereuse(models.Model):
                             'O',
                             ''
                         ]
-
+                        print(move_row)
                         writer.writerow(move_row)
 
                 else:
