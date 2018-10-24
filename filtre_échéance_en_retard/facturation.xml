@@ -1,0 +1,21 @@
+<odoo>
+  <data>
+		    <record id="delay_clients_invoices_filter" model="ir.ui.view">
+			      <field name="name">delay.clients.invoices.search.filter</field>
+			      <field name="model">res.partner</field>
+			      <field name="inherit_id" ref="base.view_res_partner_filter"/>
+			      <field name="arch" type="xml">
+			        <xpath expr="//filter[@name='supplier']" position="after">
+						<separator/>
+			        	<filter string="Paiement en retard" name="delay_invoice"   domain="['&amp;', '|',('invoice_ids.state', '=', 'open'), '&amp;',('invoice_ids.state', '=', 'draft') , ('invoice_ids.date_due','&lt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))),('invoice_ids.type', '=', 'out_invoice')]" help="Delay clients invoices" />
+			        	<separator/>
+			        </xpath>
+			      </field>
+		    </record>
+  </data>
+</odoo>
+
+
+
+
+                        
