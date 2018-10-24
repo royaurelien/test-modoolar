@@ -1,0 +1,16 @@
+<odoo>
+  <data>
+    <!-- Update account invoice search view!-->
+        <record id="view_account_invoice_filter_first_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.filter.first</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="before">      	
+                    <filter name="first" string="Première facture" domain="[('first','=','True')]"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+  </data>
+</odoo>
