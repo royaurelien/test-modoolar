@@ -222,7 +222,8 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_tree"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='ref']" position="after">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="ref"/>
                 <field name="dep_id"/>
             </xpath>
 
