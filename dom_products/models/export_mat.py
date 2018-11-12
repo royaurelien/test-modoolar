@@ -204,7 +204,7 @@ class ExportMatiereDangereuse(models.Model):
                             emballage,
                             poids_g,
                             um,
-                            'O',
+                            'A',
                             ''
                         ]
                         print(move_row)
@@ -229,7 +229,6 @@ class ExportMatiereDangereuse(models.Model):
         date = str(datetime.date.today())
         name = 'Export mat dang %s.csv' % (date)
         self.write({'file_mat_dange': name})
-
 
         date_debut = self.date_debut
         date_fin = self.date_fin
