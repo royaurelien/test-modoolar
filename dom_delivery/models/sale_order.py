@@ -12,7 +12,6 @@ class SaleOrder(models.Model):
 
     def _create_delivery_line(self, carrier, price_unit):
         sol = super(SaleOrder, self)._create_delivery_line(carrier, price_unit)
-        print(sol)
 
         return sol
 

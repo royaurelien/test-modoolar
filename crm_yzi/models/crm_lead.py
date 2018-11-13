@@ -76,7 +76,6 @@ class CrmLead(models.Model):
 
     @api.onchange('dernier_devis')
     def onchange_dernier_devis(self):
-        print("ONCHANGE DERNIER DEVIS")
         values = self.onchange_dernier_devis_values(self.dernier_devis)
         self.update(values)
 
@@ -95,7 +94,6 @@ class CrmLead(models.Model):
     def _lead_create_contact(self, cr, uid, lead, name, is_company, parent_id=False, context=None):
         partner_env = self.pool.get('res.partner')
         res = super(CrmLead, self)._lead_create_contact(cr, uid, lead, name, is_company, parent_id, context)
-        print(res)
         partner_obj = partner_env.browse(cr, uid, res, context)
         vals = {}
 

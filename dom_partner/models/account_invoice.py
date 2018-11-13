@@ -14,7 +14,6 @@ class AccountInvoice(models.Model):
         for invoice in self:
             if invoice.partner_id:
                 if invoice.partner_id.type == 'invoice':
-                    print('TEEEEEEEEESSSSSSSSSSSSSSSSSSSSST')
                     invoice.fac_mail = invoice.partner_id.parent_id.fac_mail
 
                 else:

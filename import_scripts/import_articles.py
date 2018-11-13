@@ -111,8 +111,6 @@ def create_record(model_name, data_dict):
             model_name, 'create', [data_dict])
 
     except Exception as e:
-        print "erreur lors de la creation de %s" % model_name
-        print "avec les valeurs : %s" % data_dict
         # import pudb; pudb.set_trace()
         raise
 
@@ -125,11 +123,8 @@ def update_record(model_name, rec_id, data_dict):
             model_name, 'write', [[rec_id], data_dict])
 
     except Exception as e:
-        print "erreur lors de la l'update de %s" % model_name
-        print "id : %s" % rec_id
-        print "avec les valeurs : %s" % data_dict
         # import pudb; pudb.set_trace()
-        # raise
+        raise
 
     return res
 
@@ -140,7 +135,6 @@ def get_record_id(model_name, domain):
         res = models.execute_kw(server_dbname, server_uid, server_pwd,
             model_name, 'search', [domain])
     except Exception as e:
-        print "le model %s n'existe pas" % model_name
         raise
 
     return res[0] if res else False
@@ -559,8 +553,6 @@ class ArticleImporter(object):
             except Exception as e:
                 # osef
                 pass
-        else:
-            print "product_id not found..."
 
         logger.info("article importé... ref: {}, barcode: {}".format(
             article.code, article.code_barre
