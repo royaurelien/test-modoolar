@@ -126,9 +126,7 @@ class AccountPaymentOrder(models.Model):
         numero_enregistrement = str(transactions_count + 1).zfill(8)
         reference_tire = self._prepare_field(
             u'Référence tiré', line.communication, 10)
-        print("COIN")
         rib = self._get_rib_from_iban(line.partner_bank_id)
-        print("COIN2")
         nom_tire = self._prepare_field(
             u'Nom tiré', line.partner_id.name, 24)
         nom_banque = self._prepare_field(

@@ -42,14 +42,14 @@ class AccountPaymentOrder(models.Model):
                         % (line.name, line.currency_id.name))
                 transactions_count += 1
                 cfonb_string += rec._prepare_cfonb_line(line, transactions_count)
-                total_amount += line.amount_currency
+                total_amount += int(str(line.amount_currency * 100).split('.')[0])
             # cfonb_file = rec.generate_payment_file()
             if cfonb_string:
                 file_lines.append(cfonb_string)
 
             # logger.critical("cfonb line is :")
             # logger.critical(cfonb_string)
-
+        total_amount = total_amount/100
         file_lines.append(self._prepare_final_cfonb_line(
             total_amount, transactions_count
         ))
