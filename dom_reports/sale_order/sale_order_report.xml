@@ -306,4 +306,13 @@
         </t>
     </template>
 
+        <template id="report_sale_order_document_team" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@name='payment_term']" position="before">
+            <div name="team" t-if="doc.team_id" class="col-xs-3">
+                <strong>Equipe de vente : </strong>
+                <p t-field="doc.team_id"/>
+            </div>
+        </xpath>
+    </template>
+
 </odoo>

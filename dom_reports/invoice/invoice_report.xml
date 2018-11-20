@@ -257,4 +257,13 @@ En cas de paiement dans les 8 jours date de facture, escompte de 1 %
         </t>
     </template>
 
+    <template id="report_account_invoice_document_team" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@name='reference']" position="before">
+            <div name="team" t-if="o.team_id" class="col-xs-2">
+                <strong>Equipe de vente : </strong>
+                <p t-field="o.team_id"/>
+            </div>
+        </xpath>
+    </template>
+
 </odoo>
