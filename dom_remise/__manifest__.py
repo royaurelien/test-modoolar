@@ -18,6 +18,7 @@
         'product',
         'sale',
         'account',
+        'pivot_view_reports',
     ],
 
     # always loaded

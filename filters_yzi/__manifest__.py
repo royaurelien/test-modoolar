@@ -22,6 +22,7 @@
         'account',
         #specifique domitec
         'dom_partner',
+        'pivot_view_reports',
     ],
 
     # always loaded
