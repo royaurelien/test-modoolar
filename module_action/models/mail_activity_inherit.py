@@ -501,7 +501,7 @@ class CalendarEvent(models.Model):
 
         view_id = self.env.ref('module_action.mail_activity_form_feedback').id
 
-        if activity[0] and activity[0].archived == False:
+        if activity != [] and activity[0].archived == False:
             return {
                 "type": 'ir.actions.act_window',
                 "name": 'Activités',
