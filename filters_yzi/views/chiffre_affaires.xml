@@ -9,7 +9,7 @@
             <tree string="Chiffre d'affaires" default_order="name desc" create="false">
                 <field name="name"/>
                 <field name="requested_date"/>
-                <field name="date"/>
+                <!--<field name="date"/>-->
                 <field name="partner_id"/>
                 <field name="state"/>
                 <field name="invoice_status"/>
