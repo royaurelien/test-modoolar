@@ -22,6 +22,21 @@
         </field>
     </record>
 
+    <record id="dom_crm_form" model="ir.ui.view">
+        <field name="name">Dom CRM Form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='website']" position="after">
+                <field name="partner_dep"/>
+                <field name="partner_famille"/>
+                <field name="partner_category" widget="many2many_tags"/>
+            </xpath>
+
+        </field>
+    </record>
+
     <record id="dom_crm_tree" model="ir.ui.view">
         <field name="name">Dom CRM Tree</field>
         <field name="model">crm.lead</field>
@@ -38,5 +53,47 @@
 
         </field>
     </record>
+
+
+    <record id="dom_crm_form_oppor" model="ir.ui.view">
+        <field name="name">Dom CRM Form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='phone']" position="after">
+                <field name="partner_dep"/>
+                <field name="partner_famille"/>
+                <field name="partner_category" widget="many2many_tags"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_create_opportunity_simplified" model="ir.ui.view">
+        <field name="name">Dom CRM Form Simplified</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_create_opportunity_simplified"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='priority']" position="after">
+                <field name="partner_dep" invisible="1"/>
+                <field name="partner_famille" invisible="1"/>
+                <field name="partner_category" invisible="1"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <record model="ir.ui.menu" id="crm_yzi.menu_crm">
+        <field name="active" eval="False"/>
+    </record>
+
+    <menuitem parent="crm.crm_menu_root" name="Opportunités" id="crm.crm_menu_pipeline" sequence="2"/>
+    <menuitem parent="crm.crm_menu_root" id="crm.res_partner_menu_crm" sequence="3"/>
+    <menuitem parent="crm.crm_menu_root" id="crm_yzi.crm_yzi_tdb" sequence="0"/>
+    <menuitem parent="crm.crm_menu_root" id="crm.menu_crm_leads" sequence="1"/>
 
 </odoo>
