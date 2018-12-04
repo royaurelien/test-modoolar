@@ -130,7 +130,7 @@
             "default_group_by":'group_by_tier',
             }
         </field>
-        <field name="domain">[[u'type_rel', u'=', u'Tier']]</field>
+        <field name="domain">[[u'type_rel', u'=', u'Tiers']]</field>
         <field name="search_view_id" ref="base.view_res_partner_filter"/>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">

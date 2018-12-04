@@ -68,6 +68,8 @@ class ProductTemplate(models.Model):
 
     nb_par_colis = fields.Integer('Nombre par colis')
 
+    eco_dds = fields.Char('Eco DDS')
+
     # inherited
     weight = fields.Float(string='Poids Brut')
     poids_net = fields.Float(string='Poids Net')

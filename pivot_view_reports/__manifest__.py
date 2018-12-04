@@ -18,6 +18,9 @@
     'depends': [
         'account',
         'base',
+        'crm',
+        'dom_products',
+        'dom_partner',
     ],
 
     'data': [

@@ -8,6 +8,7 @@
         <field name="arch" type="xml" >
 
             <field name="categ_id" position="after">
+                <field name="eco_dds" />
                 <field name="family" />
                 <field name="dang" />
                 <field name="nb_par_colis" />

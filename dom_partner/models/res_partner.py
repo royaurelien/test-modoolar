@@ -21,9 +21,9 @@ class ResPartner(models.Model):
     #### RELATIONNEL ####
     famille = fields.Many2one(comodel_name='dom.famille', string='Famille client')
     famille_fournisseur = fields.Many2one(comodel_name='dom.famille_supplier', string='Famille fournisseur')
-    contact1 = fields.Many2one(comodel_name='res.partner', string=u'Gérant', domain="[('id', 'in', 'child_ids)]")
-    contact2 = fields.Many2one(comodel_name='res.partner', string=u'Achat', domain="[('id', 'in', 'child_ids)]")
-    contact3 = fields.Many2one(comodel_name='res.partner', string=u'Comptabilité', domain="[('id', 'in', 'child_ids)]")
+    contact1 = fields.Many2one(comodel_name='res.partner', string=u'Gérant', domain="[('id', 'in', child_ids)]")
+    contact2 = fields.Many2one(comodel_name='res.partner', string=u'Achat', domain="[('id', 'in', child_ids)]")
+    contact3 = fields.Many2one(comodel_name='res.partner', string=u'Comptabilité', domain="[('id', 'in', child_ids)]")
     transporteur = fields.Many2one(comodel_name='dom.transporteur', string='Transporteur')
     child_ids_2 = fields.One2many('res.partner', 'parent_id', string='Filiale',
                                   domain=[('active', '=', True), ('company_type', '=', 'company')],
