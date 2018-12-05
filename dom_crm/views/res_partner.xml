@@ -16,4 +16,21 @@
         </field>
     </record>
 
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">Dom CRM Partner Form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='opt_out']" position="replace">
+                <field name="opt_out" string="Désabonné"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+
+
+
 </odoo>

@@ -34,6 +34,10 @@
                 <field name="partner_category" widget="many2many_tags"/>
             </xpath>
 
+            <xpath expr="//field[@name='state_id']" position="attributes">
+                <attribute name="placeholder">Région</attribute>
+            </xpath>
+
         </field>
     </record>
 
@@ -85,6 +89,34 @@
 
         </field>
     </record>
+
+    <record id="crm_case_form_view_oppor_devis" model="ir.ui.view">
+        <field name="name">Dom CRM Form Opp Devis</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//button[@name='410']/div/span" position="replace">
+                <span class="o_stat_text"> Devis </span>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <record id="crm_crm_lead_inherit" model="ir.ui.view">
+        <field name="name">Dom CRM Form Opp Devis</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm_yzi.crm_crm_lead_inherit"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='service_informatique']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
 
 
     <record model="ir.ui.menu" id="crm_yzi.menu_crm">

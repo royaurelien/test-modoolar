@@ -24,3 +24,36 @@ class CrmLead(models.Model):
             )
 
         return res
+
+    @api.multi
+    def _create_lead_partner_data(self, name, is_company, parent_id=False):
+        res = super(CrmLead, self)._create_lead_partner_data(name, is_company, parent_id)
+
+        category_ids = []
+
+        for category in self.partner_category:
+            category_ids.append(category.id)
+
+        res.update(
+            dict(
+                famille=self.partner_famille.id,
+                category_id=[(6, 0, category_ids)],
+                dep_id=self.partner_dep.id
+            )
+        )
+
+        return res
+
+    @api.multi
+    def action_schedule_meeting(self):
+        res = super(CrmLead, self).action_schedule_meeting()
+
+        if self.partner_id:
+            if self.partner_id.company_type == 'company':
+                res['context']['default_company_activity_id'] = self.partner_id.id
+            else:
+                if self.partner_id.parent_id:
+                    res['context']['default_company_activity_id'] = self.partner_id.parent_id.id
+                res['context']['default_contact_activity_id'] = self.partner_id.id
+
+        return res
