@@ -32,7 +32,7 @@ class YzAccReportExtract(models.TransientModel):
         solde = 0                                                                                                                       # Initialisation du solde
 
         # Calcul du solde initial
-        for line in lines:
+        for line in lines.sorted(lambda r: r.date):
             solde = solde + line.balance
 
         return solde
@@ -49,7 +49,7 @@ class YzAccReportExtract(models.TransientModel):
         account_move_env = self.env['account.move.line']                                                                                # Recuperation du modele
         data_move_line = account_move_env.search([('date', '>=', date_deb), ('date', '<=', date_f), ('account_id', '=', account.id)])   # Selection des lignes a afficher sur le pdf
 
-        return data_move_line
+        return data_move_line.sorted(lambda r: r.date)
 
     @api.multi
     def action_export_extract(self):

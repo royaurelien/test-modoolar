@@ -113,6 +113,7 @@ class ExportMatiereDangereuse(models.Model):
             nb_carton = bl.nb_cartons or ''
             weight = bl.weight or ''
             nat_mar = ''
+            hr = ''
 
             if bl.partner_id.horaires_livraison:
                 hr = bl.partner_id.horaires_livraison.replace('\n','').replace('\r','')
