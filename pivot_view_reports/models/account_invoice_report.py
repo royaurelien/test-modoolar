@@ -9,6 +9,7 @@ class AccountInvoiceReport(models.Model):
     eco_dds = fields.Char(string='Eco DDS')
     gr = fields.Many2one(comodel_name='dom.groupe', string=u'Groupe')
     sgr = fields.Many2one(comodel_name='dom.sous.groupe', string=u'Sous-groupe')
+    famille = fields.Many2one(comodel_name='dom.famille', string=u'Famille Client')
     fields.Many2one('crm.team', 'Sales Channel', readonly=True)
 
     _depends = {
@@ -26,12 +27,12 @@ class AccountInvoiceReport(models.Model):
         'product.template': ['categ_id', 'eco_dds'],
         'product.uom': ['category_id', 'factor', 'name', 'uom_type'],
         'res.currency.rate': ['currency_id', 'name'],
-        'res.partner': ['country_id', 'gr', 'sgr'],
+        'res.partner': ['country_id', 'gr', 'sgr', 'famille'],
     }
 
     def _select(self):
         select_str = """
-            SELECT sub.id, sub.date, sub.product_id, sub.partner_id, sub.gr, sub.sgr, sub.country_id, sub.account_analytic_id,
+            SELECT sub.id, sub.date, sub.product_id, sub.partner_id, sub.gr, sub.sgr, sub.famille, sub.country_id, sub.account_analytic_id,
                 sub.payment_term_id, sub.uom_name, sub.currency_id, sub.journal_id,
                 sub.fiscal_position_id, sub.user_id, sub.company_id, sub.nbr, sub.type, sub.state,
                 sub.categ_id, sub.eco_dds, sub.date_due, sub.account_id, sub.team_id, sub.account_line_id, sub.partner_bank_id,
@@ -63,7 +64,7 @@ class AccountInvoiceReport(models.Model):
                     ai.residual_company_signed / (SELECT count(*) FROM account_invoice_line l where invoice_id = ai.id) *
                     count(*) * invoice_type.sign AS residual,
                     ai.commercial_partner_id as commercial_partner_id,
-                    partner.country_id, partner.gr, partner.sgr
+                    partner.country_id, partner.gr, partner.sgr, partner.famille
         """
         return select_str
 
@@ -73,6 +74,6 @@ class AccountInvoiceReport(models.Model):
                          ai.partner_id, ai.team_id, ai.payment_term_id, u2.name, u2.id, ai.currency_id, ai.journal_id,
                          ai.fiscal_position_id, ai.user_id, ai.company_id, ai.type, invoice_type.sign, ai.state, pt.categ_id, pt.eco_dds,
                          ai.date_due, ai.account_id, ail.account_id, ai.partner_bank_id, ai.residual_company_signed,
-                         ai.amount_total_company_signed, ai.commercial_partner_id, partner.country_id,partner.gr, partner.sgr
+                         ai.amount_total_company_signed, ai.commercial_partner_id, partner.country_id,partner.gr, partner.sgr, partner.famille
              """
         return group_by_str
