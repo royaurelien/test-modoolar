@@ -4,7 +4,7 @@ odoo.define('module_action.sales_team_dashboard', function (require) {
 var SalesTeamDashboardView = require('sales_team.dashboard');
 var Model = require('web.Model');
 var session = require('web.session');
-var client = require('web.web_client')
+var client = require('web.web_client');
 var formats = require('web.formats');
 var core = require('web.core');
 var KanbanView = require('web_kanban.KanbanView');
