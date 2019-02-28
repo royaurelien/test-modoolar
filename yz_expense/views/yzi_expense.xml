@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- FROM -->
+    <record id="yzi_expense_form_view" model="ir.ui.view">
+        <field name="name">Note de frais</field>
+        <field name="model">yzi.expense</field>
+        <field name="arch" type="xml">
+            <form string="Notes de frais">
+                <header>
+                    <button name="confirmation" string="Confirmer" type="object" class="btn-primary" states="draft"/>
+                    <button name="valid" string="Valider" type="object" class="btn-primary" states="waiting" groups="base.group_hr_user"/>
+                    <button name="paid" string="payer" type="object" class="btn-primary" states="approved" groups="base.group_hr_user"/>
+                    <button name="cancel" string="Annuler" type="object" class="btn-primary" states="waiting"/>
+                    <button name="cancel" string="Annuler" type="object" class="btn-primary" states="approved" groups="base.group_hr_user"/>
+                    <button name="draft" string="Remettre en brouillon" type="object" class="btn-primary" states="cancel" groups="base.group_hr_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,waiting,approved" />
+                </header>
+                <sheet>
+                    <group>
+                        <group name="main_info">
+                            <field name="employee" ttrs="{'readonly': [('state', 'not in', 'draft')]}" />
+                            <field name="date"/>
+                            <field name="desc"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company" invisible="1"/>
+                        </group>
+                        <group name="process_info">
+                            <field name="validation" domain="[('manager','=',True),('id', '!=', employee)]"/>
+                            <field name="date_confirm" groups="base.group_no_one"/>
+                            <field name="date_valid" groups="base.group_no_one"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="tickets" string="Tickets">
+                            <field name="tickets" mode="tree" attrs="{'readonly': [('state', 'not in', 'draft')]}">
+                                <tree editable="bottom">
+                                    <field name="date"/>
+                                    <field name="product_id" required="1"/>
+                                    <field name="desc" required="1"/>
+                                    <field name="num_ticket"/>
+                                    <field name="unit_ttc" required="1"/>
+                                    <field name="qty"/>
+                                    <field name="uom_id"/>
+                                    <field name="tva_amount"/>
+                                    <field name="ttc_amount"/>
+                                    <field name="ht_amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="compta" string="Comptabilité" groups="mybase.group_compta">
+                            <field name="account_move"/>
+                            <field name="account_move_line" mode="tree">
+                                <field name="date"/>
+                                <field name="product_id"/>
+                                <field name="account_id"/>
+                                <field name="quantity"/>
+                                <field name="balance"/>
+                                <field name="credit"/>
+                                <field name="debit"/>
+                            </field>
+                        </page>
+                        <group class="oe_subtotal_footer oe_right" colspan="2">
+                            <field name="ht_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="tva_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                <label for="ttc_amount"/>
+                            </div>
+                        </group>
+                        <field name="note" class="oe_inline"/>
+                        <div class="oe_clear"/>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread" options="{'thread_level': 1}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- TREE -->
+
+    <record id="yzi_expense_tree_view" model="ir.ui.view">
+        <field name="name">Note de Frais</field>
+        <field name="model">yzi.expense</field>
+        <field name="arch" type="xml">
+            <tree colors="blue:state=='draft'">
+                <field name="employee"/>
+                <field name="date"/>
+                <field name="desc"/>
+                <field name="ttc_amount"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="yzi_expense_search_view" model="ir.ui.view">
+        <field name="name">yzi.expense.search</field>
+        <field name="model">yzi.expense</field>
+        <field name="arch" type="xml">
+            <search string="Product">
+                <field name="employee"/>
+                <field name="date"/>
+
+                <filter name="draft_expense" string="Nouveau" domain="[('state','=','draft')]"/>
+                <filter name="waiting_expense" string="En attente" domain="[('state','=','waiting')]"/>
+                <filter name="approved_expense" string="Approuvée" domain="[('state','=','approved')]"/>
+                <filter name="cancel_expense" string="Annulée" domain="[('state','=','cancel')]"/>
+
+
+                 <group string="regrouper par :" name="group_by">
+                    <filter name="group_by_date" string="Date" context="{'group_by': 'date'}"/>
+                     <filter name="group_by_state" string="Statut" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="yzi_expense_action_view" model="ir.actions.act_window">
+        <field name="name">Notes de Frais</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">yzi.expense</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="yzi_expense_search_view"/>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="yzi_expense_menu" parent="hr.menu_hr_root" name="Notes de Frais"  action="yzi_expense_action_view" sequence="10" groups="base.group_user"/>
+    <menuitem id="hr_expense.menu_hr_expense_root" action="yzi_expense_action_view"/>
+    <menuitem id="hr_expense.menu_hr_expense_my_expenses" groups="base.group_no_one"/>
+    <menuitem id="hr_expense.menu_hr_expense_to_approve" groups="base.group_no_one"/>
+    <menuitem id="hr_expense.menu_hr_expense_accountant" groups="base.group_no_one"/>
+    <menuitem id="hr_expense.menu_hr_expense_reports" groups="base.group_no_one"/>
+    <menuitem id="hr_expense.menu_hr_expense_configuration" groups="base.group_no_one"/>
+    
+</odoo>

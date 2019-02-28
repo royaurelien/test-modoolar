@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+        <template id="report_yzi_expense">
+            <t t-name="report_yzi_expense">
+                <t t-call="report.html_container">
+                    <t t-foreach="docs" t-as="o">
+                        <!--<t t-set="o" t-value="o.with_context({'lang':o.employee.lang})"/>-->
+                        <t t-call="report.external_layout">
+                            <div class="page" style="font-size: 11px; position: relative;">
+                                <div class="oe_structure"/>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div t-field="o.company" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: true, &quot;phone_icons&quot;: true}"/>
+                                    </div>
+                                </div>
+
+                                <h2>Note de Frais</h2>
+
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Employee
+                                            </th>
+                                            <th>
+                                                Date
+                                            </th>
+                                            <th>
+                                                Description
+                                            </th>
+                                            <th>
+                                                Validated By
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span t-field="o.employee.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.date" />
+                                            </td>
+                                            <td>
+                                                <span t-field="o.desc"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.validation.name"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="table table-condensed">
+                                    <thead class="expense_thead">
+                                        <tr>
+                                            <th>
+                                                Date
+                                            </th>
+                                            <th>
+                                                Description
+                                            </th>
+                                            <th>
+                                                N° de Piece
+                                            </th>
+                                            <th>
+                                                Qté
+                                            </th>
+                                            <th>
+                                                Montant HT
+                                            </th>
+                                            <th>
+                                                Montant TVA
+                                            </th>
+                                            <th>
+                                                Montant TTC
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="expense_tbody">
+                                        <t t-foreach="o.tickets" t-as="l">
+                                            <tr>
+                                                <td>
+                                                    <span t-field="l.date"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="l.desc"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="l.num_ticket"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="l.qty"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="l.ht_amount" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="l.tva_amount" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="l.ttc_amount" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+
+                                <div class="row" name="total">
+                                    <div class="col-xs-4 pull-right">
+                                        <table class="table table-condensed">
+                                            <tr class="border-black">
+                                                <td><strong>Total HT</strong></td>
+                                                <td class="text-right">
+                                                    <span t-field="o.ht_amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total TVA</td>
+                                                <td class="text-right">
+                                                    <span t-field="o.tva_amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total TVA Recup</td>
+                                                <td class="text-right">
+                                                    <span t-field="o.tva_amount_recup" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-black">
+                                                <td><strong>Total</strong></td>
+                                                <td class="text-right">
+                                                    <span t-field="o.ttc_amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-black">
+                                                <td><strong>Total KMs</strong></td>
+                                                <td class="text-right">
+                                                    <span t-field="o.km_amount">KMs</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            <p t-field="o.note"/>
+
+                            <div>
+                                <strong>Véhicule : <span t-field="o.employee.vehicule_intitule"/></strong>
+                            </div>
+                            <div>
+                                <strong>Puissance Fiscale : <span t-field="o.employee.vehicule_puissance_fiscale.name"/></strong>
+                            </div>
+                            <div>
+                                <strong>Taux Kilométrique : <span t-field="o.employee.vehicule_puissance_fiscale.cout" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}" /></strong>
+                            </div>
+                            <br/>
+                            <div>
+                                <span>Ce document doit être daté et signé pour le remboursement.</span>
+                            </div>
+                            <div>
+                                <span>Certifé sur l'honneur et conforme
+                                </span>
+                            </div>
+                            <table class="table table-condensed">
+                                <thead name="head_signature">
+                                    <tr>
+                                        <th class="text-right">
+                                            Date
+                                        </th>
+                                        <th class="text-right">
+                                            Signature de l'employé
+                                        </th>
+                                        <th class="text-right">
+                                            Signature du chef de service
+                                        </th>
+                                        <th class="text-right">
+                                            Signature du directeur
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody name="body_signature">
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                </t>
+            </t>
+        </t>
+    </t>
+</template>
+
+        <!--<template id="report_yzi_expense">
+            <t t-name="report_yzi_expense">
+                <t t-call="report.html_container">
+                    <t t-foreach="docs" t-as="o">
+                        <t t-call="expense.report_yzi_expense_document" t-lang="o.employee.lang"/>
+                    </t>
+                </t>
+            </t>
+        </template>-->
+        </data>
+        </openerp>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_yzi_ticket,access_yzi_ticket,model_yzi_ticket,,1,0,0,0
+access_yzi_expense,access_yzi_expense,model_yzi_expense,,1,0,0,0
+access_hr_taux_kilometriques,access_hr_taux_kilometriques,model_hr_taux_kilometriques,,1,0,0,0

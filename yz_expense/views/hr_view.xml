@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="hr_view_employee_form_inherit" model="ir.ui.view">
+        <field name="name">hr form vehicule</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <!-- Add your fields or attributes here -->
+                <page string="Véhicule">
+                    <group>
+                        <field name="vehicule_intitule"/>
+                        <field name="vehicule_puissance_fiscale" widget="many2one_tags"/>
+                    </group>
+                </page>
+            </xpath>
+
+            <!--<xpath expr="//field[@name='user_id']" position="after">
+                <field name="account_id"/>
+            </xpath>-->
+        </field>
+    </record>
+
+</odoo>
