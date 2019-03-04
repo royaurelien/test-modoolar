@@ -6,8 +6,8 @@
       model="yzi.expense"
       string="Note de Frais"
       report_type="qweb-pdf"
-      name="expense.report_yzi_expense"
-      file="expense.report_yzi_expense"
+      name="yz_expense.report_yzi_expense"
+      file="yz_expense.report_yzi_expense"
       attachment_use="True"
       menu="True"
       />
