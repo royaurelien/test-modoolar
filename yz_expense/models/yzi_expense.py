@@ -213,9 +213,9 @@ class YziExpense(models.Model):
         account_account_env = self.env['account.account']
         vals=[]
         tva=self.tva_amount_recup
-        tva_account = account_account_env.search([('code', '=', '445660')], limit=1)
+        tva_account = account_account_env.search([('code', '=', '445660000')], limit=1)
         total = tva
-        account_global_line= self.employee.account.id
+        account_global_line= self.employee.account_id
         # name = self.employee.account.name
 
         for ticket in self.tickets:
@@ -276,9 +276,9 @@ class YziExpense(models.Model):
         vals.append((0,0,tva_line))
 
         global_line = {
-            'name': "/",
+            'name': account_global_line.name,
             # 'amount': total,
-            'account_id': account_global_line,
+            'account_id': account_global_line.id,
             'journal_id': journal_id,
             'amount_residual': -total,
             'debit_cash_basis': 0.0,

@@ -3,15 +3,15 @@
     <data>
         <template id="report_yzi_expense">
             <t t-name="report_yzi_expense">
-                <t t-call="report.html_container">
+                <t t-call="web.html_container">
                     <t t-foreach="docs" t-as="o">
                         <!--<t t-set="o" t-value="o.with_context({'lang':o.employee.lang})"/>-->
-                        <t t-call="report.external_layout">
+                        <t t-call="web.external_layout">
                             <div class="page" style="font-size: 11px; position: relative;">
                                 <div class="oe_structure"/>
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <div t-field="o.company" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: true, &quot;phone_icons&quot;: true}"/>
+                                        <!--<div t-field="o.company" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: true, &quot;phone_icons&quot;: true}"/>-->
                                     </div>
                                 </div>
 
