@@ -4,6 +4,12 @@ from odoo import api, fields, models, tools
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    date_order = fields.Date()
+    requested_date = fields.Date()
+    validity_date = fields.Date()
+    commitment_date = fields.Date()
+    effective_date = fields.Date()
+
     @api.multi
     @api.depends('invoice_ids', 'amount_total','invoice_status')
     def get_residual(self):

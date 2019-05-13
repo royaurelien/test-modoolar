@@ -9,6 +9,7 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     nb_cartons = fields.Integer(compute="_compute_nb_cartons", store=True)
+    scheduled_date = fields.Date()
 
     @api.depends('move_lines')
     @api.multi
