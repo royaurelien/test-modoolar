@@ -9,7 +9,7 @@ class ResPartner(models.Model):
 
     CA_objectif = fields.Float('CA Objectif')
     CA_progress = fields.Integer('progess', compute='_compute_ca_progress')
-
+    centrale_id = fields.Many2one(comodel_name="res.partner", string="Centrale")
 
 
     @api.multi

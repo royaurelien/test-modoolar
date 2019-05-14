@@ -9,6 +9,7 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     nb_cartons = fields.Integer(compute="_compute_nb_cartons", store=True)
+    scheduled_date = fields.Date()
 
     @api.depends('move_lines')
     @api.multi
@@ -20,6 +21,9 @@ class StockPicking(models.Model):
             items = []
 
             for line in rec.move_lines :
+                if line.product_id.type != 'product' or line.product_id.name.lower().find('palette') != -1:
+                    continue
+
                 nb_par_colis = line.product_id.nb_par_colis
                 nb_delivering = line.quantity_done
 
@@ -56,6 +60,9 @@ class StockMove(models.Model):
         items = []
 
         for rec in self:
+            if rec.product_id.type != 'product' or rec.product_id.name.lower().find('palette') != -1:
+                continue
+
             nb_par_colis = rec.product_id.nb_par_colis
             nb_delivering = rec.quantity_done
 

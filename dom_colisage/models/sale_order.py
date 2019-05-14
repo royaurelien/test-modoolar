@@ -19,9 +19,10 @@ class SaleOrder(models.Model):
         for rec in self:
 
             items = []
-            for line in rec.order_line :
-                if line.is_decond or line.product_id.type != 'product' :
+            for line in rec.order_line:
+                if line.is_decond or line.product_id.type != 'product' or line.product_id.name.lower().find('palette') != -1:
                     continue
+
                 nb_par_colis = line.product_id.nb_par_colis
                 # nb_delivering = line.quantity_done
                 nb_delivering = line.product_uom_qty
@@ -38,7 +39,7 @@ class SaleOrder(models.Model):
             poids_brut = 0.0
             poids_net = 0.0
             for line in rec.order_line:
-                if line.is_decond or line.product_id.type != 'product' :
+                if line.is_decond or line.product_id.type != 'product':
                     continue
                 poids_brut += line.product_id.weight * line.product_uom_qty
                 poids_net += line.product_id.poids_net * line.product_uom_qty
