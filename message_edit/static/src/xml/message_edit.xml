@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+    <t t-extend="mail.ChatThread.Message">
+        <t t-jquery="p.o_mail_info small" t-operation="after">
+            <span t-attf-class="#{((message.changed) ? 'already_changed' : '')}">
+                <i  id="message_edit"
+                    title="Edit"
+                    t-att-data-message-id="message.id"
+                    t-if="!(message.tracking_value_ids and message.tracking_value_ids.length &gt; 0)"
+                    class="fa fa-edit"
+                />
+            </span>
+        </t>
+    </t>
+</template>
