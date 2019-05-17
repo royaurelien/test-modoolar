@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, tools
 
+
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    date_order = fields.Date()
-    requested_date = fields.Date()
-    validity_date = fields.Date()
-    commitment_date = fields.Date()
-    effective_date = fields.Date()
+    # Nope, forbidden ! this is not an inheritance, there are new fields, overriding olds and not defined any more.
+    # date_order = fields.Date()
+    # requested_date = fields.Date()
+    # validity_date = fields.Date()
+    # commitment_date = fields.Date()
+    # effective_date = fields.Date()
 
     @api.multi
-    @api.depends('invoice_ids', 'amount_total','invoice_status')
+    @api.depends('invoice_ids', 'amount_total', 'invoice_status')
     def get_residual(self):
         for order in self:
             residual = order.amount_total
