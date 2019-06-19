@@ -14,7 +14,7 @@ class AccountInvoice(models.Model):
             invoice.first = True
             
     @api.multi
-    def _first_search(self):
+    def _first_search(self, operator, value): # keep operator and value because required
         recs = self.search([]).filtered(lambda x : x.first is True )
         if recs:
             return [('id', 'in', [x.id for x in recs])]
