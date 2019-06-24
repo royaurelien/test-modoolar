@@ -99,7 +99,7 @@ class ExportMatiereDangereuse(models.Model):
             date = bl.date
             date = self.formatDate(date)
             ref_client = bl.partner_id.parent_id.ref or bl.partner_id.ref
-            nom_client = bl.partner_id.name or bl.partner_id.parent_id.name
+            nom_client = bl.partner_id.name if bl.partner_id and bl.partner_id.name and bl.partner_id.type not in ['invoice', 'delivery'] else bl.partner_id.parent_id.name
             rue = bl.partner_id.street or ''
             rue2 = bl.partner_id.street2 or ''
             zip = bl.partner_id.zip or ''
