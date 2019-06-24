@@ -221,10 +221,8 @@
 
                     <!-- the address -->
                     <t t-if="bl">
-                        <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
-                        &quot;fields&quot;: [&quot;address&quot;,'name'],
-                        &quot;no_marker&quot;: True,
-                        &quot;phone_icons&quot;: False}"/>
+                        <div t-if="doc.partner_id.type != 'invoice' and doc.partner_id.type != 'delivery'" t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,&quot;fields&quot;: [&quot;address&quot;,'name'],&quot;no_marker&quot;: True,&quot;phone_icons&quot;: False}"/>
+                        <div t-else="" t-field="doc.partner_id.parent_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,&quot;fields&quot;: [&quot;address&quot;,'name'],&quot;no_marker&quot;: True,&quot;phone_icons&quot;: False}"/>
                     </t>
                     <t t-elif="cf">
                         <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
@@ -252,10 +250,8 @@
                         </t>
                     </t>
                     <t t-elif="facture">
-                        <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,
-                            &quot;fields&quot;: [&quot;address&quot;,'name'],
-                            &quot;no_marker&quot;: True,
-                            &quot;phone_icons&quot;: False}"/>
+                        <div t-if="doc.partner_id.type != 'invoice' and doc.partner_id.type != 'delivery'" t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,&quot;fields&quot;: [&quot;address&quot;,'name'],&quot;no_marker&quot;: True,&quot;phone_icons&quot;: False}"/>
+                        <div t-else="" t-field="doc.partner_id.parent_id" t-options="{&quot;widget&quot;: &quot;contact&quot;,&quot;fields&quot;: [&quot;address&quot;,'name'],&quot;no_marker&quot;: True,&quot;phone_icons&quot;: False}"/>
                     </t>
 
                 </div>
