@@ -56,6 +56,10 @@
                 </group>
             </xpath>
 
+            <xpath expr="//notebook/page[1]/field[@name='child_ids']/form/sheet/group/group[2]/field[@name='name']" position="after">
+                <field name="dep_id"/>
+            </xpath>
+
             <!--Modif de l'affichage de l'onglet contact-->
 
             <!-- Contacts & Adresses -->
