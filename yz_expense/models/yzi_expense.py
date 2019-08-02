@@ -10,9 +10,8 @@ class YziTicket(models.Model):
 
     #### RELATION ####
     expense = fields.Many2one('yzi.expense')
-    product_id = fields.Many2one('product.product', u'Produit', domain=[('can_be_expensed', '=', True)])
+    product_id = fields.Many2one('product.product', u'Produit', domain=[('is_expensed', '=', True)])
     uom_id = fields.Many2one('product.uom')
-
 
     #### DATE ####
     date = fields.Date('Date', default=date.today())
@@ -37,7 +36,6 @@ class YziTicket(models.Model):
             ticket.ht_amount = ht
 
     ##### ONCHANGE #####
-
     def _onchange_product_id_values(self, product_id):
         res = {}
         if not product_id:
@@ -79,7 +77,6 @@ class YziTicket(models.Model):
     def _onchange_uom(self):
         values = self._onchange_uom_value(self.uom_id.id, self.product_id.id)
         self.update(values)
-
 
     def _onchange_uom_value(self, uom_id, product_id ):
         res = {}
@@ -176,7 +173,6 @@ class YziExpense(models.Model):
             move_line = expense.get_move__line()
             move_vals = expense.get_move_values(move_line)
             account_move = account_move_env.with_context(dont_create_taxes=True).create(move_vals)
-            # move_line_ids = expense.get_move__line(account_move.id)
 
             expense.write({
                 'account_move':account_move.id,
@@ -184,7 +180,6 @@ class YziExpense(models.Model):
                 'state': 'paid',
 
             })
-
 
     def get_move_values(self, line):
         vals = {}
@@ -213,9 +208,9 @@ class YziExpense(models.Model):
         account_account_env = self.env['account.account']
         vals=[]
         tva=self.tva_amount_recup
-        tva_account = account_account_env.search([('code', '=', '445660000')], limit=1)
+        tva_account = account_account_env.search([('code', '=', '445660')], limit=1)
         total = tva
-        account_global_line= self.employee.account_id
+        account_global_line= self.employee.account.id
         # name = self.employee.account.name
 
         for ticket in self.tickets:
@@ -276,9 +271,9 @@ class YziExpense(models.Model):
         vals.append((0,0,tva_line))
 
         global_line = {
-            'name': account_global_line.name,
+            'name': "/",
             # 'amount': total,
-            'account_id': account_global_line.id,
+            'account_id': account_global_line,
             'journal_id': journal_id,
             'amount_residual': -total,
             'debit_cash_basis': 0.0,
@@ -319,7 +314,6 @@ class YziExpense(models.Model):
 
     def onchange_employee_values(self, employee_id):
         vals = {}
-        print(employee_id)
         if employee_id:
             if not employee_id.account_id:
                raise (UserError(u"Attention l'employe n'a pas de compte comptable saisi dans ses parametres employe"))
@@ -334,7 +328,6 @@ class YziExpense(models.Model):
         # values = self.onchange_fiscal_position_value()
         for ticket in self.tickets :
             ticket.compute_tax()
-
 
     #### Compute #####
     @api.multi

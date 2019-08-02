@@ -27,6 +27,7 @@
 
         'views/yzi_expense.xml',
         'views/hr_view.xml',
+        'views/product_template.xml',
         'reports/report_expense.xml',
         'reports/report_yzi_expense_document.xml',
     ],

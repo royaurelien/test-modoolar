@@ -6,6 +6,7 @@ from openerp.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
+
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
@@ -18,8 +19,6 @@ class HrEmployee(models.Model):
     vehicule_intitule = fields.Char("Description du véhicule")
 
     
-
-
 class HrTauxKilometrique(models.Model):
     _name = "hr.taux_kilometriques"
     _description = "Taux kilometriques"

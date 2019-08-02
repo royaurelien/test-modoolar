@@ -7,13 +7,14 @@
         <field name="model">yzi.expense</field>
         <field name="arch" type="xml">
             <form string="Notes de frais">
+            <!--<form string="Notes de frais" editable="1" nocreate="0">-->
                 <header>
                     <button name="confirmation" string="Confirmer" type="object" class="btn-primary" states="draft"/>
-                    <button name="valid" string="Valider" type="object" class="btn-primary" states="waiting" groups="hr.group_hr_user"/>
-                    <button name="paid" string="payer" type="object" class="btn-primary" states="approved" groups="hr.group_hr_user"/>
+                    <button name="valid" string="Valider" type="object" class="btn-primary" states="waiting" groups="base.group_hr_user"/>
+                    <button name="paid" string="payer" type="object" class="btn-primary" states="approved" groups="base.group_hr_user"/>
                     <button name="cancel" string="Annuler" type="object" class="btn-primary" states="waiting"/>
-                    <button name="cancel" string="Annuler" type="object" class="btn-primary" states="approved" groups="hr.group_hr_user"/>
-                    <button name="draft" string="Remettre en brouillon" type="object" class="btn-primary" states="cancel" groups="hr.group_hr_user"/>
+                    <button name="cancel" string="Annuler" type="object" class="btn-primary" states="approved" groups="base.group_hr_user"/>
+                    <button name="draft" string="Remettre en brouillon" type="object" class="btn-primary" states="cancel" groups="base.group_hr_user"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,waiting,approved" />
                 </header>
                 <sheet>
@@ -48,7 +49,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page name="compta" string="Comptabilité" groups="account_payment_order.group_account_payment">
+                        <page name="compta" string="Comptabilité" groups="mybase.group_compta">
                             <field name="account_move"/>
                             <field name="account_move_line" mode="tree">
                                 <field name="date"/>
@@ -85,7 +86,7 @@
         <field name="name">Note de Frais</field>
         <field name="model">yzi.expense</field>
         <field name="arch" type="xml">
-            <tree colors="blue:state=='draft'">
+            <tree colors="blue:state=='draft'" create="true">
                 <field name="employee"/>
                 <field name="date"/>
                 <field name="desc"/>
@@ -133,5 +134,7 @@
     <menuitem id="hr_expense.menu_hr_expense_accountant" groups="base.group_no_one"/>
     <menuitem id="hr_expense.menu_hr_expense_reports" groups="base.group_no_one"/>
     <menuitem id="hr_expense.menu_hr_expense_configuration" groups="base.group_no_one"/>
-    
+    <!--<menuitem id="" groups="base.group_no_one"/>-->
+
+
 </odoo>
