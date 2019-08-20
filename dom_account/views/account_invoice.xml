@@ -15,4 +15,23 @@
         </field>
     </record>
 
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="dom_salerman_account" name="Factures Client" parent="sale.menu_sale_invoicing" action="account.action_invoice_tree1"/>
+
+
+    <record id="dom_salerman_account_tree" model="ir.ui.view">
+        <field name="name">Facture Commercial </field>
+        <field name="model">account.invoice</field>
+        <field name="groups_id" eval="[(4,ref('dom_account.dom_salerman_account_group'))]"/>
+        <field name="inherit_id" ref="account.invoice_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//tree" position="attributes">
+                <attribute name="create">false</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+
 </odoo>

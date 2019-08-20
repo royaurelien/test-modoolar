@@ -25,6 +25,7 @@
         'data/partner_seq.xml',
         'data/ir_property.xml',
         'data/account_move.xml',
+        'data/res_groups.xml',
         # 'security/ir.model.access.csv',
 
         'views/res_partner.xml',
