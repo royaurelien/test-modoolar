@@ -10,8 +10,8 @@
             <!--<form string="Notes de frais" editable="1" nocreate="0">-->
                 <header>
                     <button name="confirmation" string="Confirmer" type="object" class="btn-primary" states="draft"/>
-                    <button name="valid" string="Valider" type="object" class="btn-primary" states="waiting" groups="base.group_hr_user"/>
-                    <button name="paid" string="payer" type="object" class="btn-primary" states="approved" groups="base.group_hr_user"/>
+                    <button name="valid" string="Valider" type="object" class="btn-primary" states="waiting" groups="hr.group_hr_manager"/>
+                    <button name="paid" string="payer" type="object" class="btn-primary" states="approved" groups="hr.group_hr_manager"/>
                     <button name="cancel" string="Annuler" type="object" class="btn-primary" states="waiting"/>
                     <button name="cancel" string="Annuler" type="object" class="btn-primary" states="approved" groups="base.group_hr_user"/>
                     <button name="draft" string="Remettre en brouillon" type="object" class="btn-primary" states="cancel" groups="base.group_hr_user"/>

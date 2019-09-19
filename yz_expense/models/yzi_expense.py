@@ -210,7 +210,7 @@ class YziExpense(models.Model):
         tva=self.tva_amount_recup
         tva_account = account_account_env.search([('code', '=', '445660')], limit=1)
         total = tva
-        account_global_line= self.employee.account.id
+        account_global_line= self.employee.account_id.id
         # name = self.employee.account.name
 
         for ticket in self.tickets:
