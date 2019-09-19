@@ -57,3 +57,12 @@ class CrmLead(models.Model):
                 res['context']['default_contact_activity_id'] = self.partner_id.id
 
         return res
+
+
+class CrmLead2opportunityPartner(models.TransientModel):
+    _inherit = "crm.lead2opportunity.partner"
+
+    @api.multi
+    def action_apply(self):
+        return super(CrmLead2opportunityPartner, self.sudo()).action_apply()
+

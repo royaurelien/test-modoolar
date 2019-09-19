@@ -41,186 +41,195 @@
     <template id="actual_lcr">
         <t t-if="doc.payment_term_id.is_lcr">
 
-        <div style="height:200px;" /> <!-- spacer -->
+            <div style="height:200px;" /> <!-- spacer -->
 
-        <div style="position:relative;">
-            <style>
-            .lcr {
-                display: inline-block;
-                position: absolute;
-            }
+            <div style="position:relative;">
+                <style>
+                    .lcr {
+                        display: inline-block;
+                        position: absolute;
+                    }
 
-            .l1r {
-                top: 170px;
-                /* background-color: cyan; */
-            }
+                    .l1r {
+                        top: 170px;
+                        /* background-color: cyan; */
+                    }
 
-            .l2r {
-                top: 206px;
-                /* background-color: green; */
-            }
+                    .l2r {
+                        top: 206px;
+                        /* background-color: green; */
+                    }
 
-            /* 1st row */
+                    /* 1st row */
 
-            .montant-pour-controle {
-                left: 40px;
-                text-align: right;
-                width: 120px;
-            }
+                    .montant-pour-controle {
+                        left: 40px;
+                        text-align: right;
+                        width: 120px;
+                    }
 
-            .date-de-creation {
-                left: 200px;
-            }
+                    .date-de-creation {
+                        left: 200px;
+                    }
 
-            .echeance {
-                left: 325px;
-            }
+                    .echeance {
+                        left: 325px;
+                    }
 
-            .montant-en-euro {
-                left: 785px;
-                text-align: right;
-                width: 100px;
-            }
+                    .montant-en-euro {
+                        left: 785px;
+                        text-align: right;
+                        width: 100px;
+                    }
 
-            /* 2nd row */
+                    /* 2nd row */
 
-            .conditions-de-reglement {
-                left: 30px;
-                text-align: center;
-                width: 320px;
-            }
+                    .conditions-de-reglement {
+                        left: 30px;
+                        text-align: center;
+                        width: 320px;
+                    }
 
-            .numero-de-facture {
-                top: 210px;
-                left: 495px;
-            }
+                    .numero-de-facture {
+                        top: 210px;
+                        left: 495px;
+                    }
 
-            .code-client {
-                top: 210px;
-                left: 780px;
-            }
+                    .code-client {
+                        top: 210px;
+                        left: 780px;
+                    }
 
-            .rib {
-                top: 242px;
-                /* background-color: pink; */
-            }
+                    .rib {
+                        top: 242px;
+                        /* background-color: pink; */
+                    }
 
-            .code-etabli {
-                left: 40px;
-            }
+                    .code-etabli {
+                        left: 40px;
+                    }
 
-            .code-guichet {
-                left: 110px;
-            }
+                    .code-guichet {
+                        left: 110px;
+                    }
 
-            .num-de-compte {
-                left: 170px;
-            }
+                    .num-de-compte {
+                        left: 170px;
+                    }
 
-            .cle-rib {
-                left: 300px;
-            }
+                    .cle-rib {
+                        left: 300px;
+                    }
 
-            .addr {
-                left: 370px;
-                /* background-color: teal; */
-            }
+                    .addr {
+                        left: 370px;
+                        /* background-color: teal; */
+                    }
 
-            .nom {
-                top: 247px;
-                font-weight: bold;
-            }
+                    .nom {
+                        top: 247px;
+                        font-weight: bold;
+                    }
 
-            .addr1 {
-                top: 272px;
-            }
+                    .addr1 {
+                        top: 272px;
+                    }
 
-            .addr2 {
-                top: 297px;
-            }
+                    .addr2 {
+                        top: 297px;
+                    }
 
-            .code-postal-ville {
-                top: 322px;
-            }
+                    .code-postal-ville {
+                        top: 322px;
+                    }
 
-            </style>
+                    .nom_banque {
+                        left: 720px;
+                    }
 
-            <img src="/dom_lcr/static/src/img/lcr_image.png" />
-            <!-- première ligne -->
-            <div class="lcr l1r montant-pour-controle">
-                <t t-esc="str(doc.amount_total).replace('.',',')" />
-            </div>
-            <div class="lcr l1r date-de-creation">
-                <span t-field="doc.date_invoice" />
-            </div>
-            <div class="lcr l1r echeance">
-                <span t-field="doc.date_due" />
-            </div>
-            <div class="lcr l1r montant-en-euro">
-                <t t-esc="str(doc.amount_total).replace('.',',')" />
-            </div>
+                </style>
 
-            <!-- deuxième ligne -->
-            <div class="lcr l2r conditions-de-reglement">
-                <span t-field="doc.payment_term_id" />
-            </div>
-
-            <div class="lcr l2r numero-de-facture">
-                <t t-esc="doc.number" />
-            </div>
-
-            <div class="lcr l2r code-client">
-                <t t-esc="doc.partner_id.ref" />
-            </div>
-
-            <!-- troisième ligne, RIB
-            'code_banque': iban[4:9],
-            'code_guichet': iban[9:14],
-            'numero_compte': iban[14:25],
-            'cle_rib': iban[25:27],
-             -->
-
-            <t t-set="bank_account" t-value="doc.partner_id.get_bank_account()" />
-            <t t-if="bank_account">
-                <t t-set="iban" t-value="bank_account.acc_number.replace(' ','')" />
-
-                <div class="lcr rib code-etabli">
-                    <t t-esc="iban[4:9]" />
+                <img src="/dom_lcr/static/src/img/lcr_image.png" />
+                <!-- première ligne -->
+                <div class="lcr l1r montant-pour-controle">
+                    <t t-esc="str(doc.amount_total).replace('.',',')" />
+                </div>
+                <div class="lcr l1r date-de-creation">
+                    <span t-field="doc.date_invoice" />
+                </div>
+                <div class="lcr l1r echeance">
+                    <span t-field="doc.date_due" />
+                </div>
+                <div class="lcr l1r montant-en-euro">
+                    <t t-esc="str(doc.amount_total).replace('.',',')" />
                 </div>
 
-                <div class="lcr rib code-guichet">
-                    <t t-esc="iban[9:14]" />
+                <!-- deuxième ligne -->
+                <div class="lcr l2r conditions-de-reglement">
+                    <span t-field="doc.payment_term_id" />
                 </div>
 
-                <div class="lcr rib num-de-compte">
-                    <t t-esc="iban[14:25]" />
+                <div class="lcr l2r numero-de-facture">
+                    <t t-esc="doc.number" />
                 </div>
-                <div class="lcr rib cle-rib">
-                    <t t-esc="iban[25:27]" />
+
+                <div class="lcr l2r code-client">
+                    <t t-esc="doc.partner_id.ref" />
                 </div>
-            </t>
 
-            <!-- adresse du client -->
-            <t t-set="p" t-value="doc.partner_id" />
-            <div class="lcr addr nom">
-              <t t-if="p.name">
-                <t t-esc="p.name"/>
-              </t>
-              <t t-else="">
-                <t t-esc="p.parent_id.name"/>
-              </t>
-            </div>
-            <div class="lcr addr addr1">
-                <t t-esc="p.street" />
-            </div>
-            <div class="lcr addr addr2">
-                <t t-esc="p.street2" />
-            </div>
-            <div class="lcr addr code-postal-ville">
-              <span><t t-esc="p.zip"/> <t t-esc="p.city"/></span>
+                <!-- troisième ligne, RIB
+                'code_banque': iban[4:9],
+                'code_guichet': iban[9:14],
+                'numero_compte': iban[14:25],
+                'cle_rib': iban[25:27],
+                 -->
+
+                <t t-set="bank_account" t-value="doc.partner_id.get_bank_account()" />
+                <t t-if="bank_account">
+                    <t t-set="iban" t-value="bank_account.acc_number.replace(' ','')" />
+
+                    <div class="lcr rib code-etabli">
+                        <t t-esc="iban[4:9]" />
+                    </div>
+
+                    <div class="lcr rib code-guichet">
+                        <t t-esc="iban[9:14]" />
+                    </div>
+
+                    <div class="lcr rib num-de-compte">
+                        <t t-esc="iban[14:25]" />
+                    </div>
+                    <div class="lcr rib cle-rib">
+                        <t t-esc="iban[25:27]" />
+                    </div>
+                    <div class="lcr rib nom_banque">
+                        <span t-esc="bank_account.bank_id.name"/>
+                    </div>
+                </t>
+
+                <!-- adresse du client -->
+                <t t-set="p" t-value="doc.partner_id" />
+                <div class="lcr addr nom">
+                    <t t-if="p.parent_id">
+                        <t t-esc="p.parent_id.name"/>
+                    </t>
+                    <t t-else="">
+                        <t t-esc="p.name"/>
+                    </t>
+                </div>
+                <div class="lcr addr addr1">
+                    <t t-esc="p.street" />
+                </div>
+                <div class="lcr addr addr2">
+                    <t t-esc="p.street2" />
+                </div>
+                <div class="lcr addr code-postal-ville">
+                    <span><t t-esc="p.zip"/> <t t-esc="p.city"/></span>
+                </div>
             </div>
 
-        </div>
+
+
         </t>
     </template>
 
