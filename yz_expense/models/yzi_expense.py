@@ -185,7 +185,7 @@ class YziExpense(models.Model):
         vals = {}
         journal_env = self.env['account.journal']
         amount = self.ttc_amount
-        journal_id = journal_env.search([('name', 'ilike', 'Opérations diverses')]).id
+        journal_id = journal_env.search([('name', 'ilike', 'NDF')]).id
         date = self.date
         narration = u"Frais de déplacement"
         ref = self.employee.name + " : " +self.desc
@@ -208,7 +208,7 @@ class YziExpense(models.Model):
         account_account_env = self.env['account.account']
         vals=[]
         tva=self.tva_amount_recup
-        tva_account = account_account_env.search([('code', '=', '445660')], limit=1)
+        tva_account = account_account_env.search([('code', '=', '445660000')], limit=1)
         total = tva
         account_global_line= self.employee.account_id.id
         # name = self.employee.account.name
