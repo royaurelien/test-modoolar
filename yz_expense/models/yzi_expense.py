@@ -203,7 +203,7 @@ class YziExpense(models.Model):
 
     def get_move__line(self, move_id=False):
         journal_env = self.env['account.journal']
-        journal_id = journal_env.search([('name', 'ilike', 'Opérations diverses')]).id
+        journal_id = journal_env.search([('name', 'ilike', 'NDF')]).id
         account_move_line_env = self.env['account.move.line']
         account_account_env = self.env['account.account']
         vals=[]
