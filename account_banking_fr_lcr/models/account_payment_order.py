@@ -194,6 +194,7 @@ class AccountPaymentOrder(models.Model):
         total_amount = 0.0
         transactions_count = 0
         eur_currency = self.env.ref('base.EUR')
+
         # Iterate each bank payment lines
         for line in self.bank_line_ids:
             if line.currency_id != eur_currency:
@@ -208,7 +209,6 @@ class AccountPaymentOrder(models.Model):
             line_cfonb = self._prepare_cfonb_line_grouped(line, transactions_count)
             cfonb_string += line_cfonb
             total_amount += line['amount_currency']
-
 
         cfonb_string += self._prepare_final_cfonb_line(
             total_amount, transactions_count)
@@ -242,11 +242,11 @@ class AccountPaymentOrder(models.Model):
             for m_line in maped_lines:
                 if maped == False and m_line['partner_bank_id'].acc_number == line['partner_bank_id'].acc_number:
                     m_line['amount_currency'] += line['amount_currency']
+                    m_line['amount_currency'] = round(m_line['amount_currency'], 2)
                     maped = True
 
             if not maped:
                 maped_lines.append(line)
-
 
         return maped_lines
 
@@ -265,7 +265,17 @@ class AccountPaymentOrder(models.Model):
         nom_banque = self._prepare_field(
             u'Nom banque', line['partner_bank_id'].bank_id.name, 24)
         code_acceptation = '0'
-        montant_centimes = str(line['amount_currency'] * 100).split('.')[0]
+
+        # we cast in string to get the correct float
+        amount_str_splited = str(line['amount_currency']).split('.')
+        # we add 0 if to have at least 2 decimals everytime
+        if len(amount_str_splited) == 1:
+            amount_str_splited[1] = '00'
+        elif len(amount_str_splited[1]) == 1:
+            amount_str_splited[1] += '0'
+        # then we take the number and two decimals
+        montant_centimes = amount_str_splited[0] + amount_str_splited[1][:2]
+
         zero_montant_centimes = montant_centimes.zfill(12)
         today_str = fields.Date.context_today(self)
         today_dt = fields.Date.from_string(today_str)
