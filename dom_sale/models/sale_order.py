@@ -6,11 +6,11 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     # Nope, forbidden ! this is not an inheritance, there are new fields, overriding olds and not defined any more.
-    # date_order = fields.Date()
-    # requested_date = fields.Date()
-    # validity_date = fields.Date()
-    # commitment_date = fields.Date()
-    # effective_date = fields.Date()
+    date_order = fields.Date()
+    requested_date = fields.Date()
+    validity_date = fields.Date()
+    commitment_date = fields.Date()
+    effective_date = fields.Date()
 
     @api.multi
     @api.depends('invoice_ids', 'amount_total', 'invoice_status')
