@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, tools
+from datetime import date
 
 
 class SaleOrder(models.Model):
@@ -11,6 +12,7 @@ class SaleOrder(models.Model):
     validity_date = fields.Date()
     commitment_date = fields.Date()
     effective_date = fields.Date()
+    confirmation_date = fields.Date()
 
     @api.multi
     @api.depends('invoice_ids', 'amount_total', 'invoice_status')
@@ -36,3 +38,14 @@ class SaleOrder(models.Model):
     @api.onchange('user_id')
     def onchange_user_id(self):
         self.team_id = self.user_id.sale_team_id
+
+    @api.multi
+    def _action_confirm(self):
+        res= super(SaleOrder, self)._action_confirm()
+
+        self.write({
+            'confirmation_date': date.today(),
+            'requested_date': date.today()
+        })
+
+        return res
