@@ -17,7 +17,7 @@
 
     # always loaded
     'data': [
-        
+        'views/hr_holidays.xml'
     ],
 
     # 'installable': True,
