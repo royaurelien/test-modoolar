@@ -32,4 +32,23 @@
         <field name="domain">[('state','in',['draft','sent','cancel'])]</field>
     </record>
 
+    <!-- SEARCH -->
+    <record id="view_sales_order_filter" model="ir.ui.view">
+        <field name="name">Devis/Commandes</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="partner_centrale_id"/>
+            </xpath>
+
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="Centrale" name="centrale_defined" domain="[('partner_centrale_id', '!=', False)]"/>
+            </xpath>
+
+        </field>
+    </record>
+
 </odoo>

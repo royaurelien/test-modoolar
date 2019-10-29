@@ -10,6 +10,11 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     nb_cartons = fields.Integer(compute="_compute_nb_cartons", store=True)
+    partner_centrale_id = fields.Many2one(comodel_name="res.partner", string="Centrale")
+
+    @api.onchange('partner_id')
+    def onchange_partner_id_centrale(self):
+        self.partner_centrale_id = self.partner_id.centrale_id.id
 
     # scheduled_date = fields.Date()
 

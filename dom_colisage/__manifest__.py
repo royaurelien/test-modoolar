@@ -2,9 +2,9 @@
 {
     'name': "Domitec Colisage",
 
-    'summary': """ Gesttion du Colisage pour Domitec """,
+    'summary': """ Gestion du Colisage pour Domitec """,
 
-    'description': """ Gesttion du Colisage pour Domitec """,
+    'description': """ Gestion du Colisage pour Domitec """,
 
     'author': "G. Santos",
 

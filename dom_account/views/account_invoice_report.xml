@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_account_invoice_report_search" model="ir.ui.view">
+        <field name="name">Report - Centrale</field>
+        <field name="model">account.invoice.report</field>
+        <field name="inherit_id" ref="account.view_account_invoice_report_search"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="partner_centrale_id"/>
+            </xpath>
+
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="Centrale" name="centrale_defined" domain="[('partner_centrale_id', '!=', False)]"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

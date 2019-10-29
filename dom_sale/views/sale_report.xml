@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="tree_sale_date_remove" model="ir.ui.view">
+        <field name="name">Devis</field>
+        <field name="model">sale.report</field>
+        <field name="inherit_id" ref="sale.view_order_product_search"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="partner_centrale_id"/>
+            </xpath>
+
+            <xpath expr="//search" position="inside">
+                <filter string="Centrale" name="centrale_defined" domain="[('partner_centrale_id', '!=', False)]"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

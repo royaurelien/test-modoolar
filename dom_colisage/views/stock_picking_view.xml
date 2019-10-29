@@ -11,6 +11,10 @@
                     string="Marquer comme fait et calculer cartons"
                     type="object" class="oe_highlight"/>
             </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="partner_centrale_id" invisible="1"/>
+            </xpath>
         </field>
     </record>
 
@@ -25,6 +29,23 @@
                     <label for="not_count_cartons"/>
                 </div>
             </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_internal_search" model="ir.ui.view">
+        <field name="name">Stock Picking Form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='group_id']" position="after">
+                <field name="partner_centrale_id"/>
+            </xpath>
+
+            <xpath expr="//search" position="inside">
+                <filter string="Centrale" name="centrale_defined" domain="[('partner_centrale_id', '!=', False)]"/>
+            </xpath>
+
         </field>
     </record>
 

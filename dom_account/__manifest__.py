@@ -31,6 +31,9 @@
         'views/res_partner.xml',
         'views/account_move.xml',
         'views/account_invoice.xml',
+        'views/account_invoice_report.xml',
+        'views/purchase_order.xml',
+        'views/purchase_report.xml',
     ],
 
     # 'installable': True,

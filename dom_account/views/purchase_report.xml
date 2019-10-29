@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_purchase_order_search" model="ir.ui.view">
+        <field name="name">Purchase</field>
+        <field name="model">purchase.report</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_search"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="partner_centrale_id"/>
+            </xpath>
+
+            <xpath expr="//search" position="inside">
+                <filter string="Centrale" name="centrale_defined" domain="[('partner_centrale_id', '!=', False)]"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

@@ -4,6 +4,12 @@ from odoo import api, fields, models
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
+    partner_centrale_id = fields.Many2one(comodel_name="res.partner", string="Centrale")
+
+    @api.onchange('partner_id')
+    def onchange_partner_id_centrale(self):
+        self.partner_centrale_id = self.partner_id.centrale_id.id
+
     @api.multi
     def button_confirm(self):
         """

@@ -22,6 +22,7 @@
     'data': [
         'views/devis.xml',
         'views/commande.xml',
+        'views/sale_report.xml',
     ],
 
     # 'installable': True,

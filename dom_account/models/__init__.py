@@ -5,3 +5,5 @@ from . import account_invoice
 from . import ir_property
 from . import res_bank
 from . import account_move
+from . import purchase_report
+from . import account_invoice_report

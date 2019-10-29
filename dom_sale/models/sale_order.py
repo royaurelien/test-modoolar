@@ -14,6 +14,12 @@ class SaleOrder(models.Model):
     effective_date = fields.Date()
     confirmation_date = fields.Date()
 
+    partner_centrale_id = fields.Many2one(comodel_name="res.partner", string="Centrale")
+
+    @api.onchange('partner_id')
+    def onchange_partner_id_centrale(self):
+        self.partner_centrale_id = self.partner_id.centrale_id.id
+
     @api.multi
     @api.depends('invoice_ids', 'amount_total', 'invoice_status')
     def get_residual(self):

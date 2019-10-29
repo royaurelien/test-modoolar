@@ -7,6 +7,7 @@ from dateutil.relativedelta import relativedelta
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
+    partner_centrale_id = fields.Many2one(comodel_name="res.partner", string="Centrale")
 
     @api.model
     def create(self, vals):
@@ -36,7 +37,11 @@ class AccountInvoice(models.Model):
     @api.onchange('partner_id')
     def onchange_partner(self):
         if self.partner_id.user_id:
-            self.user_id                 = self.partner_id.user_id.id
+            self.user_id = self.partner_id.user_id.id
+
+    @api.onchange('partner_id')
+    def onchange_partner_id_centrale(self):
+        self.partner_centrale_id = self.partner_id.centrale_id.id
 
 class AccountPaymentTerm(models.Model):
     _inherit = "account.payment.term"
