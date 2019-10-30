@@ -16,6 +16,7 @@
     'depends': [
         'sale',
         'sale_order_dates',
+        'stock'
     ],
 
     # always loaded

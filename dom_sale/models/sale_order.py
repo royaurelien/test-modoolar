@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, tools
-from datetime import date
+from datetime import date, datetime
+from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT
 
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     # Nope, forbidden ! this is not an inheritance, there are new fields, overriding olds and not defined any more.
-    date_order = fields.Date()
+    date_order = fields.Date(default=fields.Date.today)
     requested_date = fields.Date()
     validity_date = fields.Date()
-    commitment_date = fields.Date()
-    effective_date = fields.Date()
+    commitment_date = fields.Date(compute='_compute_commitment_date')
+    effective_date = fields.Date(compute='_compute_picking_ids')
     confirmation_date = fields.Date()
 
     partner_centrale_id = fields.Many2one(comodel_name="res.partner", string="Centrale")
@@ -45,13 +46,3 @@ class SaleOrder(models.Model):
     def onchange_user_id(self):
         self.team_id = self.user_id.sale_team_id
 
-    @api.multi
-    def _action_confirm(self):
-        res= super(SaleOrder, self)._action_confirm()
-
-        self.write({
-            'confirmation_date': date.today(),
-            'requested_date': date.today()
-        })
-
-        return res
