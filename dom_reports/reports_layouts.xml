@@ -313,7 +313,7 @@
                 <table class="table-curved upper-part-table">
                     <thead>
                         <tr>
-                            <th t-if="devis">
+                            <th t-if="devis or bdc">
                                 <t t-if="doc.requested_date">
                                     DATE DE DEPART PREVU
                                 </t>
