@@ -14,6 +14,11 @@ class ProcurementRule(models.Model):
         :param procurement: browse record
         :rtype: dictionary
         '''
+        sol = self.env['sale.order.line'].browse(values['sale_line_id'])
+        if sol:
+            so = sol.order_id
+            values['date_planned'] = so.requested_date
+
         date_expected = (datetime.strptime(values['date_planned'], DEFAULT_SERVER_DATE_FORMAT) - relativedelta(
             days=self.delay or 0)).strftime(DEFAULT_SERVER_DATE_FORMAT)
         # it is possible that we've already got some move done, so check for the done qty and create
@@ -44,7 +49,6 @@ class ProcurementRule(models.Model):
             'propagate': self.propagate,
             'priority': values.get('priority', "1"),
         }
-
         if values.get('sale_line_id', False):
             result['sale_line_id'] = values['sale_line_id']
 
