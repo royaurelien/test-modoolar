@@ -17,7 +17,8 @@ class AccountMoveLineReconcile(models.TransientModel):
             if not line.full_reconcile_id:
                 credit += float_round(line.credit, precision_digits=precision)
                 debit += float_round(line.debit, precision_digits=precision)
-        writeoff = float_round(debit - credit, precision_digits=precision)
+        #writeoff = float_round(debit - credit, precision_digits=precision)
+        writeoff = float('%.2f' % (float_round(debit - credit, precision_digits=precision)))
         credit = float_round(credit, precision_digits=precision)
         debit = float_round(debit, precision_digits=precision)
         return {'trans_nbr': len(lines), 'credit': credit, 'debit': debit, 'writeoff': writeoff}
