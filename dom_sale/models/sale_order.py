@@ -9,7 +9,7 @@ class SaleOrder(models.Model):
 
     # Nope, forbidden ! this is not an inheritance, there are new fields, overriding olds and not defined any more.
     date_order = fields.Date(default=fields.Date.today)
-    requested_date = fields.Date()
+    requested_date = fields.Date(required=True)
     validity_date = fields.Date()
     commitment_date = fields.Date(compute='_compute_commitment_date')
     effective_date = fields.Date(compute='_compute_picking_ids')
