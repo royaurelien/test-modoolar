@@ -20,7 +20,7 @@ class ProcurementRule(models.Model):
             values['date_planned'] = so.requested_date
 
         date_expected = (datetime.strptime(values['date_planned'], DEFAULT_SERVER_DATE_FORMAT) - relativedelta(
-            days=self.delay or 0)).strftime(DEFAULT_SERVER_DATE_FORMAT)
+            days=self.delay or 0)).strftime(DEFAULT_SERVER_DATE_FORMAT) if 'date_planned' in values and values.get('date_planned', False) else False
         # it is possible that we've already got some move done, so check for the done qty and create
         # a new move with the correct qty
         qty_left = product_qty
